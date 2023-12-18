@@ -1,0 +1,55 @@
+/* SectionTwo.css */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
+.syfte {
+    color: var(--Grey-4, #A5A5A5);
+    font-family: 'Space Mono', 'monospace';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    /* 21.6px */
+    letter-spacing: 0.72px;
+    text-transform: uppercase;
+}
+
+.section-two {
+
+    height: 810px;
+    color: white;
+    /* Text color */
+    padding: 50px;
+    /* Padding inside the section */
+    background-image: url('../../../public/bg.png');
+    /* Update with your image path */
+    background-size: cover;
+    /* Cover the entire section with the image */
+    background-position: center;
+    /* Center the background image */
+    background-repeat: no-repeat;
+    /* Do not repeat the background image */
+    text-align: left;
+    /* Align text to the left */
+}
+
+
+.section-two h2 {
+    flex-shrink: 0;
+    width: 534px;
+    font-family: 'Inter';
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+
+}
+
+.section-two p {
+    width: 575px;
+    font-family: 'Inter';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+}

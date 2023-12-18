@@ -1,0 +1,54 @@
+/* Navbar.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 0 10px;
+  height: 80px;
+
+
+}
+
+.navbar .logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar .nav-links {
+  display: flex;
+}
+
+.navbar .nav-links a {
+  text-decoration: none;
+  margin-right: 20px;
+  color: black;
+  font-family: 'Inter';
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.navbar .nav-links a:last-child {
+  margin-right: 0;
+}
+
+.navbar .nav-links a:hover {
+  color: gray;
+}
+
+.nav-link-kontakt {
+  background-color: #8A684A;
+  width: 92px;
+  height: 40px;
+  color:white;
+  font-family: 'Space Grotesk';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
