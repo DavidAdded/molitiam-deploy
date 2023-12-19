@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+}
+
+.padding-global {
+    padding:0 96px;
+    width: 100%;
+}
+
+.container-large {
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.container-medium {
+    max-width: 1024px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.container-small {
+    max-width: 768px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.padding-section-large {
+    padding: 128px 0;
+}
+
+.padding-section-medium {
+    padding: 96px 0;
+}
+
+.padding-section-small {
+    padding: 64px 0;
+}
+
+h1 {
+    font-family: 'Inter';
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-family: 'Inter';
+    font-size: 35px;
+    font-weight: 500;
+    line-height: auto;
+}
+
+h3 {
+    font-family: 'Inter';
+    font-size: 20px;
+    font-weight: 500;
+    line-height: auto;
+}
+
+h4 {
+    font-family: 'Space Mono';
+    font-size: 18px;
+    font-weight: 'regular';
+    line-height: auto;
+}
+
+p {
+    font-family: 'Inter';
+    font-size: 18px;
+    font-weight: 'regular';
+    line-height: auto;
+}
+
+a {
+    color: black;
+}

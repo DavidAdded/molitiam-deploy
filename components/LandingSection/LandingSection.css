@@ -1,0 +1,31 @@
+.landing-section-wrapper {
+    min-height: 800px;
+}
+
+.picture-wrapper {
+    position: absolute;
+    z-index: -1;
+    display: flex;
+    height: 100%;
+
+}
+
+.picture-wrapper img {
+    height:562px;
+    width: 562px;
+    top: auto;
+    margin-left: -62px;
+}
+
+
+.landing-grey-image {
+    width: 562px;
+    height: 562px;
+    background-color: #262626;
+
+}
+
+.landing-content-wrapper {
+    position: relative;
+}
+

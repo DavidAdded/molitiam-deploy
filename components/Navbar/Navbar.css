@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    font-family: 'Inter', sans-serif;
+    /* Example font */
+}
+
+.navbar-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.padding-section-nav {
+    padding: 20px 0;
+}
+
+.navbar-logo {
+    font-size: 24px;
+    /* Adjust size as needed */
+    font-weight: bold;
+    /* Adjust weight as needed */
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.navbar-links a {
+    text-decoration: none;
+    /* Adjust color as needed */
+    margin-right: 16px;
+    /* Adjust spacing as needed */
+    font-size: 16px;
+    /* Adjust size as needed */
+}
+
+.navbar-links a:last-child {
+    margin-right: 0;
+}
+
+.navbar-kontakt {
+    display: flex;
+    padding: 10px 15px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: #8A684A;
+    /* Specific background for Kontakt link */
+    color: white;
+    /* Text color for Kontakt link */
+    padding: 8px 16px;
+    /* Padding for Kontakt link */
+    color: var(--Grey-1, #F5F5F5);
+    font-family: 'Space Grotesk';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+}
+
+.navbar-eng {
+    display: flex;
+    padding: 10px 15px;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    background-color: #8A684A;
+    /* Specific background for Kontakt link */
+    color: white;
+    /* Text color for Kontakt link */
+    padding: 8px 16px;
+    /* Padding for Kontakt link */
+    color: var(--Grey-1, #F5F5F5);
+    font-family: 'Space Grotesk';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+/* Add responsive behavior if needed */
+@media (max-width: 768px) {
+    .navbar-links {
+        display: none;
+        /* Example: hide links on small screens */
+    }
+
+    /* Additional responsive styles here */
+}

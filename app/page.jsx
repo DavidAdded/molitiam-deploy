@@ -1,13 +1,8 @@
-
+/* <localhost3000 /> */
+import LandingSection from "@components/LandingSection/LandingSection";
 
 const Home = () => {
-  return (
-    <div>
-        <h1>
-            Component
-        </h1>
-    </div>
-  )
-}
+  return <LandingSection/>
+};
 
 export default Home;
