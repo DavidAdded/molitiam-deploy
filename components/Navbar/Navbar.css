@@ -4,9 +4,6 @@
 
 
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     background-color: white;
     font-family: 'Inter', sans-serif;
     /* Example font */
@@ -44,6 +41,11 @@
     font-size: 16px;
     /* Adjust size as needed */
 }
+.hamburger-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
 
 .navbar-links a:last-child {
     margin-right: 0;
@@ -76,7 +78,7 @@
     justify-content: center;
     align-items: center;
     gap: 2px;
-    background-color: #8A684A;
+    background-color: #9C8773;
     /* Specific background for Kontakt link */
     color: white;
     /* Text color for Kontakt link */

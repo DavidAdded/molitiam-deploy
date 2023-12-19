@@ -1,0 +1,22 @@
+
+
+.syfte-section-wrapper {
+    background-image: url("/camoimage2.png");
+    background-size: cover;
+}
+
+.syfte-content-wrapper {
+    display: flex;
+    width: 575px;
+    flex-direction: column;
+    height: 100%;
+    color: white;
+    margin: 120px 0;
+}
+
+.syfte-content-wrapper p {
+    color: #FFF;
+    /* Body 1 */
+
+}
+

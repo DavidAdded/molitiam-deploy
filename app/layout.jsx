@@ -1,4 +1,5 @@
 import "@styles/globals.css";
+//import "@styles/normalize.css";
 import Navbar from "@components/Navbar/Navbar";
 import Footer from "@components/Footer/Footer";
 

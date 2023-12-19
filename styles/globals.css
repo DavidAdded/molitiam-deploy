@@ -12,8 +12,8 @@ body {
 }
 
 .padding-global {
-    padding:0 96px;
-    width: 100%;
+    padding: 0 96px;
+
 }
 
 .container-large {
@@ -60,6 +60,8 @@ h2 {
     font-size: 35px;
     font-weight: 500;
     line-height: auto;
+    margin: 0;
+    text-transform: uppercase;
 }
 
 h3 {
@@ -76,11 +78,27 @@ h4 {
     line-height: auto;
 }
 
+h6 {
+    color: var(--Grey-4, #A5A5A5);
+    font-family: Space Mono;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    /* 21.6px */
+    letter-spacing: 0.72px;
+    text-transform: uppercase;
+    margin: 0;
+
+
+}
+
 p {
     font-family: 'Inter';
     font-size: 18px;
-    font-weight: 'regular';
-    line-height: auto;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 27px */
 }
 
 a {
