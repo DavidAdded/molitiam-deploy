@@ -13,20 +13,20 @@ const Organisationer = () => {
               </div>
               <h2>Cybersäkerhet för organisationer</h2>
               <p>
-                Nationella försvar och säkerhetskänslig verksamhet söker
-                ackrediterade cybersäkerhetslösningar som uppfyller
-                säkerhetsskyddslagstiftningens höga krav i kombination med
-                användarvänlighet.
+                Privata företag, myndigheter och offentlig sektor som bedriver
+                samhällsviktig verksamhet erbjuds paketerade tjänster och
+                produkter.
               </p>
               <p>
-                CR Group är den enda leverantören av krypteringsprodukter för
-                säkerhetsklassificerad information på̊ nivån begränsat hemligt i
-                Sverige.
+                Vår plattform för ackrediterade lösningar till samhällsviktig
+                verksamhet, SIRRUS, är en unik användarvänlig plattform som
+                erbjuder stor flexibilitet, alltid med gällande lagkrav som
+                grund.
               </p>
             </div>
 
             <div className="organisationer-content-wrapper-bottom">
-                <h1 style= {{color:"white", margin:"200px 0"}}>ANIMATION</h1>
+              <h1 style={{ color: "white", margin: "200px 0" }}>ANIMATION</h1>
             </div>
           </div>
         </div>

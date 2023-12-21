@@ -5,6 +5,8 @@ import Syfte from "@components/Syfte/Syfte";
 import Tjanster from "@components/Tjanster/Tjanster";
 import Nationer from "@components/Nationer/Nationer";
 import Organisationer from "@components/Organisationer/Organisationer";
+import Verksamheter from "@components/Verksamheter/Verksamheter";
+import Nyheter from "@components/Nyheter/Nyheter";
 
 const Home = () => {
   return (
@@ -15,6 +17,8 @@ const Home = () => {
       <Tjanster/>
       <Nationer/>
       <Organisationer/>
+      <Verksamheter/>
+      <Nyheter/>
 
     </div>
   );

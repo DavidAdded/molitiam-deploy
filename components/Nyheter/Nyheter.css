@@ -1,0 +1,10 @@
+.nyheter-section-wrapper {
+    background-repeat: repeat;
+    /* Add other styles as needed */
+  }
+  
+
+.nyheter-content-wrapper {
+    width: 1000px;
+    height:800px;
+}
