@@ -1,32 +1,44 @@
-import React from 'react';
+'use client'
+import React, { useEffect, useState } from 'react';
 import './Nyheter.css';
 
-const generateGridBackground = (size, squares) => {
-  let grid = '';
-  for (let i = 0; i < squares; i++) {
-    for (let j = 0; j < squares; j++) {
-      const opacity = Math.random().toFixed(2); // Random opacity between 0 and 1
-      grid += `<rect x="${i * size}" y="${j * size}" width="${size}" height="${size}" fill="rgba(0, 0, 0, ${opacity})" />`;
-    }
-  }
-  return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="${size * squares}" height="${size * squares}">${grid}</svg>`;
-};
-
 const Nyheter = () => {
-  // Assuming the wrapper size is 900x900 for 10x10 grid. Adjust as needed.
-  const background = generateGridBackground(90, 10);
+  const [gridItems, setGridItems] = useState([]);
+  const gridWidth = 20; // Number of squares per row
+  const gridHeight = 8; // Number of squares per column
+  const squareSize = 90; // Size of squares in pixels
+  const opacityVariance = 0.1; // Maximum variance in opacity between adjacent squares
+
+  useEffect(() => {
+    const items = [];
+    let lastOpacity = Math.random(); // Initial opacity for the first square
+
+    for (let i = 0; i < gridWidth * gridHeight; i++) {
+      // Determine new opacity within 10% of the last square
+      let minOpacity = Math.max(lastOpacity - opacityVariance, 0);
+      let maxOpacity = Math.min(lastOpacity + opacityVariance, 1);
+      let newOpacity = Math.random() * (maxOpacity - minOpacity) + minOpacity;
+
+      // Add new square with new opacity
+      items.push(
+        <div key={i} className="grid-item" style={{ opacity: newOpacity }}></div>
+      );
+
+      // Update lastOpacity for the next iteration
+      lastOpacity = newOpacity;
+    }
+
+    setGridItems(items);
+  }, [gridWidth, gridHeight, opacityVariance]);
 
   return (
-    <div className='nyheter-section-wrapper' style={{ backgroundImage: `url("${background}")` }}>
-        <div className="padding-global">
-            <div className="container-large">
-                <div className="nyheter-content-wrapper">
-                    
-                </div>
-            </div>
-        </div>
+    <div className='nyheter-section-wrapper'>
+      <div className="grid-background" style={{ gridTemplateColumns: `repeat(${gridWidth}, ${squareSize}px)` }}>
+        {gridItems}
+      </div>
+      {/* Other content */}
     </div>
-  )
+  );
 }
 
 export default Nyheter;
