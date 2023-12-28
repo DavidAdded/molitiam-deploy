@@ -1,33 +1,180 @@
 /* Nyheter.css */
 .nyheter-section-wrapper {
-    position: relative;
-    /* Rest of your styles */
-  }
-  
-  .grid-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 90px);
-    grid-template-rows: repeat(auto-fill, 90px);
-  }
-  
-  .grid-item {
-    width: 90px;
-    height: 90px;
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-  
-  .padding-global {
-    position: relative;
-    /* Rest of your styles */
-  }
-  
-  .container-large {
-    position: relative;
-    /* Rest of your styles */
-  }
-  
+
+  background-image: url("/whitegrid.png");
+  background-size: cover;
+
+  /* Your other styles */
+}
+
+
+
+.grid-item {
+  width: 90px;
+  height: 90px;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: all 1s ease-in-out;
+}
+
+.nyheter-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  /* Your other styles */
+}
+
+.nyheter-text-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: black;
+  margin-bottom: 20px;
+
+}
+
+.nyheter-content-boxes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  gap: 25px;
+}
+
+
+
+.nyheter-content-card {
+  width: 376px;
+  height: 465px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.nyheter-content-card-top-left {
+  width: 100%;
+  height: 60%;
+  background-image: url('/nyheter-flagga.png');
+  background-size: cover;
+
+}
+
+.nyheter-content-card-top-middle {
+  width: 100%;
+  height: 60%;
+  background-image: url('/nyheter-matros.png');
+  background-size: cover;
+
+}
+
+.nyheter-content-card-top-right {
+  width: 100%;
+  height: 60%;
+  background-image: url('/nyheter-sista.png');
+  background-size: cover;
+
+}
+
+.nyheter-content-card-bottom {
+  position: relative;
+  width: 100%;
+  height: 40%;
+  color: black;
+  background: rgba(255, 255, 255, 1);
+
+}
+
+.nyheter-content-card-text-wrapper {
+  padding-top: 20px;
+  padding-left: 25px;
+
+}
+
+.nyheter-content-card-bottom h3 {
+  font-family: 'Inter';
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin: 3px 0px;
+
+}
+
+.nyheter-content-card-bottom p {
+  font-family: 'Inter';
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 23px;
+  letter-spacing: 0em;
+  text-align: left;
+  max-width: 320px;
+  margin: 3px 0px;
+
+}
+
+.nyheter-date {
+  font-family: 'Space Mono';
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0.05em;
+  text-align: left;
+
+}
+
+.nyheter-las-mer {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  font-family: 'Space Mono';
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0.05em;
+  text-align: right;
+  margin-right: 50px;
+
+}
+
+.nyheter-las-mer-content {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+
+
+}
+
+.bottom-corner-cover-up {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.1);
+
+}
+
+.nyheter-content-wrapper button {
+  color: white;
+  background-color: rgba(90, 63, 39, 1);
+  width: 250px;
+  height: 60px;
+  font-family: 'Space Mono';
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  border: 0px;
+  margin-top: 60px;
+
+
+}
+
+/* Other styles */
