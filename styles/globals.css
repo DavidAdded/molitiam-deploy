@@ -34,6 +34,10 @@ body {
     width: 100%;
 }
 
+.padding-section-xl {
+    padding: 164px 0;
+}
+
 .padding-section-large {
     padding: 128px 0;
 }

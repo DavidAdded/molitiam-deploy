@@ -1,0 +1,70 @@
+.jobb-section-wrapper {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.office-picture {
+    background-image: url('/jobb-office-picture.png');
+    background-size: cover;
+    height: auto;
+    width: 60%;
+
+}
+
+.jobb-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    text-align: left;
+    padding: 0 15%;
+
+}
+
+.jobb-content-wrapper h1 {
+
+    margin: 7.5px 0px;
+    font-family: 'Inter';
+    font-size: 35px;
+    font-weight: 500;
+    line-height: 42px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+
+.jobb-content-wrapper p {
+
+    font-family: 'Inter';
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin: 7.5px 0px;
+
+}
+
+.jobb-content-wrapper button {
+    width: 50%;
+    color: white;
+    background-color: rgba(38, 38, 38, 1);
+    border: 0px;
+    height: 62px;
+    font-family: 'Space Mono';
+    text-transform: uppercase;
+    font-size: 18px;
+    margin-top: 35px;
+
+}
+
+
+.jobb-text-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    gap: 8px;
+
+}

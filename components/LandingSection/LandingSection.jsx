@@ -35,6 +35,7 @@ const LandingSection = () => {
       });
     });
   }, []);
+  
   return (
     <div className="landing-section-wrapper">
       <div className="padding-global">
