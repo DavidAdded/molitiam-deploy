@@ -2,6 +2,8 @@ import "./page.css";
 
 var date = "2024•01•01";
 
+
+
 const items = [
   {
     imageUrl: "nyheter-flagga.png",
@@ -40,6 +42,8 @@ const items = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
   },
 ];
+
+
 
 const Page = () => {
   const readMoreText = "Read More";
