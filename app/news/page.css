@@ -1,6 +1,7 @@
+/* Base styles - applied for all screen sizes */
+
 .news-page-section-wrapper {
     background-color: rgba(0, 0, 0, 0.1);
-
 }
 
 .news-page-section-wrapper h1 {
@@ -27,7 +28,6 @@
     text-align: center;
     border: 0px;
     margin-top: 60px;
-
 }
 
 .nyheter-content-card {
@@ -36,7 +36,6 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-
 }
 
 .nyheter-content-card-top {
@@ -44,7 +43,6 @@
     height: 60%;
     background-image: url('/nyheter-flagga.png');
     background-size: cover;
-
 }
 
 .nyheter-content-card-bottom {
@@ -53,15 +51,11 @@
     height: 40%;
     color: black;
     background: rgba(255, 255, 255, 1);
-
-
 }
-
 
 .nyheter-content-card-text-wrapper {
     padding-top: 20px;
     padding-left: 25px;
-
 }
 
 .nyheter-content-card-bottom h3 {
@@ -69,10 +63,7 @@
     font-size: 20px;
     font-weight: 500;
     line-height: 30px;
-    letter-spacing: 0em;
-    text-align: left;
     margin: 3px 0px;
-
 }
 
 .nyheter-content-card-bottom p {
@@ -80,12 +71,8 @@
     font-size: 15px;
     font-weight: 400;
     line-height: 23px;
-    letter-spacing: 0em;
-    text-align: left;
     max-width: 320px;
     margin: 3px 0px;
-
-
 }
 
 .nyheter-date {
@@ -95,7 +82,6 @@
     line-height: 21px;
     letter-spacing: 0.05em;
     text-align: left;
-
 }
 
 .nyheter-las-mer {
@@ -109,18 +95,13 @@
     letter-spacing: 0.05em;
     text-align: right;
     margin-right: 50px;
-
 }
 
 .nyheter-las-mer-content {
     display: flex;
     flex-direction: row;
     gap: 20px;
-
-
 }
-
-
 
 .bottom-corner-cover-up {
     position: absolute;
@@ -129,29 +110,47 @@
     width: 40px;
     height: 40px;
     background-color: rgba(0, 0, 0, 0.1);
-
-}
-
-.nyheter-content-wrapper button {
-    color: white;
-    background-color: rgba(90, 63, 39, 1);
-    width: 250px;
-    height: 60px;
-    font-family: 'Space Mono';
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 22px;
-    letter-spacing: 0.05em;
-    text-align: center;
-    border: 0px;
-    margin-top: 60px;
-
-
 }
 
 .news-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    gap: 10px;
+    gap: 40px;
+}
+
+/* Styles for screens up to 991px wide */
+
+@media (max-width: 1300px) {
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr); /* Adjust to 2 columns */
+    }
+
+    .nyheter-content-card {
+        width: 80%; /* Adjust width for better fit */
+    }
+
+    /* Additional responsive styles can be added here */
+}
+
+/* Styles for screens up to 478px wide */
+
+@media (max-width: 478px) {
+    .news-grid {
+        grid-template-columns: 1fr; /* Change to a single column layout */
+    }
+
+    .nyheter-content-card {
+        width: 90%; /* Increase width for smaller screens */
+    }
+
+    .nyheter-content-card-bottom p {
+        font-size: 13px; /* Reduce font size for readability */
+    }
+
+    .nyheter-las-mer {
+        margin-right: 25px; /* Adjust margin for alignment */
+    }
+
+    /* Additional responsive styles can be added here */
 }

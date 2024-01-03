@@ -2,11 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
 
+/* Base styles - applied for all screen sizes */
 
 .navbar {
     background-color: white;
     font-family: 'Inter', sans-serif;
-    /* Example font */
 }
 
 .navbar-wrapper {
@@ -22,9 +22,7 @@
 
 .navbar-logo {
     font-size: 24px;
-    /* Adjust size as needed */
     font-weight: bold;
-    /* Adjust weight as needed */
 }
 
 .navbar-links {
@@ -35,69 +33,62 @@
 
 .navbar-links a {
     text-decoration: none;
-    /* Adjust color as needed */
     margin-right: 16px;
-    /* Adjust spacing as needed */
     font-size: 16px;
-    /* Adjust size as needed */
 }
-.hamburger-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-}
+
+
 
 .navbar-links a:last-child {
     margin-right: 0;
 }
 
-.navbar-kontakt {
+.navbar-kontakt,
+.navbar-eng {
     display: flex;
-    padding: 10px 15px;
+    padding: 8px 16px;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    background-color: #8A684A;
-    /* Specific background for Kontakt link */
-    color: white;
-    /* Text color for Kontakt link */
-    padding: 8px 16px;
-    /* Padding for Kontakt link */
-    color: var(--Grey-1, #F5F5F5);
+    background-color: #8A684A; /* For .navbar-kontakt */
     font-family: 'Space Grotesk';
     font-size: 16px;
-    font-style: normal;
     font-weight: 500;
     line-height: normal;
-
+    color: var(--Grey-1, #F5F5F5);
 }
 
 .navbar-eng {
-    display: flex;
-    padding: 10px 15px;
-    justify-content: center;
-    align-items: center;
-    gap: 2px;
-    background-color: #9C8773;
-    /* Specific background for Kontakt link */
-    color: white;
-    /* Text color for Kontakt link */
-    padding: 8px 16px;
-    /* Padding for Kontakt link */
-    color: var(--Grey-1, #F5F5F5);
-    font-family: 'Space Grotesk';
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+    background-color: #9C8773; /* Specific for .navbar-eng */
 }
 
-/* Add responsive behavior if needed */
-@media (max-width: 768px) {
+/* Styles for screens up to 991px wide */
+
+@media (max-width: 991px) {
     .navbar-links {
-        display: none;
-        /* Example: hide links on small screens */
+        display: none; /* Hide navbar links */
     }
 
-    /* Additional responsive styles here */
+    .hamburger-wrapper {
+        display: flex; /* Show hamburger menu */
+    }
+
+    
+
+    /* Additional responsive styles can be added here */
 }
+
+/* Styles for screens up to 478px wide */
+
+@media (max-width: 478px) {
+    .navbar-logo {
+        font-size: 20px; /* Smaller logo font size */
+    }
+
+    /* Further adjustments can be made here as needed */
+}
+
+/* Existing media query for screens up to 768px wide */
+
+
+

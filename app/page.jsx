@@ -1,4 +1,3 @@
-/* <localhost3000 /> */
 import LandingSection from "@components/LandingSection/LandingSection";
 import OmOss from "@components/OmOss/OmOss";
 import Syfte from "@components/Syfte/Syfte";
@@ -14,15 +13,16 @@ const Home = () => {
   return (
     <div>
       <LandingSection />
-      <Syfte />
-      <OmOss />
-      <Tjanster />
-      <Nationer />
-      <Organisationer />
-      <Verksamheter />
-      <Nyheter />
-      <Jobb></Jobb>
-      <Kontakt></Kontakt>
+      <div id="syfte"><Syfte /></div>
+      <div id="omoss"><OmOss /></div>
+      <div id="tjanster"><Tjanster /></div>
+      <div id="nationer"><Nationer /></div>
+      <div id="organisationer"><Organisationer /></div>
+      <div id="verksamheter"><Verksamheter /></div>
+      <div id="nyheter"><Nyheter /></div>
+      <div id="jobb"><Jobb /></div>
+      <div id="kontakt"><Kontakt /></div>
+      {/* Add Eng section here if needed */}
     </div>
   );
 };

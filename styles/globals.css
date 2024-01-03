@@ -2,6 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
 
+html {
+    scroll-behavior: smooth;
+}
+
 
 body {
     margin: 0;
@@ -114,4 +118,47 @@ p {
 
 a {
     color: black;
+}
+
+
+/* Responsive styles for screens up to 991px wide */
+@media (max-width: 991px) {
+    h1 {
+        font-size: 40px;
+        /* Smaller size for medium screens */
+    }
+
+    h2 {
+        font-size: 30px;
+        /* Adjusted size for medium screens */
+    }
+
+    h3,
+    h4,
+    h6,
+    p {
+        font-size: 16px;
+        /* Adjusted size for medium screens */
+    }
+}
+
+/* Responsive styles for screens up to 478px wide */
+@media (max-width: 478px) {
+    h1 {
+        font-size: 30px;
+        /* Smaller size for small screens */
+    }
+
+    h2 {
+        font-size: 25px;
+        /* Adjusted size for small screens */
+    }
+
+    h3,
+    h4,
+    h6,
+    p {
+        font-size: 14px;
+        /* Adjusted size for small screens */
+    }
 }

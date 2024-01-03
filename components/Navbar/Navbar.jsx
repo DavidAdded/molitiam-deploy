@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -9,24 +10,31 @@ const Navbar = () => {
           <div className="padding-section-nav">
             <div className="navbar-wrapper">
               <div className="navbar-logo">
-                <img src="/logo.svg" alt="Logo" />{" "}
-                {/* Update the src attribute */}
+                <Link href="/">
+                  <img
+                    src="/logo.svg"
+                    alt="Logo"
+                    style={{ cursor: "pointer" }}
+                  />
+                </Link>
               </div>
               <div className="navbar-links">
                 <div className="hamburger-wrapper">
-                  <a href="#syfte">Syfte</a>
-                  <a href="#omoss">Om oss</a>
-                  <a href="#tjanster">Tjänster</a>
-                  <a href="#nyheter">Nyheter</a>
-                  <a href="#verksamheter">Verksamheter</a>
-                  <a href="#jobb">Jobb</a>
+                  <Link href="#syfte">Syfte</Link>
+                  <Link href="#omoss">Om oss</Link>
+                  <Link href="#tjanster">Tjänster</Link>
+                  <Link href="#nyheter">Nyheter</Link>
+                  <Link href="#verksamheter">Verksamheter</Link>
+                  <Link href="#jobb">Jobb</Link>
                 </div>
-                <a className="navbar-kontakt" href="#kontakt">
-                  Kontakt
-                </a>
-                <a className="navbar-eng" href="#eng">
-                  Eng
-                </a>
+                <Link href="#kontakt">
+                  <div className="navbar-kontakt">Kontakt</div>
+                </Link>
+                <Link href="#eng">
+                  <div className="navbar-eng">
+                    Eng<img src="/arrow-down.svg"></img>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>

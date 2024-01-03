@@ -1,3 +1,5 @@
+/* Base styles - applied for all screen sizes */
+
 .landing-section-wrapper {
     min-height: 800px;
 }
@@ -7,18 +9,16 @@
     z-index: -1;
     display: flex;
     height: 100%;
-
 }
 
 .picture-wrapper img {
-    height:562px;
+    height: 562px;
     width: 562px;
     top: auto;
     margin-right: -125px;
     margin-top: 125px;
     z-index: 1;
 }
-
 
 .landing-grey-image {
     width: 562px;
@@ -53,13 +53,67 @@
     justify-content: center;
     align-items: center;
     margin: 0;
-
 }
 
 .text-wrapper p {
-font-family: 'Space Mono';
-font-size: 20px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+    font-family: 'Space Mono';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+/* Styles for screens up to 991px wide */
+
+@media (max-width: 991px) {
+
+    .picture-wrapper img,
+    .landing-grey-image {
+        height: 400px;
+        /* Adjusted height */
+        width: 400px;
+        /* Adjusted width */
+
+    }
+
+    .text-wrapper {
+        width: 80%;
+        /* Adjusted width for better text wrapping */
+        padding-bottom: 140px;
+        ;
+    }
+
+    /* Additional styles can be added here as needed */
+}
+
+/* Styles for screens up to 478px wide */
+
+@media (max-width: 478px) {
+
+    .picture-wrapper img,
+    .landing-grey-image {
+        height: 250px;
+        /* Further reduced height */
+        width: 250px;
+        /* Further reduced width */
+    }
+
+    .text-wrapper {
+        width: 400px;
+        padding-bottom: 280px;
+        /* Further adjusted width for smaller screens */
+
+    }
+
+    .text-wrapper h1 {
+        font-size: 18px;
+        /* Smaller font size for better readability */
+    }
+
+    .text-wrapper p {
+        font-size: 12px;
+        /* Smaller font size for better readability */
+    }
+
+    /* Additional styles can be added here as needed */
 }

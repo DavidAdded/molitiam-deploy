@@ -1,6 +1,16 @@
+"use client";
 import "./Nyheter.css";
+import { useRouter } from "next/navigation";
+
+
 
 const Nyheter = () => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push("/news");
+  };
+
   return (
     <div className="nyheter-section-wrapper">
       <div className="padding-global">
@@ -76,7 +86,7 @@ const Nyheter = () => {
                   </div>
                 </div>
               </div>
-              <button> LÄS ALLA NYHETER</button>
+              <button onClick={handleClick}>LÄS ALLA NYHETER</button>
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-
+/* Base styles - applied for all screen sizes */
 
 .syfte-section-wrapper {
     background-image: url("/camoimage2.png");
@@ -7,7 +7,7 @@
 
 .syfte-content-wrapper {
     display: flex;
-    width: 575px;
+    width: 575px; /* Fixed width might need adjustment */
     flex-direction: column;
     height: 100%;
     color: white;
@@ -15,8 +15,36 @@
 }
 
 .syfte-content-wrapper p {
-    color: #FFF;
-    /* Body 1 */
+    color: #FFF; /* Body text color */
+}
 
+/* Styles for screens up to 991px wide */
+
+@media (max-width: 991px) {
+    .syfte-content-wrapper {
+        width: 60%; /* Adjust width for medium screens */
+        margin: 60px 0; /* Adjust margin for medium screens */
+    }
+
+    .syfte-content-wrapper h2 {
+        font-size: 28px; /* Adjust font size for medium screens */
+    }
+
+    .syfte-content-wrapper p {
+        font-size: 16px; /* Adjust font size for medium screens */
+    }
+
+    /* Additional responsive styles can be added here */
+}
+
+/* Styles for screens up to 478px wide */
+
+@media (max-width: 478px) {
+    .syfte-content-wrapper {
+        width: 90%; /* Adjust width for smaller screens */
+        margin: 30px 0; /* Adjust margin for smaller screens */
+    }
+
+    /* Additional responsive styles can be added here */
 }
 

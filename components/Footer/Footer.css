@@ -1,8 +1,9 @@
+/* Base styles - applied for all screen sizes */
+
 .footer-section-wrapper {
     background-color: black;
     color: white;
     padding: 0px 30px;
-
 }
 
 .footer-content-wrapper {
@@ -10,13 +11,11 @@
     flex-direction: column;
     justify-content: left;
     gap: 36px;
-
 }
 
 .footer-content-wrapper img {
     width: 101px;
     height: 36px;
-
 }
 
 .breakline {
@@ -37,6 +36,7 @@
     flex-direction: column;
     gap: 15px;
     padding-left: 100px;
+    max-width: 600px;
 }
 
 .footer-contact-wrapper p {
@@ -47,11 +47,33 @@
     font-weight: 400;
     line-height: 150%;
     margin: 3px 0px;
-    
-
-
 }
 
-.copyright {
-    margin-top: 28px;
+/* Styles for screens up to 991px wide */
+
+@media (max-width: 991px) {
+    .footer-contact-wrapper {
+        flex-direction: column;
+        
+    }
+
+    .footer-contact-content-right {
+        padding-left: 0; /* Remove padding for smaller screens */
+    }
+
+    /* Additional responsive styles can be added here */
+}
+
+/* Styles for screens up to 478px wide */
+
+@media (max-width: 478px) {
+    .footer-content-wrapper {
+        gap: 18px; /* Reduce gap for smaller screens */
+    }
+
+    .footer-contact-wrapper p {
+        font-size: 12px; /* Smaller font size for better readability */
+    }
+
+    /* Additional responsive styles can be added here */
 }

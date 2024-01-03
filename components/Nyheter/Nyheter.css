@@ -1,7 +1,7 @@
 /* Nyheter.css */
 .nyheter-section-wrapper {
 
-  background-image: url("/whitegrid.png");
+  background-image: url("/nyheter-background.png");
   background-size: cover;
 
   /* Your other styles */
@@ -20,9 +20,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 25px;
   align-items: center;
-  padding: 0;
-  margin: 0;
+  padding: 50px 0;
+
   /* Your other styles */
 }
 
@@ -35,6 +36,7 @@
   color: black;
   margin-bottom: 20px;
 
+
 }
 
 .nyheter-content-boxes {
@@ -44,12 +46,15 @@
   padding: 0;
   margin: 0;
   gap: 25px;
+  flex-wrap: wrap;
 }
 
 
 
 .nyheter-content-card {
-  width: 376px;
+
+  max-width: 376px;
+  min-width: 376px;
   height: 465px;
   padding: 0;
   display: flex;
@@ -177,3 +182,27 @@
 }
 
 /* Other styles */
+
+@media (max-width: 991px) {
+
+
+  /* Add other responsive styles for medium screens as needed */
+}
+
+/* Styles for screens up to 478px wide */
+@media (max-width: 478px) {
+
+
+  .nyheter-content-card-bottom p,
+  .nyheter-content-card-bottom h3 {
+    font-size: 16px;
+    /* Adjust font size for smaller screens */
+  }
+
+  .nyheter-las-mer {
+    margin-right: 10px;
+    /* Adjust margin for smaller screens */
+  }
+
+  /* Add other responsive styles for smaller screens as needed */
+}

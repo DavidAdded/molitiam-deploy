@@ -1,3 +1,10 @@
+/* Base styles - applied for all screen sizes */
+
+.kontakt-section-wrapper {
+    background-image: url("/kontakt-background.png");
+    background-size: cover;
+}
+
 .kontakt-content-wrapper {
     display: flex;
     flex-direction: column;
@@ -15,7 +22,6 @@
     gap: 8px;
     color: black;
     margin-bottom: 20px;
-
 }
 
 .kontakt-text-wrapper h6 {
@@ -24,8 +30,7 @@
 
 .kontakt-grid-wrapper {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    /* Change the number of columns to 4 */
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
     grid-template-rows: 1fr;
     gap: 10px;
     padding: 0;
@@ -41,38 +46,61 @@
     text-align: center;
 }
 
-
-
-.kontakt-item h3 {
+.kontakt-item h3, .kontakt-item h4, .kontakt-item p {
     color: #000;
     text-align: center;
+}
+
+.kontakt-item h3 {
     font-family: 'Inter';
     font-size: 20px;
-    font-style: normal;
     font-weight: 500;
-    line-height: normal;
 }
 
 .kontakt-item h4 {
-    color: #000;
-    text-align: center;
     font-family: 'Space Mono';
     font-size: 10px;
-    font-style: normal;
     font-weight: 700;
     line-height: 150%;
-    /* 15px */
     letter-spacing: 0.5px;
     text-transform: uppercase;
 }
 
 .kontakt-item p {
-    color: #000;
-    text-align: center;
     font-family: 'Inter';
     font-size: 16px;
-    font-style: normal;
     font-weight: 400;
     line-height: 153.023%;
-    /* 24.484px */
+}
+
+/* Styles for screens up to 991px wide */
+
+@media (max-width: 991px) {
+    .kontakt-grid-wrapper {
+        grid-template-columns: repeat(2, 1fr); /* Change to 2 columns */
+    }
+
+    /* Additional styles can be added here as needed */
+}
+
+/* Styles for screens up to 478px wide */
+
+@media (max-width: 478px) {
+    .kontakt-grid-wrapper {
+        grid-template-columns: 1fr; /* Change to a single column */
+    }
+
+    .kontakt-item h3 {
+        font-size: 18px; /* Smaller font size */
+    }
+
+    .kontakt-item h4 {
+        font-size: 9px; /* Smaller font size */
+    }
+
+    .kontakt-item p {
+        font-size: 14px; /* Smaller font size */
+    }
+
+    /* Additional styles can be added here as needed */
 }

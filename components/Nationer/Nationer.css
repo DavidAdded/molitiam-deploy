@@ -1,3 +1,5 @@
+/* Base styles - applied for all screen sizes */
+
 .nationer-content-wrapper-top {
     display: flex;
     flex-direction: column;
@@ -8,9 +10,9 @@
 }
 
 .nationer-section-wrapper {
-    display:flex;
+    display: flex;
     flex-direction: column;
-    gap:150px;
+    gap: 150px;
 }
 
 .nationer-text-wrapper {
@@ -27,19 +29,18 @@
     justify-content: center;
     gap: 25px;
     align-items: center;
-
 }
 
 .nationer-content-bottom {
-    width: 136%;
+    width: 50%;
+    min-width: 200px;
     height: 275px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
     background-color: #404040;
-    padding: 0 50px;
-    
+    padding: 0 50px;   
 }
 
 .nationer-content-bottom h5 {
@@ -51,5 +52,46 @@
     font-weight: 500;
     line-height: normal;
     text-transform: uppercase;
+}
 
+/* Styles for screens up to 991px wide */
+
+@media (max-width: 991px) {
+    .nationer-content-wrapper-top, 
+
+    .nationer-content-wrapper-bottom {
+        flex-direction: column;
+    }
+
+    .nationer-content-bottom {
+        width: 50%; /* Adjusting width */
+    }
+
+    /* Additional styles can be added here as needed */
+}
+
+/* Styles for screens up to 478px wide */
+
+@media (max-width: 478px) {
+    .nationer-section-wrapper {
+        gap: 75px; /* Reduced gap for smaller screens */
+    }
+
+    .nationer-content-wrapper-top  h2 {
+        font-size: 26px;
+
+    } 
+
+    .nationer-content-wrapper-top  p {
+        font-size: 14px;
+
+    } 
+
+    .nationer-content-bottom h5 {
+        font-size: 20px; /* Smaller font size */
+    }
+
+    
+
+    /* Additional styles can be added here as needed */
 }
