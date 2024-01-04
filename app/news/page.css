@@ -8,7 +8,7 @@
     text-align: center;
 }
 
-.nyheter-content-wrapper {
+.nyheter-page-content-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -30,7 +30,7 @@
     margin-top: 60px;
 }
 
-.nyheter-content-card {
+.nyheter-page-content-card {
     width: 376px;
     height: 465px;
     padding: 0;
@@ -38,14 +38,14 @@
     flex-direction: column;
 }
 
-.nyheter-content-card-top {
+.nyheter-page-content-card-top {
     width: 100%;
     height: 60%;
-    background-image: url('/nyheter-flagga.png');
+    background-image: url('/nyheter-page-flagga.png');
     background-size: cover;
 }
 
-.nyheter-content-card-bottom {
+.nyheter-page-content-card-bottom {
     position: relative;
     width: 100%;
     height: 40%;
@@ -53,12 +53,12 @@
     background: rgba(255, 255, 255, 1);
 }
 
-.nyheter-content-card-text-wrapper {
+.nyheter-page-content-card-text-wrapper {
     padding-top: 20px;
     padding-left: 25px;
 }
 
-.nyheter-content-card-bottom h3 {
+.nyheter-page-content-card-bottom h3 {
     font-family: 'Inter';
     font-size: 20px;
     font-weight: 500;
@@ -66,16 +66,15 @@
     margin: 3px 0px;
 }
 
-.nyheter-content-card-bottom p {
-    font-family: 'Inter';
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 23px;
-    max-width: 320px;
-    margin: 3px 0px;
+.nyheter-page-content-card-text-wrapper p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.nyheter-date {
+.nyheter-page-date {
     font-family: 'Space Mono';
     font-size: 14px;
     font-weight: 400;
@@ -84,7 +83,7 @@
     text-align: left;
 }
 
-.nyheter-las-mer {
+.nyheter-page-las-mer {
     display: flex;
     flex-direction: row;
     justify-content: right;
@@ -97,7 +96,7 @@
     margin-right: 50px;
 }
 
-.nyheter-las-mer-content {
+.nyheter-page-las-mer-content {
     display: flex;
     flex-direction: row;
     gap: 20px;
@@ -123,11 +122,13 @@
 
 @media (max-width: 1300px) {
     .news-grid {
-        grid-template-columns: repeat(2, 1fr); /* Adjust to 2 columns */
+        grid-template-columns: repeat(2, 1fr);
+        /* Adjust to 2 columns */
     }
 
-    .nyheter-content-card {
-        width: 80%; /* Adjust width for better fit */
+    .nyheter-page-content-card {
+        width: 80%;
+        /* Adjust width for better fit */
     }
 
     /* Additional responsive styles can be added here */
@@ -137,19 +138,23 @@
 
 @media (max-width: 478px) {
     .news-grid {
-        grid-template-columns: 1fr; /* Change to a single column layout */
+        grid-template-columns: 1fr;
+        /* Change to a single column layout */
     }
 
-    .nyheter-content-card {
-        width: 90%; /* Increase width for smaller screens */
+    .nyheter-page-content-card {
+        width: 90%;
+        /* Increase width for smaller screens */
     }
 
-    .nyheter-content-card-bottom p {
-        font-size: 13px; /* Reduce font size for readability */
+    .nyheter-page-content-card-bottom p {
+        font-size: 13px;
+        /* Reduce font size for readability */
     }
 
-    .nyheter-las-mer {
-        margin-right: 25px; /* Adjust margin for alignment */
+    .nyheter-page-las-mer {
+        margin-right: 25px;
+        /* Adjust margin for alignment */
     }
 
     /* Additional responsive styles can be added here */

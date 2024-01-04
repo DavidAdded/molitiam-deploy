@@ -75,7 +75,7 @@
 }
 
 
-.nyheter-content-card {
+.nyheter-article-content-card {
 
     max-width: 376px;
     min-width: 376px;
@@ -85,31 +85,31 @@
     flex-direction: column;
 }
 
-.nyheter-content-card-top-left {
+.nyheter-article-content-card-top-left {
     width: 100%;
     height: 60%;
-    background-image: url('/nyheter-flagga.png');
+    background-image: url('/nyheter-article-flagga.png');
     background-size: cover;
 
 }
 
-.nyheter-content-card-top-middle {
+.nyheter-article-content-card-top-middle {
     width: 100%;
     height: 60%;
-    background-image: url('/nyheter-matros.png');
+    background-image: url('/nyheter-article-matros.png');
     background-size: cover;
 
 }
 
-.nyheter-content-card-top-right {
+.nyheter-article-content-card-top-right {
     width: 100%;
     height: 60%;
-    background-image: url('/nyheter-sista.png');
+    background-image: url('/nyheter-article-sista.png');
     background-size: cover;
 
 }
 
-.nyheter-content-card-bottom {
+.nyheter-article-content-card-bottom {
     position: relative;
     width: 100%;
     height: 40%;
@@ -118,7 +118,7 @@
 
 }
 
-.nyheter-content-card-text-wrapper {
+.nyheter-article-content-card-text-wrapper {
     padding-top: 20px;
     padding-left: 25px;
     overflow: hidden;
@@ -128,7 +128,7 @@
 
 }
 
-.nyheter-content-card-bottom h3 {
+.nyheter-article-content-card-bottom h3 {
     font-family: 'Inter';
     font-size: 20px;
     font-weight: 500;
@@ -139,7 +139,7 @@
 
 }
 
-.nyheter-content-card-bottom p {
+.nyheter-article-content-card-bottom p {
     font-family: 'Inter';
     font-size: 15px;
     font-weight: 400;
@@ -151,7 +151,7 @@
 
 }
 
-.nyheter-date {
+.nyheter-article-date {
     font-family: 'Space Mono';
     font-size: 14px;
     font-weight: 400;
@@ -161,7 +161,7 @@
 
 }
 
-.nyheter-las-mer {
+.nyheter-article-las-mer {
     display: flex;
     flex-direction: row;
     justify-content: right;
@@ -175,7 +175,7 @@
 
 }
 
-.nyheter-las-mer-content {
+.nyheter-article-las-mer-content {
     display: flex;
     flex-direction: row;
     gap: 20px;
@@ -192,7 +192,7 @@
 
 }
 
-.nyheter-content-wrapper button {
+.nyheter-article-content-wrapper button {
     color: white;
     background-color: rgba(90, 63, 39, 1);
     width: 250px;
