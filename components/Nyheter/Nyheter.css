@@ -172,10 +172,10 @@
   margin-top: 60px;
 }
 
-@media (max-width: 991px) {
-}
+@media (max-width: 991px) {}
 
 @media (max-width: 478px) {
+
   .nyheter-content-card-bottom p,
   .nyheter-content-card-bottom h3 {
     font-size: 16px;

@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const Page = ({ params }) => {
-
   const lang = "sv";
   const router = useRouter();
   const [article, setArticle] = useState(null);
@@ -91,26 +90,29 @@ const Page = ({ params }) => {
                 console.log(article.attributes.Image.data); // This will log the image URL to the console
 
                 return (
-                  <div key={article.id} className="nyheter-content-card">
-                    <div className="nyheter-content-card-top">
+                  <div
+                    key={article.id}
+                    className="nyheter-article-content-card"
+                  >
+                    <div className="nyheter-article-content-card-top">
                       <img
                         src={`http://localhost:1337${article.attributes.Image.data.attributes.formats.thumbnail.url}`}
                       ></img>
                     </div>
 
-                    <div className="nyheter-content-card-bottom">
-                      <div className="nyheter-content-card-text-wrapper">
-                        <div className="nyheter-date">
+                    <div className="nyheter-article-content-card-bottom">
+                      <div className="nyheter-article-content-card-text-wrapper">
+                        <div className="nyheter-article-date">
                           {article.attributes.Date}
                         </div>
                         <h3>{article.attributes.Titel}</h3>
-                        <p className="nyheter-paragraph-one">
+                        <p className="nyheter-article-paragraph-one">
                           {article.attributes.ParagraphOne}
                         </p>
                       </div>
-                      <div className="nyheter-las-mer">
+                      <div className="nyheter-article-las-mer">
                         <div
-                          className="nyheter-las-mer-content"
+                          className="nyheter-article-las-mer-content"
                           onClick={() => handleReadMoreClick(article.id)}
                         >
                           <p>LÄS MER</p>
