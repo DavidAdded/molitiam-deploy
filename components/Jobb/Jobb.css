@@ -16,9 +16,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: left;
+    align-items: start;
     text-align: left;
-    padding: 0 15%;
+    padding: 0 96px;
 
 }
 
@@ -47,13 +47,13 @@
 }
 
 .jobb-content-wrapper button {
-    width: 50%;
     color: white;
     background-color: rgba(38, 38, 38, 1);
     border: 0px;
     height: 62px;
     font-family: 'Space Mono';
     text-transform: uppercase;
+    padding: 12px 24px;
     font-size: 18px;
     margin-top: 35px;
 
@@ -66,5 +66,23 @@
     justify-content: left;
     align-items: center;
     gap: 8px;
+
+}
+
+@media (max-width: 991px) {
+    .jobb-section-wrapper {
+        flex-direction: column;
+    }
+    .office-picture {
+        min-height: 500px;
+        width: 100%;
+    }
+    .jobb-content-wrapper {
+        padding: 0 16px;
+    
+    }
+}
+
+@media (max-width: 478px) {
 
 }

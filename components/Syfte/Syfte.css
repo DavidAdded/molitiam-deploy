@@ -7,7 +7,7 @@
 
 .syfte-content-wrapper {
     display: flex;
-    width: 575px; /* Fixed width might need adjustment */
+    width: 575px;
     flex-direction: column;
     height: 100%;
     color: white;
@@ -15,36 +15,32 @@
 }
 
 .syfte-content-wrapper p {
-    color: #FFF; /* Body text color */
+    color: #FFF;
 }
 
-/* Styles for screens up to 991px wide */
 
 @media (max-width: 991px) {
     .syfte-content-wrapper {
-        width: 60%; /* Adjust width for medium screens */
-        margin: 60px 0; /* Adjust margin for medium screens */
+        width: 100%;
+        max-width: 450px;
+        margin: 60px 0; 
     }
 
     .syfte-content-wrapper h2 {
-        font-size: 28px; /* Adjust font size for medium screens */
+        font-size: 28px; 
     }
 
     .syfte-content-wrapper p {
-        font-size: 16px; /* Adjust font size for medium screens */
+        font-size: 16px; 
     }
-
-    /* Additional responsive styles can be added here */
 }
 
-/* Styles for screens up to 478px wide */
 
 @media (max-width: 478px) {
     .syfte-content-wrapper {
-        width: 90%; /* Adjust width for smaller screens */
-        margin: 30px 0; /* Adjust margin for smaller screens */
+        width: 90%; 
+        margin: 30px 0;
     }
 
-    /* Additional responsive styles can be added here */
 }
 

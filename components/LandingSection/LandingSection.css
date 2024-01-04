@@ -1,19 +1,26 @@
 /* Base styles - applied for all screen sizes */
 
 .landing-section-wrapper {
-    min-height: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 240px 0 ;
 }
 
 .picture-wrapper {
     position: absolute;
     z-index: -1;
     display: flex;
+    align-items: center;
     height: 100%;
 }
 
 .picture-wrapper img {
-    height: 562px;
-    width: 562px;
+    max-height: 562px;
+    max-width: 562px;
+    height: 40vw;
+    width: 40vw;
     top: auto;
     margin-right: -125px;
     margin-top: 125px;
@@ -21,15 +28,17 @@
 }
 
 .landing-grey-image {
-    width: 562px;
-    height: 562px;
+    max-width: 562px;
+    max-height: 562px;
+    height: 40vw;
+    width: 40vw;
     background-color: #262626;
     margin-bottom: 125px;
 }
 
 .landing-content-wrapper {
     position: relative;
-    height: 687px;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,6 +46,7 @@
 
 .text-wrapper {
     width: 670px;
+    max-width: 90%;
     z-index: 1;
     display: flex;
     flex-direction: column;
@@ -47,13 +57,6 @@
     height: 100%;
 }
 
-.text-wrapper h1 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-}
 
 .text-wrapper p {
     font-family: 'Space Mono';
@@ -63,57 +66,43 @@
     line-height: normal;
 }
 
-/* Styles for screens up to 991px wide */
-
 @media (max-width: 991px) {
 
     .picture-wrapper img,
     .landing-grey-image {
-        height: 400px;
-        /* Adjusted height */
-        width: 400px;
-        /* Adjusted width */
+        width: 70vw;
+        height: 70vw;
 
     }
 
-    .text-wrapper {
-        width: 80%;
-        /* Adjusted width for better text wrapping */
-        padding-bottom: 140px;
-        ;
+    .landing-section-wrapper {
+        padding: 140px 0 ;
     }
 
-    /* Additional styles can be added here as needed */
+    .picture-wrapper img {
+        margin-right: -175px;
+    }    
 }
-
-/* Styles for screens up to 478px wide */
 
 @media (max-width: 478px) {
 
     .picture-wrapper img,
     .landing-grey-image {
-        height: 250px;
-        /* Further reduced height */
-        width: 250px;
-        /* Further reduced width */
+        width: 90vw;
+        height: 90vw;
     }
 
     .text-wrapper {
         width: 400px;
-        padding-bottom: 280px;
-        /* Further adjusted width for smaller screens */
-
     }
 
     .text-wrapper h1 {
-        font-size: 18px;
+        font-size: 32px;
         /* Smaller font size for better readability */
     }
 
     .text-wrapper p {
-        font-size: 12px;
+        font-size: 16px;
         /* Smaller font size for better readability */
     }
-
-    /* Additional styles can be added here as needed */
 }
