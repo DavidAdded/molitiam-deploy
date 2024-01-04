@@ -4,37 +4,13 @@ import { useEffect, useState } from "react";
 
 const Page = ({ params }) => {
   const [article, setArticle] = useState(null);
-
-  const articles = [
-    {
-      id: 1,
-      date: "2024•01•01",
-      title: "Lorem ipsum dolor sit amet",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
-      imageClass: "nyheter-content-card-top-left",
-    },
-    {
-      id: 2,
-      date: "2024•01•01",
-      title: "Lorem ipsum dolor sit amet",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
-      imageClass: "nyheter-content-card-top-left",
-    },
-    {
-      id: 3,
-      date: "2024•01•01",
-      title: "Lorem ipsum dolor sit amet",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
-      imageClass: "nyheter-content-card-top-left",
-    },
-  ];
+  const [articles, setarticles] = useState(null);
 
   function convertDateFormat(dateString) {
     return dateString.replace(/-/g, "•");
   }
+
+  console.log(process.env.NEXT_PUBLIC_API_TOKEN);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,15 +18,27 @@ const Page = ({ params }) => {
         const URL = `http://localhost:1337/api/articles/${params.articleId}?populate=*`;
         const response = await fetch(URL, {
           headers: {
-            Authorization:
-              "Bearer 7b122065c2667abc5095b9eeae75c55d42e26da5b1c56ba37307cad4b9bbad11ae541d504f14bea219c181f8f38a118eeeb7b1a29197f9ce02a5f504e5d8eaffa25fd8132303aefcf619f400bf9ee99a367ed6e1e59346508f3e30685b1538cd4514e0b8559ea6fd5edcf9d13f1a56b1d8cbe1cdbd48e894522b332067b083e2", // Replace 'Hello' with the actual token
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`, // Replace 'Hello' with the actual token
           },
         });
+
+        const articlesURL = `http://localhost:1337/api/articles?sort=Date:desc&pagination[limit]=3&populate=*`;
+        const articlesResponse = await fetch(articlesURL, {
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+          },
+        });
+
         console.log(response);
+        console.log(articlesResponse);
+
         if (response.ok) {
           const data = await response.json();
+          const articles = await articlesResponse.json();
           setArticle(data);
+          setarticles(articles.data);
           console.log(data);
+          console.log(articles);
         } else {
           console.error("Failed to fetch article");
         }
@@ -91,28 +79,43 @@ const Page = ({ params }) => {
         <div className="padding-global">
           <div className="container-large">
             <div className="more-articles-wrapper">
-              {articles.map((article) => (
-                <div key={article.id} className="nyheter-content-card">
-                  <div className={article.imageClass}></div>
-                  <div className="nyheter-content-card-bottom">
-                    <div className="nyheter-content-card-text-wrapper">
-                      <div className="nyheter-date">{article.date}</div>
-                      <h3>{article.title}</h3>
-                      <p>{article.content}</p>
+              {articles.map((article) => {
+                // Assuming article.attributes.Image.attributes.url contains the image path
+                const imageUrl = `http://localhost:1337${article}`;
+                console.log(article.attributes.Image.data); // This will log the image URL to the console
+
+                return (
+                  <div key={article.id} className="nyheter-content-card">
+                    <div className="nyheter-content-card-top">
+                      <img
+                        src={`http://localhost:1337${article.attributes.Image.data.attributes.formats.thumbnail.url}`}
+                      ></img>
                     </div>
-                    <div className="nyheter-las-mer">
-                      <div
-                        className="nyheter-las-mer-content"
-                        onClick={() => handleReadMoreClick(article.id)}
-                      >
-                        <p>LÄS MER</p>
-                        <img src="/right-arrow.svg" alt="Read More" />
+
+                    <div className="nyheter-content-card-bottom">
+                      <div className="nyheter-content-card-text-wrapper">
+                        <div className="nyheter-date">
+                          {article.attributes.Date}
+                        </div>
+                        <h3>{article.attributes.Titel}</h3>
+                        <p className="nyheter-paragraph-one">
+                          {article.attributes.ParagraphOne}
+                        </p>
                       </div>
+                      <div className="nyheter-las-mer">
+                        <div
+                          className="nyheter-las-mer-content"
+                          onClick={() => handleReadMoreClick(article.id)}
+                        >
+                          <p>LÄS MER</p>
+                          <img src="/right-arrow.svg" alt="Read More" />
+                        </div>
+                      </div>
+                      <div className="bottom-corner-cover-up"></div>
                     </div>
-                    <div className="bottom-corner-cover-up"></div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>

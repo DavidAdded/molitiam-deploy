@@ -121,6 +121,10 @@
 .nyheter-content-card-text-wrapper {
     padding-top: 20px;
     padding-left: 25px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 250px;
 
 }
 
