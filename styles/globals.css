@@ -140,6 +140,11 @@ a {
         font-size: 16px;
         /* Adjusted size for medium screens */
     }
+    .padding-global {
+        padding: 0 32px;
+    
+    }
+
 }
 
 /* Responsive styles for screens up to 478px wide */
@@ -161,4 +166,28 @@ a {
         font-size: 14px;
         /* Adjusted size for small screens */
     }
-}
+
+    .padding-global {
+        padding: 0 16px;
+    
+    }
+    .padding-section-xl {
+        padding: 82px 0;
+    }
+    
+    .padding-section-large {
+        padding: 64px 0;
+    }
+    
+    .padding-section-medium {
+        padding: 48px 0;
+    }
+    
+    .padding-section-small {
+        padding: 32px 0;
+    }
+    
+    .padding-section-mini {
+        padding: 16px 0;
+    }
+} 

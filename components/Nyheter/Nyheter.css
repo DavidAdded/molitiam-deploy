@@ -4,7 +4,6 @@
   background-image: url("/nyheter-background.png");
   background-size: cover;
 
-  /* Your other styles */
 }
 
 
@@ -52,7 +51,6 @@
 
 
 .nyheter-content-card {
-
   max-width: 376px;
   min-width: 376px;
   height: 465px;
@@ -63,7 +61,7 @@
 
 .nyheter-content-card-top-left {
   width: 100%;
-  height: 60%;
+  height: 50%;
   background-image: url('/nyheter-flagga.png');
   background-size: cover;
 
@@ -97,7 +95,15 @@
 .nyheter-content-card-text-wrapper {
   padding-top: 20px;
   padding-left: 25px;
+  padding-bottom: 15px;
+}
 
+.nyheter-content-card-text-wrapper p {
+  display: -webkit-box; 
+  -webkit-box-orient: vertical; 
+  -webkit-line-clamp: 2; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
 }
 
 .nyheter-content-card-bottom h3 {

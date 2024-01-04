@@ -89,3 +89,29 @@
 
 
 }
+
+@media (max-width: 991px) {
+    .tjanster-section-wrapper-bottom-content h5 {
+        font-size: 24px;
+    }
+    .tjanster-section-wrapper-bottom-content img {
+        height: 42px;
+    }
+    .tjanster-section-wrapper-bottom-content p {
+        font-size: 18px;
+    }
+}
+
+/* Styles for screens up to 478px wide */
+
+@media (max-width: 478px) {
+    .tjanster-section-wrapper-bottom-content h5 {
+        font-size: 16px;
+    }
+    .tjanster-section-wrapper-bottom-content img {
+        height: 24px;
+    }
+    .tjanster-section-wrapper-bottom-content p {
+        font-size: 12px;
+    }
+}

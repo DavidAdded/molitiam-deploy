@@ -95,16 +95,13 @@
     .omoss-section-wrapper {
         flex-direction: column;
         gap: 40px;
-        max-width: 70%;
     
 
     }
 
 
-    /* Additional responsive styles can be added here */
 }
 
-/* Styles for screens up to 478px wide */
 
 @media (max-width: 478px) {
     .omoss-section-wrapper {
@@ -116,18 +113,16 @@
 
 
     .omoss-section-column p {
-        max-width: 100%; /* Adjust max-width for better fit */
+        max-width: 100%; 
     }
 
     .omoss-section-column-content-top,
     .omoss-section-column-content-bottom-left,
     .omoss-section-column-content-bottom-right {
-        height: 200px; /* Adjust height for smaller screens */
+        height: 200px;
     }
 
     .omoss-section-column-content-bottom p {
-        font-size: 12px; /* Adjust font size for readability */
+        font-size: 12px; 
     }
-
-    /* Additional responsive styles can be added here */
 }
