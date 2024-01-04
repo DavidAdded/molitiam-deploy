@@ -1,8 +1,12 @@
 "use client";
 import "./page.css";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const Page = ({ params }) => {
+
+  const lang = "sv";
+  const router = useRouter();
   const [article, setArticle] = useState(null);
   const [articles, setarticles] = useState(null);
 
@@ -10,19 +14,17 @@ const Page = ({ params }) => {
     return dateString.replace(/-/g, "•");
   }
 
-  console.log(process.env.NEXT_PUBLIC_API_TOKEN);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const URL = `http://localhost:1337/api/articles/${params.articleId}?populate=*`;
+        const URL = `${process.env.NEXT_PUBLIC_API_URL}articles/${params.articleId}?populate=*`;
         const response = await fetch(URL, {
           headers: {
             Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`, // Replace 'Hello' with the actual token
           },
         });
 
-        const articlesURL = `http://localhost:1337/api/articles?sort=Date:desc&pagination[limit]=3&populate=*`;
+        const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&pagination[limit]=3&populate=*&locale=sv`;
         const articlesResponse = await fetch(articlesURL, {
           headers: {
             Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
@@ -53,6 +55,10 @@ const Page = ({ params }) => {
   if (!article) return <div>Loading...</div>;
 
   const formattedDate = convertDateFormat(article.data.attributes.Date);
+
+  const handleReadMoreClick = (articleId) => {
+    router.push(`/news/${articleId}`);
+  };
 
   return (
     <div className="news-article-section-wrapper">
