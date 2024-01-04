@@ -7,22 +7,24 @@ const Organisationer = () => {
         <div className="container-large">
           <div className="padding-section-large">
             <div className="organisationer-content-wrapper-top">
-              <div className="organisationer-text-wrapper">
+              <div className="sub-header-wrapper">
                 <img src="/prefix-icon.svg" alt="Left" />
                 <h6> organisationer </h6>
               </div>
               <h2>Cybersäkerhet för organisationer</h2>
-              <p>
-                Privata företag, myndigheter och offentlig sektor som bedriver
-                samhällsviktig verksamhet erbjuds paketerade tjänster och
-                produkter.
-              </p>
-              <p>
-                Vår plattform för ackrediterade lösningar till samhällsviktig
-                verksamhet, SIRRUS, är en unik användarvänlig plattform som
-                erbjuder stor flexibilitet, alltid med gällande lagkrav som
-                grund.
-              </p>
+              <div>
+                <p>
+                  Privata företag, myndigheter och offentlig sektor som bedriver
+                  samhällsviktig verksamhet erbjuds paketerade tjänster och
+                  produkter.
+                </p>
+                <p>
+                  Vår plattform för ackrediterade lösningar till samhällsviktig
+                  verksamhet, SIRRUS, är en unik användarvänlig plattform som
+                  erbjuder stor flexibilitet, alltid med gällande lagkrav som
+                  grund.
+                </p>
+              </div>
             </div>
 
             <div className="organisationer-content-wrapper-bottom">

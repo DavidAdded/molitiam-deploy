@@ -7,22 +7,24 @@ const Nationer = () => {
         <div className="padding-section-large">
           <div className="nationer-section-wrapper">
             <div className="nationer-content-wrapper-top">
-              <div className="nationer-text-wrapper">
+              <div className="sub-header-wrapper">
                 <img src="/prefix-icon.svg" alt="Left" />
                 <h6> Nationer </h6>
               </div>
               <h2>Cybersäkerhet för nationer</h2>
-              <p>
-                Nationella försvar och säkerhetskänslig verksamhet söker
-                ackrediterade cybersäkerhetslösningar som uppfyller
-                säkerhetsskyddslagstiftningens höga krav i kombination med
-                användarvänlighet.
-              </p>
-              <p>
-                CR Group är den enda leverantören av krypteringsprodukter för
-                säkerhetsklassificerad information på̊ nivån begränsat hemligt i
-                Sverige.
-              </p>
+              <div>
+                <p>
+                  Nationella försvar och säkerhetskänslig verksamhet söker
+                  ackrediterade cybersäkerhetslösningar som uppfyller
+                  säkerhetsskyddslagstiftningens höga krav i kombination med
+                  användarvänlighet.
+                </p>
+                <p>
+                  CR Group är den enda leverantören av krypteringsprodukter för
+                  säkerhetsklassificerad information på̊ nivån begränsat hemligt
+                  i Sverige.
+                </p>
+              </div>
             </div>
 
             <div className="nationer-content-wrapper-bottom">

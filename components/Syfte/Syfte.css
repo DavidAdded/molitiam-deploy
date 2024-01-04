@@ -1,46 +1,43 @@
 /* Base styles - applied for all screen sizes */
 
 .syfte-section-wrapper {
-    background-image: url("/camoimage2.png");
-    background-size: cover;
+  background-image: url("/camoimage2.png");
+  background-size: cover;
 }
 
 .syfte-content-wrapper {
-    display: flex;
-    width: 575px;
-    flex-direction: column;
-    height: 100%;
-    color: white;
-    margin: 120px 0;
+  display: flex;
+  width: 575px;
+  flex-direction: column;
+  gap: 14px;
+  height: 100%;
+  color: white;
+  margin: 120px 0;
 }
 
 .syfte-content-wrapper p {
-    color: #FFF;
+  color: #fff;
 }
-
 
 @media (max-width: 991px) {
-    .syfte-content-wrapper {
-        width: 100%;
-        max-width: 450px;
-        margin: 60px 0; 
-    }
+  .syfte-content-wrapper {
+    width: 100%;
+    max-width: 450px;
+    margin: 60px 0;
+  }
 
-    .syfte-content-wrapper h2 {
-        font-size: 28px; 
-    }
+  .syfte-content-wrapper h2 {
+    font-size: 28px;
+  }
 
-    .syfte-content-wrapper p {
-        font-size: 16px; 
-    }
+  .syfte-content-wrapper p {
+    font-size: 16px;
+  }
 }
-
 
 @media (max-width: 478px) {
-    .syfte-content-wrapper {
-        width: 90%; 
-        margin: 30px 0;
-    }
-
+  .syfte-content-wrapper {
+    width: 90%;
+    margin: 30px 0;
+  }
 }
-

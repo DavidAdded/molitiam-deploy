@@ -1,94 +1,95 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
 
 /* Base styles - applied for all screen sizes */
 
 .navbar {
-    background-color: white;
-    font-family: 'Inter', sans-serif;
+  background-color: white;
+  font-family: "Inter", sans-serif;
 }
 
 .navbar-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .padding-section-nav {
-    padding: 20px 0;
+  padding: 20px 0;
 }
 
 .navbar-logo {
-    font-size: 24px;
-    font-weight: bold;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .navbar-links {
-    display: flex;
-    align-items: center;
-    gap: 25px;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.hamburger-wrapper {
+  display: flex;
+  gap: 25px;
+}
+
+.navbar-buttons {
+  display: flex;
+  gap: 12px;
 }
 
 .navbar-links a {
-    text-decoration: none;
-    margin-right: 16px;
-    font-size: 16px;
+  text-decoration: none;
+  font-size: 16px;
 }
 
-
-
 .navbar-links a:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 .navbar-kontakt,
 .navbar-eng {
-    display: flex;
-    padding: 8px 16px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    background-color: #8A684A; /* For .navbar-kontakt */
-    font-family: 'Space Grotesk';
-    font-size: 16px;
-    font-weight: 500;
-    line-height: normal;
-    color: var(--Grey-1, #F5F5F5);
+  display: flex;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: #8a684a; /* For .navbar-kontakt */
+  font-family: "Space Grotesk";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--Grey-1, #f5f5f5);
 }
 
 .navbar-eng {
-    background-color: #9C8773; /* Specific for .navbar-eng */
+  background-color: #9c8773; /* Specific for .navbar-eng */
 }
 
 /* Styles for screens up to 991px wide */
 
 @media (max-width: 991px) {
-    .navbar-links {
-        display: none; /* Hide navbar links */
-    }
+  .hamburger-wrapper {
+    display: none; /* Show hamburger menu */
+  }
+  .padding-section-nav {
+    padding: 20px 0;
+  }
 
-    .hamburger-wrapper {
-        display: flex; /* Show hamburger menu */
-    }
-
-    
-
-    /* Additional responsive styles can be added here */
+  /* Additional responsive styles can be added here */
 }
 
 /* Styles for screens up to 478px wide */
 
 @media (max-width: 478px) {
-    .navbar-logo {
-        font-size: 20px; /* Smaller logo font size */
-    }
+  .navbar-logo {
+    font-size: 20px; /* Smaller logo font size */
+  }
 
-    /* Further adjustments can be made here as needed */
+  /* Further adjustments can be made here as needed */
 }
 
 /* Existing media query for screens up to 768px wide */
-
-
-

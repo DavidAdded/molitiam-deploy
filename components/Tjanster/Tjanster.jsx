@@ -1,6 +1,5 @@
 import "./Tjanster.css";
 
-
 const Tjanster = () => {
   return (
     <div>
@@ -9,7 +8,7 @@ const Tjanster = () => {
           <div className="container-large">
             <div className="tjanster-padding-section-large">
               <div className="tjanster-content-wrapper">
-                <div className="tjanster-text-wrapper">
+                <div className="sub-header-wrapper">
                   <img src="/prefix-icon.svg" alt="Left" />
                   <h6> Tjanster </h6>
                 </div>
@@ -22,7 +21,7 @@ const Tjanster = () => {
       <div className="tjanster-section-wrapper-bottom">
         <div className="padding-global">
           <div className="container-large">
-            <div className="padding-section-mini">
+            <div className="padding-section-small">
               <div className="tjanster-section-wrapper-bottom-content-wrapper">
                 <div className="tjanster-section-wrapper-bottom-content">
                   <img src="/tjanster-icon-left.svg" alt="Left" /> <h5>85%</h5>

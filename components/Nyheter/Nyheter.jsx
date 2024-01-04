@@ -52,7 +52,11 @@ const Nyheter = () => {
               </div>
               <div className="nyheter-content-boxes">
                 {articles.map((article) => (
-                  <div key={article.id} className="nyheter-content-card">
+                  <div
+                    key={article.id}
+                    onClick={() => handleReadMoreClick(article.id)}
+                    className="nyheter-content-card"
+                  >
                     <div className={article.imageClass}></div>
                     <div className="nyheter-content-card-bottom">
                       <div className="nyheter-content-card-text-wrapper">
@@ -60,16 +64,12 @@ const Nyheter = () => {
                         <h3>{article.title}</h3>
                         <p>{article.content}</p>
                       </div>
-                      <div className="nyheter-las-mer">
-                        <div
-                          className="nyheter-las-mer-content"
-                          onClick={() => handleReadMoreClick(article.id)}
-                        >
-                          <p>LÄS MER</p>
-                          <img src="/right-arrow.svg" alt="Read More" />
-                        </div>
+                    </div>
+                    <div className="nyheter-las-mer">
+                      <div className="nyheter-las-mer-content">
+                        <p>LÄS MER</p>
+                        <img src="/right-arrow.svg" alt="Read More" />
                       </div>
-                      <div className="bottom-corner-cover-up"></div>
                     </div>
                   </div>
                 ))}

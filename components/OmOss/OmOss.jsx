@@ -8,9 +8,13 @@ const OmOss = () => {
           <div className="padding-section-large">
             <div className="omoss-section-wrapper">
               <div className="omoss-section-column">
-                <h6>Om Oss</h6>
-                <h2>Enkelt att använda</h2>
-                <h2>Enkelt att köpa</h2>
+                <div className="sub-header-wrapper">
+                  <img src="/prefix-icon.svg" alt="" />
+                  <h6>Om Oss</h6>
+                </div>
+                <h2>
+                  Enkelt att använda, <br></br>Enkelt att köpa
+                </h2>
                 <p>
                   Vi är totalleverantör till samhällsviktig verksamhet.
                   Avancerad försvarsteknologi som skyddar det mest skyddsvärda

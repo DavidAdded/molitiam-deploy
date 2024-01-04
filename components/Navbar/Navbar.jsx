@@ -27,14 +27,16 @@ const Navbar = () => {
                   <Link href="#verksamheter">Verksamheter</Link>
                   <Link href="#jobb">Jobb</Link>
                 </div>
-                <Link href="#kontakt">
-                  <div className="navbar-kontakt">Kontakt</div>
-                </Link>
-                <Link href="#eng">
-                  <div className="navbar-eng">
-                    Eng<img src="/arrow-down.svg"></img>
-                  </div>
-                </Link>
+                <div className="navbar-buttons">
+                  <Link href="#kontakt">
+                    <div className="navbar-kontakt">Kontakt</div>
+                  </Link>
+                  <Link href="#eng">
+                    <div className="navbar-eng">
+                      Eng<img src="/arrow-down.svg"></img>
+                    </div>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
