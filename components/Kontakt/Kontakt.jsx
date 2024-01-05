@@ -31,7 +31,7 @@ const Kontakt = () => {
     fetchData();
   }, []);
 
-  if (!contacts) return <div>Loading...</div>;
+  if (!contacts) return <div></div>;
 
   return (
     <div className="kontakt-section-wrapper">
@@ -47,7 +47,9 @@ const Kontakt = () => {
                 {contacts.map((contact, index) => (
                   <div key={index} className="kontakt-item">
                     <div className="kontakt-item-top">
-                      <img src="/employeeman.png" alt="Kontakt" />
+                      <img
+                        src={`${process.env.NEXT_PUBLIC_API_SLIM}${contact.attributes.Image.data.attributes.formats.thumbnail.url}`}
+                      />
                     </div>
                     <div className="kontakt-item-bottom">
                       <h3>{contact.attributes.Name}</h3>

@@ -30,16 +30,13 @@ const Page = ({ params }) => {
           },
         });
 
-        console.log(response);
-        console.log(articlesResponse);
 
         if (response.ok) {
           const data = await response.json();
           const articles = await articlesResponse.json();
           setArticle(data);
           setarticles(articles.data);
-          console.log(data);
-          console.log(articles);
+   
         } else {
           console.error("Failed to fetch article");
         }

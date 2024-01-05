@@ -24,9 +24,7 @@ const LandingSection = () => {
         });
 
         if (response.ok) {
-          console.log(response);
           const data = await response.json();
-          console.log(data);
           setContent(data);
           // Set content state here
         } else {
@@ -69,7 +67,7 @@ const LandingSection = () => {
     });
   }, [content]); // Dependency array includes 'content'
 
-  if (!content) return <div>Loading...</div>;
+  if (!content) return <div></div>;
 
   return (
     <div className="landing-section-wrapper">

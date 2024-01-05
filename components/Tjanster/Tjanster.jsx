@@ -1,6 +1,38 @@
+"use client";
 import "./Tjanster.css";
+import { useEffect, useState } from "react";
 
 const Tjanster = () => {
+  const lang = "sv";
+  const [content, setContent] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const URL = `${process.env.NEXT_PUBLIC_API_URL}tjanster-contents?locale=${lang}`;
+        const response = await fetch(URL, {
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`, // Replace 'Hello' with the actual token
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+
+          setContent(data);
+          // Set content state here
+        } else {
+          console.error("Failed to fetch content");
+        }
+      } catch (error) {
+        console.error("Error fetching content:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (!content) return <div></div>;
   return (
     <div>
       <div className="tjanster-section-wrapper">
@@ -10,9 +42,9 @@ const Tjanster = () => {
               <div className="tjanster-content-wrapper">
                 <div className="sub-header-wrapper">
                   <img src="/prefix-icon.svg" alt="Left" />
-                  <h6> Tjanster </h6>
+                  <h6> {content.data[0].attributes.miniHeadline}</h6>
                 </div>
-                <h2>För nationer & organisationer</h2>
+                <h2>{content.data[0].attributes.H1}</h2>
               </div>
             </div>
           </div>
@@ -24,17 +56,19 @@ const Tjanster = () => {
             <div className="padding-section-small">
               <div className="tjanster-section-wrapper-bottom-content-wrapper">
                 <div className="tjanster-section-wrapper-bottom-content">
-                  <img src="/tjanster-icon-left.svg" alt="Left" /> <h5>85%</h5>
-                  <p>Försvar</p>
+                  <img src="/tjanster-icon-left.svg" alt="Left" />{" "}
+                  <h5>{content.data[0].attributes.PercentLeft}%</h5>
+                  <p>{content.data[0].attributes.TextLeft}</p>
                 </div>
                 <div className="tjanster-section-wrapper-bottom-content">
                   <img src="/tjanster-icon-middle.svg" alt="Middle" />{" "}
-                  <h5>10%</h5>
-                  <p>Civilt</p>
+                  <h5>{content.data[0].attributes.PercentRight}%</h5>
+                  <p>{content.data[0].attributes.TextMiddle}</p>
                 </div>
                 <div className="tjanster-section-wrapper-bottom-content">
-                  <img src="/tjanster-icon-right.svg" alt="Right" /> <h5>5%</h5>
-                  <p>Internationellt</p>
+                  <img src="/tjanster-icon-right.svg" alt="Right" />{" "}
+                  <h5>{content.data[0].attributes.PercentRight}%</h5>
+                  <p>{content.data[0].attributes.TextRight}</p>
                 </div>
               </div>
             </div>

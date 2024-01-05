@@ -1,6 +1,47 @@
+"use client";
 import "./Verksamheter.css";
+import { useEffect, useState } from "react";
 
 const Verksamheter = () => {
+  const lang = "sv";
+  const [content, setContent] = useState(null);
+  const [contentCard, setContentCard] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const URL = `${process.env.NEXT_PUBLIC_API_URL}verksamheter-contents?locale=${lang}`;
+        const response = await fetch(URL, {
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`, // Replace 'Hello' with the actual token
+          },
+        });
+
+        const cardsURL = `${process.env.NEXT_PUBLIC_API_URL}verksamheter-content-cards?locale=${lang}`;
+        const cardsResponse = await fetch(cardsURL, {
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          const cards = await cardsResponse.json();
+          setContent(data);
+          setContentCard(cards);
+        } else {
+          console.error("Failed to fetch content");
+        }
+      } catch (error) {
+        console.error("Error fetching content:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (!content) return <div></div>;
+
   return (
     <div className="verksamheter-section-wrapper">
       <div className="padding-global">
@@ -10,60 +51,31 @@ const Verksamheter = () => {
               <div className="verksamheter-content-wrapper-top">
                 <div className="sub-header-wrapper">
                   <img src="/prefix-icon.svg" alt="Left" />
-                  <h6> Verksamheter </h6>
+                  <h6> {content.data[0].attributes.miniHeadline} </h6>
                 </div>
-                <h2>CR Group</h2>
+                <h2>{content.data[0].attributes.H1}</h2>
                 <div>
-                  <p>
-                    CR Group är ett svenskägt cybersäkerhetsföretag med
-                    inriktning mot Sverige och Europa. Vi erbjuder
-                    samhällsviktig verksamhet lösningar som är både enkla att
-                    använda och enkla att köpa.
-                  </p>
-                  <p>
-                    Gruppen består av helägda dotterbolag inom utvalda
-                    expertområden med produkter och tjänster för
-                    säkerhetskritisk verksamhet.
-                  </p>
-                  <p>
-                    Vi lägger stor vikt på att bygga långsiktiga relationer med
-                    både nationer och organisationer.
-                  </p>
+                  <p>{content.data[0].attributes.Text}</p>
                 </div>
               </div>
               <div className="verksamheter-content-wrapper-bottom">
                 <div className="verksamheter-content-box-1">
                   <img src="/NSS.svg" alt="NSS-Icon" />
-                  <p>
-                    Mollitiam är en innovativ aktör inom hantering av
-                    säkerhetsklassad information. Fokus är att utveckla moderna
-                    nätverkslösningar som säkerställer enkel och säker åtkomst
-                    till säkerhetsklassad information.
-                  </p>
+                  <p>{contentCard.data[0].attributes.PartnerDescription}</p>
                   <div className="verksamhet-corner-box-1"></div>
                   <div className="verksamhet-corner-box-2"></div>
                   <div className="verksamhet-corner-box-3"></div>
                 </div>
                 <div className="verksamheter-content-box-1">
                   <img src="/NSS.svg" alt="NSS-Icon" />
-                  <p>
-                    Mollitiam är en innovativ aktör inom hantering av
-                    säkerhetsklassad information. Fokus är att utveckla moderna
-                    nätverkslösningar som säkerställer enkel och säker åtkomst
-                    till säkerhetsklassad information.
-                  </p>
+                  <p>{contentCard.data[1].attributes.PartnerDescription}</p>
                   <div className="verksamhet-corner-box-1"></div>
                   <div className="verksamhet-corner-box-2"></div>
                   <div className="verksamhet-corner-box-3"></div>
                 </div>
                 <div className="verksamheter-content-box-1">
                   <img src="/NSS.svg" alt="NSS-Icon" />
-                  <p>
-                    Mollitiam är en innovativ aktör inom hantering av
-                    säkerhetsklassad information. Fokus är att utveckla moderna
-                    nätverkslösningar som säkerställer enkel och säker åtkomst
-                    till säkerhetsklassad information.
-                  </p>
+                  <p>{contentCard.data[2].attributes.PartnerDescription}</p>
                   <div className="verksamhet-corner-box-1"></div>
                   <div className="verksamhet-corner-box-2"></div>
                   <div className="verksamhet-corner-box-3"></div>

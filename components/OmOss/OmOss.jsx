@@ -1,6 +1,39 @@
+"use client";
 import "./OmOss.css";
+import { useEffect, useState } from "react";
 
 const OmOss = () => {
+  const lang = "sv";
+  const [content, setContent] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const URL = `${process.env.NEXT_PUBLIC_API_URL}om-oss-contents?locale=${lang}`;
+        const response = await fetch(URL, {
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`, // Replace 'Hello' with the actual token
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+
+          setContent(data);
+          // Set content state here
+        } else {
+          console.error("Failed to fetch content");
+        }
+      } catch (error) {
+        console.error("Error fetching content:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (!content) return <div></div>;
+
   return (
     <div className="omoss-wrapper">
       <div className="padding-global">
@@ -10,18 +43,10 @@ const OmOss = () => {
               <div className="omoss-section-column">
                 <div className="sub-header-wrapper">
                   <img src="/prefix-icon.svg" alt="" />
-                  <h6>Om Oss</h6>
+                  <h6>{content.data[0].attributes.miniHeadline}</h6>
                 </div>
-                <h2>
-                  Enkelt att använda, <br></br>Enkelt att köpa
-                </h2>
-                <p>
-                  Vi är totalleverantör till samhällsviktig verksamhet.
-                  Avancerad försvarsteknologi som skyddar det mest skyddsvärda
-                  för samhällsviktig verksamhet och en helt ny nivå av
-                  användarvänlighet gör våra lösningar enkla att använda och
-                  enkla att köpa.
-                </p>
+                <h2>{content.data[0].attributes.H1}</h2>
+                <p>{content.data[0].attributes.Text}</p>
               </div>
               <div className="omoss-section-column">
                 <div className="omoss-section-column-content">
@@ -34,10 +59,10 @@ const OmOss = () => {
                   </div>
                   <div className="omoss-section-column-content-bottom">
                     <div className="omoss-section-column-content-bottom-left">
-                      <p>Cybersäkerhets-tjänster</p>
+                      <p>{content.data[0].attributes.LeftFigureText}</p>
                     </div>
                     <div className="omoss-section-column-content-bottom-right">
-                      <p>Cybersäkerhets-produkter</p>
+                      <p>{content.data[0].attributes.RightFigureText}</p>
                     </div>
                   </div>
                 </div>

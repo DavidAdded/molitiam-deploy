@@ -1,6 +1,39 @@
+"use client";
 import "./Nationer.css";
 
+import { useEffect, useState } from "react";
+
 const Nationer = () => {
+  const lang = "sv";
+  const [content, setContent] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const URL = `${process.env.NEXT_PUBLIC_API_URL}nationer-contents?locale=${lang}`;
+        const response = await fetch(URL, {
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`, // Replace 'Hello' with the actual token
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+
+          setContent(data);
+          // Set content state here
+        } else {
+          console.error("Failed to fetch content");
+        }
+      } catch (error) {
+        console.error("Error fetching content:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (!content) return <div></div>;
   return (
     <div className="padding-global">
       <div className="container-large">
@@ -9,42 +42,32 @@ const Nationer = () => {
             <div className="nationer-content-wrapper-top">
               <div className="sub-header-wrapper">
                 <img src="/prefix-icon.svg" alt="Left" />
-                <h6> Nationer </h6>
+                <h6> {content.data[0].attributes.miniHeadline} </h6>
               </div>
-              <h2>Cybersäkerhet för nationer</h2>
+              <h2>{content.data[0].attributes.H1}</h2>
               <div>
-                <p>
-                  Nationella försvar och säkerhetskänslig verksamhet söker
-                  ackrediterade cybersäkerhetslösningar som uppfyller
-                  säkerhetsskyddslagstiftningens höga krav i kombination med
-                  användarvänlighet.
-                </p>
-                <p>
-                  CR Group är den enda leverantören av krypteringsprodukter för
-                  säkerhetsklassificerad information på̊ nivån begränsat hemligt
-                  i Sverige.
-                </p>
+                <p>{content.data[0].attributes.Text}</p>
               </div>
             </div>
 
             <div className="nationer-content-wrapper-bottom">
               <div className="nationer-content-bottom">
                 <img src="/nationer-phone.png" alt="Phone" />
-                <h5>Möjliggör mobilt arbete</h5>
+                <h5>{content.data[0].attributes.LeftText}</h5>
               </div>
               <div
                 className="nationer-content-bottom"
                 style={{ backgroundColor: "#262626" }}
               >
                 <img src="/nationer-device.png" alt="Device" />
-                <h5>Krypterar kommunikation</h5>
+                <h5>{content.data[0].attributes.MiddleText}</h5>
               </div>
               <div
                 className="nationer-content-bottom"
                 style={{ backgroundColor: "#0D0D0D" }}
               >
                 <img src="/nationer-router.png" alt="Router" />
-                <h5>Säkrar nätverk</h5>
+                <h5>{content.data[0].attributes.RightText}</h5>
               </div>
             </div>
           </div>

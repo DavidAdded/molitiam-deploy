@@ -48,7 +48,7 @@ const Nyheter = () => {
     router.push(`/news/${articleId}`);
   };
 
-  if (!articles) return <div>Loading...</div>;
+  if (!articles) return <div></div>;
 
   return (
     <div className="nyheter-section-wrapper">

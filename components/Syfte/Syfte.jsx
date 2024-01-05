@@ -1,7 +1,7 @@
 "use client";
 
 import "./Syfte.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitText from "@utils/SplitText";
@@ -9,7 +9,37 @@ import SplitText from "@utils/SplitText";
 gsap.registerPlugin(ScrollTrigger);
 
 const Syfte = () => {
+  const lang = "sv";
+  const [content, setContent] = useState(null);
+
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const URL = `${process.env.NEXT_PUBLIC_API_URL}syfte-contents?locale=${lang}`;
+        const response = await fetch(URL, {
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`, // Replace 'Hello' with the actual token
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setContent(data);
+          // Set content state here
+        } else {
+          console.error("Failed to fetch content");
+        }
+      } catch (error) {
+        console.error("Error fetching content:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    if (!content) return; // Ensure content is loaded before running the animation
+
     const headers = document.querySelectorAll(".syfte-section-wrapper h2");
     headers.forEach((header) => {
       const split = new SplitText(header, { type: "lines" });
@@ -38,7 +68,7 @@ const Syfte = () => {
         onEnter: () => animateSubHeaderAndParagraph(p),
       });
     });
-  }, []);
+  }, [content]);
 
   function animateSubHeaderAndParagraph(paragraph) {
     gsap.fromTo(
@@ -60,7 +90,7 @@ const Syfte = () => {
       delay: 0.5,
     });
   }
-
+  if (!content) return <div></div>;
   return (
     <div className="syfte-section-wrapper">
       <div className="padding-global">
@@ -69,19 +99,11 @@ const Syfte = () => {
             <div className="syfte-content-wrapper">
               <div className="sub-header-wrapper">
                 <img src="/prefix-icon.svg" alt="" />
-                <h6> Syfte </h6>
+                <h6> {content.data[0].attributes.miniHeadline} </h6>
               </div>
-              <h2> Cybersäkerhet - en säkerhetsfråga</h2>
+              <h2> {content.data[0].attributes.H1}</h2>
               <div>
-                <p>
-                  Cyberhotet kostar mer för allt fler, hotar demokratin och
-                  undergräver tilliten i samhället.
-                </p>
-                <p>
-                  Vårt uppdrag är cybersäkerhet för stärkt tillit, främjad
-                  demokrati och god ekonomisk tillväxt. Cybersäkerhet är en
-                  frihetsfråga för oss.
-                </p>
+                <p>{content.data[0].attributes.Text}</p>
               </div>
             </div>
           </div>
