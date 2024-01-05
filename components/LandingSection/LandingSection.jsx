@@ -4,14 +4,45 @@ import "./LandingSection.css";
 import gsap from "gsap";
 import ScrollTrigger from "@utils/ScrollTrigger";
 import SplitText from "@utils/SplitText";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const LandingSection = () => {
   const sectionRef = useRef(null);
+  const lang = "sv";
+  const [content, setContent] = useState(null);
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const URL = `${process.env.NEXT_PUBLIC_API_URL}landing-contents?locale=${lang}`;
+        const response = await fetch(URL, {
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`, // Replace 'Hello' with the actual token
+          },
+        });
+
+        if (response.ok) {
+          console.log(response);
+          const data = await response.json();
+          console.log(data);
+          setContent(data);
+          // Set content state here
+        } else {
+          console.error("Failed to fetch content");
+        }
+      } catch (error) {
+        console.error("Error fetching content:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    if (!content) return; // Ensure content is loaded before running the animation
+
     const triggerElement = sectionRef.current.querySelector(
       ".landing-content-wrapper"
     );
@@ -36,7 +67,9 @@ const LandingSection = () => {
         stagger: 0.1, // Stagger applied to the collection of lines
       });
     });
-  }, []);
+  }, [content]); // Dependency array includes 'content'
+
+  if (!content) return <div>Loading...</div>;
 
   return (
     <div className="landing-section-wrapper">
@@ -50,9 +83,9 @@ const LandingSection = () => {
               </div>
               <div className="text-wrapper">
                 <h1 className="animation-header">
-                  CYBERSÄKERHET FÖR SAMHÄLLSVIKTIG VERKSAMHET
+                  {content.data[0].attributes.H1}
                 </h1>
-                <p>Försvarsteknologi. Säkert. Enkelt.</p>
+                <p>{content.data[0].attributes.SecondText}</p>
               </div>
             </div>
           </div>

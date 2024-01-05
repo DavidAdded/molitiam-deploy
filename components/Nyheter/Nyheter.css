@@ -50,26 +50,18 @@
   cursor: pointer;
 }
 
-.nyheter-content-card-top-left {
+.nyheter-content-card-top {
   width: 100%;
   height: 250px;
-  background-image: url("/nyheter-flagga.png");
   background-size: cover;
 }
 
-.nyheter-content-card-top-middle {
+.nyheter-content-card-top img {
   width: 100%;
-  height: 60%;
-  background-image: url("/nyheter-matros.png");
+  height: 250px;
   background-size: cover;
 }
 
-.nyheter-content-card-top-right {
-  width: 100%;
-  height: 60%;
-  background-image: url("/nyheter-sista.png");
-  background-size: cover;
-}
 
 .nyheter-content-card-bottom {
   position: relative;

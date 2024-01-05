@@ -61,7 +61,6 @@
     background-color: rgba(0, 0, 0, 0.1);
 
 
-
 }
 
 .more-articles-wrapper {
@@ -85,51 +84,37 @@
     flex-direction: column;
 }
 
-.nyheter-article-content-card-top-left {
+.nyheter-article-content-card-top {
     width: 100%;
-    height: 60%;
-    background-image: url('/nyheter-article-flagga.png');
+    height: 250px;
     background-size: cover;
 
 }
 
-.nyheter-article-content-card-top-middle {
+.nyheter-article-content-card-top img {
     width: 100%;
-    height: 60%;
-    background-image: url('/nyheter-article-matros.png');
+    height: 250px;
     background-size: cover;
-
 }
 
-.nyheter-article-content-card-top-right {
-    width: 100%;
-    height: 60%;
-    background-image: url('/nyheter-article-sista.png');
-    background-size: cover;
 
-}
 
 .nyheter-article-content-card-bottom {
     position: relative;
     width: 100%;
-    height: 40%;
     color: black;
     background: rgba(255, 255, 255, 1);
 
 }
 
 .nyheter-article-content-card-text-wrapper {
-    padding-top: 20px;
-    padding-left: 25px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    max-width: 250px;
-
+    padding: 20px 25px;
 }
 
+
+
 .nyheter-article-content-card-bottom h3 {
-    font-family: 'Inter';
+    font-family: "Inter";
     font-size: 20px;
     font-weight: 500;
     line-height: 30px;
@@ -139,8 +124,16 @@
 
 }
 
+.nyheter-article-content-card-text-wrapper p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .nyheter-article-content-card-bottom p {
-    font-family: 'Inter';
+    font-family: "Inter";
     font-size: 15px;
     font-weight: 400;
     line-height: 23px;
@@ -152,7 +145,7 @@
 }
 
 .nyheter-article-date {
-    font-family: 'Space Mono';
+    font-family: "Space Mono";
     font-size: 14px;
     font-weight: 400;
     line-height: 21px;
@@ -163,16 +156,25 @@
 
 .nyheter-article-las-mer {
     display: flex;
+    align-items: flex-end;
     flex-direction: row;
     justify-content: right;
-    font-family: 'Space Mono';
+    font-family: "Space Mono";
     font-size: 14px;
     font-weight: 400;
     line-height: 21px;
     letter-spacing: 0.05em;
     text-align: right;
     margin-right: 50px;
+    height: 50px;
+    background-color: white;
+    padding-right: 25px;
 
+}
+
+.nyheter-article-las-mer p {
+    font-family: "space mono";
+    font-size: 16px;
 }
 
 .nyheter-article-las-mer-content {

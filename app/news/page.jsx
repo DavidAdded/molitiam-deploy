@@ -16,10 +16,18 @@ const Page = () => {
     return dateString.replace(/-/g, "•");
   }
 
+  const handleReadMoreClick = (articleId) => {
+    router.push(`/news/${articleId}`);
+  };
+
+  const handleClick = () => {
+    router.push("/news");
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&pagination[limit]=3&populate=*&locale=sv`;
+        const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&pagination[limit]=6&populate=*&locale=${lang}`;
         const articlesResponse = await fetch(articlesURL, {
           headers: {
             Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
@@ -53,7 +61,7 @@ const Page = () => {
         <div className="container-large">
           <div className="padding-section-large">
             <div className="nyheter-page-content-wrapper">
-              <h1>nyheter-page</h1>
+              <h1>nyheter</h1>
               <div className="news-grid">
                 {articles.map((article) => {
                   // Assuming article.attributes.Image.attributes.url contains the image path// This will log the image URL to the console
@@ -62,7 +70,7 @@ const Page = () => {
                     <div key={article.id} className="nyheter-page-content-card">
                       <div className="nyheter-page-content-card-top">
                         <img
-                          src={`http://localhost:1337${article.attributes.Image.data.attributes.formats.thumbnail.url}`}
+                          src={`${process.env.NEXT_PUBLIC_API_SLIM}${article.attributes.Image.data.attributes.formats.thumbnail.url}`}
                         ></img>
                       </div>
 
@@ -92,7 +100,7 @@ const Page = () => {
                 })}
               </div>
             </div>
-            <button>Ladda fler nyheter-page</button>
+            <button onClick={handleClick}>Ladda fler nyheter</button>
           </div>
         </div>
       </div>

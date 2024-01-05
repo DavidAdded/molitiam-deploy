@@ -1,6 +1,38 @@
+"use client";
 import "./Kontakt.css";
+import { useEffect, useState } from "react";
 
 const Kontakt = () => {
+  const lang = "sv";
+  const [contacts, setContacts] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const URL = `${process.env.NEXT_PUBLIC_API_URL}employees?pagination[limit]=4&populate=*&locale=${lang}`;
+        const response = await fetch(URL, {
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+          },
+        });
+
+        if (response.ok) {
+          const contacts = await response.json();
+
+          setContacts(contacts.data);
+        } else {
+          console.error("Failed to fetch employees");
+        }
+      } catch (error) {
+        console.error("Error fetching employee:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (!contacts) return <div>Loading...</div>;
+
   return (
     <div className="kontakt-section-wrapper">
       <div className="padding-global">
@@ -12,50 +44,19 @@ const Kontakt = () => {
                 <h6> Kontakt </h6>
               </div>
               <div className="kontakt-grid-wrapper">
-                <div className="kontakt-item">
-                  <div className="kontakt-item-top">
-                    <img src="/employeeman.png" alt="Kontakt" />
+                {contacts.map((contact, index) => (
+                  <div key={index} className="kontakt-item">
+                    <div className="kontakt-item-top">
+                      <img src="/employeeman.png" alt="Kontakt" />
+                    </div>
+                    <div className="kontakt-item-bottom">
+                      <h3>{contact.attributes.Name}</h3>
+                      <h4>{contact.attributes.Title}</h4>
+                      <p>{contact.attributes.Email}</p>
+                      <p>{contact.attributes.Phone}</p>
+                    </div>
                   </div>
-                  <div className="kontakt-item-bottom">
-                    <h3>Michael Yammin-Finta</h3>
-                    <h4>Kommunikation</h4>
-                    <p>Michael.yasmmin-finta@cr.se</p>
-                    <p>+46 76 139 52 80</p>
-                  </div>
-                </div>
-                <div className="kontakt-item">
-                  <div className="kontakt-item-top">
-                    <img src="/employeeman.png" alt="Kontakt" />
-                  </div>
-                  <div className="kontakt-item-bottom">
-                    <h3>Michael Yammin-Finta</h3>
-                    <h4>Kommunikation</h4>
-                    <p>Michael.yammin-finta@cr.se</p>
-                    <p>+46 76 139 52 80</p>
-                  </div>
-                </div>
-                <div className="kontakt-item">
-                  <div className="kontakt-item-top">
-                    <img src="/employeeman.png" alt="Kontakt" />
-                  </div>
-                  <div className="kontakt-item-bottom">
-                    <h3>Michael Yammin-Finta</h3>
-                    <h4>Kommunikation</h4>
-                    <p>Michael.yammin-finta@cr.se</p>
-                    <p>+46 76 139 52 80</p>
-                  </div>
-                </div>
-                <div className="kontakt-item">
-                  <div className="kontakt-item-top">
-                    <img src="/employeeman.png" alt="Kontakt" />
-                  </div>
-                  <div className="kontakt-item-bottom">
-                    <h3>Michael Yammin-Finta</h3>
-                    <h4>Kommunikation</h4>
-                    <p>Michael.yammin-finta@cr.se</p>
-                    <p>+46 76 139 52 80</p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>

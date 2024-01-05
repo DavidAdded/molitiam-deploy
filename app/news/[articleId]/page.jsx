@@ -23,7 +23,7 @@ const Page = ({ params }) => {
           },
         });
 
-        const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&pagination[limit]=3&populate=*&locale=sv`;
+        const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&pagination[limit]=3&populate=*&locale=${lang}`;
         const articlesResponse = await fetch(articlesURL, {
           headers: {
             Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
@@ -65,7 +65,7 @@ const Page = ({ params }) => {
         <div className="container-large">
           <div className="news-article-content-wrapper">
             <img
-              src={`http://localhost:1337${article.data.attributes.Image.data.attributes.formats.thumbnail.url}`}
+              src={`${process.env.NEXT_PUBLIC_API_SLIM}${article.data.attributes.Image.data.attributes.formats.thumbnail.url}`}
             />
             <h6>{formattedDate}</h6>
             <div className="news-article-text-wrapper">
@@ -86,8 +86,7 @@ const Page = ({ params }) => {
             <div className="more-articles-wrapper">
               {articles.map((article) => {
                 // Assuming article.attributes.Image.attributes.url contains the image path
-                const imageUrl = `http://localhost:1337${article}`;
-                console.log(article.attributes.Image.data); // This will log the image URL to the console
+                // This will log the image URL to the console
 
                 return (
                   <div
@@ -96,14 +95,14 @@ const Page = ({ params }) => {
                   >
                     <div className="nyheter-article-content-card-top">
                       <img
-                        src={`http://localhost:1337${article.attributes.Image.data.attributes.formats.thumbnail.url}`}
+                        src={`${process.env.NEXT_PUBLIC_API_SLIM}${article.attributes.Image.data.attributes.formats.thumbnail.url}`}
                       ></img>
                     </div>
 
                     <div className="nyheter-article-content-card-bottom">
                       <div className="nyheter-article-content-card-text-wrapper">
                         <div className="nyheter-article-date">
-                          {article.attributes.Date}
+                          {convertDateFormat(article.attributes.Date)}
                         </div>
                         <h3>{article.attributes.Titel}</h3>
                         <p className="nyheter-article-paragraph-one">
