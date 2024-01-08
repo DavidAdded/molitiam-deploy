@@ -1,9 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 
-.tjanster-section-wrapper {
+.tjanster-section-wrapper{
+ 
   background-image: url("/dronepic.png");
-  background-size: cover;
+    background-size: cover;
+
 }
+/* .tjanster-section-wrapper-img {
+  
+  position:fixed;
+  top:0;
+  height: 100%;
+    width: 100%;
+  z-index: -1;
+
+} */
 
 .tjanster-padding-section-large {
   display: flex;

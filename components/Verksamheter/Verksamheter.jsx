@@ -1,6 +1,7 @@
 "use client";
 import "./Verksamheter.css";
 import { useEffect, useState } from "react";
+import runSectionTextAnimation from "@animations/animations";
 
 const Verksamheter = () => {
   const lang = "sv";
@@ -40,6 +41,11 @@ const Verksamheter = () => {
     fetchData();
   }, []);
 
+useEffect(() => {
+    if (!content) return; // Ensure content is loaded before running the animation
+    runSectionTextAnimation(".verksamheter-content-wrapper-top h2", ".verksamheter-content-wrapper-top p")
+  }, [content]);
+  
   if (!content) return <div></div>;
 
   return (

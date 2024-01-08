@@ -39,7 +39,7 @@ const LandingSection = () => {
   }, []);
 
   useEffect(() => {
-    if (!content) return; // Ensure content is loaded before running the animation
+    if (!content) return;
 
     const triggerElement = sectionRef.current.querySelector(
       ".landing-content-wrapper"
@@ -48,10 +48,10 @@ const LandingSection = () => {
       sectionRef.current.querySelectorAll(".animation-header");
 
     targetElements.forEach((header) => {
-      // Split the text of each header
+  
       const split = new SplitText(header, { type: "lines" });
 
-      // Animate all lines at once with a stagger
+      
       gsap.from(split.lines, {
         scrollTrigger: {
           trigger: triggerElement,
@@ -65,7 +65,41 @@ const LandingSection = () => {
         stagger: 0.1, // Stagger applied to the collection of lines
       });
     });
-  }, [content]); // Dependency array includes 'content'
+
+
+      const image1 = document.querySelector('.picture-wrapper img');
+      const image2 = document.querySelector('.picture-wrapper div');
+      const wrapper = document.querySelector('.landing-section-wrapper')
+
+      gsap.to([image1], {
+        scrollTrigger: {
+          trigger: wrapper,
+          start: "top top", 
+          end: "bottom top", 
+          scrub: true
+        },
+
+        y: -100,
+        duration: 3, 
+        ease: "none"
+      });
+
+       gsap.to([image2], {
+        scrollTrigger: {
+          trigger: wrapper,
+          start: "top top", 
+          end: "bottom top", 
+          scrub: true 
+        },
+
+        y:  100, 
+        duration: 3, 
+        ease: "none"
+      });
+
+
+      
+  }, [content]); 
 
   if (!content) return <div></div>;
 

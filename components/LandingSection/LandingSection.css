@@ -6,11 +6,11 @@
   justify-content: center;
   overflow: hidden;
   padding: 240px 0;
+  background-color:#ffffff;
 }
 
 .picture-wrapper {
   position: absolute;
-  z-index: -1;
   display: flex;
   align-items: center;
   height: 100%;

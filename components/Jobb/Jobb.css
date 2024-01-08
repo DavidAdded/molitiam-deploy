@@ -1,6 +1,7 @@
 .jobb-section-wrapper {
   display: flex;
   flex-direction: row;
+  background-color: #ffffff;
 }
 
 .office-picture {
@@ -70,7 +71,21 @@
   .jobb-content-wrapper {
     padding: 0 16px;
   }
+
+  
 }
 
 @media (max-width: 478px) {
+}
+
+@media screen and (min-width:991px) {
+    .jobb-content-wrapper button:hover {
+        transition: all 0.2s ease-in-out;
+        background-color: rgba(90, 63, 39, 1);
+    
+      }
+    
+      .jobb-content-wrapper button {
+        transition: all 0.2s ease-in-out;
+      }
 }

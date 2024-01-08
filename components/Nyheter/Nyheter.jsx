@@ -97,7 +97,7 @@ const Nyheter = () => {
                   );
                 })}
               </div>
-              <button onClick={handleClick}>LÄS ALLA NYHETER</button>
+              <button className="regular-button" onClick={handleClick}>LÄS ALLA NYHETER</button>
             </div>
           </div>
         </div>

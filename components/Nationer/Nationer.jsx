@@ -1,6 +1,6 @@
 "use client";
 import "./Nationer.css";
-
+import runSectionTextAnimation from "@animations/animations";
 import { useEffect, useState } from "react";
 
 const Nationer = () => {
@@ -32,7 +32,13 @@ const Nationer = () => {
 
     fetchData();
   }, []);
+  
+  useEffect(() => {
+    if (!content) return; // Ensure content is loaded before running the animation
+    runSectionTextAnimation(".nationer-content-wrapper-top h2", ".nationer-content-wrapper-top p")
+  }, [content]);
 
+  
   if (!content) return <div></div>;
   return (
     <div className="padding-global">

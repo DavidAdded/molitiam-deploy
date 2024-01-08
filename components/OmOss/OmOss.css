@@ -1,3 +1,6 @@
+.omoss-wrapper {
+  background-color: #ffffff;
+}
 .omoss-section-wrapper {
   display: flex;
   flex-direction: row;

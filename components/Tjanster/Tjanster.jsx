@@ -1,6 +1,8 @@
 "use client";
 import "./Tjanster.css";
 import { useEffect, useState } from "react";
+import runSectionTextAnimation from "@animations/animations";
+
 
 const Tjanster = () => {
   const lang = "sv";
@@ -32,6 +34,11 @@ const Tjanster = () => {
     fetchData();
   }, []);
 
+   useEffect(() => {
+    if (!content) return; // Ensure content is loaded before running the animation
+    runSectionTextAnimation(".tjanster-content-wrapper h2")
+  }, [content]);
+
   if (!content) return <div></div>;
   return (
     <div>
@@ -48,6 +55,9 @@ const Tjanster = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="tjanster-section-wrapper-img">
+
         </div>
       </div>
       <div className="tjanster-section-wrapper-bottom">

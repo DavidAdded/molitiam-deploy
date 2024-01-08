@@ -1,5 +1,8 @@
 /* Base styles - applied for all screen sizes */
 
+#nationer {
+  background-color: #fff;
+}
 .nationer-content-wrapper-top {
   display: flex;
   flex-direction: column;

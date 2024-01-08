@@ -1,6 +1,8 @@
 "use client";
 import "./Jobb.css";
 import { useEffect, useState } from "react";
+import runSectionTextAnimation from "@animations/animations";
+
 
 const Jobb = () => {
   const lang = "sv";
@@ -31,6 +33,11 @@ const Jobb = () => {
     fetchData();
   }, []);
 
+useEffect(() => {
+    if (!content) return; // Ensure content is loaded before running the animation
+    runSectionTextAnimation(".jobb-content-wrapper h1", ".jobb-content-wrapper p")
+  }, [content]);
+
   if (!content) return <div></div>;
 
   return (
@@ -39,7 +46,7 @@ const Jobb = () => {
       <div className="container-large">
         <div className="padding-section-xl">
           <div className="jobb-content-wrapper">
-            <div className="jobb-text-wrapper">
+            <div className="sub-header-wrapper">
               <img src="/prefix-icon.svg" alt="Left" />
               <h6> {content.data[0].attributes.miniHeadline} </h6>
             </div>

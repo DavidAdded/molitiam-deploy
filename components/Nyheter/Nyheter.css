@@ -140,6 +140,32 @@
   gap: 20px;
 }
 
+
+@media screen and (min-width:991px) {
+  .nyheter-las-mer-content:hover {
+    img {
+      transform: translateX(5px);
+      transition: all 0.2s ease-in-out;
+    }
+  }
+    .nyheter-las-mer-content {
+      img {
+        transform: translateX(0px);
+        transition: all 0.2s ease-in-out;
+      }
+    }
+
+    .nyheter-content-wrapper button:hover {
+      background-color: rgba(38, 38, 38, 1);
+      transition: all 0.2s ease-in-out;
+    }
+
+    .nyheter-content-wrapper button {
+
+      transition: all 0.2s ease-in-out;
+    }
+}
+
 .bottom-corner-cover-up {
   position: absolute;
   bottom: 0px;
@@ -173,3 +199,4 @@
     font-size: 16px;
   }
 }
+

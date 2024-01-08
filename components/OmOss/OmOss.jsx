@@ -1,6 +1,8 @@
 "use client";
 import "./OmOss.css";
 import { useEffect, useState } from "react";
+import runSectionTextAnimation from "@animations/animations";
+
 
 const OmOss = () => {
   const lang = "sv";
@@ -31,6 +33,11 @@ const OmOss = () => {
 
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (!content) return; // Ensure content is loaded before running the animation
+    runSectionTextAnimation(".omoss-section-column h2", ".omoss-section-column p")
+  }, [content]);
 
   if (!content) return <div></div>;
 

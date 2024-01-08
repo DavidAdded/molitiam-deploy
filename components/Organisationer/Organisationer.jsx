@@ -1,6 +1,6 @@
 "use client";
 import "./Organisationer.css";
-
+import runSectionTextAnimation from "@animations/animations";
 import { useEffect, useState } from "react";
 
 const Organisationer = () => {
@@ -32,6 +32,12 @@ const Organisationer = () => {
 
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (!content) return; // Ensure content is loaded before running the animation
+    runSectionTextAnimation(".organisationer-content-wrapper-top h2", ".organisationer-content-wrapper-top p")
+  }, [content]);
+
 
   if (!content) return <div></div>;
   return (
