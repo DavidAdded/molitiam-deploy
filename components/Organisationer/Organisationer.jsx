@@ -61,7 +61,7 @@ const Organisationer = () => {
           start: "top center",
           onEnter: lottieRef.current.playOnShow(),
         });
-      }, 3000);
+      }, 1000);
       
       
     
