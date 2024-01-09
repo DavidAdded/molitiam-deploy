@@ -18,7 +18,7 @@ const Verksamheter = () => {
           },
         });
 
-        const cardsURL = `${process.env.NEXT_PUBLIC_API_URL}verksamheter-content-cards?locale=${lang}`;
+        const cardsURL = `${process.env.NEXT_PUBLIC_API_URL}verksamheter-content-cards?locale=${lang}&populate=*`;
         const cardsResponse = await fetch(cardsURL, {
           headers: {
             Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
@@ -41,11 +41,14 @@ const Verksamheter = () => {
     fetchData();
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     if (!content) return; // Ensure content is loaded before running the animation
-    runSectionTextAnimation(".verksamheter-content-wrapper-top h2", ".verksamheter-content-wrapper-top p")
+    runSectionTextAnimation(
+      ".verksamheter-content-wrapper-top h2",
+      ".verksamheter-content-wrapper-top p"
+    );
   }, [content]);
-  
+
   if (!content) return <div></div>;
 
   return (
@@ -66,21 +69,27 @@ useEffect(() => {
               </div>
               <div className="verksamheter-content-wrapper-bottom">
                 <div className="verksamheter-content-box-1">
-                  <img src="/NSS.svg" alt="NSS-Icon" />
+                  <img
+                    src={`${process.env.NEXT_PUBLIC_API_SLIM}${contentCard.data[0].attributes.Image.data.attributes.formats.thumbnail.url}`}
+                  ></img>
                   <p>{contentCard.data[0].attributes.PartnerDescription}</p>
                   <div className="verksamhet-corner-box-1"></div>
                   <div className="verksamhet-corner-box-2"></div>
                   <div className="verksamhet-corner-box-3"></div>
                 </div>
                 <div className="verksamheter-content-box-1">
-                  <img src="/NSS.svg" alt="NSS-Icon" />
+                  <img
+                    src={`${process.env.NEXT_PUBLIC_API_SLIM}${contentCard.data[1].attributes.Image.data.attributes.formats.thumbnail.url}`}
+                  ></img>
                   <p>{contentCard.data[1].attributes.PartnerDescription}</p>
                   <div className="verksamhet-corner-box-1"></div>
                   <div className="verksamhet-corner-box-2"></div>
                   <div className="verksamhet-corner-box-3"></div>
                 </div>
                 <div className="verksamheter-content-box-1">
-                  <img src="/NSS.svg" alt="NSS-Icon" />
+                  <img
+                    src={`${process.env.NEXT_PUBLIC_API_SLIM}${contentCard.data[2].attributes.Image.data.attributes.formats.thumbnail.url}`}
+                  ></img>
                   <p>{contentCard.data[2].attributes.PartnerDescription}</p>
                   <div className="verksamhet-corner-box-1"></div>
                   <div className="verksamhet-corner-box-2"></div>

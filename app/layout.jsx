@@ -10,15 +10,16 @@ export const metadata = {
 
 const RootLayout = ({ children }) => {
   return (
-   <html suppressHydrationWarning>
-     
+    <html suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-        <body suppressHydrationWarning>
+      <body suppressHydrationWarning>
         <div className="main">
           <Navbar></Navbar>
-          <main className="app"><div>{children}</div></main>
+          <main className="app">
+            <div>{children}</div>
+          </main>
           <Footer></Footer>
         </div>
       </body>
