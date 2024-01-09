@@ -1,12 +1,21 @@
 "use client";
 import "./Organisationer.css";
 import runSectionTextAnimation from "@animations/animations";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef} from "react";
+import { DotLottiePlayer, Controls, PlayerEvents } from "@dotlottie/react-player";
+import "@dotlottie/react-player/dist/index.css";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import gsap from "gsap";
+
+gsap.registerPlugin(ScrollTrigger);
+
 
 const Organisationer = () => {
   const lang = "sv";
   const [content, setContent] = useState(null);
+ 
 
+ 
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -33,6 +42,34 @@ const Organisationer = () => {
     fetchData();
   }, []);
 
+
+
+ const lottieRef = useRef();
+
+
+  
+
+  // Setup ScrollTrigger
+  useEffect(() => {
+    if (!content) return;
+
+    if(lottieRef.current) {
+      setTimeout(() => {
+
+        ScrollTrigger.create({
+        trigger: ".organisationer-content-wrapper-bottom",
+        start: "top center",
+        onEnter: lottieRef.current.playOnShow(),
+        });
+
+      }, 1000);
+      
+    
+    }
+   
+  }, [content, lottieRef]);
+
+
   useEffect(() => {
     if (!content) return; // Ensure content is loaded before running the animation
     runSectionTextAnimation(".organisationer-content-wrapper-top h2", ".organisationer-content-wrapper-top p")
@@ -57,7 +94,13 @@ const Organisationer = () => {
             </div>
 
             <div className="organisationer-content-wrapper-bottom">
-              <h1 style={{ color: "white", margin: "200px 0" }}>ANIMATION</h1>
+                <DotLottiePlayer
+                  lottieRef={lottieRef}
+                  src="/organisationer-5-sek.lottie"
+                  height={550}
+                  id="player"
+                >
+                </DotLottiePlayer>
             </div>
           </div>
         </div>

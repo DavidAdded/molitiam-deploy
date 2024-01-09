@@ -2,7 +2,8 @@
 import "./Tjanster.css";
 import { useEffect, useState } from "react";
 import runSectionTextAnimation from "@animations/animations";
-
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 const Tjanster = () => {
   const lang = "sv";
@@ -34,8 +35,31 @@ const Tjanster = () => {
     fetchData();
   }, []);
 
+gsap.registerPlugin(ScrollTrigger);
+
+  // Count-up animation function
+  const animateCountUp = (element) => {
+    const endValue = parseInt(element.getAttribute('data-target-value'));
+    // Set initial value to 0
+    element.innerText = 0;
+
+    gsap.to(element, {
+      innerText: endValue,
+      duration: 2,
+      ease: "power1.inOut",
+      snap: { innerText: 1 }, // Snap to integers
+      scrollTrigger: {
+        trigger: element,
+        start: "top bottom",
+        toggleActions: "play none none none",
+      },
+    });
+  };
+
    useEffect(() => {
-    if (!content) return; // Ensure content is loaded before running the animation
+    if (!content) return;
+    document.querySelectorAll(".count-up").forEach(animateCountUp);
+    // Ensure content is loaded before running the animation
     runSectionTextAnimation(".tjanster-content-wrapper h2")
   }, [content]);
 
@@ -67,17 +91,17 @@ const Tjanster = () => {
               <div className="tjanster-section-wrapper-bottom-content-wrapper">
                 <div className="tjanster-section-wrapper-bottom-content">
                   <img src="/tjanster-icon-left.svg" alt="Left" />{" "}
-                  <h5>{content.data[0].attributes.PercentLeft}%</h5>
+                  <h5><span className="count-up" data-target-value={content.data[0].attributes.PercentLeft} >{content.data[0].attributes.PercentLeft}</span>%</h5>
                   <p>{content.data[0].attributes.TextLeft}</p>
                 </div>
                 <div className="tjanster-section-wrapper-bottom-content">
                   <img src="/tjanster-icon-middle.svg" alt="Middle" />{" "}
-                  <h5>{content.data[0].attributes.PercentRight}%</h5>
+                  <h5><span className="count-up" data-target-value={content.data[0].attributes.PercentMiddle}>{content.data[0].attributes.PercentMiddle}</span>%</h5>
                   <p>{content.data[0].attributes.TextMiddle}</p>
                 </div>
                 <div className="tjanster-section-wrapper-bottom-content">
                   <img src="/tjanster-icon-right.svg" alt="Right" />{" "}
-                  <h5>{content.data[0].attributes.PercentRight}%</h5>
+                  <h5><span className="count-up" data-target-value={content.data[0].attributes.PercentRight}>{content.data[0].attributes.PercentRight}</span>%</h5>
                   <p>{content.data[0].attributes.TextRight}</p>
                 </div>
               </div>
