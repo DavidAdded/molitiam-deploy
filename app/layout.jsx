@@ -5,7 +5,7 @@ import Footer from "@components/Footer/Footer";
 
 export const metadata = {
   title: "crgroup",
-  description: "military things",
+  description: "CR Group",
 };
 
 const RootLayout = ({ children }) => {

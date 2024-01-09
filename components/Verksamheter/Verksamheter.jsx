@@ -30,6 +30,7 @@ const Verksamheter = () => {
           const cards = await cardsResponse.json();
           setContent(data);
           setContentCard(cards);
+          console.log(cards);
         } else {
           console.error("Failed to fetch content");
         }
@@ -70,7 +71,7 @@ const Verksamheter = () => {
               <div className="verksamheter-content-wrapper-bottom">
                 <div className="verksamheter-content-box-1">
                   <img
-                    src={`${process.env.NEXT_PUBLIC_API_SLIM}${contentCard.data[0].attributes.Image.data.attributes.formats.thumbnail.url}`}
+                    src={`${process.env.NEXT_PUBLIC_API_SLIM}${contentCard.data[0].attributes.PartnerIcon.data.attributes.url}`}
                   ></img>
                   <p>{contentCard.data[0].attributes.PartnerDescription}</p>
                   <div className="verksamhet-corner-box-1"></div>
@@ -79,7 +80,7 @@ const Verksamheter = () => {
                 </div>
                 <div className="verksamheter-content-box-1">
                   <img
-                    src={`${process.env.NEXT_PUBLIC_API_SLIM}${contentCard.data[1].attributes.Image.data.attributes.formats.thumbnail.url}`}
+                    src={`${process.env.NEXT_PUBLIC_API_SLIM}${contentCard.data[1].attributes.PartnerIcon.data.attributes.url}`}
                   ></img>
                   <p>{contentCard.data[1].attributes.PartnerDescription}</p>
                   <div className="verksamhet-corner-box-1"></div>
@@ -88,7 +89,7 @@ const Verksamheter = () => {
                 </div>
                 <div className="verksamheter-content-box-1">
                   <img
-                    src={`${process.env.NEXT_PUBLIC_API_SLIM}${contentCard.data[2].attributes.Image.data.attributes.formats.thumbnail.url}`}
+                    src={`${process.env.NEXT_PUBLIC_API_SLIM}${contentCard.data[2].attributes.PartnerIcon.data.attributes.url}`}
                   ></img>
                   <p>{contentCard.data[2].attributes.PartnerDescription}</p>
                   <div className="verksamhet-corner-box-1"></div>
