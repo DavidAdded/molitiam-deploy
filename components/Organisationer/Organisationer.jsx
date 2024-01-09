@@ -98,6 +98,7 @@ const Organisationer = () => {
                   lottieRef={lottieRef}
                   src="/organisationer-5-sek.lottie"
                   height={550}
+                  loop={false}
                   id="player"
                 >
                 </DotLottiePlayer>
