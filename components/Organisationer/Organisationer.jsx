@@ -54,15 +54,15 @@ const Organisationer = () => {
     if (!content) return;
 
     if(lottieRef.current) {
-      setTimeout(() => {
-
+      
+     setTimeout(() => {
         ScrollTrigger.create({
-        trigger: ".organisationer-content-wrapper-bottom",
-        start: "top center",
-        onEnter: lottieRef.current.playOnShow(),
+          trigger: ".organisationer-content-wrapper-bottom",
+          start: "top center",
+          onEnter: lottieRef.current.playOnShow(),
         });
-
-      }, 1000);
+      }, 3000);
+      
       
     
     }
