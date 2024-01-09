@@ -18,7 +18,7 @@ const Home = () => {
       <div id="tjanster"><Tjanster /></div>
       <div id="nationer"><Nationer /></div>
       <div id="organisationer"><Organisationer /></div>
-      <div id="verksamheter"><Verksamheter /></div>
+      {/* <div id="verksamheter"><Verksamheter /></div> */}
       <div id="nyheter"><Nyheter /></div>
       <div id="jobb"><Jobb /></div>
       <div id="kontakt"><Kontakt /></div>
