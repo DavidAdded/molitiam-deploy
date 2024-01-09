@@ -32,14 +32,14 @@ function animateElement(element, type, isHeader = false) {
 gsap.fromTo(
     split.lines,
     {
-      y: type === "lines" ? 5 : 0, // Y-offset for lines; for chars or words, it can be 0 or another value
+      y: type === "lines" ? 5 : 0, 
       opacity: 0,
     },
     {
       y: 0,
       opacity: 1,
       stagger: 0.1,
-      duration: type === "lines" ? 0.4 : 1, // Adjust duration based on the type
+      duration: type === "lines" ? 0.4 : 1, 
       delay: 0.5,
       scrollTrigger: {
         trigger: element,
@@ -55,17 +55,17 @@ gsap.fromTo(
 const runSectionTextAnimation = (hElements, pElements) => {
   const headers = document.querySelectorAll(hElements);
   headers.forEach((header) => {
-    animateElement(header, "lines", true); // Animating lines in headers
+    animateElement(header, "lines", true); 
   });
 
   const paragraphs = document.querySelectorAll(pElements);
   paragraphs.forEach((paragraph) => {
-    animateElement(paragraph, "lines"); // Animating lines in paragraphs
+    animateElement(paragraph, "lines"); 
   });
 
   const subHeaders = document.querySelectorAll(".sub-header-wrapper");
   subHeaders.forEach((subHeader) => {
-    animateElement(subHeader, "lines"); // Animating lines in sub-headers
+    animateElement(subHeader, "lines"); 
   });
 };
 
