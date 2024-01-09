@@ -8,10 +8,11 @@ export const metadata = {
   description: "military things",
 };
 
-const RootLayout = ({ children }) => {
+function RootLayout({
+  children,
+}) {
   return (
    <html suppressHydrationWarning>
-     
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
@@ -23,7 +24,7 @@ const RootLayout = ({ children }) => {
         </div>
       </body>
     </html>
-  );
-};
+  )
+}
 
 export default RootLayout;
