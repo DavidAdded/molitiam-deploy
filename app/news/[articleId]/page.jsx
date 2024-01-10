@@ -13,16 +13,6 @@ const Page = ({ params }) => {
     return dateString.replace(/-/g, "•");
   }
 
-  function formatArticleText(articleText) {
-    return articleText
-      .split("\n")
-      .map((line, index, array) => {
-        // Add <br> tag after each line, except for the last line
-        return index === array.length - 1 ? line : line + "<br>";
-      })
-      .join("");
-  }
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -54,16 +44,11 @@ const Page = ({ params }) => {
     };
 
     fetchData();
-
-    // Usage example in your component
   }, [params.articleId]);
 
   if (!article) return <div>Loading...</div>;
 
   const formattedDate = convertDateFormat(article.data.attributes.Date);
-  const formattedArticleText = formatArticleText(
-    article.data.attributes.ArticleText
-  );
 
   const handleReadMoreClick = (articleId) => {
     router.push(`/news/${articleId}`);
@@ -95,38 +80,34 @@ const Page = ({ params }) => {
                 // This will log the image URL to the console
 
                 return (
-                  <div
-                    key={article.id}
-                    className="nyheter-article-content-card"
-                  >
-                    <div className="nyheter-article-content-card-top">
-                      <img
-                        src={`${process.env.NEXT_PUBLIC_API_SLIM}${article.attributes.Image.data.attributes.formats.thumbnail.url}`}
-                      ></img>
-                    </div>
+                  <div key={article.id} className="nyheter-wrapper">
+                    <div className="nyheter-content-card">
+                      <div
+                        style={{
+                          backgroundImage: `url(${process.env.NEXT_PUBLIC_API_SLIM}${article.attributes.Image.data.attributes.formats.thumbnail.url})`,
+                        }}
+                        className="nyheter-content-card-top"
+                      ></div>
 
-                    <div className="nyheter-article-content-card-bottom">
-                      <div className="nyheter-article-content-card-text-wrapper">
-                        <div className="nyheter-article-date">
-                          {convertDateFormat(article.attributes.Date)}
-                        </div>
-                        <h3>{article.attributes.Titel}</h3>
-                        <div className="news-article-text-wrapper">
-                          <p
-                            dangerouslySetInnerHTML={{
-                              __html: formattedArticleText,
-                            }}
-                          ></p>
+                      <div className="nyheter-content-card-bottom">
+                        <div className="nyheter-content-card-text-wrapper">
+                          <div className="nyheter-date">
+                            {convertDateFormat(article.attributes.Date)}
+                          </div>
+                          <h3>{article.attributes.Titel}</h3>
+                          <p className="nyheter-paragraph-one">
+                            {article.attributes.ArticleText}
+                          </p>
                         </div>
                       </div>
-                      <div className="nyheter-article-las-mer">
-                        <div
-                          className="nyheter-article-las-mer-content"
-                          onClick={() => handleReadMoreClick(article.id)}
-                        >
-                          <p>LÄS MER</p>
-                          <img src="/right-arrow.svg" alt="Read More" />
-                        </div>
+                    </div>
+                    <div className="nyheter-las-mer">
+                      <div
+                        className="nyheter-las-mer-content"
+                        onClick={() => handleReadMoreClick(article.id)}
+                      >
+                        <p>LÄS MER</p>
+                        <img src="/right-arrow.svg" alt="Read More" />
                       </div>
                       <div className="bottom-corner-cover-up"></div>
                     </div>

@@ -67,31 +67,34 @@ const Page = () => {
                   // Assuming article.attributes.Image.attributes.url contains the image path// This will log the image URL to the console
 
                   return (
-                    <div key={article.id} className="nyheter-page-content-card">
-                      <div className="nyheter-page-content-card-top">
-                        <img
-                          src={`${process.env.NEXT_PUBLIC_API_SLIM}${article.attributes.Image.data.attributes.formats.thumbnail.url}`}
-                        ></img>
-                      </div>
+                    <div key={article.id} className="nyheter-wrapper">
+                      <div className="nyheter-content-card">
+                        <div
+                          style={{
+                            backgroundImage: `url(${process.env.NEXT_PUBLIC_API_SLIM}${article.attributes.Image.data.attributes.formats.thumbnail.url})`,
+                          }}
+                          className="nyheter-content-card-top"
+                        ></div>
 
-                      <div className="nyheter-page-content-card-bottom">
-                        <div className="nyheter-page-content-card-text-wrapper">
-                          <div className="nyheter-page-date">
-                            {convertDateFormat(article.attributes.Date)}
+                        <div className="nyheter-content-card-bottom">
+                          <div className="nyheter-content-card-text-wrapper">
+                            <div className="nyheter-date">
+                              {convertDateFormat(article.attributes.Date)}
+                            </div>
+                            <h3>{article.attributes.Titel}</h3>
+                            <p className="nyheter-paragraph-one">
+                              {article.attributes.ArticleText}
+                            </p>
                           </div>
-                          <h3>{article.attributes.Titel}</h3>
-                          <p className="nyheter-page-paragraph-one">
-                            {article.attributes.ArticleText}
-                          </p>
                         </div>
-                        <div className="nyheter-page-las-mer">
-                          <div
-                            className="nyheter-page-las-mer-content"
-                            onClick={() => handleReadMoreClick(article.id)}
-                          >
-                            <p>LÄS MER</p>
-                            <img src="/right-arrow.svg" alt="Read More" />
-                          </div>
+                      </div>
+                      <div className="nyheter-las-mer">
+                        <div
+                          className="nyheter-las-mer-content"
+                          onClick={() => handleReadMoreClick(article.id)}
+                        >
+                          <p>LÄS MER</p>
+                          <img src="/right-arrow.svg" alt="Read More" />
                         </div>
                         <div className="bottom-corner-cover-up"></div>
                       </div>
@@ -100,7 +103,6 @@ const Page = () => {
                 })}
               </div>
             </div>
-            <button onClick={handleClick}>Ladda fler nyheter</button>
           </div>
         </div>
       </div>
