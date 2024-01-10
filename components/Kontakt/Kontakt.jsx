@@ -57,8 +57,16 @@ const Kontakt = () => {
                         <h3>{contact.attributes.Name}</h3>
                         <h4>{contact.attributes.Title}</h4>
                       </div>
-                      <p>{contact.attributes.Email}</p>
-                      <p>{contact.attributes.Phone}</p>
+                      <p>
+                        <a href="mailto:{contact.attributes.Email}">
+                          {contact.attributes.Email}
+                        </a>
+                      </p>
+                      <p>
+                        <a href="tel:{contact.attributes.Phone}">
+                          {contact.attributes.Phone}
+                        </a>
+                      </p>
                     </div>
                   </div>
                 ))}
