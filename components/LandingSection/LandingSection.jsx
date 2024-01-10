@@ -48,10 +48,8 @@ const LandingSection = () => {
       sectionRef.current.querySelectorAll(".animation-header");
 
     targetElements.forEach((header) => {
-  
       const split = new SplitText(header, { type: "lines" });
 
-      
       gsap.from(split.lines, {
         scrollTrigger: {
           trigger: triggerElement,
@@ -66,40 +64,36 @@ const LandingSection = () => {
       });
     });
 
+    const image1 = document.querySelector(".picture-wrapper img");
+    const image2 = document.querySelector(".picture-wrapper div");
+    const wrapper = document.querySelector(".landing-section-wrapper");
 
-      const image1 = document.querySelector('.picture-wrapper img');
-      const image2 = document.querySelector('.picture-wrapper div');
-      const wrapper = document.querySelector('.landing-section-wrapper')
+    gsap.to([image1], {
+      scrollTrigger: {
+        trigger: wrapper,
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
 
-      gsap.to([image1], {
-        scrollTrigger: {
-          trigger: wrapper,
-          start: "top top", 
-          end: "bottom top", 
-          scrub: true
-        },
+      y: -100,
+      duration: 3,
+      ease: "none",
+    });
 
-        y: -100,
-        duration: 3, 
-        ease: "none"
-      });
+    gsap.to([image2], {
+      scrollTrigger: {
+        trigger: wrapper,
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
 
-       gsap.to([image2], {
-        scrollTrigger: {
-          trigger: wrapper,
-          start: "top top", 
-          end: "bottom top", 
-          scrub: true 
-        },
-
-        y:  100, 
-        duration: 3, 
-        ease: "none"
-      });
-
-
-      
-  }, [content]); 
+      y: 100,
+      duration: 3,
+      ease: "none",
+    });
+  }, [content]);
 
   if (!content) return <div></div>;
 

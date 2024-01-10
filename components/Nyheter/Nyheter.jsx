@@ -65,13 +65,14 @@ const Nyheter = () => {
                   // Assuming article.attributes.Image.attributes.url contains the image path// This will log the image URL to the console
 
                   return (
-                    <div className="nyheter-wrapper">
-                      <div key={article.id} className="nyheter-content-card">
-                        <div className="nyheter-content-card-top">
-                          <img
-                            src={`${process.env.NEXT_PUBLIC_API_SLIM}${article.attributes.Image.data.attributes.formats.thumbnail.url}`}
-                          ></img>
-                        </div>
+                    <div key={article.id} className="nyheter-wrapper">
+                      <div className="nyheter-content-card">
+                        <div
+                          style={{
+                            backgroundImage: `url(${process.env.NEXT_PUBLIC_API_SLIM}${article.attributes.Image.data.attributes.formats.thumbnail.url})`,
+                          }}
+                          className="nyheter-content-card-top"
+                        ></div>
 
                         <div className="nyheter-content-card-bottom">
                           <div className="nyheter-content-card-text-wrapper">
@@ -80,7 +81,7 @@ const Nyheter = () => {
                             </div>
                             <h3>{article.attributes.Titel}</h3>
                             <p className="nyheter-paragraph-one">
-                              {article.attributes.ParagraphOne}
+                              {article.attributes.ArtcielText}
                             </p>
                           </div>
                         </div>

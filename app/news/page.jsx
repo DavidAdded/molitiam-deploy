@@ -81,7 +81,7 @@ const Page = () => {
                           </div>
                           <h3>{article.attributes.Titel}</h3>
                           <p className="nyheter-page-paragraph-one">
-                            {article.attributes.ParagraphOne}
+                            {article.attributes.ArticleText}
                           </p>
                         </div>
                         <div className="nyheter-page-las-mer">

@@ -30,13 +30,11 @@ const Page = ({ params }) => {
           },
         });
 
-
         if (response.ok) {
           const data = await response.json();
           const articles = await articlesResponse.json();
           setArticle(data);
           setarticles(articles.data);
-   
         } else {
           console.error("Failed to fetch article");
         }
@@ -67,11 +65,7 @@ const Page = ({ params }) => {
             <h6>{formattedDate}</h6>
             <div className="news-article-text-wrapper">
               <h1>{article.data.attributes.Titel}</h1>
-              <p>{article.data.attributes.ParagraphOne}</p>
-              <h2>{article.data.attributes.TitelTwo}</h2>
-              <p>{article.data.attributes.ParagraphTwo}</p>
-              <h3>{article.data.attributes.Underrubrik}</h3>
-              <p>{article.data.attributes.ParagraphThree}</p>
+              <p>{article.data.attributes.ArticleText}</p>
             </div>
           </div>
         </div>
@@ -103,7 +97,7 @@ const Page = ({ params }) => {
                         </div>
                         <h3>{article.attributes.Titel}</h3>
                         <p className="nyheter-article-paragraph-one">
-                          {article.attributes.ParagraphOne}
+                          {article.attributes.ArticleText}
                         </p>
                       </div>
                       <div className="nyheter-article-las-mer">
