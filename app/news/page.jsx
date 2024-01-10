@@ -53,7 +53,7 @@ const Page = () => {
     fetchData();
   }, []);
 
-  if (!articles) return <div>Loading...</div>;
+  if (!articles) return <div></div>;
 
   return (
     <div className="news-page-section-wrapper">

@@ -13,15 +13,31 @@ const Home = () => {
   return (
     <div>
       <LandingSection />
-      <div id="syfte"><Syfte /></div>
-      <div id="omoss"><OmOss /></div>
-      <div id="tjanster"><Tjanster /></div>
-      <div id="nationer"><Nationer /></div>
-      <div id="organisationer"><Organisationer /></div>
-      <div id="verksamheter"><Verksamheter /></div>
-      <div id="nyheter"><Nyheter /></div>
-      <div id="jobb"><Jobb /></div>
-      <div id="kontakt"><Kontakt /></div>
+      <div id="syfte">
+        <Syfte />
+      </div>
+      <div id="omoss">
+        <OmOss />
+      </div>
+      <div id="tjanster">
+        <Tjanster />
+      </div>
+      <div id="nationer">
+        <Nationer />
+      </div>
+      <div id="organisationer">
+        <Organisationer />
+      </div>
+      {/*<div id="verksamheter"><Verksamheter /></div>*/}
+      <div id="nyheter">
+        <Nyheter />
+      </div>
+      <div id="jobb">
+        <Jobb />
+      </div>
+      <div id="kontakt">
+        <Kontakt />
+      </div>
       {/* Add Eng section here if needed */}
     </div>
   );
