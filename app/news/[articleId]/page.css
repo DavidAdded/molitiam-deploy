@@ -204,6 +204,7 @@
 .more-articles-section {
   display: flex;
   flex-direction: column;
+  gap: 34px;
 }
 
 @media (max-width: 991px) {

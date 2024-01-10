@@ -28,7 +28,9 @@ const Home = () => {
       <div id="organisationer">
         <Organisationer />
       </div>
-      {/*<div id="verksamheter"><Verksamheter /></div>*/}
+      <div id="verksamheter">
+        <Verksamheter />
+      </div>
       <div id="nyheter">
         <Nyheter />
       </div>
