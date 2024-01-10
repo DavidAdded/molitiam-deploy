@@ -53,8 +53,10 @@ const Kontakt = () => {
                       />
                     </div>
                     <div className="kontakt-item-bottom">
-                      <h3>{contact.attributes.Name}</h3>
-                      <h4>{contact.attributes.Title}</h4>
+                      <div>
+                        <h3>{contact.attributes.Name}</h3>
+                        <h4>{contact.attributes.Title}</h4>
+                      </div>
                       <p>{contact.attributes.Email}</p>
                       <p>{contact.attributes.Phone}</p>
                     </div>

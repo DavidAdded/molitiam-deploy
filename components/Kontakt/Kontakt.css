@@ -62,9 +62,9 @@
 
 .kontakt-item h4 {
   font-family: "Space Mono";
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
-  line-height: 150%;
+  line-height: 120%;
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }
@@ -78,6 +78,7 @@
 
 .kontakt-item-top img {
   width: 100%;
+  max-width: 200px;
 }
 
 .contact-image {
