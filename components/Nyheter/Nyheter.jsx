@@ -63,7 +63,10 @@ const Nyheter = () => {
               <div className="nyheter-content-boxes">
                 {articles.map((article) => {
                   // Assuming article.attributes.Image.attributes.url contains the image path// This will log the image URL to the console
-
+                  const articleDate = article.attributes.Date;
+                  const articleImage =
+                    article.attributes.Image.data.attributes.formats.thumbnail
+                      .url;
                   return (
                     <div
                       onClick={() => handleReadMoreClick(article.id)}
@@ -71,17 +74,23 @@ const Nyheter = () => {
                       className="nyheter-wrapper"
                     >
                       <div className="nyheter-content-card">
-                        <div
-                          style={{
-                            backgroundImage: `url(${process.env.NEXT_PUBLIC_API_SLIM}${article.attributes.Image.data.attributes.formats.thumbnail.url})`,
-                          }}
-                          className="nyheter-content-card-top"
-                        ></div>
+                        {articleImage ? (
+                          <div
+                            style={{
+                              backgroundImage: `url(${process.env.NEXT_PUBLIC_API_SLIM}${articleImage})`,
+                            }}
+                            className="nyheter-content-card-top"
+                          ></div>
+                        ) : (
+                          <div className="nyheter-content-card-top"></div>
+                        )}
 
                         <div className="nyheter-content-card-bottom">
                           <div className="nyheter-content-card-text-wrapper">
                             <div className="nyheter-date">
-                              {convertDateFormat(article.attributes.Date)}
+                              {articleDate
+                                ? convertDateFormat(articleDate)
+                                : ""}
                             </div>
                             <h3>{article.attributes.Titel}</h3>
                             <p className="nyheter-paragraph-one">
