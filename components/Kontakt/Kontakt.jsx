@@ -58,12 +58,12 @@ const Kontakt = () => {
                         <h4>{contact.attributes.Title}</h4>
                       </div>
                       <p>
-                        <a href="mailto:{contact.attributes.Email}">
+                        <a href={`mailto:${contact.attributes.Email}`}>
                           {contact.attributes.Email}
                         </a>
                       </p>
                       <p>
-                        <a href="tel:{contact.attributes.Phone}">
+                        <a href={`tel:${contact.attributes.Phone}`}>
                           {contact.attributes.Phone}
                         </a>
                       </p>
