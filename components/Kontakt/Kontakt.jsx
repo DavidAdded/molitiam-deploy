@@ -31,6 +31,9 @@ const Kontakt = () => {
     fetchData();
   }, []);
 
+  const contactImage =
+    contact.attributes.Image.data.attributes.formats.thumbnail.url;
+
   if (!contacts) return <div></div>;
 
   return (
@@ -46,12 +49,19 @@ const Kontakt = () => {
               <div className="kontakt-grid-wrapper">
                 {contacts.map((contact, index) => (
                   <div key={index} className="kontakt-item">
-                    <div className="kontakt-item-top">
-                      <img
-                        src={`${process.env.NEXT_PUBLIC_API_SLIM}${contact.attributes.Image.data.attributes.formats.thumbnail.url}`}
-                      />
-                    </div>
+                    {contactImage ? (
+                      <div className="kontakt-item-top">
+                        <img
+                          className="contact-image"
+                          src={`${process.env.NEXT_PUBLIC_API_SLIM}${contactImage}`}
+                        />
+                      </div>
+                    ) : (
+                      <div />
+                    )}
                     <div className="kontakt-item-bottom">
+                      {" "}
+                      : <div></div>
                       <h3>{contact.attributes.Name}</h3>
                       <h4>{contact.attributes.Title}</h4>
                       <p>{contact.attributes.Email}</p>

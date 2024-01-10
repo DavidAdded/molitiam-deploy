@@ -80,6 +80,10 @@
   width: 100%;
 }
 
+.contact-image {
+  filter: drop-shadow(-20px -20px 0px rgba(0, 0, 0, 0.1));
+}
+
 /* Styles for screens up to 991px wide */
 
 @media (max-width: 991px) {
