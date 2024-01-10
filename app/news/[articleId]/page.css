@@ -1,5 +1,7 @@
 .nyheter-wrapper {
-  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  max-width: 350px;
   width: 100%;
 }
 
@@ -212,13 +214,13 @@
 }
 
 @media (max-width: 991px) {
-  .news-grid {
+  .more-articles-wrapper {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 478px) {
-  .news-grid {
+  .more-articles-wrapper {
     grid-template-columns: 1fr;
   }
 

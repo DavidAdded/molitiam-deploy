@@ -35,7 +35,9 @@
 }
 
 .nyheter-wrapper {
-  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  max-width: 350px;
   width: 100%;
 }
 
