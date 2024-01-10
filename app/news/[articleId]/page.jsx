@@ -65,7 +65,7 @@ const Page = ({ params }) => {
             <h6>{formattedDate}</h6>
             <div className="news-article-text-wrapper">
               <h1>{article.data.attributes.Titel}</h1>
-              <div>{article.data.attributes.ArticleText}</div>
+              <p>{article.data.attributes.ArticleText}</p>
             </div>
           </div>
         </div>
