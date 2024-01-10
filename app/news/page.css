@@ -150,6 +150,7 @@
 
 .news-grid {
   display: grid;
+  justify-items: center;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   gap: 40px;
@@ -157,31 +158,21 @@
 
 /* Styles for screens up to 991px wide */
 
-@media (max-width: 1300px) {
+@media (max-width: 991px) {
   .news-grid {
     grid-template-columns: repeat(2, 1fr);
-    /* Adjust to 2 columns */
   }
 
   .nyheter-page-content-card {
-    /* Adjust width for better fit */
   }
-
-  /* Additional responsive styles can be added here */
 }
-
-/* Styles for screens up to 478px wide */
 
 @media (max-width: 478px) {
   .news-grid {
     grid-template-columns: 1fr;
-    /* Change to a single column layout */
   }
 
   .nyheter-page-las-mer {
     margin-right: 25px;
-    /* Adjust margin for alignment */
   }
-
-  /* Additional responsive styles can be added here */
 }
