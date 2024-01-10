@@ -81,7 +81,7 @@ const Nyheter = () => {
                             </div>
                             <h3>{article.attributes.Titel}</h3>
                             <p className="nyheter-paragraph-one">
-                              {article.attributes.ArtcielText}
+                              {article.attributes.ArticleText}
                             </p>
                           </div>
                         </div>
