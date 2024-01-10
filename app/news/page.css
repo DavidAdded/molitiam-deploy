@@ -1,7 +1,11 @@
 /* Base styles - applied for all screen sizes */
 
 .news-page-section-wrapper {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: #f5f5f5;
+  background-image: url(/nyheter-background.png);
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
 }
 
 .news-page-section-wrapper h1 {

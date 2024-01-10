@@ -55,21 +55,23 @@ const Page = ({ params }) => {
   };
 
   return (
-    <div className="news-article-section-wrapper">
-      <div className="padding-global">
-        <div className="container-large">
-          <div className="news-article-content-wrapper">
-            <img
-              src={`${process.env.NEXT_PUBLIC_API_SLIM}${article.data.attributes.Image.data.attributes.formats.thumbnail.url}`}
-            />
-            <h6>{formattedDate}</h6>
-            <div className="news-article-text-wrapper">
-              <h1>{article.data.attributes.Titel}</h1>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: article.data.attributes.ArticleText,
-                }}
-              ></p>
+    <>
+      <div className="news-article-section-wrapper">
+        <div className="padding-global">
+          <div className="container-large">
+            <div className="news-article-content-wrapper">
+              <img
+                src={`${process.env.NEXT_PUBLIC_API_SLIM}${article.data.attributes.Image.data.attributes.formats.thumbnail.url}`}
+              />
+              <h6>{formattedDate}</h6>
+              <div className="news-article-text-wrapper">
+                <h1>{article.data.attributes.Titel}</h1>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: article.data.attributes.ArticleText,
+                  }}
+                ></p>
+              </div>
             </div>
           </div>
         </div>
@@ -122,7 +124,7 @@ const Page = ({ params }) => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

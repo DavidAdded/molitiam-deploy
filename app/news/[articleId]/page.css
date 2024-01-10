@@ -29,6 +29,11 @@
   letter-spacing: 0.05em;
   text-align: left;
   color: rgba(63, 63, 63, 1);
+  background-color: #f5f5f5;
+  background-image: url(/nyheter-background.png);
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
 }
 
 .news-article-text-wrapper p {
