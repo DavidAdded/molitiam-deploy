@@ -201,6 +201,11 @@
   margin-top: 60px;
 }
 
+.more-articles-section {
+  display: flex;
+  flex-direction: column;
+}
+
 @media (max-width: 991px) {
   .news-grid {
     grid-template-columns: repeat(2, 1fr);

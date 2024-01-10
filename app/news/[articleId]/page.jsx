@@ -79,47 +79,51 @@ const Page = ({ params }) => {
       <div className="more-articles-content-wrapper">
         <div className="padding-global">
           <div className="container-large">
-            <h2>Fler artiklar</h2>
-            <div className="more-articles-wrapper">
-              {articles.map((article) => {
-                // Assuming article.attributes.Image.attributes.url contains the image path
-                // This will log the image URL to the console
+            <div className="padding-section-large">
+              <div className="more-articles-section">
+                <h2>Fler artiklar</h2>
+                <div className="more-articles-wrapper">
+                  {articles.map((article) => {
+                    // Assuming article.attributes.Image.attributes.url contains the image path
+                    // This will log the image URL to the console
 
-                return (
-                  <div
-                    onClick={() => handleReadMoreClick(article.id)}
-                    key={article.id}
-                    className="nyheter-wrapper"
-                  >
-                    <div className="nyheter-content-card">
+                    return (
                       <div
-                        style={{
-                          backgroundImage: `url(${process.env.NEXT_PUBLIC_API_SLIM}${article.attributes.Image.data.attributes.formats.thumbnail.url})`,
-                        }}
-                        className="nyheter-content-card-top"
-                      ></div>
+                        onClick={() => handleReadMoreClick(article.id)}
+                        key={article.id}
+                        className="nyheter-wrapper"
+                      >
+                        <div className="nyheter-content-card">
+                          <div
+                            style={{
+                              backgroundImage: `url(${process.env.NEXT_PUBLIC_API_SLIM}${article.attributes.Image.data.attributes.formats.thumbnail.url})`,
+                            }}
+                            className="nyheter-content-card-top"
+                          ></div>
 
-                      <div className="nyheter-content-card-bottom">
-                        <div className="nyheter-content-card-text-wrapper">
-                          <div className="nyheter-date">
-                            {convertDateFormat(article.attributes.Date)}
+                          <div className="nyheter-content-card-bottom">
+                            <div className="nyheter-content-card-text-wrapper">
+                              <div className="nyheter-date">
+                                {convertDateFormat(article.attributes.Date)}
+                              </div>
+                              <h3>{article.attributes.Titel}</h3>
+                              <p className="nyheter-paragraph-one">
+                                {article.attributes.ArticleText}
+                              </p>
+                            </div>
                           </div>
-                          <h3>{article.attributes.Titel}</h3>
-                          <p className="nyheter-paragraph-one">
-                            {article.attributes.ArticleText}
-                          </p>
+                        </div>
+                        <div className="nyheter-las-mer">
+                          <div className="nyheter-las-mer-content">
+                            <p>LÄS MER</p>
+                            <img src="/right-arrow.svg" alt="Read More" />
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="nyheter-las-mer">
-                      <div className="nyheter-las-mer-content">
-                        <p>LÄS MER</p>
-                        <img src="/right-arrow.svg" alt="Read More" />
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           </div>
         </div>
