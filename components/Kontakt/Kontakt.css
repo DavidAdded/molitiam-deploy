@@ -30,8 +30,6 @@
 
 .kontakt-grid-wrapper {
   display: flex;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns */
-  grid-template-rows: 1fr;
   gap: 32px;
   padding: 0;
   margin: 0;
@@ -39,11 +37,11 @@
   height: 100%;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
 }
 
 .kontakt-item {
   display: flex;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   text-align: center;
