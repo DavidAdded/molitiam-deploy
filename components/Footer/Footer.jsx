@@ -15,7 +15,7 @@ const Footer = () => {
 
                   <p>CR Group AB</p>
                   <p>Hovslagargatan 5b</p>
-                  <p>Blaseholmen, Stockholm</p>
+                  <p>Blasieholmen, Stockholm</p>
                   <p>+46 8 551 102 40</p>
                   <p>info@cr.se</p>
                   <div className="copyright">

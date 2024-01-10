@@ -3,7 +3,6 @@ import "./OmOss.css";
 import { useEffect, useState } from "react";
 import runSectionTextAnimation from "@animations/animations";
 
-
 const OmOss = () => {
   const lang = "sv";
   const [content, setContent] = useState(null);
@@ -36,7 +35,10 @@ const OmOss = () => {
 
   useEffect(() => {
     if (!content) return; // Ensure content is loaded before running the animation
-    runSectionTextAnimation(".omoss-section-column h2", ".omoss-section-column p")
+    runSectionTextAnimation(
+      ".omoss-section-column h2",
+      ".omoss-section-column p"
+    );
   }, [content]);
 
   if (!content) return <div></div>;

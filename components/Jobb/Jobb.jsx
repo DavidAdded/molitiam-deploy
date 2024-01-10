@@ -40,6 +40,10 @@ const Jobb = () => {
     );
   }, [content]);
 
+  const handleClick = () => {
+    window.open("https://cresiliens.teamtailor.com/", "_blank");
+  };
+
   if (!content) return <div></div>;
 
   return (
@@ -58,7 +62,7 @@ const Jobb = () => {
                 __html: content.data[0].attributes.Text,
               }}
             ></p>
-            <button>se lediga tjänster</button>
+            <button onClick={handleClick}>se lediga tjänster</button>
           </div>
         </div>
       </div>
