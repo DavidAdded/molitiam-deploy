@@ -22,7 +22,7 @@
 
 .news-article-text-wrapper {
   width: 100%;
-  max-width: 900px;
+  max-width: 800px;
 }
 
 .news-article-text-wrapper h1 {
@@ -205,6 +205,11 @@
   display: flex;
   flex-direction: column;
   gap: 34px;
+}
+
+.news-main-image {
+  width: 100%;
+  max-width: 800px;
 }
 
 @media (max-width: 991px) {
