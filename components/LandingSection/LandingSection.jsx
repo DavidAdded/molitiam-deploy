@@ -5,6 +5,7 @@ import gsap from "gsap";
 import ScrollTrigger from "@utils/ScrollTrigger";
 import SplitText from "@utils/SplitText";
 import { useEffect, useRef, useState } from "react";
+import runSectionTextAnimation from "@animations/animations";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -93,9 +94,8 @@ const LandingSection = () => {
       duration: 3,
       ease: "none",
     });
+    runSectionTextAnimation(".text-wrapper p", undefined, 0, 1);
   }, [content]);
-
-  if (!content) return <div></div>;
 
   return (
     <div className="landing-section-wrapper">
@@ -107,12 +107,17 @@ const LandingSection = () => {
                 <img src="/camoimage.png" alt="Landing picture" />
                 <div className="landing-grey-image"></div>
               </div>
-              <div className="text-wrapper">
-                <h1 className="animation-header">
-                  {content.data[0].attributes.H1}
-                </h1>
-                <p>{content.data[0].attributes.SecondText}</p>
-              </div>
+
+              {!content ? (
+                <div></div>
+              ) : (
+                <div className="text-wrapper">
+                  <h1 className="animation-header">
+                    {content.data[0].attributes.H1}
+                  </h1>
+                  <p>{content.data[0].attributes.SecondText}</p>
+                </div>
+              )}
             </div>
           </div>
         </div>

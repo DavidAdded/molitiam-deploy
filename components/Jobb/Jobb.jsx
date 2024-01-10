@@ -3,7 +3,6 @@ import "./Jobb.css";
 import { useEffect, useState } from "react";
 import runSectionTextAnimation from "@animations/animations";
 
-
 const Jobb = () => {
   const lang = "sv";
   const [content, setContent] = useState(null);
@@ -33,9 +32,12 @@ const Jobb = () => {
     fetchData();
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     if (!content) return; // Ensure content is loaded before running the animation
-    runSectionTextAnimation(".jobb-content-wrapper h1", ".jobb-content-wrapper p")
+    runSectionTextAnimation(
+      ".jobb-content-wrapper h1",
+      ".jobb-content-wrapper p"
+    );
   }, [content]);
 
   if (!content) return <div></div>;
@@ -51,7 +53,11 @@ useEffect(() => {
               <h6> {content.data[0].attributes.miniHeadline} </h6>
             </div>
             <h1>{content.data[0].attributes.H1}</h1>
-            <p>{content.data[0].attributes.Text}</p>
+            <p
+              dangerouslySetInnerHTML={{
+                __html: content.data[0].attributes.Text,
+              }}
+            ></p>
             <button>se lediga tjänster</button>
           </div>
         </div>

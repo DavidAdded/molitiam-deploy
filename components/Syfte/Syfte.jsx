@@ -5,8 +5,6 @@ import { useEffect, useState } from "react";
 
 import runSectionTextAnimation from "@animations/animations";
 
-
-
 const Syfte = () => {
   const lang = "sv";
   const [content, setContent] = useState(null);
@@ -39,29 +37,31 @@ const Syfte = () => {
   useEffect(() => {
     if (!content) return; // Ensure content is loaded before running the animation
 
-    runSectionTextAnimation(".syfte-section-wrapper h2", ".syfte-section-wrapper p")
-
-
+    runSectionTextAnimation(
+      ".syfte-section-wrapper h2",
+      ".syfte-section-wrapper p"
+    );
   }, [content]);
 
-  
-
-  if (!content) return <div></div>;
   return (
     <div className="syfte-section-wrapper">
       <div className="padding-global">
         <div className="container-large">
           <div className="padding-section-large">
-            <div className="syfte-content-wrapper">
-              <div className="sub-header-wrapper">
-                <img src="/prefix-icon.svg" alt="" />
-                <h6> {content.data[0].attributes.miniHeadline} </h6>
+            {!content ? (
+              <div></div>
+            ) : (
+              <div className="syfte-content-wrapper">
+                <div className="sub-header-wrapper">
+                  <img src="/prefix-icon.svg" alt="" />
+                  <h6> {content.data[0].attributes.miniHeadline} </h6>
+                </div>
+                <h2> {content.data[0].attributes.H1}</h2>
+                <div>
+                  <p>{content.data[0].attributes.Text}</p>
+                </div>
               </div>
-              <h2> {content.data[0].attributes.H1}</h2>
-              <div>
-                <p>{content.data[0].attributes.Text}</p>
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

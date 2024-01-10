@@ -38,12 +38,12 @@ const Navbar = () => {
               </div>
               <div className="navbar-links">
                 <div className="hamburger-wrapper">
-                  <Link href="#syfte">{linkLabels.syfte}</Link>
-                  <Link href="#omoss">{linkLabels.omoss}</Link>
-                  <Link href="#tjanster">{linkLabels.tjanster}</Link>
-                  <Link href="#nyheter">{linkLabels.nyheter}</Link>
-                  <Link href="#verksamheter">{linkLabels.verksamheter}</Link>
-                  <Link href="#jobb">{linkLabels.jobb}</Link>
+                  <Link href="/#syfte">{linkLabels.syfte}</Link>
+                  <Link href="/#omoss">{linkLabels.omoss}</Link>
+                  <Link href="/#tjanster">{linkLabels.tjanster}</Link>
+                  <Link href="/#nyheter">{linkLabels.nyheter}</Link>
+                  <Link href="/#verksamheter">{linkLabels.verksamheter}</Link>
+                  <Link href="/#jobb">{linkLabels.jobb}</Link>
                 </div>
                 <div className="navbar-buttons">
                   <Link href="#kontakt">

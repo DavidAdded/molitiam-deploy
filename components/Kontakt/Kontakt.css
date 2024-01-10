@@ -121,6 +121,9 @@
   .kontakt-item p {
     font-size: 14px; /* Smaller font size */
   }
-
+  .kontakt-section-wrapper {
+    background-image: url("/kontakt-background-mobil.png");
+    background-size: contain;
+  }
   /* Additional styles can be added here as needed */
 }

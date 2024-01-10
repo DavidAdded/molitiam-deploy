@@ -5,9 +5,9 @@ import SplitText from "@utils/SplitText";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function animateElement(element, type, isHeader = false) {
+function animateElement(element, type, isHeader = false, delay) {
+  console.log(element);
   const split = new SplitText(element, { type: type });
-
   if (isHeader) {
     gsap.fromTo(
       split.lines,
@@ -50,23 +50,29 @@ function animateElement(element, type, isHeader = false) {
   }
 }
 
-const runSectionTextAnimation = (hElements, pElements) => {
+const runSectionTextAnimation = (
+  hElements,
+  pElements,
+  time = 1000,
+  delay = 0
+) => {
   setTimeout(() => {
     const headers = document.querySelectorAll(hElements);
     headers.forEach((header) => {
-      animateElement(header, "lines", true);
+      animateElement(header, "lines", true, delay);
     });
-
-    const paragraphs = document.querySelectorAll(pElements);
-    paragraphs.forEach((paragraph) => {
-      animateElement(paragraph, "lines");
-    });
+    if (pElements !== undefined) {
+      const paragraphs = document.querySelectorAll(pElements);
+      paragraphs.forEach((paragraph) => {
+        animateElement(paragraph, "lines", false, delay);
+      });
+    }
 
     const subHeaders = document.querySelectorAll(".sub-header-wrapper");
     subHeaders.forEach((subHeader) => {
-      animateElement(subHeader, "lines");
+      animateElement(subHeader, "lines", false, delay);
     });
-  }, 1000);
+  }, time);
 };
 
 export default runSectionTextAnimation;
