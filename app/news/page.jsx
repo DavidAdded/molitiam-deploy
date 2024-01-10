@@ -97,7 +97,6 @@ const Page = () => {
                           <p>LÄS MER</p>
                           <img src="/right-arrow.svg" alt="Read More" />
                         </div>
-                        <div className="bottom-corner-cover-up"></div>
                       </div>
                     </div>
                   );
