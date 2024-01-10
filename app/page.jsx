@@ -40,7 +40,6 @@ const Home = () => {
       <div id="kontakt">
         <Kontakt />
       </div>
-      {/* Add Eng section here if needed */}
     </div>
   );
 };
