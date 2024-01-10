@@ -2,7 +2,7 @@
 
 .kontakt-section-wrapper {
   background-image: url("/kontakt-background.png");
-  background-size: cover;
+  background-size: contain;
 }
 
 .kontakt-content-wrapper {
@@ -43,7 +43,7 @@
 .kontakt-item {
   display: flex;
   width: 100%;
-  max-width: 300px;
+  max-width: 250px;
   flex-direction: column;
   justify-content: center;
   text-align: center;
