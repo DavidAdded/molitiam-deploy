@@ -13,6 +13,16 @@ const Page = ({ params }) => {
     return dateString.replace(/-/g, "•");
   }
 
+  function formatArticleText(articleText) {
+    return articleText
+      .split("\n")
+      .map((line, index, array) => {
+        // Add <br> tag after each line, except for the last line
+        return index === array.length - 1 ? line : line + "<br>";
+      })
+      .join("");
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -44,11 +54,16 @@ const Page = ({ params }) => {
     };
 
     fetchData();
+
+    // Usage example in your component
   }, [params.articleId]);
 
   if (!article) return <div>Loading...</div>;
 
   const formattedDate = convertDateFormat(article.data.attributes.Date);
+  const formattedArticleText = formatArticleText(
+    article.data.attributes.ArticleText
+  );
 
   const handleReadMoreClick = (articleId) => {
     router.push(`/news/${articleId}`);
@@ -96,9 +111,13 @@ const Page = ({ params }) => {
                           {convertDateFormat(article.attributes.Date)}
                         </div>
                         <h3>{article.attributes.Titel}</h3>
-                        <p className="nyheter-article-paragraph-one">
-                          {article.attributes.ArticleText}
-                        </p>
+                        <div className="news-article-text-wrapper">
+                          <p
+                            dangerouslySetInnerHTML={{
+                              __html: formattedArticleText,
+                            }}
+                          ></p>
+                        </div>
                       </div>
                       <div className="nyheter-article-las-mer">
                         <div
