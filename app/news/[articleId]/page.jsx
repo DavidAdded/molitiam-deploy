@@ -23,7 +23,7 @@ const Page = ({ params }) => {
           },
         });
 
-        const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?id_ne=${params.articleId}&sort=Date:desc&pagination[limit]=3&populate=*&locale=${lang}`;
+        const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?filters[id][$ne]=${params.articleId}&sort=Date:desc&pagination[limit]=3&populate=*&locale=${lang}`;
         const articlesResponse = await fetch(articlesURL, {
           headers: {
             Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
@@ -46,7 +46,7 @@ const Page = ({ params }) => {
     fetchData();
   }, [params.articleId]);
 
-  if (!article) return <div>Loading...</div>;
+  if (!article) return <div></div>;
 
   const formattedDate = convertDateFormat(article.data.attributes.Date);
 
