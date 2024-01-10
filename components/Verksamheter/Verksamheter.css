@@ -16,7 +16,7 @@
   align-items: center;
   max-width: 80%;
   width: 100%;
-  max-width:900px;
+  max-width: 900px;
   gap: 10px;
 }
 
@@ -53,7 +53,7 @@
   text-align: left;
   padding: 40px 40px 60px 40px;
   width: 100%;
-  max-width:300px;
+  max-width: 350px;
   border: solid 1px #8a684a;
 }
 
