@@ -1,5 +1,6 @@
 .nyheter-wrapper {
   cursor: pointer;
+  width: 100%;
 }
 
 .news-article-content-wrapper {

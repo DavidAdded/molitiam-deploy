@@ -32,6 +32,7 @@
 
 .nyheter-wrapper {
   cursor: pointer;
+  width: 100%;
 }
 
 .nyheter-content-card {

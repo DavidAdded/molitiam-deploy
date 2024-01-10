@@ -75,9 +75,9 @@ const Page = ({ params }) => {
         </div>
       </div>
       <div className="more-articles-content-wrapper">
-        <h2>Fler artiklar</h2>
         <div className="padding-global">
           <div className="container-large">
+            <h2>Fler artiklar</h2>
             <div className="more-articles-wrapper">
               {articles.map((article) => {
                 // Assuming article.attributes.Image.attributes.url contains the image path
