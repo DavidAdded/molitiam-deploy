@@ -67,7 +67,11 @@ const Page = () => {
                   // Assuming article.attributes.Image.attributes.url contains the image path// This will log the image URL to the console
 
                   return (
-                    <div key={article.id} className="nyheter-wrapper">
+                    <div
+                      onClick={() => handleReadMoreClick(article.id)}
+                      key={article.id}
+                      className="nyheter-wrapper"
+                    >
                       <div className="nyheter-content-card">
                         <div
                           style={{
@@ -89,10 +93,7 @@ const Page = () => {
                         </div>
                       </div>
                       <div className="nyheter-las-mer">
-                        <div
-                          className="nyheter-las-mer-content"
-                          onClick={() => handleReadMoreClick(article.id)}
-                        >
+                        <div className="nyheter-las-mer-content">
                           <p>LÄS MER</p>
                           <img src="/right-arrow.svg" alt="Read More" />
                         </div>

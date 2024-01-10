@@ -30,6 +30,10 @@
   margin-top: 60px;
 }
 
+.nyheter-wrapper {
+  cursor: pointer;
+}
+
 .nyheter-content-card {
   padding: 0;
   display: flex;

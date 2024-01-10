@@ -23,7 +23,7 @@ const Page = ({ params }) => {
           },
         });
 
-        const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&pagination[limit]=3&populate=*&locale=${lang}`;
+        const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?id_ne=${params.articleId}&sort=Date:desc&pagination[limit]=3&populate=*&locale=${lang}`;
         const articlesResponse = await fetch(articlesURL, {
           headers: {
             Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
@@ -80,7 +80,11 @@ const Page = ({ params }) => {
                 // This will log the image URL to the console
 
                 return (
-                  <div key={article.id} className="nyheter-wrapper">
+                  <div
+                    onClick={() => handleReadMoreClick(article.id)}
+                    key={article.id}
+                    className="nyheter-wrapper"
+                  >
                     <div className="nyheter-content-card">
                       <div
                         style={{
@@ -102,10 +106,7 @@ const Page = ({ params }) => {
                       </div>
                     </div>
                     <div className="nyheter-las-mer">
-                      <div
-                        className="nyheter-las-mer-content"
-                        onClick={() => handleReadMoreClick(article.id)}
-                      >
+                      <div className="nyheter-las-mer-content">
                         <p>LÄS MER</p>
                         <img src="/right-arrow.svg" alt="Read More" />
                       </div>

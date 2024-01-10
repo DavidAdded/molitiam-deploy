@@ -1,3 +1,7 @@
+.nyheter-wrapper {
+  cursor: pointer;
+}
+
 .news-article-content-wrapper {
   display: flex;
   flex-direction: column;
