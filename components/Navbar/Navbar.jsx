@@ -70,7 +70,7 @@ const toggleLanguage = () => {
   }, [langState]);
 
 
-  const baseLink = langState === "sv" ? "" : "/en";
+  const baseLink = langState === "sv" ? "/" : "/en";
 
   return (
     <nav className="navbar">

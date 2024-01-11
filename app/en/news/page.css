@@ -164,9 +164,6 @@
   .news-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .nyheter-page-content-card {
-  }
 }
 
 @media (max-width: 478px) {
