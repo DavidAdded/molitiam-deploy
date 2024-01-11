@@ -56,22 +56,39 @@ const runSectionTextAnimation = (
   time = 1000,
   delay = 0
 ) => {
+ const headers = document.querySelectorAll(hElements);
+ const paragraphs = document.querySelectorAll(pElements);
+     const subHeaders = document.querySelectorAll(".sub-header-wrapper");
+
+     headers.forEach((header) => {
+       header.style.opacity = 0;
+     });
+      if (pElements !== undefined) {
+        paragraphs.forEach((paragraph) => {
+          paragraph.style.opacity = 0;
+        });
+      }
+      subHeaders.forEach((subHeader) => {
+        subHeader.style.opacity = 0;
+      })
+
   setTimeout(() => {
-    const headers = document.querySelectorAll(hElements);
     headers.forEach((header) => {
+      header.style.opacity = 1;
       animateElement(header, "lines", true, delay);
     });
     if (pElements !== undefined) {
-      const paragraphs = document.querySelectorAll(pElements);
+      
       paragraphs.forEach((paragraph) => {
+        paragraph.style.opacity = 1;
         animateElement(paragraph, "lines", false, delay);
       });
     }
-
-    const subHeaders = document.querySelectorAll(".sub-header-wrapper");
     subHeaders.forEach((subHeader) => {
+      subHeader.style.opacity = 1;
       animateElement(subHeader, "lines", false, delay);
     });
+    
   }, time);
 };
 

@@ -43,7 +43,7 @@ const LandingSection = (props) => {
 
   useEffect(() => {
     if (!content) return;
-
+    
     const triggerElement = sectionRef.current.querySelector(
       ".landing-content-wrapper"
     );

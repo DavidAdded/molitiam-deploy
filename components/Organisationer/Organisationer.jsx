@@ -53,9 +53,7 @@ const lang = props.lang;
 
   // Setup ScrollTrigger
   useEffect(() => {
-    if (!content || !lottieRef.current) return;
-
-    
+    if (!content || !lottieRef.current) return;
       
     const timeoutId = setTimeout(() => {
         ScrollTrigger.create({
