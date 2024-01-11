@@ -2,10 +2,10 @@
 import "./Kontakt.css";
 import { useEffect, useState } from "react";
 
-const Kontakt = () => {
-  const lang = "sv";
+const Kontakt = ({params}) => {
+  const lang = params.locales;
   const [contacts, setContacts] = useState(null);
-
+  const contactText = lang === "sv" ? "Kontakt" : "Contact";
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -41,7 +41,7 @@ const Kontakt = () => {
             <div className="kontakt-content-wrapper">
               <div className="kontakt-text-wrapper">
                 <img src="/prefix-icon.svg" alt="Left" />
-                <h6> Kontakt </h6>
+                <h6> {contactText} </h6>
               </div>
               <div className="kontakt-grid-wrapper">
                 {contacts.map((contact, index) => (

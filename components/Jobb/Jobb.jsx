@@ -3,10 +3,11 @@ import "./Jobb.css";
 import { useEffect, useState } from "react";
 import runSectionTextAnimation from "@animations/animations";
 
-const Jobb = () => {
-  const lang = "sv";
+const Jobb = ({params}) => {
+  const lang = params.locales;
   const [content, setContent] = useState(null);
-
+  const moreJobsText = lang === "sv"? "se lediga tjänster" : "see available jobs";
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -62,7 +63,7 @@ const Jobb = () => {
                 __html: content.data[0].attributes.Text,
               }}
             ></p>
-            <button onClick={handleClick}>se lediga tjänster</button>
+            <button onClick={handleClick}>{moreJobsText}</button>
           </div>
         </div>
       </div>

@@ -38,7 +38,8 @@
     max-width: 600px;
 }
 
-.footer-contact-wrapper p {
+.footer-contact-wrapper p, 
+.footer-contact-wrapper a{
     color: var(--Grey-1, #F5F5F5);
     font-family: 'Inter';
     font-size: 13px;

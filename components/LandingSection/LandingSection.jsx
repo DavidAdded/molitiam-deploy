@@ -9,9 +9,9 @@ import runSectionTextAnimation from "@animations/animations";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-const LandingSection = () => {
+const LandingSection = ({params}) => {
   const sectionRef = useRef(null);
-  const lang = "sv";
+  const lang = params.locales;
   const [content, setContent] = useState(null);
 
   useEffect(() => {

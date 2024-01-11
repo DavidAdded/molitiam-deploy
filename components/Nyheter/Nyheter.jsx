@@ -3,14 +3,16 @@ import "./Nyheter.css";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const Nyheter = () => {
-  const readMoreText = "Read More";
+const Nyheter = ({params}) => {
+
   const arrowIconUrl = "right-arrow.svg";
 
-  const lang = "sv";
+  const lang = params.locales;
+  const nyheterText = lang === "sv" ? "Nyheter" : "News";
   const router = useRouter();
   const [articles, setArticles] = useState(null);
-
+  const readMoreText = lang === "sv" ? "LÄS MER" : "READ MORE";
+  const readAllArticlesText = lang === "sv" ? "Läs alla nyheter" : "Read all news";
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -41,11 +43,12 @@ const Nyheter = () => {
   }
 
   const handleClick = () => {
-    router.push("/news");
+    
+    router.push(`/pages/${params.locales}/news`);
   };
 
   const handleReadMoreClick = (articleId) => {
-    router.push(`/news/${articleId}`);
+    router.push(`/pages/${params.locales}/news/${articleId}`);
   };
 
   if (!articles) return <div></div>;
@@ -58,7 +61,7 @@ const Nyheter = () => {
             <div className="nyheter-content-wrapper">
               <div className="nyheter-text-wrapper">
                 <img src="/prefix-icon.svg" alt="Left" />
-                <h6> Nyheter </h6>
+                <h6> {nyheterText}</h6>
               </div>
               <div className="nyheter-content-boxes">
                 {articles.map((article) => {
@@ -101,7 +104,7 @@ const Nyheter = () => {
                       </div>
                       <div className="nyheter-las-mer">
                         <div className="nyheter-las-mer-content">
-                          <p>LÄS MER</p>
+                          <p>{readMoreText}</p>
                           <img src="/right-arrow.svg" alt="Read More" />
                         </div>
                         <div className="bottom-corner-cover-up"></div>
@@ -111,7 +114,7 @@ const Nyheter = () => {
                 })}
               </div>
               <button className="regular-button" onClick={handleClick}>
-                LÄS ALLA NYHETER
+                {readAllArticlesText}
               </button>
             </div>
           </div>

@@ -3,12 +3,14 @@ import "@styles/globals.css";
 import Navbar from "@components/Navbar/Navbar";
 import Footer from "@components/Footer/Footer";
 
+
 export const metadata = {
   title: "crgroup",
   description: "CR Group",
 };
 
-const RootLayout = ({ children }) => {
+const RootLayout = ({ children, params }) => {
+
   return (
     <html suppressHydrationWarning>
       <head>
@@ -16,11 +18,11 @@ const RootLayout = ({ children }) => {
       </head>
       <body suppressHydrationWarning>
         <div className="main">
-          <Navbar></Navbar>
+          <Navbar params={params}></Navbar>
           <main className="app">
             <div>{children}</div>
           </main>
-          <Footer></Footer>
+          <Footer params= {params}></Footer>
         </div>
       </body>
     </html>

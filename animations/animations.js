@@ -6,7 +6,7 @@ import SplitText from "@utils/SplitText";
 gsap.registerPlugin(ScrollTrigger);
 
 function animateElement(element, type, isHeader = false, delay) {
-  console.log(element);
+
   const split = new SplitText(element, { type: type });
   if (isHeader) {
     gsap.fromTo(

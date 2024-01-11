@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const Page = ({ params }) => {
-  const lang = "sv";
+  const lang = params.locales;
   const router = useRouter();
   const [article, setArticle] = useState(null);
   const [articles, setarticles] = useState(null);
@@ -44,14 +44,19 @@ const Page = ({ params }) => {
     };
 
     fetchData();
-  }, [params.articleId]);
+  }, [params.articleId, params.locales]);
 
+  useEffect(() => {
+    const langToggleEl=  document.querySelector(".navbar-eng")
+      langToggleEl.style.display = "none";
+  },[])
   if (!article) return <div></div>;
 
   const formattedDate = convertDateFormat(article.data.attributes.Date);
 
+
   const handleReadMoreClick = (articleId) => {
-    router.push(`/news/${articleId}`);
+    router.push(`/pages/${params.locales}/news/${articleId}`);
   };
 
   return (

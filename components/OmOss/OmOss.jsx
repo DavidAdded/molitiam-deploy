@@ -3,8 +3,8 @@ import "./OmOss.css";
 import { useEffect, useState } from "react";
 import runSectionTextAnimation from "@animations/animations";
 
-const OmOss = () => {
-  const lang = "sv";
+const OmOss = ({params}) => {
+  const lang = params.locales;
   const [content, setContent] = useState(null);
 
   useEffect(() => {

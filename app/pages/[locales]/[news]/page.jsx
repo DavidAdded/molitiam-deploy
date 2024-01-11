@@ -3,11 +3,13 @@ import "./page.css";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-const Page = () => {
+const Page = ({params}) => {
+
+
   const readMoreText = "Read More";
   const arrowIconUrl = "right-arrow.svg";
 
-  const lang = "sv";
+  const lang = params.locales;
   const router = useRouter();
 
   const [articles, setarticles] = useState(null);
@@ -16,13 +18,14 @@ const Page = () => {
     return dateString.replace(/-/g, "•");
   }
 
-  const handleReadMoreClick = (articleId) => {
-    router.push(`/news/${articleId}`);
+  const handleClick = () => {
+    router.push(`/pages/${params.locales}/news`);
   };
 
-  const handleClick = () => {
-    router.push("/news");
+  const handleReadMoreClick = (articleId) => {
+    router.push(`/pages/${params.locales}/news/${articleId}`);
   };
+
 
   useEffect(() => {
     const fetchData = async () => {

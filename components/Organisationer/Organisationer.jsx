@@ -2,20 +2,22 @@
 import "./Organisationer.css";
 import runSectionTextAnimation from "@animations/animations";
 import { useEffect, useState, useRef} from "react";
-import { DotLottiePlayer, Controls, PlayerEvents } from "@dotlottie/react-player";
-import "@dotlottie/react-player/dist/index.css";
+import { DotLottiePlayer } from "@dotlottie/react-player";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import gsap from "gsap";
 
 gsap.registerPlugin(ScrollTrigger);
 
 
-const Organisationer = () => {
-  const lang = "sv";
+const Organisationer = ({params}) => {
+  const lang = params.locales;
   const [content, setContent] = useState(null);
- 
-
- 
+  const lottieSource = lang === "sv" ? "/organisationer-5-sek.lottie" : "/organisations-5-sek.lottie";
+  const lottieBackupImgSoruce = lang === "sv" ? "/lottie-backup-sv.png" : "/lottie-backup-eng.png";
+  function isSafari() {
+    const userAgent = navigator.userAgent.toLowerCase();
+    return userAgent.includes('safari') && !userAgent.includes('chrome') && !userAgent.includes('chromium');
+  }
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -92,16 +94,22 @@ const Organisationer = () => {
                 <p>{content.data[0].attributes.Text}</p>
               </div>
             </div>
-
+            
             <div className="organisationer-content-wrapper-bottom">
-                <DotLottiePlayer
+              {!isSafari() ? 
+              <DotLottiePlayer
                   lottieRef={lottieRef}
-                  src="/organisationer-5-sek.lottie"
+                  src={lottieSource}
                   height={550}
                   loop={false}
                   id="player"
                 >
                 </DotLottiePlayer>
+                :
+                <img className="backupImage" src={lottieBackupImgSoruce}>
+                </img>
+          }
+                
             </div>
           </div>
         </div>

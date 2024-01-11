@@ -3,8 +3,8 @@ import "./Verksamheter.css";
 import { useEffect, useState } from "react";
 import runSectionTextAnimation from "@animations/animations";
 
-const Verksamheter = () => {
-  const lang = "sv";
+const Verksamheter = ({params}) => {
+  const lang = "en";
   const [content, setContent] = useState(null);
   const [contentCard, setContentCard] = useState(null);
 
@@ -30,7 +30,6 @@ const Verksamheter = () => {
           const cards = await cardsResponse.json();
           setContent(data);
           setContentCard(cards);
-          console.log(cards);
         } else {
           console.error("Failed to fetch content");
         }
