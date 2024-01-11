@@ -12,32 +12,31 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 const LandingSection = (props) => {
   const sectionRef = useRef(null);
   const lang = props.lang;
-  
-  const [content, setContent] = useState(props.content);
+  const [content, setContent] = useState(null);
 
   useEffect(() => {
-    // const fetchData = async () => {
-    //   try {
-    //     const URL = `${process.env.NEXT_PUBLIC_API_URL}landing-contents?locale=${lang}`;
-    //     const response = await fetch(URL, {
-    //       headers: {
-    //         Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`, // Replace 'Hello' with the actual token
-    //       },
-    //     });
+    const fetchData = async () => {
+      try {
+        const URL = `${process.env.NEXT_PUBLIC_API_URL}landing-contents?locale=${lang}`;
+        const response = await fetch(URL, {
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`, // Replace 'Hello' with the actual token
+          },
+        });
 
-    //     if (response.ok) {
-    //       const data = await response.json();
-    //       setContent(data);
-    //       // Set content state here
-    //     } else {
-    //       console.error("Failed to fetch content");
-    //     }
-    //   } catch (error) {
-    //     console.error("Error fetching content:", error);
-    //   }
-    // };
+        if (response.ok) {
+          const data = await response.json();
+          setContent(data);
+          // Set content state here
+        } else {
+          console.error("Failed to fetch content");
+        }
+      } catch (error) {
+        console.error("Error fetching content:", error);
+      }
+    };
 
-    // fetchData();
+    fetchData();
   }, []);
 
   useEffect(() => {

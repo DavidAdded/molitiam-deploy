@@ -9,7 +9,6 @@ import Verksamheter from "@components/Verksamheter/Verksamheter";
 import Nyheter from "@components/Nyheter/Nyheter";
 import Jobb from "@components/Jobb/Jobb";
 import Kontakt from "@components/Kontakt/Kontakt";
-import { useEffect, useState } from "react";
 
 const Home = () => {
   const lang = "sv";
@@ -25,37 +24,11 @@ const Home = () => {
     organisationer: lang === "sv" ? "organisationer" : "organisations",
   };
   
-  const [content, setContent] = useState(null);
-  useEffect(()=> {
- const fetchData = async () => {
-      try {
-        const URL = `${process.env.NEXT_PUBLIC_API_URL}landing-contents?locale=${lang}`;
-        const response = await fetch(URL, {
-          headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`, // Replace 'Hello' with the actual token
-          },
-        });
 
-        if (response.ok) {
-          const data = await response.json();
-          setContent(data);
-          // Set content state here
-        } else {
-          console.error("Failed to fetch content");
-        }
-      } catch (error) {
-        console.error("Error fetching content:", error);
-      }
-    };
-
-    fetchData();
-  },[])
-
-  if (!content) return <div></div>
 
   return (
     <div>
-      <LandingSection lang={"sv"} content={content}/>
+      <LandingSection lang={"sv"}/>
       <div id={urlPoints.syfte}>
         <Syfte lang={"sv"}/>
       </div>
