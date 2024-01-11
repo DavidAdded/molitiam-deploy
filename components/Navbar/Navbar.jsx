@@ -52,7 +52,7 @@ const Navbar = ({params}) => {
           <div className="padding-section-nav">
             <div className="navbar-wrapper">
               <div className="navbar-logo">
-                <Link href="/">
+                <Link href={baseLink}>
                   <img
                     src="/logo.svg"
                     alt="Logo"
