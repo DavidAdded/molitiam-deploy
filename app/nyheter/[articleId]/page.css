@@ -18,13 +18,17 @@
   background-color: #f5f5f5;
   background-image: url(/nyheter-background.png);
   background-size: contain;
-  background-position: bottom;
+  background-position-x: right;
+  background-position-y: bottom;
   background-repeat: no-repeat;
 }
 
 .news-article-text-wrapper {
   width: 100%;
   max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .news-article-text-wrapper h1 {

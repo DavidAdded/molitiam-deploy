@@ -57,6 +57,10 @@
   border: solid 1px #8a684a;
 }
 
+.verksamheter-content-box-1 img {
+  height: 50px;
+}
+
 .verksamhet-corner-box-1 {
   background-color: #534a40;
   width: 40px;

@@ -23,6 +23,9 @@
 }
 
 .news-article-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
   width: 100%;
   max-width: 800px;
 }
