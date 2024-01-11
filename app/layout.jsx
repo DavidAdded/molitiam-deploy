@@ -1,28 +1,26 @@
+"use client"
 import "@styles/globals.css";
 //import "@styles/normalize.css";
+
 import Navbar from "@components/Navbar/Navbar";
 import Footer from "@components/Footer/Footer";
 
+const RootLayout = ({ children }) => {
 
-export const metadata = {
-  title: "crgroup",
-  description: "CR Group",
-};
-
-const RootLayout = ({ children, params }) => {
-
+  
   return (
     <html suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body suppressHydrationWarning>
+     
         <div className="main">
-          <Navbar params={params}></Navbar>
+          <Navbar></Navbar>
           <main className="app">
             <div>{children}</div>
           </main>
-          <Footer params= {params}></Footer>
+          <Footer></Footer>
         </div>
       </body>
     </html>
@@ -30,3 +28,4 @@ const RootLayout = ({ children, params }) => {
 };
 
 export default RootLayout;
+

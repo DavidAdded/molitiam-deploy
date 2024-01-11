@@ -3,8 +3,8 @@ import "./Verksamheter.css";
 import { useEffect, useState } from "react";
 import runSectionTextAnimation from "@animations/animations";
 
-const Verksamheter = ({params}) => {
-  const lang = "en";
+const Verksamheter = (props) => {
+  const lang = props.lang;
   const [content, setContent] = useState(null);
   const [contentCard, setContentCard] = useState(null);
 

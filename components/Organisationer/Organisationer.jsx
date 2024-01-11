@@ -9,8 +9,8 @@ import gsap from "gsap";
 gsap.registerPlugin(ScrollTrigger);
 
 
-const Organisationer = ({params}) => {
-  const lang = params.locales;
+const Organisationer = (props) => {
+const lang = props.lang;
   const [content, setContent] = useState(null);
   const lottieSource = lang === "sv" ? "/organisationer-5-sek.lottie" : "/organisations-5-sek.lottie";
   const lottieBackupImgSoruce = lang === "sv" ? "/lottie-backup-sv.png" : "/lottie-backup-eng.png";

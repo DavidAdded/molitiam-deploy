@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 
 import runSectionTextAnimation from "@animations/animations";
 
-const Syfte = ({params}) => {
-  const lang = params.locales;
+const Syfte = (props) => {
+  const lang = props.lang;
   const [content, setContent] = useState(null);
 
   useEffect(() => {

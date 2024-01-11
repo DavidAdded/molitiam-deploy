@@ -3,8 +3,8 @@ import "./Nationer.css";
 import runSectionTextAnimation from "@animations/animations";
 import { useEffect, useState } from "react";
 
-const Nationer = ({params}) => {
-  const lang = params.locales;
+const Nationer = (props) => {
+  const lang = props.lang;;
   const [content, setContent] = useState(null);
 
   useEffect(() => {

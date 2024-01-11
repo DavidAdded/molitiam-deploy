@@ -9,13 +9,10 @@ import Verksamheter from "@components/Verksamheter/Verksamheter";
 import Nyheter from "@components/Nyheter/Nyheter";
 import Jobb from "@components/Jobb/Jobb";
 import Kontakt from "@components/Kontakt/Kontakt";
-import { useRouter } from 'next/navigation';
 
-const Home = ({params}) => {
-  const lang = params.locales;
-  const router = useRouter();
-  const { locale } = router;
 
+const Home = (props) => {
+  const lang = props.lang;
   const urlPoints = {
     syfte: lang === "sv" ? "syfte" : "purpose",
     omoss: lang === "sv" ? "omoss" : "aboutus",
@@ -27,36 +24,36 @@ const Home = ({params}) => {
     nationer: lang === "sv" ? "nationer" : "nations",
     organisationer: lang === "sv" ? "organisationer" : "organisations",
   };
-
+  
   return (
     <div>
-      <LandingSection params={params}/>
+      <LandingSection lang={"en"}/>
       <div id={urlPoints.syfte}>
-        <Syfte params={params}/>
+        <Syfte lang={"en"}/>
       </div>
       <div id={urlPoints.omoss}>
-        <OmOss params={params}/>
+        <OmOss lang={"en"}/>
       </div>
       <div id={urlPoints.tjanster}>
-        <Tjanster params={params}/>
+        <Tjanster lang={"en"}/>
       </div>
       <div id={urlPoints.nationer}>
-        <Nationer params={params}/>
+        <Nationer lang={"en"}/>
       </div>
       <div id={urlPoints.organisationer}>
-        <Organisationer params={params}/>
+        <Organisationer lang={"en"}/>
       </div>
       <div id={urlPoints.verksamheter}>
-        <Verksamheter params={params} />
+        <Verksamheter lang={"en"} />
       </div>
       <div id={urlPoints.nyheter}>
-        <Nyheter params={params} />
+        <Nyheter lang={"en"} />
       </div>
       <div id={urlPoints.jobb}>
-        <Jobb params={params}/>
+        <Jobb lang={"en"}/>
       </div>
       <div id={urlPoints.kontakt}>
-        <Kontakt params={params}/>
+        <Kontakt lang={"en"}/>
       </div>
     </div>
   );

@@ -3,8 +3,8 @@ import "./Jobb.css";
 import { useEffect, useState } from "react";
 import runSectionTextAnimation from "@animations/animations";
 
-const Jobb = ({params}) => {
-  const lang = params.locales;
+const Jobb = (props) => {
+  const lang = props.lang;
   const [content, setContent] = useState(null);
   const moreJobsText = lang === "sv"? "se lediga tjänster" : "see available jobs";
   

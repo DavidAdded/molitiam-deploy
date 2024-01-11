@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const Page = ({ params }) => {
-  const lang = params.locales;
+
   const router = useRouter();
   const [article, setArticle] = useState(null);
   const [articles, setarticles] = useState(null);
@@ -23,7 +23,7 @@ const Page = ({ params }) => {
           },
         });
 
-        const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?filters[id][$ne]=${params.articleId}&sort=Date:desc&pagination[limit]=3&populate=*&locale=${lang}`;
+        const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?filters[id][$ne]=${params.articleId}&sort=Date:desc&pagination[limit]=3&populate=*&locale=en`;
         const articlesResponse = await fetch(articlesURL, {
           headers: {
             Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
@@ -44,21 +44,18 @@ const Page = ({ params }) => {
     };
 
     fetchData();
-  }, [params.articleId, params.locales]);
+  }, [params.articleId]);
 
-  useEffect(() => {
-    const langToggleEl=  document.querySelector(".navbar-eng")
-      langToggleEl.style.display = "none";
-  },[])
+  
   if (!article) return <div></div>;
 
   const formattedDate = convertDateFormat(article.data.attributes.Date);
 
+ const urlBasedOnLang = "/en/news";
 
   const handleReadMoreClick = (articleId) => {
-    router.push(`/pages/${params.locales}/news/${articleId}`);
+    router.push(`${urlBasedOnLang}/${articleId}`);
   };
-
   return (
     <>
       <div className="news-article-section-wrapper">
@@ -87,7 +84,7 @@ const Page = ({ params }) => {
           <div className="container-large">
             <div className="padding-section-large">
               <div className="more-articles-section">
-                <h2>Fler artiklar</h2>
+                <h2>More articles</h2>
                 <div className="more-articles-wrapper">
                   {articles.map((article) => {
                     // Assuming article.attributes.Image.attributes.url contains the image path
@@ -121,7 +118,7 @@ const Page = ({ params }) => {
                         </div>
                         <div className="nyheter-las-mer">
                           <div className="nyheter-las-mer-content">
-                            <p>LÄS MER</p>
+                            <p>READ MORE</p>
                             <img src="/right-arrow.svg" alt="Read More" />
                           </div>
                         </div>

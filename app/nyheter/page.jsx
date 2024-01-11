@@ -3,13 +3,13 @@ import "./page.css";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-const Page = ({params}) => {
-
+const Page = () => {
+  
 
   const readMoreText = "Read More";
   const arrowIconUrl = "right-arrow.svg";
-
-  const lang = params.locales;
+  
+  
   const router = useRouter();
 
   const [articles, setarticles] = useState(null);
@@ -18,19 +18,21 @@ const Page = ({params}) => {
     return dateString.replace(/-/g, "•");
   }
 
+  const urlBasedOnLang = "/nyheter" 
+
   const handleClick = () => {
-    router.push(`/pages/${params.locales}/news`);
+    router.push(urlBasedOnLang);
   };
 
   const handleReadMoreClick = (articleId) => {
-    router.push(`/pages/${params.locales}/news/${articleId}`);
+    router.push(`${urlBasedOnLang}/${articleId}`);
   };
 
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&pagination[limit]=6&populate=*&locale=${lang}`;
+        const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&pagination[limit]=6&populate=*&locale=sv`;
         const articlesResponse = await fetch(articlesURL, {
           headers: {
             Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
@@ -54,7 +56,11 @@ const Page = ({params}) => {
     };
 
     fetchData();
+
+    
   }, []);
+
+ 
 
   if (!articles) return <div></div>;
 

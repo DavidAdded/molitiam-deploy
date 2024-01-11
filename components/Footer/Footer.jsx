@@ -1,7 +1,8 @@
 import "./Footer.css";
 
-const Footer = ({params}) => {
-  const lang = params.locales;
+const Footer = () => {
+  const lang = "sv";
+
 
   const addressText = lang === "sv" ? "Besöksadress" : "Address";
   const postAddressText = lang === "sv" ? "Postadress" : "Zipcode";

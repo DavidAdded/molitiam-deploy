@@ -2,8 +2,8 @@
 import "./Kontakt.css";
 import { useEffect, useState } from "react";
 
-const Kontakt = ({params}) => {
-  const lang = params.locales;
+const Kontakt = (props) => {
+  const lang = props.lang;
   const [contacts, setContacts] = useState(null);
   const contactText = lang === "sv" ? "Kontakt" : "Contact";
   useEffect(() => {

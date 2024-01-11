@@ -5,8 +5,8 @@ import runSectionTextAnimation from "@animations/animations";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-const Tjanster = ({params}) => {
-  const lang = params.locales;
+const Tjanster = (props) => {
+const lang = props.lang;
   const [content, setContent] = useState(null);
 
   useEffect(() => {
