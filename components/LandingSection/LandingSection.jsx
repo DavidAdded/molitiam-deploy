@@ -7,6 +7,8 @@ import SplitText from "@utils/SplitText";
 import { useEffect, useRef, useState } from "react";
 import runSectionTextAnimation from "@animations/animations";
 
+
+
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const LandingSection = (props) => {

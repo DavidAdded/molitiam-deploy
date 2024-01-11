@@ -53,22 +53,25 @@ const lang = props.lang;
 
   // Setup ScrollTrigger
   useEffect(() => {
-    if (!content) return;
+    if (!content || !lottieRef.current) return;
 
-    if(lottieRef.current) {
+    
       
-     setTimeout(() => {
+    const timeoutId = setTimeout(() => {
         ScrollTrigger.create({
           trigger: ".organisationer-content-wrapper-bottom",
           start: "top center",
           onEnter: lottieRef.current.playOnShow(),
         });
+    return () => {
+      scrollTriggerInstance.kill();
+    };
       }, 1000);
-      
-      
     
-    }
    
+  return () => {
+    clearTimeout(timeoutId);
+  };
   }, [content, lottieRef]);
 
 

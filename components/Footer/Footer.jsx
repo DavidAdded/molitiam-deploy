@@ -8,11 +8,8 @@ const Footer = () => {
   const postAddressText = lang === "sv" ? "Postadress" : "Zipcode";
 
   const footerText = lang === "sv" ? "Kontakt" : "Contact";
-
   const contactContentText1 = lang === "sv" ? "CR Group är ett svenskt cybersäkerhetsföretag som utvecklar paketerade och användarvänliga digitala lösningar församhällsviktig verksamhet." : "CR Group is a Swedish cybersecurity company that develops packaged and user-friendly digital solutions for critical societal operations.";
-
   const contactContentText2 = lang === "sv" ? "Kunderna utgörs av försvar, myndigheter och näringsliv iSverige och Europa." : "The customers consist of defense, government agencies, and businesses in Sweden and Europe.";
-
   const contactContentText3 = lang === "sv" ? "Huvudägare är Formica Capital I AB. VD är Björn Weigel. Styrelseordförande är Nicklas Storåkers." : "The main owner is Formica Capital I AB. The CEO is Björn Weigel. The Chairman of the Board is Nicklas Storåkers.";
   return (
     <div className="footer-section-wrapper">
