@@ -63,6 +63,7 @@
   font-weight: 500;
   line-height: normal;
   color: var(--Grey-1, #f5f5f5);
+  cursor: pointer;
 }
 
 .navbar-eng {
