@@ -22,6 +22,7 @@ const Footer = () => {
     lang === "sv"
       ? "Huvudägare är Formica Capital I AB. VD är Björn Weigel. Styrelseordförande är Nicklas Storåkers."
       : "The main owner is Formica Capital I AB. The CEO is Björn Weigel. The Chairman of the Board is Nicklas Storåkers.";
+
   return (
     <div className="footer-section-wrapper">
       <div className="padding-global">
