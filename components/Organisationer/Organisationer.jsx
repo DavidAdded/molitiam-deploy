@@ -49,10 +49,14 @@ const Organisationer = (props) => {
   }, [lottieRef]);
 
   useEffect(() => {
-    runSectionTextAnimation(
+    if(document.querySelector(".organisationer-content-wrapper-top h2") && document.querySelector(".organisationer-content-wrapper-top p"))
+     {
+       runSectionTextAnimation(
       ".organisationer-content-wrapper-top h2",
       ".organisationer-content-wrapper-top p"
     );
+     }
+   
   }, [isSafari]);
 
   return (

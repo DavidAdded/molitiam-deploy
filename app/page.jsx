@@ -25,7 +25,6 @@ const Home = () => {
   };
   
 
-
   return (
     <div>
       <LandingSection lang={"sv"}/>

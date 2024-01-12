@@ -10,10 +10,9 @@ const Tjanster = (props) => {
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // Count-up animation function
+  
   const animateCountUp = (element) => {
     const endValue = parseInt(element.getAttribute("data-target-value"));
-    // Set initial value to 0
     element.innerText = 0;
 
     gsap.to(element, {
@@ -31,7 +30,6 @@ const Tjanster = (props) => {
 
   useEffect(() => {
     document.querySelectorAll(".count-up").forEach(animateCountUp);
-
     runSectionTextAnimation(".tjanster-content-wrapper h2");
   }, []);
 

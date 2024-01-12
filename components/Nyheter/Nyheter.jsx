@@ -55,7 +55,7 @@ const Nyheter = (props) => {
     router.push(`${urlBasedOnLang}/${articleId}`);
   };
 
-  if (!articles) return <div></div>;
+
 
   return (
     <div className="nyheter-section-wrapper">
@@ -68,7 +68,7 @@ const Nyheter = (props) => {
                 <h6> {nyheterText}</h6>
               </div>
               <div className="nyheter-content-boxes">
-                {articles.map((article) => {
+                {articles? articles.map((article) => {
                   // Assuming article.attributes.Image.attributes.url contains the image path// This will log the image URL to the console
                   const articleDate = article.attributes.Date;
                   const articleImage =
@@ -114,7 +114,7 @@ const Nyheter = (props) => {
                       </div>
                     </div>
                   );
-                })}
+                }) : <div></div>}
               </div>
               <button className="regular-button" onClick={handleClick}>
                 {readAllArticlesText}
