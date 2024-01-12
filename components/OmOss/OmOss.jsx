@@ -4,44 +4,14 @@ import { useEffect, useState } from "react";
 import runSectionTextAnimation from "@animations/animations";
 
 const OmOss = (props) => {
-const lang = props.lang;
-  const [content, setContent] = useState(null);
+  const lang = props.lang;
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const URL = `${process.env.NEXT_PUBLIC_API_URL}om-oss-contents?locale=${lang}`;
-        const response = await fetch(URL, {
-          headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`, // Replace 'Hello' with the actual token
-          },
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-
-          setContent(data);
-          // Set content state here
-        } else {
-          console.error("Failed to fetch content");
-        }
-      } catch (error) {
-        console.error("Error fetching content:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    if (!content) return; // Ensure content is loaded before running the animation
     runSectionTextAnimation(
       ".omoss-section-column h2",
       ".omoss-section-column p"
     );
-  }, [content]);
-
-  if (!content) return <div></div>;
+  }, []);
 
   return (
     <div className="omoss-wrapper">
@@ -49,14 +19,46 @@ const lang = props.lang;
         <div className="container-large">
           <div className="padding-section-large">
             <div className="omoss-section-wrapper">
-              <div className="omoss-section-column">
-                <div className="sub-header-wrapper">
-                  <img src="/prefix-icon.svg" alt="" />
-                  <h6>{content.data[0].attributes.miniHeadline}</h6>
+              {lang === "sv" ? (
+                <div className="omoss-section-column">
+                  <div className="sub-header-wrapper">
+                    <img src="/prefix-icon.svg" alt="" />
+                    <h6>OM OSS</h6>
+                  </div>
+                  <h2>ENKELT ATT ANVÄNDA, ENKELT ATT KÖPA</h2>
+                  <div>
+                    <p>Vi är totalleverantör till samhällsviktig verksamhet.</p>
+                    <p>
+                      Avancerad försvarsteknologi som skyddar det mest
+                      skyddsvärda för samhällsviktig verksamhet och en helt ny
+                      nivå av användarvänlighet gör våra lösningar enkla att
+                      använda och enkla att köpa. Precis som det ska vara.
+                    </p>
+                    <p>Precis som det ska vara.</p>
+                  </div>
                 </div>
-                <h2>{content.data[0].attributes.H1}</h2>
-                <p>{content.data[0].attributes.Text}</p>
-              </div>
+              ) : (
+                <div className="omoss-section-column">
+                  <div className="sub-header-wrapper">
+                    <img src="/prefix-icon.svg" alt="" />
+                    <h6>ABOUT US</h6>
+                  </div>
+                  <h2>EASY TO BUY. EASY TO USE.</h2>
+                  <div>
+                    <p>
+                      We are a full-service provider for vital societal
+                      functions.
+                    </p>
+                    <p>
+                      Our advanced defense technology protects the most
+                      sensitive of societal functions and provides an entirely
+                      new level of user-friendliness, making our solutions both
+                      easy-to-buy and easy-to-use.
+                    </p>
+                    <p>Exactly as it should be.</p>
+                  </div>
+                </div>
+              )}
               <div className="omoss-section-column">
                 <div className="omoss-section-column-content">
                   <div className="omoss-section-column-content-top">
@@ -68,10 +70,10 @@ const lang = props.lang;
                   </div>
                   <div className="omoss-section-column-content-bottom">
                     <div className="omoss-section-column-content-bottom-left">
-                      <p>{content.data[0].attributes.LeftFigureText}</p>
+                      <p></p>
                     </div>
                     <div className="omoss-section-column-content-bottom-right">
-                      <p>{content.data[0].attributes.RightFigureText}</p>
+                      <p></p>
                     </div>
                   </div>
                 </div>

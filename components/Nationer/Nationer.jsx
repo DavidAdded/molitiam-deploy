@@ -4,78 +4,120 @@ import runSectionTextAnimation from "@animations/animations";
 import { useEffect, useState } from "react";
 
 const Nationer = (props) => {
-  const lang = props.lang;;
-  const [content, setContent] = useState(null);
+  const lang = props.lang;
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const URL = `${process.env.NEXT_PUBLIC_API_URL}nationer-contents?locale=${lang}`;
-        const response = await fetch(URL, {
-          headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`, // Replace 'Hello' with the actual token
-          },
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-
-          setContent(data);
-          // Set content state here
-        } else {
-          console.error("Failed to fetch content");
-        }
-      } catch (error) {
-        console.error("Error fetching content:", error);
-      }
-    };
-
-    fetchData();
+    runSectionTextAnimation(
+      ".nationer-content-wrapper-top h2",
+      ".nationer-content-wrapper-top p"
+    );
   }, []);
-  
-  useEffect(() => {
-    if (!content) return; // Ensure content is loaded before running the animation
-    runSectionTextAnimation(".nationer-content-wrapper-top h2", ".nationer-content-wrapper-top p")
-  }, [content]);
 
-  
-  if (!content) return <div></div>;
   return (
     <div className="padding-global">
       <div className="container-large">
         <div className="padding-section-large">
           <div className="nationer-section-wrapper">
-            <div className="nationer-content-wrapper-top">
-              <div className="sub-header-wrapper">
-                <img src="/prefix-icon.svg" alt="Left" />
-                <h6> {content.data[0].attributes.miniHeadline} </h6>
+            {lang === "sv" ? (
+              <div className="nationer-content-wrapper-top">
+                <div className="sub-header-wrapper">
+                  <img src="/prefix-icon.svg" alt="Left" />
+                  <h6>Nationer</h6>
+                </div>
+                <h2>
+                  CYBERSÄKERHET FÖR <br></br>NATIONER
+                </h2>
+                <div>
+                  <p>
+                    Nationella försvar och säkerhetskänslig verksamhet söker
+                    ackrediterade cybersäkerhetslösningar som uppfyller
+                    säkerhetsskyddslagstiftningens höga krav i kombination med
+                    användarvänlighet.
+                  </p>
+                  <p>
+                    CR Group är den enda leverantören av krypteringsprodukter
+                    för säkerhetsklassificerad information på̊ nivån begränsat
+                    hemligt i Sverige.
+                  </p>
+                </div>
               </div>
-              <h2>{content.data[0].attributes.H1}</h2>
-              <div>
-                <p>{content.data[0].attributes.Text}</p>
+            ) : (
+              <div className="nationer-content-wrapper-top">
+                <div className="sub-header-wrapper">
+                  <img src="/prefix-icon.svg" alt="Left" />
+                  <h6>NATIONS</h6>
+                </div>
+                <h2>CYBER SECURITY FOR NATIONS</h2>
+                <div>
+                  <p>
+                    We offer packaged services and products to vital societal
+                    functions such as government agencies, the military, and the
+                    private sector.
+                  </p>
+                  <p>
+                    SIRRUS is our accredited solutions platform for vital
+                    societal functions. It is unique, user-friendly and offers
+                    enhanced flexibility, while always adhering to current
+                    legislative demands.
+                  </p>
+                </div>
               </div>
-            </div>
-
-            <div className="nationer-content-wrapper-bottom">
-              <div className="nationer-content-bottom">
-                <img src="/nationer-phone.png" alt="Phone" />
-                <h5>{content.data[0].attributes.LeftText}</h5>
+            )}
+            {lang === "sv" ? (
+              <div className="nationer-content-wrapper-bottom">
+                <div className="nationer-content-bottom">
+                  <img src="/nationer-phone.png" alt="Phone" />
+                  <h5>
+                    MÖJLIGGÖR <br></br> MOBILT ARBETE
+                  </h5>
+                </div>
+                <div
+                  className="nationer-content-bottom"
+                  style={{ backgroundColor: "#262626" }}
+                >
+                  <img src="/nationer-device.png" alt="Device" />
+                  <h5>
+                    KRYPTERAR <br></br>KOMMUNIKATION
+                  </h5>
+                </div>
+                <div
+                  className="nationer-content-bottom"
+                  style={{ backgroundColor: "#0D0D0D" }}
+                >
+                  <img src="/nationer-router.png" alt="Router" />
+                  <h5>
+                    SÄKRAR <br></br> NÄTVERK
+                  </h5>
+                </div>
               </div>
-              <div
-                className="nationer-content-bottom"
-                style={{ backgroundColor: "#262626" }}
-              >
-                <img src="/nationer-device.png" alt="Device" />
-                <h5>{content.data[0].attributes.MiddleText}</h5>
+            ) : (
+              <div className="nationer-content-wrapper-bottom">
+                <div className="nationer-content-bottom">
+                  <img src="/nationer-phone.png" alt="Phone" />
+                  <h5>
+                    ENABLES <br></br> MOBILE WORK
+                  </h5>
+                </div>
+                <div
+                  className="nationer-content-bottom"
+                  style={{ backgroundColor: "#262626" }}
+                >
+                  <img src="/nationer-device.png" alt="Device" />
+                  <h5>
+                    ENCRYPT <br></br> COMMUNICATION
+                  </h5>
+                </div>
+                <div
+                  className="nationer-content-bottom"
+                  style={{ backgroundColor: "#0D0D0D" }}
+                >
+                  <img src="/nationer-router.png" alt="Router" />
+                  <h5>
+                    SECURES <br></br> NETWORK
+                  </h5>
+                </div>
               </div>
-              <div
-                className="nationer-content-bottom"
-                style={{ backgroundColor: "#0D0D0D" }}
-              >
-                <img src="/nationer-router.png" alt="Router" />
-                <h5>{content.data[0].attributes.RightText}</h5>
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

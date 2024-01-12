@@ -7,58 +7,54 @@ import runSectionTextAnimation from "@animations/animations";
 
 const Syfte = (props) => {
   const lang = props.lang;
-  const [content, setContent] = useState(null);
-
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const URL = `${process.env.NEXT_PUBLIC_API_URL}syfte-contents?locale=${lang}`;
-        const response = await fetch(URL, {
-          headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`, // Replace 'Hello' with the actual token
-          },
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          setContent(data);
-          // Set content state here
-        } else {
-          console.error("Failed to fetch content");
-        }
-      } catch (error) {
-        console.error("Error fetching content:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    if (!content) return; // Ensure content is loaded before running the animation
-
     runSectionTextAnimation(
       ".syfte-section-wrapper h2",
       ".syfte-section-wrapper p"
     );
-  }, [content]);
+  }, []);
 
   return (
     <div className="syfte-section-wrapper">
       <div className="padding-global">
         <div className="container-large">
           <div className="padding-section-large">
-            {!content ? (
-              <div></div>
+            {lang === "sv" ? (
+              <div className="syfte-content-wrapper">
+                <div className="sub-header-wrapper">
+                  <img src="/prefix-icon.svg" alt="" />
+                  <h6>SYFTE</h6>
+                </div>
+                <h2>CYBERSÄKERHET - EN FRIHETSFRÅGA </h2>
+                <div>
+                  <p>
+                    Cyberhotet kostar mer för allt fler, hotar demokratin och
+                    undergräver tilliten i samhället.
+                  </p>
+                  <p>
+                    Vårt uppdrag är cybersäkerhet för stärkt tillit, främjad
+                    demokrati och god ekonomisk tillväxt. Cybersäkerhet är en
+                    frihetsfråga för oss.
+                  </p>
+                </div>
+              </div>
             ) : (
               <div className="syfte-content-wrapper">
                 <div className="sub-header-wrapper">
                   <img src="/prefix-icon.svg" alt="" />
-                  <h6> {content.data[0].attributes.miniHeadline} </h6>
+                  <h6>PURPOSE</h6>
                 </div>
-                <h2> {content.data[0].attributes.H1}</h2>
+                <h2>CYBER SECURITY – A QUESTION OF FREEDOM</h2>
                 <div>
-                  <p>{content.data[0].attributes.Text}</p>
+                  <p>
+                    Cyber threats cause rising costs, weaken democracy, and
+                    undermine trust in society.
+                  </p>
+                  <p>
+                    Our mission is cyber security that strengthens trust,
+                    promotes democracy, and enhances economic growth. For us,
+                    cyber security is all about freedom.
+                  </p>
                 </div>
               </div>
             )}

@@ -1,115 +1,118 @@
 "use client";
 import "./Organisationer.css";
 import runSectionTextAnimation from "@animations/animations";
-import { useEffect, useState, useRef} from "react";
+import { useEffect, useState, useRef } from "react";
 import { DotLottiePlayer } from "@dotlottie/react-player";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import gsap from "gsap";
 
 gsap.registerPlugin(ScrollTrigger);
 
-
 const Organisationer = (props) => {
-const lang = props.lang;
-  const [content, setContent] = useState(null);
-  const lottieSource = lang === "sv" ? "/organisationer-5-sek.lottie" : "/organisations-5-sek.lottie";
-  const lottieBackupImgSoruce = lang === "sv" ? "/lottie-backup-sv.png" : "/lottie-backup-eng.png";
-  function isSafari() {
-    const userAgent = navigator.userAgent.toLowerCase();
-    return userAgent.includes('safari') && !userAgent.includes('chrome') && !userAgent.includes('chromium');
-  }
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const URL = `${process.env.NEXT_PUBLIC_API_URL}organisationer-contents?locale=${lang}`;
-        const response = await fetch(URL, {
-          headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`, // Replace 'Hello' with the actual token
-          },
-        });
+  const [isSafari, setIsSafari] = useState(true);
+  const lang = props.lang;
+  const lottieSource =
+    lang === "sv"
+      ? "/organisationer-5-sek.lottie"
+      : "/organisations-5-sek.lottie";
+  const lottieBackupImgSoruce =
+    lang === "sv" ? "/lottie-backup-sv.png" : "/lottie-backup-eng.png";
 
-        if (response.ok) {
-          const data = await response.json();
-
-          setContent(data);
-          // Set content state here
-        } else {
-          console.error("Failed to fetch content");
-        }
-      } catch (error) {
-        console.error("Error fetching content:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-
-
- const lottieRef = useRef();
-
-
-  
+  const lottieRef = useRef();
 
   // Setup ScrollTrigger
   useEffect(() => {
-    if (!content) return;
-
-    if(lottieRef.current) {
-      
-     setTimeout(() => {
+    if (lottieRef.current) {
+      setTimeout(() => {
         ScrollTrigger.create({
           trigger: ".organisationer-content-wrapper-bottom",
           start: "top center",
           onEnter: lottieRef.current.playOnShow(),
         });
       }, 1000);
-      
-      
-    
     }
-   
-  }, [content, lottieRef]);
 
+    function checkIfSafari() {
+      const userAgent = navigator.userAgent.toLowerCase();
+      return (
+        userAgent.includes("safari") &&
+        !userAgent.includes("chrome") &&
+        !userAgent.includes("chromium")
+      );
+    }
+    checkIfSafari();
+  }, [lottieRef]);
 
   useEffect(() => {
-    if (!content) return; // Ensure content is loaded before running the animation
-    runSectionTextAnimation(".organisationer-content-wrapper-top h2", ".organisationer-content-wrapper-top p")
-  }, [content]);
+    runSectionTextAnimation(
+      ".organisationer-content-wrapper-top h2",
+      ".organisationer-content-wrapper-top p"
+    );
+  }, []);
 
-
-  if (!content) return <div></div>;
   return (
     <div className="organisationer-section-wrapper">
       <div className="padding-global">
         <div className="container-large">
           <div className="padding-section-large">
-            <div className="organisationer-content-wrapper-top">
-              <div className="sub-header-wrapper">
-                <img src="/prefix-icon.svg" alt="Left" />
-                <h6> {content.data[0].attributes.miniHeadline} </h6>
+            {lang === "sv" ? (
+              <div className="organisationer-content-wrapper-top">
+                <div className="sub-header-wrapper">
+                  <img src="/prefix-icon.svg" alt="Left" />
+                  <h6>OGRANISATIONER</h6>
+                </div>
+                <h2>
+                  CYBERSÄKERHET FÖR <br></br> ORGANISATIONER
+                </h2>
+                <div>
+                  <p>
+                    Privata företag, myndigheter och offentlig sektor som
+                    bedriver samhällsviktig verksamhet erbjuds paketerade
+                    tjänster och produkter.
+                  </p>
+                  <p>
+                    Vår plattform för ackrediterade lösningar till
+                    samhällsviktig verksamhet, SIRRUS, är en unik användarvänlig
+                    plattform som erbjuder stor flexibilitet, alltid med
+                    gällande lagkrav som grund.
+                  </p>
+                </div>
               </div>
-              <h2>{content.data[0].attributes.H1}</h2>
-              <div>
-                <p>{content.data[0].attributes.Text}</p>
+            ) : (
+              <div className="organisationer-content-wrapper-top">
+                <div className="sub-header-wrapper">
+                  <img src="/prefix-icon.svg" alt="Left" />
+                  <h6>ORGANIZATIONS</h6>
+                </div>
+                <h2>CYBER SECURITY FOR ORGANIZATIONS</h2>
+                <div>
+                  <p>
+                    We offer packaged services and products to vital societal
+                    functions such as government agencies, the military, and the
+                    private sector.
+                  </p>
+                  <p>
+                    SIRRUS is our accredited solutions platform for vital
+                    societal functions. It is unique, user-friendly and offers
+                    enhanced flexibility, while always adhering to current
+                    legislative demands.
+                  </p>
+                </div>
               </div>
-            </div>
-            
+            )}
+
             <div className="organisationer-content-wrapper-bottom">
-              {!isSafari() ? 
-              <DotLottiePlayer
+              {!isSafari ? (
+                <DotLottiePlayer
                   lottieRef={lottieRef}
                   src={lottieSource}
                   height={550}
                   loop={false}
                   id="player"
-                >
-                </DotLottiePlayer>
-                :
-                <img className="backupImage" src={lottieBackupImgSoruce}>
-                </img>
-          }
-                
+                ></DotLottiePlayer>
+              ) : (
+                <img className="backupImage" src={lottieBackupImgSoruce}></img>
+              )}
             </div>
           </div>
         </div>

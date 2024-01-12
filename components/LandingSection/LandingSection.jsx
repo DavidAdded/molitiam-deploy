@@ -15,33 +15,6 @@ const LandingSection = (props) => {
   const [content, setContent] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const URL = `${process.env.NEXT_PUBLIC_API_URL}landing-contents?locale=${lang}`;
-        const response = await fetch(URL, {
-          headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`, // Replace 'Hello' with the actual token
-          },
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          setContent(data);
-          // Set content state here
-        } else {
-          console.error("Failed to fetch content");
-        }
-      } catch (error) {
-        console.error("Error fetching content:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    if (!content) return;
-
     const triggerElement = sectionRef.current.querySelector(
       ".landing-content-wrapper"
     );
@@ -108,14 +81,19 @@ const LandingSection = (props) => {
                 <div className="landing-grey-image"></div>
               </div>
 
-              {!content ? (
-                <div></div>
+              {lang === "sv" ? (
+                <div className="text-wrapper">
+                  <h1 className="animation-header">
+                    CYBERSÄKERHET FÖR SAMHÄLLSVIKTIG VERKSAMHET
+                  </h1>
+                  <p>Försvarsteknologi. Säkert. Enkelt.</p>
+                </div>
               ) : (
                 <div className="text-wrapper">
                   <h1 className="animation-header">
-                    {content.data[0].attributes.H1}
+                    CYBER SECURITY FOR VITAL SOCIETAL FUNCTIONS{" "}
                   </h1>
-                  <p>{content.data[0].attributes.SecondText}</p>
+                  <p>Defense technology. Security. Simplicity.</p>
                 </div>
               )}
             </div>

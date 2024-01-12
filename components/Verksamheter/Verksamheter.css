@@ -54,6 +54,7 @@
   padding: 40px 40px 60px 40px;
   width: 100%;
   max-width: 350px;
+  min-height: 350px;
   border: solid 1px #8a684a;
 }
 
