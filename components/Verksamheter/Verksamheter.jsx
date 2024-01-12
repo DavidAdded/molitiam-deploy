@@ -52,10 +52,10 @@ const Verksamheter = (props) => {
                     <img src="/prefix-icon.svg" alt="Left" />
                     <h6>VERKSAMHETER</h6>
                   </div>
-                  <h2>CR GROUP</h2>
+                  <h2>C-Resiliens AB</h2>
                   <div>
                     <p>
-                      CR Group är ett svenskägt cybersäkerhetsföretag med
+                      C-Resiliens AB är ett svenskägt cybersäkerhetsföretag med
                       inriktning mot Sverige och Europa. Vi erbjuder lösningar
                       till samhällsviktig verksamhet som är både enkla att
                       använda och enkla att köpa.
