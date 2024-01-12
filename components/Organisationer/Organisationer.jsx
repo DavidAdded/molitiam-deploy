@@ -34,11 +34,13 @@ const Organisationer = (props) => {
 
     function checkIfSafari() {
       const userAgent = navigator.userAgent.toLowerCase();
-      return (
+      if (
         userAgent.includes("safari") &&
         !userAgent.includes("chrome") &&
         !userAgent.includes("chromium")
-      );
+      ) {
+        setIsSafari(true);
+      }
     }
     checkIfSafari();
   }, [lottieRef]);
@@ -48,7 +50,7 @@ const Organisationer = (props) => {
       ".organisationer-content-wrapper-top h2",
       ".organisationer-content-wrapper-top p"
     );
-  }, []);
+  }, [isSafari]);
 
   return (
     <div className="organisationer-section-wrapper">
