@@ -52,6 +52,7 @@
   margin: 0;
   gap: 25px;
   flex-wrap: wrap;
+  min-height:350;
 }
 
 .nyheter-content-card {
