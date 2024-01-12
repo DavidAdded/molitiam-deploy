@@ -34,7 +34,7 @@ const Footer = () => {
               <div className="footer-contact-wrapper">
                 <div className="footer-contact-content-left">
                   <p>
-                    <bold>{addressText}</bold>
+                    <b>{addressText}</b>
                   </p>
                   <p>C-Resiliens AB</p>
                   <p>Hovslagargatan 5b</p>
@@ -47,7 +47,7 @@ const Footer = () => {
                 </div>
                 <div className="footer-contact-content-middle">
                   <p>
-                    <bold>{postAddressText}</bold>
+                    <b>{postAddressText}</b>
                   </p>
                   <p>C-Resiliens AB</p>
                   <p>Aspövägen 41</p>
