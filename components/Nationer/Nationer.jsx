@@ -35,9 +35,9 @@ const Nationer = (props) => {
                     användarvänlighet.
                   </p>
                   <p>
-                    CR Group är den enda leverantören av krypteringsprodukter
-                    för säkerhetsklassificerad information på̊ nivån begränsat
-                    hemligt i Sverige.
+                    C-Resiliens AB är den enda leverantören av
+                    krypteringsprodukter för säkerhetsklassificerad information
+                    på̊ nivån begränsat hemligt i Sverige.
                   </p>
                 </div>
               </div>

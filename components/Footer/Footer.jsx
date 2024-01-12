@@ -10,8 +10,8 @@ const Footer = () => {
 
   const contactContentText1 =
     lang === "sv"
-      ? "CR Group är ett svenskt cybersäkerhetsföretag som utvecklar paketerade och användarvänliga digitala lösningar församhällsviktig verksamhet."
-      : "CR Group is a Swedish cybersecurity company that develops packaged and user-friendly digital solutions for critical societal operations.";
+      ? "C-Resiliens AB är ett svenskt cybersäkerhetsföretag som utvecklar paketerade och användarvänliga digitala lösningar församhällsviktig verksamhet."
+      : "C-Resiliens AB is a Swedish cybersecurity company that develops packaged and user-friendly digital solutions for critical societal operations.";
 
   const contactContentText2 =
     lang === "sv"
