@@ -60,23 +60,51 @@ const OmOss = (props) => {
                 </div>
               )}
               <div className="omoss-section-column">
-                <div className="omoss-section-column-content">
-                  <div className="omoss-section-column-content-top">
-                    <img src="/logowhite.svg" alt="Logo" />{" "}
-                  </div>
-                  <div className="omoss-section-column-content-middle">
-                    <div className="vertical-black-line"></div>
-                    <div className="vertical-black-line"></div>
-                  </div>
-                  <div className="omoss-section-column-content-bottom">
-                    <div className="omoss-section-column-content-bottom-left">
-                      <p></p>
+                {lang === "sv" ? (
+                  <div className="omoss-section-column-content">
+                    <div className="omoss-section-column-content-top">
+                      <img src="/logowhite.svg" alt="Logo" />{" "}
                     </div>
-                    <div className="omoss-section-column-content-bottom-right">
-                      <p></p>
+                    <div className="omoss-section-column-content-middle">
+                      <div className="vertical-black-line"></div>
+                      <div className="vertical-black-line"></div>
+                    </div>
+                    <div className="omoss-section-column-content-bottom">
+                      <div className="omoss-section-column-content-bottom-left">
+                        <p>
+                          Cybersäkerhets-<br></br>tjänster
+                        </p>
+                      </div>
+                      <div className="omoss-section-column-content-bottom-right">
+                        <p>
+                          Cybersäkerhets-<br></br>produkter
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
+                ) : (
+                  <div className="omoss-section-column-content">
+                    <div className="omoss-section-column-content-top">
+                      <img src="/logowhite.svg" alt="Logo" />{" "}
+                    </div>
+                    <div className="omoss-section-column-content-middle">
+                      <div className="vertical-black-line"></div>
+                      <div className="vertical-black-line"></div>
+                    </div>
+                    <div className="omoss-section-column-content-bottom">
+                      <div className="omoss-section-column-content-bottom-left">
+                        <p>
+                          Cybersecurity-<br></br>services
+                        </p>
+                      </div>
+                      <div className="omoss-section-column-content-bottom-right">
+                        <p>
+                          Cybersecurity-<br></br> products
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
