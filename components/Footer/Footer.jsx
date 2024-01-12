@@ -33,8 +33,9 @@ const Footer = () => {
               <div className="breakline" />
               <div className="footer-contact-wrapper">
                 <div className="footer-contact-content-left">
-                  <p style={{ fontWeight: 800 }}>{addressText}</p>
-
+                  <p>
+                    <bold>{addressText}</bold>
+                  </p>
                   <p>C-Resiliens AB</p>
                   <p>Hovslagargatan 5b</p>
                   <p>Blasieholmen, Stockholm</p>
@@ -45,7 +46,9 @@ const Footer = () => {
                   </div>
                 </div>
                 <div className="footer-contact-content-middle">
-                  <p>{postAddressText}</p>
+                  <p>
+                    <bold>{postAddressText}</bold>
+                  </p>
                   <p>C-Resiliens AB</p>
                   <p>Aspövägen 41</p>
                   <p>125 40 Älvsjö</p>
