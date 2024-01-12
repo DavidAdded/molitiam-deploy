@@ -40,7 +40,7 @@ const Footer = () => {
                   <p>Hovslagargatan 5b</p>
                   <p>Blasieholmen, Stockholm</p>
                   <p>+46 8 551 102 40</p>
-                  <a href="mailto: info@cr.se">info@cr.se</a>
+                  <a href="mailto: info@cresiliens.se">info@cresiliens.se</a>
                   <div className="copyright">
                     <p>Copyright C-Resiliens AB 2024</p>
                   </div>
