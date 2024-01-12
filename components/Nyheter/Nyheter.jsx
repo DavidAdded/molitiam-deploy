@@ -12,7 +12,7 @@ const Nyheter = (props) => {
   const [articles, setArticles] = useState(null);
   const readMoreText = lang === "sv" ? "LÄS MER" : "READ MORE";
   const readAllArticlesText =
-    lang === "sv" ? "LÄS ALLA NYHTER" : "READ ALL NEWS";
+    lang === "sv" ? "LÄS ALLA NYHETER" : "READ ALL NEWS";
 
   useEffect(() => {
     const fetchData = async () => {
