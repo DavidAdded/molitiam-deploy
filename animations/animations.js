@@ -5,8 +5,8 @@ import SplitText from "@utils/SplitText";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function animateElement(element, type, isHeader = false, delay) {
-
+function animateElement(element, type, isHeader = false) {
+  
   const split = new SplitText(element, { type: type });
   if (isHeader) {
     gsap.fromTo(
@@ -28,6 +28,7 @@ function animateElement(element, type, isHeader = false, delay) {
       }
     );
   } else {
+   if(split.lines.length === 0) return;
     gsap.fromTo(
       split.lines,
       {
@@ -53,12 +54,12 @@ function animateElement(element, type, isHeader = false, delay) {
 const runSectionTextAnimation = (
   hElements,
   pElements,
-  time = 1000,
+  time = 0,
   delay = 0
 ) => {
  const headers = document.querySelectorAll(hElements);
  const paragraphs = document.querySelectorAll(pElements);
-     const subHeaders = document.querySelectorAll(".sub-header-wrapper");
+ const subHeaders = document.querySelectorAll(".sub-header-wrapper");
 
      headers.forEach((header) => {
        header.style.opacity = 0;
@@ -72,24 +73,29 @@ const runSectionTextAnimation = (
         subHeader.style.opacity = 0;
       })
 
-  setTimeout(() => {
+  const timeoutId = setTimeout(() => {
     headers.forEach((header) => {
       header.style.opacity = 1;
-      animateElement(header, "lines", true, delay);
+      animateElement(header, "lines", true);
     });
     if (pElements !== undefined) {
-      
       paragraphs.forEach((paragraph) => {
         paragraph.style.opacity = 1;
-        animateElement(paragraph, "lines", false, delay);
+        animateElement(paragraph, "lines", false);
       });
     }
     subHeaders.forEach((subHeader) => {
       subHeader.style.opacity = 1;
-      animateElement(subHeader, "lines", false, delay);
+      animateElement(subHeader, "lines", false);
     });
-    
+     subHeaders.forEach((subHeader) => {
+      subHeader.style.opacity = 1;
+      animateElement(subHeader, "lines", false);
+    });
   }, time);
+
+  return ()=>
+  clearTimeout(timeoutId);
 };
 
 export default runSectionTextAnimation;
