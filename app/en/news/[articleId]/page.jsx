@@ -1,5 +1,5 @@
 "use client";
-import "./page.css";
+import "../../../nyheter/[articleId]/page.css";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
