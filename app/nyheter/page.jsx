@@ -5,10 +5,6 @@ import { useRouter } from "next/navigation";
 
 const Page = () => {
   
-
-  const readMoreText = "Read More";
-  const arrowIconUrl = "right-arrow.svg";
-  
   
   const router = useRouter();
 
@@ -73,8 +69,6 @@ const Page = () => {
               <h1>nyheter</h1>
               <div className="news-grid">
                 {articles.map((article) => {
-                  // Assuming article.attributes.Image.attributes.url contains the image path// This will log the image URL to the console
-
                   return (
                     <div
                       onClick={() => handleReadMoreClick(article.id)}

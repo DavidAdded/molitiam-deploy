@@ -29,6 +29,9 @@ const Organisationer = (props) => {
           start: "top center",
           onEnter: lottieRef.current.playOnShow(),
         });
+        return () => {
+          scrollTriggerInstance.kill();
+        };
       }, 1000);
     }
 
