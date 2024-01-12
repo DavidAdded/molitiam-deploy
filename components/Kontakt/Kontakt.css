@@ -1,8 +1,9 @@
 /* Base styles - applied for all screen sizes */
 
 .kontakt-section-wrapper {
-  background-image: url("/kontakt-background.png");
-  background-size: contain;
+  background-image: url("/background-image.svg");
+  background-size: cover;
+  background-position: bottom;
 }
 
 .kontakt-content-wrapper {
