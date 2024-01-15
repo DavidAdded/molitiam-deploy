@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitText from "@utils/SplitText";
