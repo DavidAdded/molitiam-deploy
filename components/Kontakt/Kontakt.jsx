@@ -49,7 +49,7 @@ const Kontakt = (props) => {
                     <div className="kontakt-item-top">
                       <img
                         className="contact-image"
-                        src={`${process.env.NEXT_PUBLIC_API_SLIM}${contact.attributes.Image.data.attributes.formats.thumbnail.url}`}
+                        src={`${process.env.NEXT_PUBLIC_API_SLIM}${contact.attributes.Image.data.attributes.formats.large.url}`}
                       />
                     </div>
                     <div className="kontakt-item-bottom">

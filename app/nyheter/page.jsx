@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const Page = () => {
-  
-  
   const router = useRouter();
 
   const [articles, setarticles] = useState(null);
@@ -14,7 +12,7 @@ const Page = () => {
     return dateString.replace(/-/g, "•");
   }
 
-  const urlBasedOnLang = "/nyheter" 
+  const urlBasedOnLang = "/nyheter";
 
   const handleClick = () => {
     router.push(urlBasedOnLang);
@@ -23,7 +21,6 @@ const Page = () => {
   const handleReadMoreClick = (articleId) => {
     router.push(`${urlBasedOnLang}/${articleId}`);
   };
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,11 +49,7 @@ const Page = () => {
     };
 
     fetchData();
-
-    
   }, []);
-
- 
 
   if (!articles) return <div></div>;
 
@@ -78,7 +71,7 @@ const Page = () => {
                       <div className="nyheter-content-card">
                         <div
                           style={{
-                            backgroundImage: `url(${process.env.NEXT_PUBLIC_API_SLIM}${article.attributes.Image.data.attributes.formats.thumbnail.url})`,
+                            backgroundImage: `url(${process.env.NEXT_PUBLIC_API_SLIM}${article.attributes.Image.data.attributes.formats.medium.url})`,
                           }}
                           className="nyheter-content-card-top"
                         ></div>

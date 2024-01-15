@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const Page = ({ params }) => {
-
   const router = useRouter();
   const [article, setArticle] = useState(null);
   const [articles, setarticles] = useState(null);
@@ -46,18 +45,18 @@ const Page = ({ params }) => {
     fetchData();
   }, [params.articleId]);
 
-  
   if (!article) return <div></div>;
 
   const formattedDate = convertDateFormat(article.data.attributes.Date);
 
- const urlBasedOnLang=  "/nyheter" 
-  
+  const urlBasedOnLang = "/nyheter";
 
   const handleReadMoreClick = (articleId) => {
     router.push(`${urlBasedOnLang}/${articleId}`);
   };
-  
+
+  console.log(article);
+
   return (
     <>
       <div className="news-article-section-wrapper">
@@ -66,7 +65,7 @@ const Page = ({ params }) => {
             <div className="news-article-content-wrapper">
               <img
                 className="news-main-image"
-                src={`${process.env.NEXT_PUBLIC_API_SLIM}${article.data.attributes.Image.data.attributes.formats.thumbnail.url}`}
+                src={`${process.env.NEXT_PUBLIC_API_SLIM}${article.data.attributes.Image.data.attributes.formats.large.url}`}
               />
               <h6>{formattedDate}</h6>
               <div className="news-article-text-wrapper">
@@ -101,7 +100,7 @@ const Page = ({ params }) => {
                         <div className="nyheter-content-card">
                           <div
                             style={{
-                              backgroundImage: `url(${process.env.NEXT_PUBLIC_API_SLIM}${article.attributes.Image.data.attributes.formats.thumbnail.url})`,
+                              backgroundImage: `url(${process.env.NEXT_PUBLIC_API_SLIM}${article.attributes.Image.data.attributes.formats.medium.url})`,
                             }}
                             className="nyheter-content-card-top"
                           ></div>
