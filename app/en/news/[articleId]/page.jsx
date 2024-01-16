@@ -1,57 +1,72 @@
-"use client";
+import { resolve } from "styled-jsx/css";
 import "../../../nyheter/[articleId]/page.css";
-import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-const Page = ({ params }) => {
+export async function generateStaticParams() {
+  const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&&populate=*&locale=en`;
+  const response = await fetch(articlesURL, {
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+    },
+  });
 
-  const router = useRouter();
-  const [article, setArticle] = useState(null);
-  const [articles, setarticles] = useState(null);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch articles: ${response.statusText}`);
+  }
+
+  const articlesData = await response.json();
+  const articles = Array.isArray(articlesData.data) ? articlesData.data : [];
+
+  return articles.map((article) => ({
+    articleId: article.id.toString(),
+  }));
+}
+
+async function fetchArticleData(articleId) {
+  const URL = `${process.env.NEXT_PUBLIC_API_URL}articles/${articleId}?populate=*`;
+  const response = await fetch(URL, {
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`, // Replace 'Hello' with the actual token
+    },
+  });
+
+  const article = await response.json();
+  return article;
+}
+
+async function fetchArticles() {
+  const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&pagination[limit]=3&populate=*&locale=en`;
+  const response = await fetch(articlesURL, {
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch articles: ${response.statusText}`);
+  }
+
+  const articlesData = await response.json();
+  const articles = Array.isArray(articlesData.data) ? articlesData.data : [];
+
+  return articles;
+}
+
+export default async function Page({ params }) {
+  const articleData = fetchArticleData(params.articleId);
+  const articlesData = fetchArticles();
+
+  const [article, articles] = await Promise.all([articleData, articlesData]);
 
   function convertDateFormat(dateString) {
     return dateString.replace(/-/g, "•");
   }
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const URL = `${process.env.NEXT_PUBLIC_API_URL}articles/${params.articleId}?populate=*`;
-        const response = await fetch(URL, {
-          headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`, // Replace 'Hello' with the actual token
-          },
-        });
-
-        const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?filters[id][$ne]=${params.articleId}&sort=Date:desc&pagination[limit]=3&populate=*&locale=en`;
-        const articlesResponse = await fetch(articlesURL, {
-          headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
-          },
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          const articles = await articlesResponse.json();
-          setArticle(data);
-          setarticles(articles.data);
-        } else {
-          console.error("Failed to fetch article");
-        }
-      } catch (error) {
-        console.error("Error fetching article:", error);
-      }
-    };
-
-    fetchData();
-  }, [params.articleId]);
-
-  
-  if (!article) return <div></div>;
+  //if (params) return <div></div>;
 
   const formattedDate = convertDateFormat(article.data.attributes.Date);
 
- const urlBasedOnLang = "/en/news";
+  const urlBasedOnLang = "/en/news";
 
   const handleReadMoreClick = (articleId) => {
     router.push(`${urlBasedOnLang}/${articleId}`);
@@ -64,7 +79,7 @@ const Page = ({ params }) => {
             <div className="news-article-content-wrapper">
               <img
                 className="news-main-image"
-                src={`${process.env.NEXT_PUBLIC_API_SLIM}${article.data.attributes.Image.data.attributes.formats.thumbnail.url}`}
+                src={`${process.env.NEXT_PUBLIC_API_SLIM}${article.data.attributes.Image.data.attributes.formats.medium.url}`}
               />
               <h6>{formattedDate}</h6>
               <div className="news-article-text-wrapper">
@@ -91,37 +106,38 @@ const Page = ({ params }) => {
                     // This will log the image URL to the console
 
                     return (
-                      <div
-                        onClick={() => handleReadMoreClick(article.id)}
-                        key={article.id}
-                        className="nyheter-wrapper"
-                      >
-                        <div className="nyheter-content-card">
-                          <div
-                            style={{
-                              backgroundImage: `url(${process.env.NEXT_PUBLIC_API_SLIM}${article.attributes.Image.data.attributes.formats.thumbnail.url})`,
-                            }}
-                            className="nyheter-content-card-top"
-                          ></div>
+                      <div className="nyheter-wrapper">
+                        <a
+                          href={`${urlBasedOnLang}/${article.id}`}
+                          key={article.id}
+                        >
+                          <div className="nyheter-content-card">
+                            <div
+                              style={{
+                                backgroundImage: `url(${process.env.NEXT_PUBLIC_API_SLIM}${article.attributes.Image.data.attributes.formats.medium.url})`,
+                              }}
+                              className="nyheter-content-card-top"
+                            ></div>
 
-                          <div className="nyheter-content-card-bottom">
-                            <div className="nyheter-content-card-text-wrapper">
-                              <div className="nyheter-date">
-                                {convertDateFormat(article.attributes.Date)}
+                            <div className="nyheter-content-card-bottom">
+                              <div className="nyheter-content-card-text-wrapper">
+                                <div className="nyheter-date">
+                                  {convertDateFormat(article.attributes.Date)}
+                                </div>
+                                <h3>{article.attributes.Titel}</h3>
+                                <p className="nyheter-paragraph-one">
+                                  {article.attributes.ArticleText}
+                                </p>
                               </div>
-                              <h3>{article.attributes.Titel}</h3>
-                              <p className="nyheter-paragraph-one">
-                                {article.attributes.ArticleText}
-                              </p>
                             </div>
                           </div>
-                        </div>
-                        <div className="nyheter-las-mer">
-                          <div className="nyheter-las-mer-content">
-                            <p>READ MORE</p>
-                            <img src="/right-arrow.svg" alt="Read More" />
+                          <div className="nyheter-las-mer">
+                            <div className="nyheter-las-mer-content">
+                              <p>READ MORE</p>
+                              <img src="/right-arrow.svg" alt="Read More" />
+                            </div>
                           </div>
-                        </div>
+                        </a>
                       </div>
                     );
                   })}
@@ -133,6 +149,4 @@ const Page = ({ params }) => {
       </div>
     </>
   );
-};
-
-export default Page;
+}

@@ -32,14 +32,10 @@ const Page = () => {
           },
         });
 
-        console.log(articlesResponse);
-
         if (articlesResponse.ok) {
           const articles = await articlesResponse.json();
 
           setarticles(articles.data);
-
-          console.log(articles);
         } else {
           console.error("Failed to fetch article");
         }

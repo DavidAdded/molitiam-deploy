@@ -5,6 +5,10 @@
   width: 100%;
 }
 
+.nyheter-wrapper a {
+  text-decoration: none;
+}
+
 .news-article-content-wrapper {
   display: flex;
   flex-direction: column;
