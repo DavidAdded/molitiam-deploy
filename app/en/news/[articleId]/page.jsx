@@ -1,6 +1,5 @@
 import { resolve } from "styled-jsx/css";
 import "../../../nyheter/[articleId]/page.css";
-import { useRouter } from "next/navigation";
 
 export async function generateStaticParams() {
   const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&&populate=*&locale=en`;
@@ -22,8 +21,8 @@ export async function generateStaticParams() {
   }));
 }
 
-async function fetchArticleData(articleId) {
-  const URL = `${process.env.NEXT_PUBLIC_API_URL}articles/${articleId}?populate=*`;
+export default async function Page({ params }) {
+  const URL = `${process.env.NEXT_PUBLIC_API_URL}articles/${params.articleId}?populate=*`;
   const response = await fetch(URL, {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`, // Replace 'Hello' with the actual token
@@ -31,46 +30,31 @@ async function fetchArticleData(articleId) {
   });
 
   const article = await response.json();
-  return article;
-}
 
-async function fetchArticles() {
-  const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&pagination[limit]=3&populate=*&locale=en`;
-  const response = await fetch(articlesURL, {
+  const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?filters[id][$ne]=${params.articleId}&sort=Date:desc&pagination[limit]=3&populate=*&locale=en`;
+  const articlesResponse = await fetch(articlesURL, {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
     },
   });
 
   if (!response.ok) {
-    throw new Error(`Failed to fetch articles: ${response.statusText}`);
+    throw new Error(`Failed to fetch articles: ${articlesResponse.statusText}`);
   }
 
-  const articlesData = await response.json();
+  const articlesData = await articlesResponse.json();
   const articles = Array.isArray(articlesData.data) ? articlesData.data : [];
-
-  return articles;
-}
-
-export default async function Page({ params }) {
-  const articleData = fetchArticleData(params.articleId);
-  const articlesData = fetchArticles();
-
-  const [article, articles] = await Promise.all([articleData, articlesData]);
 
   function convertDateFormat(dateString) {
     return dateString.replace(/-/g, "•");
   }
 
-  //if (params) return <div></div>;
+  if (!article) return <div></div>;
 
   const formattedDate = convertDateFormat(article.data.attributes.Date);
 
   const urlBasedOnLang = "/en/news";
 
-  const handleReadMoreClick = (articleId) => {
-    router.push(`${urlBasedOnLang}/${articleId}`);
-  };
   return (
     <>
       <div className="news-article-section-wrapper">

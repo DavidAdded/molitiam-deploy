@@ -1,35 +1,17 @@
-"use client";
 import "./Kontakt.css";
-import { useEffect, useState } from "react";
 
-const Kontakt = (props) => {
+const Kontakt = async (props) => {
   const lang = props.lang;
-  const [contacts, setContacts] = useState(null);
   const contactText = lang === "sv" ? "Kontakt" : "Contact";
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const URL = `${process.env.NEXT_PUBLIC_API_URL}employees?pagination[limit]=4&populate=*&locale=${lang}`;
-        const response = await fetch(URL, {
-          headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
-          },
-        });
 
-        if (response.ok) {
-          const contacts = await response.json();
+  const URL = `${process.env.NEXT_PUBLIC_API_URL}employees?pagination[limit]=4&populate=*&locale=${lang}`;
+  const response = await fetch(URL, {
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+    },
+  });
 
-          setContacts(contacts.data);
-        } else {
-          console.error("Failed to fetch employees");
-        }
-      } catch (error) {
-        console.error("Error fetching employee:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const contacts = await response.json();
 
   if (!contacts) return <div></div>;
 
@@ -44,7 +26,7 @@ const Kontakt = (props) => {
                 <h6> {contactText} </h6>
               </div>
               <div className="kontakt-grid-wrapper">
-                {contacts.map((contact, index) => (
+                {contacts.data.map((contact, index) => (
                   <div key={index} className="kontakt-item">
                     <div className="kontakt-item-top">
                       <img
