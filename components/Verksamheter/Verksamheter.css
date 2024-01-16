@@ -59,6 +59,7 @@
 
 .verksamheter-content-box-1 img {
   height: 50px;
+  max-width: 250px;
 }
 
 .verksamhet-corner-box-1 {
