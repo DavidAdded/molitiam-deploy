@@ -1,4 +1,3 @@
-"use client";
 import LandingSection from "@components/LandingSection/LandingSection";
 import OmOss from "@components/OmOss/OmOss";
 import Syfte from "@components/Syfte/Syfte";
@@ -9,7 +8,6 @@ import Verksamheter from "@components/Verksamheter/Verksamheter";
 import Nyheter from "@components/Nyheter/Nyheter";
 import Jobb from "@components/Jobb/Jobb";
 import Kontakt from "@components/Kontakt/Kontakt";
-
 
 const Home = (props) => {
   const lang = props.lang;
@@ -24,24 +22,24 @@ const Home = (props) => {
     nationer: lang === "sv" ? "nationer" : "nations",
     organisationer: lang === "sv" ? "organisationer" : "organisations",
   };
-  
+
   return (
     <div>
-      <LandingSection lang={"en"}/>
+      <LandingSection lang={"en"} />
       <div id={urlPoints.syfte}>
-        <Syfte lang={"en"}/>
+        <Syfte lang={"en"} />
       </div>
       <div id={urlPoints.omoss}>
-        <OmOss lang={"en"}/>
+        <OmOss lang={"en"} />
       </div>
       <div id={urlPoints.tjanster}>
-        <Tjanster lang={"en"}/>
+        <Tjanster lang={"en"} />
       </div>
       <div id={urlPoints.nationer}>
-        <Nationer lang={"en"}/>
+        <Nationer lang={"en"} />
       </div>
       <div id={urlPoints.organisationer}>
-        <Organisationer lang={"en"}/>
+        <Organisationer lang={"en"} />
       </div>
       <div id={urlPoints.verksamheter}>
         <Verksamheter lang={"en"} />
@@ -50,15 +48,13 @@ const Home = (props) => {
         <Nyheter lang={"en"} />
       </div>
       <div id={urlPoints.jobb}>
-        <Jobb lang={"en"}/>
+        <Jobb lang={"en"} />
       </div>
       <div id={urlPoints.kontakt}>
-        <Kontakt lang={"en"}/>
+        <Kontakt lang={"en"} />
       </div>
     </div>
   );
 };
-
-
 
 export default Home;

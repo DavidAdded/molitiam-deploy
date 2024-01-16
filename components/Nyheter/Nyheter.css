@@ -8,6 +8,7 @@
   background-repeat: no-repeat;
 }
 
+
 .grid-item {
   width: 90px;
   height: 90px;
@@ -21,6 +22,11 @@
   max-width: 350px;
   width: 100%;
   min-height: 466px;
+}
+
+
+.nyheter-wrapper a {
+  text-decoration: none;
 }
 
 .nyheter-content-wrapper {
@@ -52,7 +58,7 @@
   margin: 0;
   gap: 25px;
   flex-wrap: wrap;
-  min-height:350;
+  min-height: 350;
 }
 
 .nyheter-content-card {
@@ -61,6 +67,7 @@
   flex-direction: column;
   cursor: pointer;
 }
+
 
 .nyheter-content-card-top {
   width: 100%;
@@ -165,6 +172,7 @@
       transition: all 0.2s ease-in-out;
     }
   }
+
   .nyheter-las-mer-content {
     img {
       transform: translateX(0px);
@@ -197,8 +205,6 @@
   margin-top: 60px;
 }
 
-@media (max-width: 991px) {
-}
+@media (max-width: 991px) {}
 
-@media (max-width: 478px) {
-}
+@media (max-width: 478px) {}

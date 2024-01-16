@@ -1,44 +1,24 @@
-"use client";
 import "./Verksamheter.css";
-import { useEffect, useState } from "react";
-import runSectionTextAnimation from "@animations/animations";
 
-const Verksamheter = (props) => {
+const Verksamheter = async (props) => {
   const lang = props.lang;
+  const cardsURL = `${process.env.NEXT_PUBLIC_API_URL}verksamheter-content-cards?locale=${lang}&populate=*`;
+  const cardsResponse = await fetch(cardsURL, {
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+    },
+  });
 
-  const [contentCard, setContentCard] = useState(null);
+  const contentCard = await cardsResponse.json();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const cardsURL = `${process.env.NEXT_PUBLIC_API_URL}verksamheter-content-cards?locale=${lang}&populate=*`;
-        const cardsResponse = await fetch(cardsURL, {
-          headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
-          },
-        });
-
-        if (cardsResponse.ok) {
-          const cards = await cardsResponse.json();
-
-          setContentCard(cards);
-        } else {
-          console.error("Failed to fetch content");
-        }
-      } catch (error) {
-        console.error("Error fetching content:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
+  /*
   useEffect(() => {
     runSectionTextAnimation(
       ".verksamheter-content-wrapper-top h2",
       ".verksamheter-content-wrapper-top p"
     );
   }, [contentCard]);
+  */
 
   return (
     <div className="verksamheter-section-wrapper">
