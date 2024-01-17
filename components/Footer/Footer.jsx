@@ -10,12 +10,12 @@ const Footer = () => {
 
   const contactContentText1 =
     lang === "sv"
-      ? "C-Resiliens AB är ett svenskt cybersäkerhetsföretag som utvecklar paketerade och användarvänliga digitala lösningar församhällsviktig verksamhet."
+      ? "C-Resiliens AB är ett svenskt cybersäkerhetsföretag som utvecklar paketerade och användarvänliga digitala lösningar för samhällsviktig verksamhet."
       : "C-Resiliens AB is a Swedish cybersecurity company that develops packaged and user-friendly digital solutions for critical societal operations.";
 
   const contactContentText2 =
     lang === "sv"
-      ? "Kunderna utgörs av försvar, myndigheter och näringsliv iSverige och Europa."
+      ? "Kunderna utgörs av försvar, myndigheter och näringsliv i Sverige och Europa."
       : "The customers consist of defense, government agencies, and businesses in Sweden and Europe.";
 
   const contactContentText3 =

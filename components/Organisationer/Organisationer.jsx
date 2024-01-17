@@ -49,14 +49,15 @@ const Organisationer = (props) => {
   }, [lottieRef]);
 
   useEffect(() => {
-    if(document.querySelector(".organisationer-content-wrapper-top h2") && document.querySelector(".organisationer-content-wrapper-top p"))
-     {
-       runSectionTextAnimation(
-      ".organisationer-content-wrapper-top h2",
-      ".organisationer-content-wrapper-top p"
-    );
-     }
-   
+    if (
+      document.querySelector(".organisationer-content-wrapper-top h2") &&
+      document.querySelector(".organisationer-content-wrapper-top p")
+    ) {
+      runSectionTextAnimation(
+        ".organisationer-content-wrapper-top h2",
+        ".organisationer-content-wrapper-top p"
+      );
+    }
   }, [isSafari]);
 
   return (
@@ -68,7 +69,7 @@ const Organisationer = (props) => {
               <div className="organisationer-content-wrapper-top">
                 <div className="sub-header-wrapper">
                   <img src="/prefix-icon.svg" alt="Left" />
-                  <h6>OGRANISATIONER</h6>
+                  <h6>ORGANISATIONER</h6>
                 </div>
                 <h2>
                   CYBERSÄKERHET FÖR <br></br> ORGANISATIONER
