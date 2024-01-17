@@ -32,7 +32,7 @@ const OmOss = (props) => {
                       Avancerad försvarsteknologi som skyddar det mest
                       skyddsvärda för samhällsviktig verksamhet och en helt ny
                       nivå av användarvänlighet gör våra lösningar enkla att
-                      använda och enkla att köpa. Precis som det ska vara.
+                      använda och enkla att köpa.
                     </p>
                     <p>Precis som det ska vara.</p>
                   </div>
