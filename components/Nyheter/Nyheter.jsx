@@ -89,7 +89,7 @@ const Nyheter = async (props) => {
                   <div></div>
                 )}
               </div>
-              <a href={`${urlBasedOnLang}/`}>
+              <a href={`${urlBasedOnLang}`}>
                 <button className="regular-button">
                   {readAllArticlesText}
                 </button>
