@@ -9,7 +9,7 @@ import gsap from "gsap";
 gsap.registerPlugin(ScrollTrigger);
 
 const Organisationer = (props) => {
-  const [isSafari, setIsSafari] = useState(true);
+  const [isSafari, setIsSafari] = useState(false);
   const lang = props.lang;
   const lottieSource =
     lang === "sv"
@@ -18,16 +18,16 @@ const Organisationer = (props) => {
   const lottieBackupImgSoruce =
     lang === "sv" ? "/lottie-backup-sv.png" : "/lottie-backup-eng.png";
 
-  const lottieRef = useRef();
+  const ref = useRef();
 
   // Setup ScrollTrigger
   useEffect(() => {
-    if (lottieRef.current) {
+    if (ref.current) {
       setTimeout(() => {
         ScrollTrigger.create({
           trigger: ".organisationer-content-wrapper-bottom",
           start: "top center",
-          onEnter: lottieRef.current.playOnShow(),
+          onEnter: ref.current.playOnShow(),
         });
         return () => {
           scrollTriggerInstance.kill();
@@ -37,16 +37,18 @@ const Organisationer = (props) => {
 
     function checkIfSafari() {
       const userAgent = navigator.userAgent.toLowerCase();
+   
       if (
         userAgent.includes("safari") &&
         !userAgent.includes("chrome") &&
         !userAgent.includes("chromium")
       ) {
+        
         setIsSafari(true);
       }
     }
     checkIfSafari();
-  }, [lottieRef]);
+  }, [ref]);
 
   useEffect(() => {
     if (
@@ -114,7 +116,7 @@ const Organisationer = (props) => {
             <div className="organisationer-content-wrapper-bottom">
               {!isSafari ? (
                 <DotLottiePlayer
-                  lottieRef={lottieRef}
+                  ref={ref}
                   src={lottieSource}
                   height={550}
                   loop={false}
