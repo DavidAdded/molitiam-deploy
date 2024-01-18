@@ -19,7 +19,7 @@ export const metadata = {
       "C-Resiliens är ett cybersäkerhetsföretaget som erbjuder avancerad försvarsteknologi för samhällsviktig verksamhet. Skydda det mest kritiska med användarvänliga och lättillgängliga lösningar",
       images: [
       {
-        url: 'https://cr.se/lottie-backup-sv.png',
+        url: 'https://cr.se/opengraph.png',
         width: 1200,
         height: 630,
       },

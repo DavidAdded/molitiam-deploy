@@ -1,5 +1,23 @@
 import "../../nyheter/page.css";
 
+export const metadata = {
+  title: "Cybersäkerhet för samhällsviktig verksamhet",
+  description:
+    "C-Resiliens är ett cybersäkerhetsföretaget som erbjuder avancerad försvarsteknologi för samhällsviktig verksamhet. Skydda det mest kritiska med användarvänliga och lättillgängliga lösningar",
+  openGraph: {
+    title: "Cybersäkerhet för samhällsviktig verksamhet",
+    description:
+      "C-Resiliens är ett cybersäkerhetsföretaget som erbjuder avancerad försvarsteknologi för samhällsviktig verksamhet. Skydda det mest kritiska med användarvänliga och lättillgängliga lösningar",
+      images: [
+      {
+        url: 'https://cr.se/opengraph.png',
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+};
+
 
 export default async function Page() {
   const readMoreText = "Read More";
