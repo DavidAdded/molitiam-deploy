@@ -6,19 +6,22 @@ export async function generateMetadata({ params }, parent) {
   const URL = `${process.env.NEXT_PUBLIC_API_URL}articles/${params.articleId}?populate=*`;
   const response = await fetch(URL, {
     headers: {
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`, // Replace 'Hello' with the actual token
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`, 
     },
   });
  const article = await response.json();
  
   const previousImages = (await parent).openGraph?.images || []
- 
+   const description = article.data.attributes.ArticleText
+  .replace(/<[^>]*>/g, '') 
+  .substring(0, 150)
+  + '...'; 
   return {
     title: article.data.attributes.Titel,
     description: article.data.attributes.ArticleText.split(0, 150)[0]+ "...",
     openGraph: {
       title: article.data.attributes.Titel,
-      description: article.data.attributes.ArticleText.split(0, 150)[0]+ "...",
+      description: description,
       images: [article.data.attributes.Image.data.attributes.formats.medium.url, ...previousImages],
     },
   }
