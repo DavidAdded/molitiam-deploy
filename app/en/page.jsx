@@ -10,16 +10,16 @@ import Jobb from "@components/Jobb/Jobb";
 import Kontakt from "@components/Kontakt/Kontakt";
 
 export const metadata = {
-  title: "Cybersäkerhet för samhällsviktig verksamhet",
+  title: "Cyber security for vital societal functions",
   description:
-    "C-Resiliens är ett cybersäkerhetsföretaget som erbjuder avancerad försvarsteknologi för samhällsviktig verksamhet. Skydda det mest kritiska med användarvänliga och lättillgängliga lösningar",
+    "C-Resiliens, a Swedish-owned cyber-security company, offers critical societal functions with advanced defense technology. Elevate security with user-friendly solutions that are easy to buy and easy to use",
   openGraph: {
-    title: "Cybersäkerhet för samhällsviktig verksamhet",
+    title: "Cyber security for vital societal functions",
     description:
-      "C-Resiliens är ett cybersäkerhetsföretaget som erbjuder avancerad försvarsteknologi för samhällsviktig verksamhet. Skydda det mest kritiska med användarvänliga och lättillgängliga lösningar",
-      images: [
+      "C-Resiliens, a Swedish-owned cyber-security company, offers critical societal functions with advanced defense technology. Elevate security with user-friendly solutions that are easy to buy and easy to use",
+    images: [
       {
-        url: 'https://cr.se/opengraph.png',
+        url: "https://cr.se/opengraph.png",
         width: 1200,
         height: 630,
       },
