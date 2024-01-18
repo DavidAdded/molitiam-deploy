@@ -1,4 +1,3 @@
-
 import LandingSection from "@components/LandingSection/LandingSection";
 import OmOss from "@components/OmOss/OmOss";
 import Syfte from "@components/Syfte/Syfte";
@@ -9,6 +8,18 @@ import Verksamheter from "@components/Verksamheter/Verksamheter";
 import Nyheter from "@components/Nyheter/Nyheter";
 import Jobb from "@components/Jobb/Jobb";
 import Kontakt from "@components/Kontakt/Kontakt";
+
+export const metadata = {
+  title: "Cybersäkerhet för samhällsviktig verksamhet",
+  description:
+    "C-Resiliens är ett cybersäkerhetsföretaget som erbjuder avancerad försvarsteknologi för samhällsviktig verksamhet. Skydda det mest kritiska med användarvänliga och lättillgängliga lösningar",
+  openGraph: {
+    title: "Cybersäkerhet för samhällsviktig verksamhet",
+    description:
+      "C-Resiliens är ett cybersäkerhetsföretaget som erbjuder avancerad försvarsteknologi för samhällsviktig verksamhet. Skydda det mest kritiska med användarvänliga och lättillgängliga lösningar",
+    openGraphImage: "./lottie-backup-sv.png",
+  },
+};
 
 const Home = () => {
   const lang = "sv";
@@ -23,25 +34,24 @@ const Home = () => {
     nationer: lang === "sv" ? "nationer" : "nations",
     organisationer: lang === "sv" ? "organisationer" : "organisations",
   };
-  
 
   return (
     <div>
-      <LandingSection lang={"sv"}/>
+      <LandingSection lang={"sv"} />
       <div id={urlPoints.syfte}>
-        <Syfte lang={"sv"}/>
+        <Syfte lang={"sv"} />
       </div>
       <div id={urlPoints.omoss}>
-        <OmOss lang={"sv"}/>
+        <OmOss lang={"sv"} />
       </div>
       <div id={urlPoints.tjanster}>
-        <Tjanster lang={"sv"}/>
+        <Tjanster lang={"sv"} />
       </div>
       <div id={urlPoints.nationer}>
-        <Nationer lang={"sv"}/>
+        <Nationer lang={"sv"} />
       </div>
       <div id={urlPoints.organisationer}>
-        <Organisationer lang={"sv"}/>
+        <Organisationer lang={"sv"} />
       </div>
       <div id={urlPoints.verksamheter}>
         <Verksamheter lang={"sv"} />
@@ -50,15 +60,13 @@ const Home = () => {
         <Nyheter lang={"sv"} />
       </div>
       <div id={urlPoints.jobb}>
-        <Jobb lang={"sv"}/>
+        <Jobb lang={"sv"} />
       </div>
       <div id={urlPoints.kontakt}>
-        <Kontakt lang={"sv"}/>
+        <Kontakt lang={"sv"} />
       </div>
     </div>
   );
 };
-
-
 
 export default Home;
