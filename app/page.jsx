@@ -17,7 +17,13 @@ export const metadata = {
     title: "Cybersäkerhet för samhällsviktig verksamhet",
     description:
       "C-Resiliens är ett cybersäkerhetsföretaget som erbjuder avancerad försvarsteknologi för samhällsviktig verksamhet. Skydda det mest kritiska med användarvänliga och lättillgängliga lösningar",
-    openGraphImage: "./lottie-backup-sv.png",
+      images: [
+      {
+        url: 'https://cr.se/lottie-backup-sv.png',
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
 };
 

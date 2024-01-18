@@ -1,6 +1,30 @@
 import { resolve } from "styled-jsx/css";
 import "./page.css";
 
+export async function generateMetadata({ params }, parent) {
+  const id = params.id
+  const URL = `${process.env.NEXT_PUBLIC_API_URL}articles/${params.articleId}?populate=*`;
+  const response = await fetch(URL, {
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`, // Replace 'Hello' with the actual token
+    },
+  });
+ const article = await response.json();
+ 
+  const previousImages = (await parent).openGraph?.images || []
+ 
+  return {
+    title: article.data.attributes.Titel,
+    description: article.data.attributes.ArticleText.split(0, 150)[0]+ "...",
+    openGraph: {
+      title: article.data.attributes.Titel,
+      description: article.data.attributes.ArticleText.split(0, 150)[0]+ "...",
+      images: [article.data.attributes.Image.data.attributes.formats.medium.url, ...previousImages],
+    },
+  }
+}
+ 
+
 export async function generateStaticParams() {
   const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&populate=*&locale=sv`;
   const response = await fetch(articlesURL, {
