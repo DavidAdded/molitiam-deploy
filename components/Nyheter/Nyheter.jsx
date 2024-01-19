@@ -1,4 +1,34 @@
 import "./Nyheter.css";
+import path from "path";
+import fs from "fs";
+import axios from "axios";
+
+const downloadImage = async (url, filepath) => {
+  // Check if the file already exists
+  if (fs.existsSync(filepath)) {
+    return;
+  }
+
+  // Proceed with download if the file doesn't exist
+  const writer = fs.createWriteStream(filepath);
+
+  try {
+    const response = await axios({
+      url,
+      method: "GET",
+      responseType: "stream",
+    });
+
+    response.data.pipe(writer);
+
+    return new Promise((resolve, reject) => {
+      writer.on("finish", resolve);
+      writer.on("error", reject);
+    });
+  } catch (error) {
+    console.error(`Error downloading the image: ${error.message}`);
+  }
+};
 
 const Nyheter = async (props) => {
   const arrowIconUrl = "right-arrow.svg";
@@ -18,6 +48,15 @@ const Nyheter = async (props) => {
   });
 
   const articles = await articlesResponse.json();
+
+  for (const article of articles.data) {
+    const imageURL =
+      article.attributes.Image.data.attributes.formats.medium.url;
+    const imagePath = path.resolve("./public", path.basename(imageURL));
+    await downloadImage(imageURL, imagePath);
+  }
+
+  //onst imagePath = path.resolve("./public", path.basename(articleImage));
 
   function convertDateFormat(dateString) {
     return dateString.replace(/-/g, "•");
@@ -43,6 +82,8 @@ const Nyheter = async (props) => {
                     const articleImage =
                       article.attributes.Image.data.attributes.formats.medium
                         .url;
+                    const imagePath = `/${path.basename(articleImage)}`;
+
                     return (
                       <div className="nyheter-wrapper">
                         <a
@@ -53,7 +94,7 @@ const Nyheter = async (props) => {
                             {articleImage ? (
                               <div
                                 style={{
-                                  backgroundImage: `url(${process.env.NEXT_PUBLIC_API_SLIM}${articleImage})`,
+                                  backgroundImage: `url(${imagePath})`,
                                 }}
                                 className="nyheter-content-card-top"
                               ></div>

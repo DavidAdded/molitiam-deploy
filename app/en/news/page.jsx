@@ -1,4 +1,34 @@
 import "../../nyheter/page.css";
+import path from "path";
+import fs from "fs";
+import axios from "axios";
+
+const downloadImage = async (url, filepath) => {
+  // Check if the file already exists
+  if (fs.existsSync(filepath)) {
+    return;
+  }
+
+  // Proceed with download if the file doesn't exist
+  const writer = fs.createWriteStream(filepath);
+
+  try {
+    const response = await axios({
+      url,
+      method: "GET",
+      responseType: "stream",
+    });
+
+    response.data.pipe(writer);
+
+    return new Promise((resolve, reject) => {
+      writer.on("finish", resolve);
+      writer.on("error", reject);
+    });
+  } catch (error) {
+    console.error(`Error downloading the image: ${error.message}`);
+  }
+};
 
 export const metadata = {
   title: "Cyber security for vital societal functions",
@@ -33,8 +63,14 @@ export default async function Page() {
     throw new Error(`Failed to fetch articles: ${response.statusText}`);
   }
 
-  const articlesData = await response.json();
-  const articles = Array.isArray(articlesData.data) ? articlesData.data : [];
+  const articles = await response.json();
+
+  for (const article of articles.data) {
+    const imageURL =
+      article.attributes.Image.data.attributes.formats.medium.url;
+    const imagePath = path.resolve("./public", path.basename(imageURL));
+    await downloadImage(imageURL, imagePath);
+  }
 
   function convertDateFormat(dateString) {
     return dateString.replace(/-/g, "•");
@@ -52,8 +88,11 @@ export default async function Page() {
             <div className="nyheter-page-content-wrapper">
               <h1>NEWS</h1>
               <div className="news-grid">
-                {articles.map((article) => {
+                {articles.data.map((article) => {
                   // Assuming article.attributes.Image.attributes.url contains the image path// This will log the image URL to the console
+                  const articleImage =
+                    article.attributes.Image.data.attributes.formats.medium.url;
+                  const imagePath = `/${path.basename(articleImage)}`;
 
                   return (
                     <div className="nyheter-wrapper">
@@ -64,7 +103,7 @@ export default async function Page() {
                         <div className="nyheter-content-card">
                           <div
                             style={{
-                              backgroundImage: `url(${process.env.NEXT_PUBLIC_API_SLIM}${article.attributes.Image.data.attributes.formats.thumbnail.url})`,
+                              backgroundImage: `url(${imagePath})`,
                             }}
                             className="nyheter-content-card-top"
                           ></div>

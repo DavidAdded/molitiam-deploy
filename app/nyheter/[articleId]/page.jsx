@@ -1,5 +1,6 @@
 import { resolve } from "styled-jsx/css";
 import "./page.css";
+import path from "path";
 
 export async function generateMetadata({ params }, parent) {
   const id = params.id
@@ -26,6 +27,7 @@ export async function generateMetadata({ params }, parent) {
     },
   }
 }
+
  
 
 export async function generateStaticParams() {
@@ -79,8 +81,9 @@ export default async function Page({ params }) {
   if (!article) return <div></div>;
 
   const formattedDate = convertDateFormat(article.data.attributes.Date);
-
   const urlBasedOnLang = "/nyheter/";
+  const singleImage = article.data.attributes.Image.data.attributes.formats.medium.url;
+  const pathSingleArticle = `/${path.basename(singleImage)}`;
 
   return (
     <>
@@ -90,7 +93,7 @@ export default async function Page({ params }) {
             <div className="news-article-content-wrapper">
               <img
                 className="news-main-image"
-                src={`${process.env.NEXT_PUBLIC_API_SLIM}${article.data.attributes.Image.data.attributes.formats.medium.url}`}
+                src={`${pathSingleArticle}`}
               />
               <h6>{formattedDate}</h6>
               <div className="news-article-text-wrapper">
@@ -113,8 +116,11 @@ export default async function Page({ params }) {
                 <h2>Fler artiklar</h2>
                 <div className="more-articles-wrapper">
                   {articles.map((article) => {
-                    // Assuming article.attributes.Image.attributes.url contains the image path
-                    // This will log the image URL to the console
+       
+                    const articleImage =
+                    article.attributes.Image.data.attributes.formats.medium
+                      .url;
+                  const imagePath = `/${path.basename(articleImage)}`;
 
                     return (
                       <div className="nyheter-wrapper">
@@ -125,7 +131,7 @@ export default async function Page({ params }) {
                           <div className="nyheter-content-card">
                             <div
                               style={{
-                                backgroundImage: `url(${process.env.NEXT_PUBLIC_API_SLIM}${article.attributes.Image.data.attributes.formats.medium.url})`,
+                                backgroundImage: `url(${imagePath})`,
                               }}
                               className="nyheter-content-card-top"
                             ></div>

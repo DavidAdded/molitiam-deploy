@@ -1,4 +1,7 @@
 import "./page.css";
+import path from "path";
+import fs from "fs";
+import axios from "axios";
 
 export const metadata = {
   title: "Cybersäkerhet för samhällsviktig verksamhet",
@@ -8,14 +11,42 @@ export const metadata = {
     title: "Cybersäkerhet för samhällsviktig verksamhet",
     description:
       "C-Resiliens är ett cybersäkerhetsföretaget som erbjuder avancerad försvarsteknologi för samhällsviktig verksamhet. Skydda det mest kritiska med användarvänliga och lättillgängliga lösningar",
-      images: [
+    images: [
       {
-        url: 'https://cr.se/opengraph.png',
+        url: "https://cr.se/opengraph.png",
         width: 1200,
         height: 630,
       },
     ],
   },
+};
+
+const downloadImage = async (url, filepath) => {
+  // Check if the file already exists
+  if (fs.existsSync(filepath)) {
+  
+    return;
+  }
+
+  // Proceed with download if the file doesn't exist
+  const writer = fs.createWriteStream(filepath);
+
+  try {
+    const response = await axios({
+      url,
+      method: "GET",
+      responseType: "stream",
+    });
+
+    response.data.pipe(writer);
+
+    return new Promise((resolve, reject) => {
+      writer.on("finish", resolve);
+      writer.on("error", reject);
+    });
+  } catch (error) {
+    console.error(`Error downloading the image: ${error.message}`);
+  }
 };
 
 export default async function Page() {
@@ -30,11 +61,17 @@ export default async function Page() {
     throw new Error(`Failed to fetch articles: ${articlesResponse.statusText}`);
   }
 
-  const articlesData = await articlesResponse.json();
-  const articles = Array.isArray(articlesData.data) ? articlesData.data : [];
+  const articles = await articlesResponse.json();
 
   function convertDateFormat(dateString) {
     return dateString.replace(/-/g, "•");
+  }
+
+  for (const article of articles.data) {
+    const imageURL =
+      article.attributes.Image.data.attributes.formats.medium.url;
+    const imagePath = path.resolve("./public", path.basename(imageURL));
+    await downloadImage(imageURL, imagePath);
   }
 
   const urlBasedOnLang = "/nyheter";
@@ -49,7 +86,11 @@ export default async function Page() {
             <div className="nyheter-page-content-wrapper">
               <h1>nyheter</h1>
               <div className="news-grid">
-                {articles.map((article) => {
+                {articles.data.map((article) => {
+                  const articleImage =
+                    article.attributes.Image.data.attributes.formats.medium.url;
+                  const imagePath = `/${path.basename(articleImage)}`;
+
                   return (
                     <div className="nyheter-wrapper">
                       <a
@@ -59,7 +100,7 @@ export default async function Page() {
                         <div className="nyheter-content-card">
                           <div
                             style={{
-                              backgroundImage: `url(${process.env.NEXT_PUBLIC_API_SLIM}${article.attributes.Image.data.attributes.formats.medium.url})`,
+                              backgroundImage: `url(${imagePath})`,
                             }}
                             className="nyheter-content-card-top"
                           ></div>

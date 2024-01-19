@@ -1,30 +1,35 @@
 import { resolve } from "styled-jsx/css";
 import "../../../nyheter/[articleId]/page.css";
+import path from "path";
 
 export async function generateMetadata({ params }, parent) {
-  const id = params.id
+  const id = params.id;
   const URL = `${process.env.NEXT_PUBLIC_API_URL}articles/${params.articleId}?populate=*`;
   const response = await fetch(URL, {
     headers: {
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`, 
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
     },
   });
- const article = await response.json();
- 
-  const previousImages = (await parent).openGraph?.images || []
-   const description = article.data.attributes.ArticleText
-  .replace(/<[^>]*>/g, '') 
-  .substring(0, 150)
-  + '...'; 
+  const article = await response.json();
+
+  const previousImages = (await parent).openGraph?.images || [];
+  const description =
+    article.data.attributes.ArticleText.replace(/<[^>]*>/g, "").substring(
+      0,
+      150
+    ) + "...";
   return {
     title: article.data.attributes.Titel,
-    description: article.data.attributes.ArticleText.split(0, 150)[0]+ "...",
+    description: article.data.attributes.ArticleText.split(0, 150)[0] + "...",
     openGraph: {
       title: article.data.attributes.Titel,
       description: description,
-      images: [article.data.attributes.Image.data.attributes.formats.medium.url, ...previousImages],
+      images: [
+        article.data.attributes.Image.data.attributes.formats.medium.url,
+        ...previousImages,
+      ],
     },
-  }
+  };
 }
 
 export async function generateStaticParams() {
@@ -78,8 +83,10 @@ export default async function Page({ params }) {
   if (!article) return <div></div>;
 
   const formattedDate = convertDateFormat(article.data.attributes.Date);
-
   const urlBasedOnLang = "/en/news";
+  const singleImage =
+    article.data.attributes.Image.data.attributes.formats.medium.url;
+  const pathSingleArticle = `/${path.basename(singleImage)}`;
 
   return (
     <>
@@ -87,10 +94,7 @@ export default async function Page({ params }) {
         <div className="padding-global">
           <div className="container-large">
             <div className="news-article-content-wrapper">
-              <img
-                className="news-main-image"
-                src={`${process.env.NEXT_PUBLIC_API_SLIM}${article.data.attributes.Image.data.attributes.formats.medium.url}`}
-              />
+              <img className="news-main-image" src={`${pathSingleArticle}`} />
               <h6>{formattedDate}</h6>
               <div className="news-article-text-wrapper">
                 <h1>{article.data.attributes.Titel}</h1>
@@ -115,6 +119,11 @@ export default async function Page({ params }) {
                     // Assuming article.attributes.Image.attributes.url contains the image path
                     // This will log the image URL to the console
 
+                    const articleImage =
+                      article.attributes.Image.data.attributes.formats.medium
+                        .url;
+                    const imagePath = `/${path.basename(articleImage)}`;
+
                     return (
                       <div className="nyheter-wrapper">
                         <a
@@ -124,7 +133,7 @@ export default async function Page({ params }) {
                           <div className="nyheter-content-card">
                             <div
                               style={{
-                                backgroundImage: `url(${process.env.NEXT_PUBLIC_API_SLIM}${article.attributes.Image.data.attributes.formats.medium.url})`,
+                                backgroundImage: `url(${imagePath})`,
                               }}
                               className="nyheter-content-card-top"
                             ></div>
