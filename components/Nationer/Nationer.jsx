@@ -37,7 +37,7 @@ const Nationer = (props) => {
                   <p>
                     C-Resiliens AB är den enda leverantören av
                     krypteringsprodukter för säkerhetsklassificerad information
-                    på̊ nivån begränsat hemligt i Sverige.
+                    på nivån begränsat hemligt i Sverige.
                   </p>
                 </div>
               </div>
