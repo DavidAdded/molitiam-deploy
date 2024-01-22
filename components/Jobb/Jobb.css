@@ -50,6 +50,7 @@
   padding: 12px 24px;
   font-size: 18px;
   margin-top: 35px;
+  font-weight: 700;
 }
 
 .jobb-text-wrapper {
@@ -71,21 +72,18 @@
   .jobb-content-wrapper {
     padding: 0 16px;
   }
-
-  
 }
 
 @media (max-width: 478px) {
 }
 
-@media screen and (min-width:991px) {
-    .jobb-content-wrapper button:hover {
-        transition: all 0.2s ease-in-out;
-        background-color: rgba(90, 63, 39, 1);
-    
-      }
-    
-      .jobb-content-wrapper button {
-        transition: all 0.2s ease-in-out;
-      }
+@media screen and (min-width: 991px) {
+  .jobb-content-wrapper button:hover {
+    transition: all 0.2s ease-in-out;
+    background-color: rgba(90, 63, 39, 1);
+  }
+
+  .jobb-content-wrapper button {
+    transition: all 0.2s ease-in-out;
+  }
 }
