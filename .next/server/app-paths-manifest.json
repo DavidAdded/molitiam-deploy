@@ -1,7 +1,0 @@
-{
-  "/en/news/page": "app/en/news/page.js",
-  "/en/news/[articleId]/page": "app/en/news/[articleId]/page.js",
-  "/en/page": "app/en/page.js",
-  "/nyheter/page": "app/nyheter/page.js",
-  "/nyheter/[articleId]/page": "app/nyheter/[articleId]/page.js"
-}
