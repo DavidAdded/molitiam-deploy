@@ -1,0 +1,1129 @@
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./components/Tjanster/Tjanster.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
+.tjanster-section-wrapper{
+ 
+  background-image: url("/dronepic.png");
+    background-size: cover;
+
+}
+/* .tjanster-section-wrapper-img {
+  
+  position:fixed;
+  top:0;
+  height: 100%;
+    width: 100%;
+  z-index: -1;
+
+} */
+
+.tjanster-padding-section-large {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 300px 0;
+}
+
+.tjanster-text-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.tjanster-content-wrapper {
+  display: flex;
+  width: 575px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  color: white;
+  gap: 14px;
+}
+
+.tjanster-grid {
+  background-color: #3f3f3f;
+  height: 200px;
+  width: 100%;
+}
+
+.tjanster-section-wrapper-bottom {
+  background-color: #3f3f3f;
+}
+
+.tjanster-section-wrapper-bottom-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 25px;
+  align-items: center;
+}
+
+.tjanster-section-wrapper-bottom-content {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tjanster-section-wrapper-bottom-content h5 {
+  color: var(--Grey-2, #d8d8d8);
+  text-align: center;
+  font-family: "Space Mono";
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  margin: 10px 0;
+  /* 42px */
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.tjanster-section-wrapper-bottom-content p {
+  color: var(--Grey-2, #d8d8d8);
+  text-align: center;
+  font-family: "Inter";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 27px */
+  margin: 0;
+}
+
+@media (max-width: 991px) {
+  .tjanster-section-wrapper-bottom-content h5 {
+    font-size: 24px;
+  }
+  .tjanster-section-wrapper-bottom-content img {
+    height: 42px;
+  }
+  .tjanster-section-wrapper-bottom-content p {
+    font-size: 18px;
+  }
+
+  .tjanster-padding-section-large {
+    padding: 200px 0;
+  }
+}
+
+/* Styles for screens up to 478px wide */
+
+@media (max-width: 478px) {
+  .tjanster-section-wrapper-bottom-content h5 {
+    font-size: 16px;
+  }
+  .tjanster-section-wrapper-bottom-content img {
+    height: 24px;
+  }
+  .tjanster-section-wrapper-bottom-content p {
+    font-size: 12px;
+  }
+}
+
+/*!**********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./components/Jobb/Jobb.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************/
+.jobb-section-wrapper {
+  display: flex;
+  flex-direction: row;
+  background-color: #ffffff;
+}
+
+.office-picture {
+  background-image: url("/jobb-office-picture.png");
+  background-size: cover;
+  height: auto;
+  width: 60%;
+}
+
+.jobb-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  padding: 0 96px;
+}
+
+.jobb-content-wrapper h1 {
+  margin: 7.5px 0px;
+  font-family: "Inter";
+  font-size: 35px;
+  font-weight: 500;
+  line-height: 42px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.jobb-content-wrapper p {
+  font-family: "Inter";
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin: 7.5px 0px;
+}
+
+.jobb-content-wrapper button {
+  color: white;
+  background-color: rgba(38, 38, 38, 1);
+  border: 0px;
+  height: 62px;
+  font-family: "Space Mono";
+  text-transform: uppercase;
+  padding: 12px 24px;
+  font-size: 18px;
+  margin-top: 35px;
+  font-weight: 700;
+}
+
+.jobb-text-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 991px) {
+  .jobb-section-wrapper {
+    flex-direction: column;
+  }
+  .office-picture {
+    min-height: 500px;
+    width: 100%;
+  }
+  .jobb-content-wrapper {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 478px) {
+}
+
+@media screen and (min-width: 991px) {
+  .jobb-content-wrapper button:hover {
+    transition: all 0.2s ease-in-out;
+    background-color: rgba(90, 63, 39, 1);
+  }
+
+  .jobb-content-wrapper button {
+    transition: all 0.2s ease-in-out;
+  }
+}
+
+/*!****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./components/Kontakt/Kontakt.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************/
+/* Base styles - applied for all screen sizes */
+
+.kontakt-section-wrapper {
+  background-image: url("/background-image.svg");
+  background-size: cover;
+  background-position: bottom;
+}
+
+.kontakt-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 65px;
+}
+
+.kontakt-text-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: black;
+  margin-bottom: 20px;
+}
+
+.kontakt-text-wrapper h6 {
+  color: rgba(63, 63, 63, 1);
+}
+
+.kontakt-grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 32px;
+  gap: 32px;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  justify-items: center;
+}
+
+.kontakt-item {
+  display: flex;
+  width: 100%;
+  max-width: 250px;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.kontakt-item h3,
+.kontakt-item h4,
+.kontakt-item p {
+  color: #000;
+  text-align: center;
+}
+
+.kontakt-item h3 {
+  font-family: "Inter";
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.kontakt-item h4 {
+  font-family: "Space Mono";
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.kontakt-item p {
+  font-family: "Inter";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 153.023%;
+  text-decoration: none;
+}
+
+.kontakt-item a {
+  text-decoration: none;
+}
+
+.kontakt-item-top img {
+  width: 100%;
+  max-width: 200px;
+}
+
+.contact-image {
+  filter: drop-shadow(-20px -20px 0px rgba(0, 0, 0, 0.1));
+}
+
+/* Styles for screens up to 991px wide */
+
+@media (max-width: 1100px) {
+  .kontakt-grid-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Additional styles can be added here as needed */
+}
+
+/* Styles for screens up to 478px wide */
+
+@media (max-width: 545px) {
+  .kontakt-grid-wrapper {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .kontakt-item h3 {
+    font-size: 18px; /* Smaller font size */
+  }
+
+  .kontakt-item h4 {
+    font-size: 9px; /* Smaller font size */
+  }
+
+  .kontakt-item p {
+    font-size: 14px; /* Smaller font size */
+  }
+  .kontakt-section-wrapper {
+    background-image: url("/kontakt-background-mobil.png");
+    background-size: contain;
+  }
+  /* Additional styles can be added here as needed */
+}
+
+/*!******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./components/LandingSection/LandingSection.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************/
+/* Base styles - applied for all screen sizes */
+
+.landing-section-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 400px;
+  padding: 180px 0;
+  background-color: #ffffff;
+}
+
+.picture-wrapper {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.picture-wrapper img {
+  max-height: 562px;
+  max-width: 562px;
+  height: 50vw;
+  width: 50vw;
+  top: auto;
+  margin-right: -125px;
+  margin-top: 125px;
+  z-index: 1;
+}
+
+.landing-grey-image {
+  max-width: 562px;
+  max-height: 562px;
+  height: 50vw;
+  width: 50vw;
+  background-color: #262626;
+  margin-bottom: 125px;
+}
+
+.landing-content-wrapper {
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-wrapper {
+  width: 670px;
+  max-width: 90%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  height: 100%;
+}
+
+.text-wrapper p {
+  font-family: "Space Mono";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+@media (max-width: 991px) {
+  .landing-section-wrapper {
+    padding: 140px 0;
+  }
+
+  .picture-wrapper img {
+    margin-right: -175px;
+    margin-top: 75px;
+  }
+  .landing-grey-image {
+    margin-bottom: 75px;
+  }
+}
+
+@media (max-width: 478px) {
+  .picture-wrapper img,
+  .landing-grey-image {
+    width: 90vw;
+    height: 90vw;
+  }
+
+  .text-wrapper {
+    width: 400px;
+  }
+
+  .text-wrapper h1 {
+    font-size: 32px;
+    /* Smaller font size for better readability */
+  }
+
+  .text-wrapper p {
+    font-size: 16px;
+    /* Smaller font size for better readability */
+  }
+}
+
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./components/Nationer/Nationer.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
+/* Base styles - applied for all screen sizes */
+
+#nationer {
+  background-color: #fff;
+}
+.nationer-content-wrapper-top {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  max-width: 80%;
+  width: 100%;
+  gap: 14px;
+}
+
+.nationer-section-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 150px;
+}
+
+.nationer-content-wrapper-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 25px;
+  align-items: center;
+}
+
+.nationer-content-bottom {
+  width: 50%;
+  min-width: 200px;
+  height: 275px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #404040;
+  padding: 0 50px;
+}
+
+.nationer-content-bottom h5 {
+  color: #fff;
+  text-align: center;
+  font-family: "Inter";
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+/* Styles for screens up to 991px wide */
+
+@media (max-width: 991px) {
+  .nationer-content-wrapper-top,
+  .nationer-content-wrapper-bottom {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .nationer-content-bottom {
+    width: 100%;
+    padding: 0 0;
+  }
+
+  /* Additional styles can be added here as needed */
+}
+
+/* Styles for screens up to 478px wide */
+
+@media (max-width: 478px) {
+  .nationer-section-wrapper {
+    gap: 75px; /* Reduced gap for smaller screens */
+  }
+
+  .nationer-content-wrapper-top h2 {
+    font-size: 26px;
+  }
+
+  .nationer-content-wrapper-top p {
+    font-size: 14px;
+  }
+
+  .nationer-content-bottom h5 {
+    font-size: 20px; /* Smaller font size */
+  }
+
+  /* Additional styles can be added here as needed */
+}
+
+/*!****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./components/Nyheter/Nyheter.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************/
+/* Nyheter.css */
+.nyheter-section-wrapper {
+  background-color: #f5f5f5;
+  background-image: url(/nyheter-background.png);
+  background-size: contain;
+  background-position-x: right;
+  background-position-y: bottom;
+  background-repeat: no-repeat;
+}
+
+
+.grid-item {
+  width: 90px;
+  height: 90px;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: all 1s ease-in-out;
+}
+
+.nyheter-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 350px;
+  width: 100%;
+  min-height: 466px;
+}
+
+
+.nyheter-wrapper a {
+  text-decoration: none;
+}
+
+.nyheter-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 25px;
+  align-items: center;
+  padding: 50px 0;
+
+  /* Your other styles */
+}
+
+.nyheter-text-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: black;
+  margin-bottom: 20px;
+}
+
+.nyheter-content-boxes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  gap: 25px;
+  flex-wrap: wrap;
+  min-height: 350;
+}
+
+.nyheter-content-card {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+
+.nyheter-content-card-top {
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+}
+
+.nyheter-content-card-top img {
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+}
+
+.nyheter-content-card-bottom {
+  position: relative;
+  width: 100%;
+  color: black;
+  background: rgba(255, 255, 255, 1);
+}
+
+.nyheter-content-card-text-wrapper {
+  padding: 20px 25px;
+}
+
+.nyheter-content-card-text-wrapper p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nyheter-content-card-bottom h3 {
+  font-family: "Inter";
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin: 3px 0px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nyheter-content-card-bottom p {
+  font-family: "Inter";
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 23px;
+  letter-spacing: 0em;
+  text-align: left;
+  max-width: 320px;
+  margin: 3px 0px;
+}
+
+.nyheter-date {
+  font-family: "Space Mono";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0.05em;
+  text-align: left;
+}
+
+.nyheter-las-mer {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: row;
+  justify-content: right;
+  font-family: "Space Mono";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0.05em;
+  text-align: right;
+  margin-right: 40px;
+  height: 40px;
+  background-color: white;
+  padding-right: 25px;
+  position: relative;
+}
+
+.nyheter-las-mer p {
+  font-family: "space mono";
+  font-size: 16px;
+}
+
+.nyheter-las-mer-content {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 991px) {
+  .nyheter-las-mer-content:hover {
+    img {
+      transform: translateX(5px);
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
+  .nyheter-las-mer-content {
+    img {
+      transform: translateX(0px);
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
+  .nyheter-content-wrapper button:hover {
+    background-color: rgba(38, 38, 38, 1);
+    transition: all 0.2s ease-in-out;
+  }
+
+  .nyheter-content-wrapper button {
+    transition: all 0.2s ease-in-out;
+  }
+}
+
+.nyheter-content-wrapper button {
+  color: white;
+  background-color: rgba(90, 63, 39, 1);
+  width: 250px;
+  height: 60px;
+  font-family: "Space Mono";
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  border: 0px;
+  margin-top: 60px;
+}
+
+@media (max-width: 991px) {}
+
+@media (max-width: 478px) {}
+/*!************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./components/OmOss/OmOss.css ***!
+  \************************************************************************************************************************************************************************************************************************************************************************/
+.omoss-wrapper {
+  background-color: #ffffff;
+}
+.omoss-section-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+
+.omoss-section-column {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  align-content: stretch;
+  width: 100%;
+  gap: 14px;
+}
+
+.omoss-section-column p {
+  max-width: 476px;
+}
+
+.omoss-section-column-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: stretch;
+  width: 100%;
+}
+
+.omoss-section-column-content-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  width: 100%;
+  height: 281px;
+  z-index: 1;
+}
+
+.omoss-section-column-content-middle {
+  background-color: transparent;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  justify-items: center;
+}
+
+.vertical-black-line {
+  width: 2px;
+  background-color: black;
+  height: 44px;
+}
+
+.omoss-section-column-content-bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  text-align: center;
+}
+
+.omoss-section-column-content-bottom-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(88deg, #7f7f7f 0%, #a5a5a5 100%);
+  width: 100%;
+  height: 144px;
+}
+
+.omoss-section-column-content-bottom-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(88deg, #3f3f3f 0%, #595959 100%);
+  width: 100%;
+  height: 144px;
+}
+
+.omoss-section-column-content-bottom p {
+  font-family: "Space Mono";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: #fff;
+}
+
+@media (max-width: 991px) {
+  .omoss-section-wrapper {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 478px) {
+  .omoss-section-wrapper {
+    max-width: 100%;
+  }
+
+  .omoss-section-column p {
+    max-width: 100%;
+  }
+
+  .omoss-section-column-content-top,
+  .omoss-section-column-content-bottom-left,
+  .omoss-section-column-content-bottom-right {
+    height: 200px;
+  }
+
+  .omoss-section-column-content-bottom p {
+    font-size: 12px;
+  }
+}
+
+/*!******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./components/Organisationer/Organisationer.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************/
+.organisationer-content-wrapper-top {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  max-width: 80%;
+  width: 100%;
+  color: white;
+  gap: 10px;
+}
+
+.organisationer-content-wrapper-top p {
+  color: #d8d8d8;
+}
+
+.organisationer-section-wrapper {
+  background-color: #262626;
+}
+.backupImage {
+  width: 100%;
+  height: 100%;
+  height: 550px;
+  object-fit: contain;
+}
+.organisationer-text-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  gap: 8px;
+}
+
+.organisationer-content-wrapper-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 25px;
+  align-items: center;
+  padding: 50px 0;
+  min-height: 550px;
+}
+
+.organisationer-content-bottom {
+  width: 136%;
+  height: 275px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #404040;
+  padding: 0 50px;
+}
+
+.organisationer-content-bottom h5 {
+  color: #fff;
+  text-align: center;
+  font-family: "Inter";
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+@media (max-width: 991px) {
+  .organisationer-content-wrapper-top {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 478px) {
+}
+
+/*!************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./components/Syfte/Syfte.css ***!
+  \************************************************************************************************************************************************************************************************************************************************************************/
+/* Base styles - applied for all screen sizes */
+
+.syfte-section-wrapper {
+  background-image: url("/camoimage2.png");
+  background-size: cover;
+}
+
+.syfte-content-wrapper {
+  display: flex;
+  width: 575px;
+  flex-direction: column;
+  gap: 14px;
+  height: 100%;
+  color: white;
+  margin: 120px 0;
+}
+
+.syfte-content-wrapper p {
+  color: #fff;
+}
+
+@media (max-width: 991px) {
+  .syfte-content-wrapper {
+    width: 100%;
+    max-width: 450px;
+    margin: 60px 0;
+  }
+
+  .syfte-content-wrapper h2 {
+    font-size: 28px;
+  }
+
+  .syfte-content-wrapper p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 478px) {
+  .syfte-content-wrapper {
+    width: 90%;
+    margin: 30px 0;
+  }
+}
+
+/*!**************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./components/Verksamheter/Verksamheter.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************/
+.verksamheter-section-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  background-color: #534a40;
+  color: #f5f5f5;
+  text-align: center;
+}
+
+.verksamheter-content-wrapper-top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 80%;
+  width: 100%;
+  max-width: 900px;
+  gap: 10px;
+}
+
+.verksamheter-text-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.verksamheter-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.verksamheter-content-wrapper-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 25px;
+  padding: 50px 0;
+  flex-wrap: wrap;
+}
+
+.verksamheter-content-box-1 {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding: 40px 40px 60px 40px;
+  max-width: 300px;
+  min-height: 250px;
+  border: solid 1px #8a684a;
+}
+
+.verksamheter-content-box-1 img {
+  height: 50px;
+  max-width: 250px;
+}
+
+.verksamhet-corner-box-1 {
+  background-color: #534a40;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  box-shadow: 2px 2px #534a40;
+}
+
+.verksamhet-corner-box-2 {
+  border-top: solid 1px #8a684a;
+  border-left: solid 1px #8a684a;
+  background-color: #534a40;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  bottom: 0;
+  right: 40px;
+  box-shadow: 2px 2px #534a40;
+}
+
+.verksamhet-corner-box-3 {
+  border-top: solid 1px #8a684a;
+  border-left: solid 1px #8a684a;
+  background-color: #534a40;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  bottom: 40px;
+  right: 0px;
+  box-shadow: 2px 2px #534a40;
+}
+
+@media (max-width: 991px) {
+  .verksamheter-content-wrapper-top {
+    max-width: 100%;
+  }
+  .verksamheter-content-box-1 {
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+    align-items: start;
+  }
+}
+
+@media (max-width: 478px) {
+}
+

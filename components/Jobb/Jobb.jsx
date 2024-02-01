@@ -13,6 +13,10 @@ const Jobb = (props) => {
       ".jobb-content-wrapper h1",
       ".jobb-content-wrapper p"
     );
+    runSectionTextAnimation(
+      ".verksamheter-content-wrapper-top h2",
+      ".verksamheter-content-wrapper-top p"
+    );
   }, []);
 
   const handleClick = () => {

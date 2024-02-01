@@ -10,6 +10,7 @@ import Jobb from "@components/Jobb/Jobb";
 import Kontakt from "@components/Kontakt/Kontakt";
 
 export const metadata = {
+  metadataBase: "https://cr.se/en",
   title: "Cyber security for vital societal functions",
   description:
     "C-Resiliens, a Swedish-owned cyber-security company, offers critical societal functions with advanced defense technology. Elevate security with user-friendly solutions that are easy to buy and easy to use",

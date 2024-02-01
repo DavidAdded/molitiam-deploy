@@ -3,32 +3,35 @@ import "./page.css";
 import path from "path";
 
 export async function generateMetadata({ params }, parent) {
-  const id = params.id
+  const id = params.id;
   const URL = `${process.env.NEXT_PUBLIC_API_URL}articles/${params.articleId}?populate=*`;
   const response = await fetch(URL, {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
     },
   });
- const article = await response.json();
- 
-  const previousImages = (await parent).openGraph?.images || []
-   const description = article.data.attributes.ArticleText
-  .replace(/<[^>]*>/g, '')
-  .substring(0, 150)   
-  + '...'; 
+  const article = await response.json();
+
+  const previousImages = (await parent).openGraph?.images || [];
+  const description =
+    article.data.attributes.ArticleText.replace(/<[^>]*>/g, "").substring(
+      0,
+      150
+    ) + "...";
   return {
+    metadataBase: "https://cr.se/nyheter/" + id,
     title: article.data.attributes.Titel,
-    description: article.data.attributes.ArticleText.split(0, 150)[0]+ "...",
+    description: article.data.attributes.ArticleText.split(0, 150)[0] + "...",
     openGraph: {
       title: article.data.attributes.Titel,
       description: description,
-      images: [article.data.attributes.Image.data.attributes.formats.medium.url, ...previousImages],
+      images: [
+        article.data.attributes.Image.data.attributes.formats.medium.url,
+        ...previousImages,
+      ],
     },
-  }
+  };
 }
-
- 
 
 export async function generateStaticParams() {
   const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&populate=*&locale=sv`;
@@ -82,7 +85,8 @@ export default async function Page({ params }) {
 
   const formattedDate = convertDateFormat(article.data.attributes.Date);
   const urlBasedOnLang = "/nyheter/";
-  const singleImage = article.data.attributes.Image.data.attributes.formats.medium.url;
+  const singleImage =
+    article.data.attributes.Image.data.attributes.formats.medium.url;
   const pathSingleArticle = `/${path.basename(singleImage)}`;
 
   return (
@@ -91,10 +95,7 @@ export default async function Page({ params }) {
         <div className="padding-global">
           <div className="container-large">
             <div className="news-article-content-wrapper">
-              <img
-                className="news-main-image"
-                src={`${pathSingleArticle}`}
-              />
+              <img className="news-main-image" src={`${pathSingleArticle}`} />
               <h6>{formattedDate}</h6>
               <div className="news-article-text-wrapper">
                 <h1>{article.data.attributes.Titel}</h1>
@@ -115,15 +116,14 @@ export default async function Page({ params }) {
               <div className="more-articles-section">
                 <h2>Fler artiklar</h2>
                 <div className="more-articles-wrapper">
-                  {articles.map((article) => {
-       
+                  {articles.map((article, index) => {
                     const articleImage =
-                    article.attributes.Image.data.attributes.formats.medium
-                      .url;
-                  const imagePath = `/${path.basename(articleImage)}`;
+                      article.attributes.Image.data.attributes.formats.medium
+                        .url;
+                    const imagePath = `/${path.basename(articleImage)}`;
 
                     return (
-                      <div className="nyheter-wrapper">
+                      <div key={index} className="nyheter-wrapper">
                         <a
                           href={`${urlBasedOnLang}/${article.id}`}
                           key={article.id}

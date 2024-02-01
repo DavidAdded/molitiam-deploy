@@ -31,7 +31,6 @@ const downloadImage = async (url, filepath) => {
 };
 
 const Nyheter = async (props) => {
-  const arrowIconUrl = "right-arrow.svg";
   const lang = props.lang;
 
   const nyheterText = lang === "sv" ? "Nyheter" : "News";
@@ -52,11 +51,11 @@ const Nyheter = async (props) => {
   for (const article of articles.data) {
     const imageURL =
       article.attributes.Image.data.attributes.formats.medium.url;
-    const imagePath = path.resolve("./public", path.basename(imageURL));
-    await downloadImage(imageURL, imagePath);
-  }
 
-  //onst imagePath = path.resolve("./public", path.basename(articleImage));
+    const imageSource = process.env.NEXT_PUBLIC_API_SLIM + imageURL;
+    const imagePath = path.resolve("./public", path.basename(imageURL));
+    await downloadImage(imageSource, imagePath);
+  }
 
   function convertDateFormat(dateString) {
     return dateString.replace(/-/g, "•");
@@ -75,9 +74,8 @@ const Nyheter = async (props) => {
                 <h6> {nyheterText}</h6>
               </div>
               <div className="nyheter-content-boxes">
-                {articles ? (
-                  articles.data.map((article) => {
-                    // Assuming article.attributes.Image.attributes.url contains the image path// This will log the image URL to the console
+                {articles.data ? (
+                  articles.data.map((article, index) => {
                     const articleDate = article.attributes.Date;
                     const articleImage =
                       article.attributes.Image.data.attributes.formats.medium
@@ -85,7 +83,7 @@ const Nyheter = async (props) => {
                     const imagePath = `/${path.basename(articleImage)}`;
 
                     return (
-                      <div className="nyheter-wrapper">
+                      <div key={index} className="nyheter-wrapper">
                         <a
                           href={`${urlBasedOnLang}/${article.id}`}
                           key={article.id}

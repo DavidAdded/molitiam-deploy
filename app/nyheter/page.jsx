@@ -4,6 +4,7 @@ import fs from "fs";
 import axios from "axios";
 
 export const metadata = {
+  metadataBase: "https://cr.se/nyheter",
   title: "Cybersäkerhet för samhällsviktig verksamhet",
   description:
     "C-Resiliens är ett cybersäkerhetsföretaget som erbjuder avancerad försvarsteknologi för samhällsviktig verksamhet. Skydda det mest kritiska med användarvänliga och lättillgängliga lösningar",
@@ -24,7 +25,6 @@ export const metadata = {
 const downloadImage = async (url, filepath) => {
   // Check if the file already exists
   if (fs.existsSync(filepath)) {
-  
     return;
   }
 
@@ -70,7 +70,9 @@ export default async function Page() {
   for (const article of articles.data) {
     const imageURL =
       article.attributes.Image.data.attributes.formats.medium.url;
+    const imageSource = process.env.NEXT_PUBLIC_API_SLIM + imageURL;
     const imagePath = path.resolve("./public", path.basename(imageURL));
+    await downloadImage(imageSource, imagePath);
     await downloadImage(imageURL, imagePath);
   }
 
@@ -86,13 +88,13 @@ export default async function Page() {
             <div className="nyheter-page-content-wrapper">
               <h1>nyheter</h1>
               <div className="news-grid">
-                {articles.data.map((article) => {
+                {articles.data.map((article, index) => {
                   const articleImage =
                     article.attributes.Image.data.attributes.formats.medium.url;
                   const imagePath = `/${path.basename(articleImage)}`;
 
                   return (
-                    <div className="nyheter-wrapper">
+                    <div key={index} className="nyheter-wrapper">
                       <a
                         href={`${urlBasedOnLang}/${article.id}`}
                         key={article.id}

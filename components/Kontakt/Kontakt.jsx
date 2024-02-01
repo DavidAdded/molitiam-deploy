@@ -34,7 +34,7 @@ const Kontakt = async (props) => {
   const lang = props.lang;
   const contactText = lang === "sv" ? "Kontakt" : "Contact";
 
-  const URL = `${process.env.NEXT_PUBLIC_API_URL}employees?pagination[limit]=4&populate=*&locale=${lang}`;
+  const URL = `${process.env.NEXT_PUBLIC_API_URL}employees?pagination[limit]=6&populate=*&locale=${lang}`;
   const response = await fetch(URL, {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
@@ -45,11 +45,13 @@ const Kontakt = async (props) => {
 
   for (const contact of contacts.data) {
     const imageURL = contact.attributes.Image.data.attributes.formats.large.url;
+    const imageSource = process.env.NEXT_PUBLIC_API_SLIM + imageURL;
     const imagePath = path.resolve("./public", path.basename(imageURL));
-    await downloadImage(imageURL, imagePath);
+    await downloadImage(imageSource, imagePath);
+    
   }
 
-  if (!contacts) return <div></div>;
+  if (!contacts.data) return <div></div>;
 
   return (
     <div className="kontakt-section-wrapper">

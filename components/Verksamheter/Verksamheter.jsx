@@ -1,4 +1,32 @@
 import "./Verksamheter.css";
+import path from "path";
+import fs from "fs";
+import axios from "axios";
+
+const downloadImage = async (url, filepath) => {
+  if (fs.existsSync(filepath)) {
+    return;
+  }
+
+  const writer = fs.createWriteStream(filepath);
+
+  try {
+    const response = await axios({
+      url,
+      method: "GET",
+      responseType: "stream",
+    });
+
+    response.data.pipe(writer);
+
+    return new Promise((resolve, reject) => {
+      writer.on("finish", resolve);
+      writer.on("error", reject);
+    });
+  } catch (error) {
+    console.error(`Error downloading the image: ${error.message}`);
+  }
+};
 
 const Verksamheter = async (props) => {
   const lang = props.lang;
@@ -9,16 +37,14 @@ const Verksamheter = async (props) => {
     },
   });
 
-  const contentCard = await cardsResponse.json();
+  const contentCards = await cardsResponse.json();
 
-  /*
-  useEffect(() => {
-    runSectionTextAnimation(
-      ".verksamheter-content-wrapper-top h2",
-      ".verksamheter-content-wrapper-top p"
-    );
-  }, [contentCard]);
-  */
+  for (const contentCard of contentCards.data) {
+    const imageURL = contentCard.attributes.PartnerIcon.data.attributes.url;
+    const imageSource = process.env.NEXT_PUBLIC_API_SLIM + imageURL;
+    const imagePath = path.resolve("./public", path.basename(imageURL));
+    await downloadImage(imageSource, imagePath);
+  }
 
   return (
     <div className="verksamheter-section-wrapper">
@@ -77,35 +103,26 @@ const Verksamheter = async (props) => {
                   </div>
                 </div>
               )}
-              {contentCard ? (
+
+              {contentCards.data ? (
                 <div className="verksamheter-content-wrapper-bottom">
-                  <div className="verksamheter-content-box-1">
-                    <img
-                      src={`${process.env.NEXT_PUBLIC_API_SLIM}${contentCard.data[0].attributes.PartnerIcon.data.attributes.url}`}
-                    ></img>
-                    <p>{contentCard.data[0].attributes.PartnerDescription}</p>
-                    <div className="verksamhet-corner-box-1"></div>
-                    <div className="verksamhet-corner-box-2"></div>
-                    <div className="verksamhet-corner-box-3"></div>
-                  </div>
-                  <div className="verksamheter-content-box-1">
-                    <img
-                      src={`${process.env.NEXT_PUBLIC_API_SLIM}${contentCard.data[1].attributes.PartnerIcon.data.attributes.url}`}
-                    ></img>
-                    <p>{contentCard.data[1].attributes.PartnerDescription}</p>
-                    <div className="verksamhet-corner-box-1"></div>
-                    <div className="verksamhet-corner-box-2"></div>
-                    <div className="verksamhet-corner-box-3"></div>
-                  </div>
-                  <div className="verksamheter-content-box-1">
-                    <img
-                      src={`${process.env.NEXT_PUBLIC_API_SLIM}${contentCard.data[2].attributes.PartnerIcon.data.attributes.url}`}
-                    ></img>
-                    <p>{contentCard.data[2].attributes.PartnerDescription}</p>
-                    <div className="verksamhet-corner-box-1"></div>
-                    <div className="verksamhet-corner-box-2"></div>
-                    <div className="verksamhet-corner-box-3"></div>
-                  </div>
+                  {contentCards.data.map((card, index) => {
+                    const cardImage =
+                      card.attributes.PartnerIcon.data.attributes.url;
+                    const imagePath = `/${path.basename(cardImage)}`;
+                     const siteUrl = card.attributes.Linkurl
+                    return (
+                      <div key={index} className="verksamheter-content-box-1">
+                        <a target="_blank" href={siteUrl}>
+                          <img src={`${imagePath}`}></img>
+                        </a>
+                        <p>{card.attributes.PartnerDescription}</p>
+                        <div className="verksamhet-corner-box-1"></div>
+                        <div className="verksamhet-corner-box-2"></div>
+                        <div className="verksamhet-corner-box-3"></div>
+                      </div>
+                    );
+                  })}
                 </div>
               ) : (
                 <div className="verksamheter-content-wrapper-bottom">

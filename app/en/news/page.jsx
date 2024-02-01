@@ -31,6 +31,7 @@ const downloadImage = async (url, filepath) => {
 };
 
 export const metadata = {
+  metadataBase: "https://cr.se/news",
   title: "Cyber security for vital societal functions",
   description:
     "C-Resiliens, a Swedish-owned cyber-security company, offers critical societal functions with advanced defense technology. Elevate security with user-friendly solutions that are easy to buy and easy to use",
@@ -88,14 +89,14 @@ export default async function Page() {
             <div className="nyheter-page-content-wrapper">
               <h1>NEWS</h1>
               <div className="news-grid">
-                {articles.data.map((article) => {
+                {articles.data.map((article, index) => {
                   // Assuming article.attributes.Image.attributes.url contains the image path// This will log the image URL to the console
                   const articleImage =
                     article.attributes.Image.data.attributes.formats.medium.url;
                   const imagePath = `/${path.basename(articleImage)}`;
 
                   return (
-                    <div className="nyheter-wrapper">
+                    <div key={index} className="nyheter-wrapper">
                       <a
                         href={`${urlBasedOnLang}/${article.id}`}
                         key={article.id}

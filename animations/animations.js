@@ -3,13 +3,26 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitText from "@utils/SplitText";
 
 gsap.registerPlugin(ScrollTrigger);
-
+let splitTextElements = [];
 function animateElement(element, type, isHeader = false) {
   
-  const split = new SplitText(element, { type: type });
+  if (element.split ) {
+    element.split.revert();
+  }
+  if(element.anim) {
+    element.anim.progress(1).kill();
+  }
+ 
+  // element.querySelectorAll("div").forEach((div) => {
+  //   div.style.display = "inline-block";
+  // });
+
+  // element.style.display = "inline-block";
+  splitTextElements.push(element);
+  element.split = new SplitText(element, { type: type, lineClass: "line" });
   if (isHeader) {
-    gsap.fromTo(
-      split.lines,
+    element.anim = gsap.fromTo(
+      element.split.lines,
       {
         x: -10,
         opacity: 0,
@@ -27,9 +40,8 @@ function animateElement(element, type, isHeader = false) {
       }
     );
   } else {
-   if(split.lines.length === 0) return;
     gsap.fromTo(
-      split.lines,
+      element.split.lines,
       {
         y: type === "lines" ? 5 : 0,
         opacity: 0,
@@ -49,52 +61,72 @@ function animateElement(element, type, isHeader = false) {
     );
   }
 }
+let firstRun = 0;
 
-const runSectionTextAnimation = (
-  hElements,
-  pElements,
-  time = 0,
-  delay = 0
-) => {
- const headers = document.querySelectorAll(hElements);
- const paragraphs = document.querySelectorAll(pElements);
- const subHeaders = document.querySelectorAll(".sub-header-wrapper");
+const runSectionTextAnimation = (hElements, pElements, time = 0, delay = 0) => {
+  const subHeaders = document.querySelectorAll(".sub-header-wrapper");
 
-     headers.forEach((header) => {
-       header.style.opacity = 0;
-     });
-      if (pElements !== undefined) {
-        paragraphs.forEach((paragraph) => {
-          paragraph.style.opacity = 0;
-        });
-      }
+  function setupSubSplits() {
+    if (firstRun === 0) {
+      firstRun = 1;
       subHeaders.forEach((subHeader) => {
         subHeader.style.opacity = 0;
-      })
+      });
 
-  const timeoutId = setTimeout(() => {
+      const timeoutId = setTimeout(() => {
+        subHeaders.forEach((subHeader) => {
+          subHeader.style.opacity = 1;
+          animateElement(subHeader, "lines", false);
+        });
+      }, time);
+      return () => clearTimeout(timeoutId);
+    }
+  }
+
+  const headers = document.querySelectorAll(hElements);
+  const paragraphs = document.querySelectorAll(pElements);
+
+  function setupSplits() {
     headers.forEach((header) => {
-      header.style.opacity = 1;
-      animateElement(header, "lines", true);
+      header.style.opacity = 0;
     });
     if (pElements !== undefined) {
       paragraphs.forEach((paragraph) => {
-        paragraph.style.opacity = 1;
-        animateElement(paragraph, "lines", false);
+        paragraph.style.opacity = 0;
       });
     }
-    subHeaders.forEach((subHeader) => {
-      subHeader.style.opacity = 1;
-      animateElement(subHeader, "lines", false);
-    });
-     subHeaders.forEach((subHeader) => {
-      subHeader.style.opacity = 1;
-      animateElement(subHeader, "lines", false);
-    });
-  }, time);
 
-  return ()=>
-  clearTimeout(timeoutId);
+    const timeoutId = setTimeout(() => {
+      headers.forEach((header) => {
+        header.style.opacity = 1;
+        animateElement(header, "lines", true);
+      });
+      if (pElements !== undefined) {
+        paragraphs.forEach((paragraph) => {
+          paragraph.style.opacity = 1;
+          animateElement(paragraph, "lines", false);
+        });
+      }
+    }, time);
+    return () => clearTimeout(timeoutId);
+  }
+
+  function revertAllSplits() {
+    splitTextElements.forEach((element) => {
+      if (element.split) {
+        element.split.revert();
+      }
+    });
+
+    // Clear the array after reverting
+    splitTextElements = [];
+  }
+
+  window.addEventListener("resize", revertAllSplits);
+  ScrollTrigger.addEventListener("refresh", setupSplits);
+  setupSplits();
+  ScrollTrigger.addEventListener("refresh", setupSubSplits);
+  setupSubSplits();
 };
 
 export default runSectionTextAnimation;

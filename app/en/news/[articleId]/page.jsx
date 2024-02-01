@@ -19,6 +19,7 @@ export async function generateMetadata({ params }, parent) {
       150
     ) + "...";
   return {
+    metadataBase: "https://cr.se/nyheter/" + id,
     title: article.data.attributes.Titel,
     description: article.data.attributes.ArticleText.split(0, 150)[0] + "...",
     openGraph: {
@@ -115,17 +116,14 @@ export default async function Page({ params }) {
               <div className="more-articles-section">
                 <h2>More articles</h2>
                 <div className="more-articles-wrapper">
-                  {articles.map((article) => {
-                    // Assuming article.attributes.Image.attributes.url contains the image path
-                    // This will log the image URL to the console
-
+                  {articles.map((article, index) => {
                     const articleImage =
                       article.attributes.Image.data.attributes.formats.medium
                         .url;
                     const imagePath = `/${path.basename(articleImage)}`;
 
                     return (
-                      <div className="nyheter-wrapper">
+                      <div key={index} className="nyheter-wrapper">
                         <a
                           href={`${urlBasedOnLang}/${article.id}`}
                           key={article.id}
