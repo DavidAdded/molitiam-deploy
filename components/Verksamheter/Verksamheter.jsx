@@ -111,6 +111,7 @@ const Verksamheter = async (props) => {
                       card.attributes.PartnerIcon.data.attributes.url;
                     const imagePath = `/${path.basename(cardImage)}`;
                      const siteUrl = card.attributes.Linkurl
+                     console.log(siteUrl)
                     return (
                       <div key={index} className="verksamheter-content-box-1">
                         <a target="_blank" href={siteUrl}>

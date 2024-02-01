@@ -13,7 +13,6 @@
     "@dotlottie/react-player": "^1.6.12",
     "@gsap/react": "^2.0.2",
     "@lottiefiles/lottie-interactivity": "^1.6.2",
-    "@types/page": "^1.11.9",
     "axios": "^1.6.5",
     "fs": "^0.0.1-security",
     "gsap": "^3.12.4",
@@ -24,5 +23,8 @@
     "react-dom": "^18.2.0",
     "react-intl": "^6.5.5",
     "sharp": "^0.33.1"
+  },
+  "devDependencies": {
+    "@types/page": "^1.11.9"
   }
 }
