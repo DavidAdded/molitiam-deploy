@@ -90,7 +90,6 @@ export default async function Page() {
               <h1>NEWS</h1>
               <div className="news-grid">
                 {articles.data.map((article, index) => {
-                  // Assuming article.attributes.Image.attributes.url contains the image path// This will log the image URL to the console
                   const articleImage =
                     article.attributes.Image.data.attributes.formats.medium.url;
                   const imagePath = `/${path.basename(articleImage)}`;

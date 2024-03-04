@@ -1,6 +1,36 @@
 import { resolve } from "styled-jsx/css";
 import "../../../nyheter/[articleId]/page.css";
 import path from "path";
+import fs from "fs";
+import axios from "axios";
+
+const downloadImage = async (url, filepath) => {
+  // Check if the file already exists
+  if (fs.existsSync(filepath)) {
+    return;
+  }
+
+  // Proceed with download if the file doesn't exist
+  const writer = fs.createWriteStream(filepath);
+
+  try {
+    const response = await axios({
+      url,
+      method: "GET",
+      responseType: "stream",
+    });
+
+    response.data.pipe(writer);
+
+    return new Promise((resolve, reject) => {
+      writer.on("finish", resolve);
+      writer.on("error", reject);
+    });
+  } catch (error) {
+    console.error(`Error downloading the image: ${error.message}`);
+  }
+};
+
 
 export async function generateMetadata({ params }, parent) {
   const id = params.id;
@@ -18,6 +48,13 @@ export async function generateMetadata({ params }, parent) {
       0,
       150
     ) + "...";
+    const imageURL =
+      article.data.attributes.Image.data.attributes.formats.medium.url;
+    const imagePath = path.resolve("./public", path.basename(imageURL));
+     
+  await downloadImage(imageURL, imagePath);
+
+  const OGPath = path.basename(imageURL);
   return {
     metadataBase: "https://cr.se/nyheter/" + id,
     title: article.data.attributes.Titel,
@@ -26,7 +63,7 @@ export async function generateMetadata({ params }, parent) {
       title: article.data.attributes.Titel,
       description: description,
       images: [
-        article.data.attributes.Image.data.attributes.formats.medium.url,
+        OGPath,
         ...previousImages,
       ],
     },
