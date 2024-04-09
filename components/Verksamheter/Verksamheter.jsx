@@ -41,6 +41,7 @@ const Verksamheter = async (props) => {
 
   for (const contentCard of contentCards.data) {
     const imageURL = contentCard.attributes.PartnerIcon.data.attributes.url;
+    
     const imageSource = process.env.NEXT_PUBLIC_API_SLIM + imageURL;
     const imagePath = path.resolve("./public", path.basename(imageURL));
     await downloadImage(imageSource, imagePath);

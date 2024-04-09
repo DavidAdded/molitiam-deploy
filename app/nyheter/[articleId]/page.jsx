@@ -56,6 +56,7 @@ export async function generateMetadata({ params }, parent) {
         await downloadImage(imageURL, imagePath);
 
         const OGPath = path.basename(imageURL);
+        
   return {
     metadataBase: "https://cr.se/nyheter/" + id,
     title: article.data.attributes.Titel,
@@ -123,8 +124,16 @@ export default async function Page({ params }) {
 
   const formattedDate = convertDateFormat(article.data.attributes.Date);
   const urlBasedOnLang = "/nyheter/";
-  const singleImage =
-    article.data.attributes.Image.data.attributes.formats.medium.url;
+  
+    const availableFormats = article.data.attributes.Image.data.attributes.formats;
+    let singleImage;
+    if (availableFormats.medium) {
+      singleImage = availableFormats.medium.url;
+    } else if (availableFormats.small) {
+      singleImage = availableFormats.small.url;
+    } else if (availableFormats.thumbnail) {
+      singleImage = availableFormats.thumbnail.url;
+    }
   const pathSingleArticle = `/${path.basename(singleImage)}`;
 
   return (
@@ -155,9 +164,16 @@ export default async function Page({ params }) {
                 <h2>Fler artiklar</h2>
                 <div className="more-articles-wrapper">
                   {articles.map((article, index) => {
-                    const articleImage =
-                      article.attributes.Image.data.attributes.formats.medium
-                        .url;
+                        const availableFormats =
+                          article.attributes.Image.data.attributes.formats;
+                        let articleImage;
+                        if (availableFormats.medium) {
+                          articleImage = availableFormats.medium.url;
+                        } else if (availableFormats.small) {
+                          articleImage = availableFormats.small.url;
+                        } else if (availableFormats.thumbnail) {
+                          articleImage = availableFormats.thumbnail.url;
+                        }
                     const imagePath = `/${path.basename(articleImage)}`;
 
                     return (

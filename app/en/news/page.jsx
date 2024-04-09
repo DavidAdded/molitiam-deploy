@@ -67,8 +67,15 @@ export default async function Page() {
   const articles = await response.json();
 
   for (const article of articles.data) {
-    const imageURL =
-      article.attributes.Image.data.attributes.formats.medium.url;
+      const availableFormats = article.attributes.Image.data.attributes.formats;
+      let imageURL;
+      if (availableFormats.medium) {
+        imageURL = availableFormats.medium.url;
+      } else if (availableFormats.small) {
+        imageURL = availableFormats.small.url;
+      } else if (availableFormats.thumbnail) {
+        imageURL = availableFormats.thumbnail.url;
+      }
     const imagePath = path.resolve("./public", path.basename(imageURL));
     await downloadImage(imageURL, imagePath);
   }
@@ -90,8 +97,17 @@ export default async function Page() {
               <h1>NEWS</h1>
               <div className="news-grid">
                 {articles.data.map((article, index) => {
-                  const articleImage =
-                    article.attributes.Image.data.attributes.formats.medium.url;
+                  
+                    const availableFormats =
+                      article.attributes.Image.data.attributes.formats;
+                    let articleImage;
+                    if (availableFormats.medium) {
+                      articleImage = availableFormats.medium.url;
+                    } else if (availableFormats.small) {
+                      articleImage = availableFormats.small.url;
+                    } else if (availableFormats.thumbnail) {
+                      articleImage = availableFormats.thumbnail.url;
+                    }
                   const imagePath = `/${path.basename(articleImage)}`;
 
                   return (
