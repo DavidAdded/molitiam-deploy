@@ -48,9 +48,16 @@ export async function generateMetadata({ params }, parent) {
       0,
       150
     ) + "...";
-    const imageURL =
-      article.data.attributes.Image.data.attributes.formats.medium.url;
 
+    const availableFormats = article.data.attributes.Image.data.attributes.formats;
+    let imageURL;
+    if (availableFormats.medium) {
+      imageURL = availableFormats.medium.url;
+    } else if (availableFormats.small) {
+      imageURL = availableFormats.small.url;
+    } else if (availableFormats.thumbnail) {
+      imageURL = availableFormats.thumbnail.url;
+    }
     const imagePath = path.resolve("./public", path.basename(imageURL));
      
   await downloadImage(imageURL, imagePath);

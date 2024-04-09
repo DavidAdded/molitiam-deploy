@@ -54,6 +54,7 @@ export default async function Page() {
   const arrowIconUrl = "right-arrow.svg";
 
   const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&pagination[limit]=6&populate=*&locale=en`;
+
   const response = await fetch(articlesURL, {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
@@ -65,7 +66,7 @@ export default async function Page() {
   }
 
   const articles = await response.json();
-
+  console.log(articles);
   for (const article of articles.data) {
       const availableFormats = article.attributes.Image.data.attributes.formats;
       let imageURL;
@@ -76,6 +77,7 @@ export default async function Page() {
       } else if (availableFormats.thumbnail) {
         imageURL = availableFormats.thumbnail.url;
       }
+      console.log(availableFormats)
     const imagePath = path.resolve("./public", path.basename(imageURL));
     await downloadImage(imageURL, imagePath);
   }

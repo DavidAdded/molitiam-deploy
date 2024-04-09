@@ -56,7 +56,7 @@ export default async function Page() {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
     },
   });
-
+  
   if (!articlesResponse.ok) {
     throw new Error(`Failed to fetch articles: ${articlesResponse.statusText}`);
   }

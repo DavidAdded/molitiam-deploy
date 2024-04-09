@@ -135,7 +135,7 @@ export default async function Page({ params }) {
       singleImage = availableFormats.thumbnail.url;
     }
   const pathSingleArticle = `/${path.basename(singleImage)}`;
-
+    
   return (
     <>
       <div className="news-article-section-wrapper">
