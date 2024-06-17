@@ -10,8 +10,8 @@ const Footer = () => {
 
   const contactContentText1 =
     lang === "sv"
-      ? "C-Resiliens AB är ett svenskt cybersäkerhetsföretag som utvecklar paketerade och användarvänliga digitala lösningar för samhällsviktig verksamhet."
-      : "C-Resiliens AB is a Swedish cybersecurity company that develops packaged and user-friendly digital solutions for critical societal operations.";
+      ? "CR Group Nordic AB är ett svenskt cybersäkerhetsföretag som utvecklar paketerade och användarvänliga digitala lösningar för samhällsviktig verksamhet."
+      : "CR Group Nordic AB is a Swedish cybersecurity company that develops packaged and user-friendly digital solutions for critical societal operations.";
 
   const contactContentText2 =
     lang === "sv"
@@ -36,20 +36,20 @@ const Footer = () => {
                   <p>
                     <b>{addressText}</b>
                   </p>
-                  <p>C-Resiliens AB</p>
+                  <p>CR Group Nordic AB</p>
                   <p>Hovslagargatan 5b</p>
                   <p>Blasieholmen, Stockholm</p>
                   <p>+46 8 551 102 40</p>
-                  <a href="mailto: info@cresiliens.se">info@cresiliens.se</a>
+                  <a href="mailto: info@cr.se">info@cr.se</a>
                   <div className="copyright">
-                    <p>Copyright C-Resiliens AB 2024</p>
+                    <p>Copyright CR Group Nordic AB 2024</p>
                   </div>
                 </div>
                 <div className="footer-contact-content-middle">
                   <p>
                     <b>{postAddressText}</b>
                   </p>
-                  <p>C-Resiliens AB</p>
+                  <p>CR Group Nordic AB</p>
                   <p>Aspövägen 41</p>
                   <p>125 40 Älvsjö</p>
                 </div>

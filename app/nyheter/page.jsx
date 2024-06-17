@@ -7,11 +7,11 @@ export const metadata = {
   metadataBase: "https://cr.se/nyheter",
   title: "Cybersäkerhet för samhällsviktig verksamhet",
   description:
-    "C-Resiliens är ett cybersäkerhetsföretaget som erbjuder avancerad försvarsteknologi för samhällsviktig verksamhet. Skydda det mest kritiska med användarvänliga och lättillgängliga lösningar",
+    "CR Group är cybersäkerhetsföretaget som erbjuder avancerad försvarsteknologi för samhällsviktig verksamhet. Skydda det mest kritiska med användarvänliga och lättillgängliga lösningar",
   openGraph: {
     title: "Cybersäkerhet för samhällsviktig verksamhet",
     description:
-      "C-Resiliens är ett cybersäkerhetsföretaget som erbjuder avancerad försvarsteknologi för samhällsviktig verksamhet. Skydda det mest kritiska med användarvänliga och lättillgängliga lösningar",
+      "CR Group är cybersäkerhetsföretaget som erbjuder avancerad försvarsteknologi för samhällsviktig verksamhet. Skydda det mest kritiska med användarvänliga och lättillgängliga lösningar",
     images: [
       {
         url: "https://cr.se/opengraph.png",

@@ -34,11 +34,11 @@ export const metadata = {
   metadataBase: "https://cr.se/news",
   title: "Cyber security for vital societal functions",
   description:
-    "C-Resiliens, a Swedish-owned cyber-security company, offers critical societal functions with advanced defense technology. Elevate security with user-friendly solutions that are easy to buy and easy to use",
+    "CR Group, a Swedish-owned cyber-security company, offers critical societal functions with advanced defense technology. Elevate security with user-friendly solutions that are easy to buy and easy to use",
   openGraph: {
     title: "Cyber security for vital societal functions",
     description:
-      "C-Resiliens, a Swedish-owned cyber-security company, offers critical societal functions with advanced defense technology. Elevate security with user-friendly solutions that are easy to buy and easy to use",
+      "CR Group, a Swedish-owned cyber-security company, offers critical societal functions with advanced defense technology. Elevate security with user-friendly solutions that are easy to buy and easy to use",
     images: [
       {
         url: "https://cr.se/opengraph.png",
