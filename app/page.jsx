@@ -8,6 +8,7 @@ import Verksamheter from "@components/Verksamheter/Verksamheter";
 import Nyheter from "@components/Nyheter/Nyheter";
 import Jobb from "@components/Jobb/Jobb";
 import Kontakt from "@components/Kontakt/Kontakt";
+import Footer from "@components/Footer/Footer";
 
 export const metadata = {
   metadataBase: "https://cr.se",
@@ -72,6 +73,7 @@ const Home = () => {
       <div id={urlPoints.kontakt}>
         <Kontakt lang={"sv"} />
       </div>
+      <Footer lang={"sv"}></Footer>
     </div>
   );
 };

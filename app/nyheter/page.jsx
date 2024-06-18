@@ -2,6 +2,7 @@ import "./page.css";
 import path from "path";
 import fs from "fs";
 import axios from "axios";
+import Footer from "@components/Footer/Footer";
 
 export const metadata = {
   metadataBase: "https://cr.se/nyheter",
@@ -89,14 +90,15 @@ export default async function Page() {
   if (!articles) return <div></div>;
 
   return (
-    <div className="news-page-section-wrapper">
-      <div className="padding-global">
-        <div className="container-large">
-          <div className="padding-section-large">
-            <div className="nyheter-page-content-wrapper">
-              <h1>nyheter</h1>
-              <div className="news-grid">
-                {articles.data.map((article, index) => {
+    <>
+      <div className="news-page-section-wrapper">
+        <div className="padding-global">
+          <div className="container-large">
+            <div className="padding-section-large">
+              <div className="nyheter-page-content-wrapper">
+                <h1>nyheter</h1>
+                <div className="news-grid">
+                  {articles.data.map((article, index) => {
                     const availableFormats =
                       article.attributes.Image.data.attributes.formats;
                     let articleImage;
@@ -107,49 +109,51 @@ export default async function Page() {
                     } else if (availableFormats.thumbnail) {
                       articleImage = availableFormats.thumbnail.url;
                     }
-                  const imagePath = `/${path.basename(articleImage)}`;
+                    const imagePath = `/${path.basename(articleImage)}`;
 
-                  return (
-                    <div key={index} className="nyheter-wrapper">
-                      <a
-                        href={`${urlBasedOnLang}/${article.id}`}
-                        key={article.id}
-                      >
-                        <div className="nyheter-content-card">
-                          <div
-                            style={{
-                              backgroundImage: `url(${imagePath})`,
-                            }}
-                            className="nyheter-content-card-top"
-                          ></div>
+                    return (
+                      <div key={index} className="nyheter-wrapper">
+                        <a
+                          href={`${urlBasedOnLang}/${article.id}`}
+                          key={article.id}
+                        >
+                          <div className="nyheter-content-card">
+                            <div
+                              style={{
+                                backgroundImage: `url(${imagePath})`,
+                              }}
+                              className="nyheter-content-card-top"
+                            ></div>
 
-                          <div className="nyheter-content-card-bottom">
-                            <div className="nyheter-content-card-text-wrapper">
-                              <div className="nyheter-date">
-                                {convertDateFormat(article.attributes.Date)}
+                            <div className="nyheter-content-card-bottom">
+                              <div className="nyheter-content-card-text-wrapper">
+                                <div className="nyheter-date">
+                                  {convertDateFormat(article.attributes.Date)}
+                                </div>
+                                <h3>{article.attributes.Titel}</h3>
+                                <p className="nyheter-paragraph-one">
+                                  {article.attributes.ArticleText}
+                                </p>
                               </div>
-                              <h3>{article.attributes.Titel}</h3>
-                              <p className="nyheter-paragraph-one">
-                                {article.attributes.ArticleText}
-                              </p>
                             </div>
                           </div>
-                        </div>
-                        <div className="nyheter-las-mer">
-                          <div className="nyheter-las-mer-content">
-                            <p>LÄS MER</p>
-                            <img src="/right-arrow.svg" alt="Read More" />
+                          <div className="nyheter-las-mer">
+                            <div className="nyheter-las-mer-content">
+                              <p>LÄS MER</p>
+                              <img src="/right-arrow.svg" alt="Read More" />
+                            </div>
                           </div>
-                        </div>
-                      </a>
-                    </div>
-                  );
-                })}
+                        </a>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      <Footer lang={"sv"}></Footer>
+    </>
   );
 }

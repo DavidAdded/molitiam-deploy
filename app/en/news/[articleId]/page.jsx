@@ -3,6 +3,7 @@ import "../../../nyheter/[articleId]/page.css";
 import path from "path";
 import fs from "fs";
 import axios from "axios";
+import Footer from "@components/Footer/Footer";
 
 const downloadImage = async (url, filepath) => {
   // Check if the file already exists
@@ -31,7 +32,6 @@ const downloadImage = async (url, filepath) => {
   }
 };
 
-
 export async function generateMetadata({ params }, parent) {
   const id = params.id;
   const URL = `${process.env.NEXT_PUBLIC_API_URL}articles/${params.articleId}?populate=*`;
@@ -49,17 +49,18 @@ export async function generateMetadata({ params }, parent) {
       150
     ) + "...";
 
-    const availableFormats = article.data.attributes.Image.data.attributes.formats;
-    let imageURL;
-    if (availableFormats.medium) {
-      imageURL = availableFormats.medium.url;
-    } else if (availableFormats.small) {
-      imageURL = availableFormats.small.url;
-    } else if (availableFormats.thumbnail) {
-      imageURL = availableFormats.thumbnail.url;
-    }
-    const imagePath = path.resolve("./public", path.basename(imageURL));
-     
+  const availableFormats =
+    article.data.attributes.Image.data.attributes.formats;
+  let imageURL;
+  if (availableFormats.medium) {
+    imageURL = availableFormats.medium.url;
+  } else if (availableFormats.small) {
+    imageURL = availableFormats.small.url;
+  } else if (availableFormats.thumbnail) {
+    imageURL = availableFormats.thumbnail.url;
+  }
+  const imagePath = path.resolve("./public", path.basename(imageURL));
+
   await downloadImage(imageURL, imagePath);
 
   const OGPath = path.basename(imageURL);
@@ -70,10 +71,7 @@ export async function generateMetadata({ params }, parent) {
     openGraph: {
       title: article.data.attributes.Titel,
       description: description,
-      images: [
-        OGPath,
-        ...previousImages,
-      ],
+      images: [OGPath, ...previousImages],
     },
   };
 }
@@ -130,16 +128,17 @@ export default async function Page({ params }) {
 
   const formattedDate = convertDateFormat(article.data.attributes.Date);
   const urlBasedOnLang = "/en/news";
-  
-    const availableFormats = article.data.attributes.Image.data.attributes.formats;
-    let singleImage;
-    if (availableFormats.medium) {
-      singleImage = availableFormats.medium.url;
-    } else if (availableFormats.small) {
-      singleImage = availableFormats.small.url;
-    } else if (availableFormats.thumbnail) {
-      singleImage = availableFormats.thumbnail.url;
-    }
+
+  const availableFormats =
+    article.data.attributes.Image.data.attributes.formats;
+  let singleImage;
+  if (availableFormats.medium) {
+    singleImage = availableFormats.medium.url;
+  } else if (availableFormats.small) {
+    singleImage = availableFormats.small.url;
+  } else if (availableFormats.thumbnail) {
+    singleImage = availableFormats.thumbnail.url;
+  }
   const pathSingleArticle = `/${path.basename(singleImage)}`;
 
   return (
@@ -224,6 +223,7 @@ export default async function Page({ params }) {
           </div>
         </div>
       </div>
+      <Footer lang={"en"}></Footer>
     </>
   );
 }

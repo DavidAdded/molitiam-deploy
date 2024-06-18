@@ -2,6 +2,7 @@ import "../../nyheter/page.css";
 import path from "path";
 import fs from "fs";
 import axios from "axios";
+import Footer from "@components/Footer/Footer";
 
 const downloadImage = async (url, filepath) => {
   // Check if the file already exists
@@ -68,16 +69,16 @@ export default async function Page() {
   const articles = await response.json();
   console.log(articles);
   for (const article of articles.data) {
-      const availableFormats = article.attributes.Image.data.attributes.formats;
-      let imageURL;
-      if (availableFormats.medium) {
-        imageURL = availableFormats.medium.url;
-      } else if (availableFormats.small) {
-        imageURL = availableFormats.small.url;
-      } else if (availableFormats.thumbnail) {
-        imageURL = availableFormats.thumbnail.url;
-      }
-      console.log(availableFormats)
+    const availableFormats = article.attributes.Image.data.attributes.formats;
+    let imageURL;
+    if (availableFormats.medium) {
+      imageURL = availableFormats.medium.url;
+    } else if (availableFormats.small) {
+      imageURL = availableFormats.small.url;
+    } else if (availableFormats.thumbnail) {
+      imageURL = availableFormats.thumbnail.url;
+    }
+    console.log(availableFormats);
     const imagePath = path.resolve("./public", path.basename(imageURL));
     await downloadImage(imageURL, imagePath);
   }
@@ -91,15 +92,15 @@ export default async function Page() {
   if (!articles) return <div></div>;
 
   return (
-    <div className="news-page-section-wrapper">
-      <div className="padding-global">
-        <div className="container-large">
-          <div className="padding-section-large">
-            <div className="nyheter-page-content-wrapper">
-              <h1>NEWS</h1>
-              <div className="news-grid">
-                {articles.data.map((article, index) => {
-                  
+    <>
+      <div className="news-page-section-wrapper">
+        <div className="padding-global">
+          <div className="container-large">
+            <div className="padding-section-large">
+              <div className="nyheter-page-content-wrapper">
+                <h1>NEWS</h1>
+                <div className="news-grid">
+                  {articles.data.map((article, index) => {
                     const availableFormats =
                       article.attributes.Image.data.attributes.formats;
                     let articleImage;
@@ -110,49 +111,51 @@ export default async function Page() {
                     } else if (availableFormats.thumbnail) {
                       articleImage = availableFormats.thumbnail.url;
                     }
-                  const imagePath = `/${path.basename(articleImage)}`;
+                    const imagePath = `/${path.basename(articleImage)}`;
 
-                  return (
-                    <div key={index} className="nyheter-wrapper">
-                      <a
-                        href={`${urlBasedOnLang}/${article.id}`}
-                        key={article.id}
-                      >
-                        <div className="nyheter-content-card">
-                          <div
-                            style={{
-                              backgroundImage: `url(${imagePath})`,
-                            }}
-                            className="nyheter-content-card-top"
-                          ></div>
+                    return (
+                      <div key={index} className="nyheter-wrapper">
+                        <a
+                          href={`${urlBasedOnLang}/${article.id}`}
+                          key={article.id}
+                        >
+                          <div className="nyheter-content-card">
+                            <div
+                              style={{
+                                backgroundImage: `url(${imagePath})`,
+                              }}
+                              className="nyheter-content-card-top"
+                            ></div>
 
-                          <div className="nyheter-content-card-bottom">
-                            <div className="nyheter-content-card-text-wrapper">
-                              <div className="nyheter-date">
-                                {convertDateFormat(article.attributes.Date)}
+                            <div className="nyheter-content-card-bottom">
+                              <div className="nyheter-content-card-text-wrapper">
+                                <div className="nyheter-date">
+                                  {convertDateFormat(article.attributes.Date)}
+                                </div>
+                                <h3>{article.attributes.Titel}</h3>
+                                <p className="nyheter-paragraph-one">
+                                  {article.attributes.ArticleText}
+                                </p>
                               </div>
-                              <h3>{article.attributes.Titel}</h3>
-                              <p className="nyheter-paragraph-one">
-                                {article.attributes.ArticleText}
-                              </p>
                             </div>
                           </div>
-                        </div>
-                        <div className="nyheter-las-mer">
-                          <div className="nyheter-las-mer-content">
-                            <p>READ MORE</p>
-                            <img src="/right-arrow.svg" alt="Read More" />
+                          <div className="nyheter-las-mer">
+                            <div className="nyheter-las-mer-content">
+                              <p>READ MORE</p>
+                              <img src="/right-arrow.svg" alt="Read More" />
+                            </div>
                           </div>
-                        </div>
-                      </a>
-                    </div>
-                  );
-                })}
+                        </a>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      <Footer lang={"en"}></Footer>
+    </>
   );
 }

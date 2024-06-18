@@ -3,6 +3,7 @@ import "./page.css";
 import path from "path";
 import fs from "fs";
 import axios from "axios";
+import Footer from "@components/Footer/Footer";
 
 const downloadImage = async (url, filepath) => {
   // Check if the file already exists
@@ -31,7 +32,6 @@ const downloadImage = async (url, filepath) => {
   }
 };
 
-
 export async function generateMetadata({ params }, parent) {
   const id = params.id;
   const URL = `${process.env.NEXT_PUBLIC_API_URL}articles/${params.articleId}?populate=*`;
@@ -49,14 +49,14 @@ export async function generateMetadata({ params }, parent) {
       150
     ) + "...";
 
-        const imageURL =
-          article.data.attributes.Image.data.attributes.formats.medium.url;
-        const imagePath = path.resolve("./public", path.basename(imageURL));
+  const imageURL =
+    article.data.attributes.Image.data.attributes.formats.medium.url;
+  const imagePath = path.resolve("./public", path.basename(imageURL));
 
-        await downloadImage(imageURL, imagePath);
+  await downloadImage(imageURL, imagePath);
 
-        const OGPath = path.basename(imageURL);
-        
+  const OGPath = path.basename(imageURL);
+
   return {
     metadataBase: "https://cr.se/nyheter/" + id,
     title: article.data.attributes.Titel,
@@ -64,10 +64,7 @@ export async function generateMetadata({ params }, parent) {
     openGraph: {
       title: article.data.attributes.Titel,
       description: description,
-      images: [
-        OGPath,
-        ...previousImages,
-      ],
+      images: [OGPath, ...previousImages],
     },
   };
 }
@@ -124,18 +121,19 @@ export default async function Page({ params }) {
 
   const formattedDate = convertDateFormat(article.data.attributes.Date);
   const urlBasedOnLang = "/nyheter/";
-  
-    const availableFormats = article.data.attributes.Image.data.attributes.formats;
-    let singleImage;
-    if (availableFormats.medium) {
-      singleImage = availableFormats.medium.url;
-    } else if (availableFormats.small) {
-      singleImage = availableFormats.small.url;
-    } else if (availableFormats.thumbnail) {
-      singleImage = availableFormats.thumbnail.url;
-    }
+
+  const availableFormats =
+    article.data.attributes.Image.data.attributes.formats;
+  let singleImage;
+  if (availableFormats.medium) {
+    singleImage = availableFormats.medium.url;
+  } else if (availableFormats.small) {
+    singleImage = availableFormats.small.url;
+  } else if (availableFormats.thumbnail) {
+    singleImage = availableFormats.thumbnail.url;
+  }
   const pathSingleArticle = `/${path.basename(singleImage)}`;
-    
+
   return (
     <>
       <div className="news-article-section-wrapper">
@@ -164,16 +162,16 @@ export default async function Page({ params }) {
                 <h2>Fler artiklar</h2>
                 <div className="more-articles-wrapper">
                   {articles.map((article, index) => {
-                        const availableFormats =
-                          article.attributes.Image.data.attributes.formats;
-                        let articleImage;
-                        if (availableFormats.medium) {
-                          articleImage = availableFormats.medium.url;
-                        } else if (availableFormats.small) {
-                          articleImage = availableFormats.small.url;
-                        } else if (availableFormats.thumbnail) {
-                          articleImage = availableFormats.thumbnail.url;
-                        }
+                    const availableFormats =
+                      article.attributes.Image.data.attributes.formats;
+                    let articleImage;
+                    if (availableFormats.medium) {
+                      articleImage = availableFormats.medium.url;
+                    } else if (availableFormats.small) {
+                      articleImage = availableFormats.small.url;
+                    } else if (availableFormats.thumbnail) {
+                      articleImage = availableFormats.thumbnail.url;
+                    }
                     const imagePath = `/${path.basename(articleImage)}`;
 
                     return (
@@ -218,6 +216,7 @@ export default async function Page({ params }) {
           </div>
         </div>
       </div>
+      <Footer lang={"sv"}></Footer>
     </>
   );
 }
