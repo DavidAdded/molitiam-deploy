@@ -59,10 +59,10 @@ const Verksamheter = async (props) => {
                     <img src="/prefix-icon.svg" alt="Left" />
                     <h6>VERKSAMHETER</h6>
                   </div>
-                  <h2>C-Resiliens AB</h2>
+                  <h2>CR Group</h2>
                   <div>
                     <p>
-                      C-Resiliens AB är ett svenskägt cybersäkerhetsföretag med
+                      CR Group är ett svenskägt cybersäkerhetsföretag med
                       inriktning mot Sverige och Europa. Vi erbjuder lösningar
                       till samhällsviktig verksamhet som är både enkla att
                       använda och enkla att köpa.
@@ -84,10 +84,10 @@ const Verksamheter = async (props) => {
                     <img src="/prefix-icon.svg" alt="Left" />
                     <h6>OPERATIONS</h6>
                   </div>
-                  <h2>C-Resiliens AB</h2>
+                  <h2>CR Group</h2>
                   <div>
                     <p>
-                      C-Resiliens AB is a Swedish-owned, cyber-security company
+                      CR Group is a Swedish-owned, cyber-security company
                       oriented towards the European market. We offer solutions
                       for vital societal functions that are both easy-to-buy and
                       easy-to-use.
