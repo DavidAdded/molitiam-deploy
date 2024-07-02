@@ -63,9 +63,11 @@ export async function generateMetadata({ params }, parent) {
 
   await downloadImage(imageURL, imagePath);
 
-  const OGPath = path.basename(imageURL);
+  const baseURL = "https://cr.se";
+  const OGPath = `${baseURL}/${path.basename(imageURL)}`;
+  
   return {
-    metadataBase: "https://cr.se/nyheter/" + id,
+    metadataBase: `${baseURL}/news/${id}`,
     title: article.data.attributes.Titel,
     description: article.data.attributes.ArticleText.split(0, 150)[0] + "...",
     openGraph: {
