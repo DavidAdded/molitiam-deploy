@@ -34,6 +34,7 @@ const Verksamheter = async (props) => {
   const cardsResponse = await fetch(cardsURL, {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+      "Cache-Control": "no-store",
     },
   });
 
@@ -41,7 +42,7 @@ const Verksamheter = async (props) => {
 
   for (const contentCard of contentCards.data) {
     const imageURL = contentCard.attributes.PartnerIcon.data.attributes.url;
-    
+
     const imageSource = process.env.NEXT_PUBLIC_API_SLIM + imageURL;
     const imagePath = path.resolve("./public", path.basename(imageURL));
     await downloadImage(imageSource, imagePath);
@@ -111,7 +112,7 @@ const Verksamheter = async (props) => {
                     const cardImage =
                       card.attributes.PartnerIcon.data.attributes.url;
                     const imagePath = `/${path.basename(cardImage)}`;
-                     const siteUrl = card.attributes.Linkurl
+                    const siteUrl = card.attributes.Linkurl;
 
                     return (
                       <div key={index} className="verksamheter-content-box-1">

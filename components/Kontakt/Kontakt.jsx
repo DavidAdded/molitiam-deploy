@@ -38,6 +38,7 @@ const Kontakt = async (props) => {
   const response = await fetch(URL, {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+      "Cache-Control": "no-store",
     },
   });
 

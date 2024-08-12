@@ -79,6 +79,7 @@
 .nyheter-content-card-text-wrapper p {
   display: -webkit-box;
   -webkit-box-orient: vertical;
+  line-clamp: 2;
   -webkit-line-clamp: 2;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -94,6 +95,7 @@
   margin: 3px 0px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
+  line-clamp: 2;
   -webkit-line-clamp: 2;
   overflow: hidden;
   text-overflow: ellipsis;

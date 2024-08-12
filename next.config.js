@@ -1,14 +1,12 @@
-// /**
-//  * @type {import('next').NextConfig}
-//  */
-// const nextConfig = {
+/**
+ * @type {import('next').NextConfig}
+ */
+const nextConfig = {
+  output: "export",
+};
 
-//   output: "export",
-// };
-
-// module.exports = nextConfig;
-
-
-
+module.exports = nextConfig;
 
 //----------------if bug in jsconfig for npm run dev, plese uncomment lines above----------------
+
+

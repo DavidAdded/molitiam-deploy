@@ -4,30 +4,58 @@ import fs from "fs";
 import axios from "axios";
 import Footer from "@components/Footer/Footer";
 
+const BASE_URL = process.env.NEXT_PUBLIC_API_SLIM;
+
 const downloadImage = async (url, filepath) => {
   // Check if the file already exists
   if (fs.existsSync(filepath)) {
     return;
   }
+  // Ensure the directory exists
+  const dir = path.dirname(filepath);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
 
-  // Proceed with download if the file doesn't exist
-  const writer = fs.createWriteStream(filepath);
-
+  let writer;
   try {
     const response = await axios({
-      url,
+      url: `${BASE_URL}${url}`,
       method: "GET",
       responseType: "stream",
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+        "Cache-Control": "no-store",
+      },
     });
+    if (response.status !== 200) {
+      throw new Error(
+        `Failed to download image, status code: ${response.status}`
+      );
+    }
 
+    writer = fs.createWriteStream(filepath);
     response.data.pipe(writer);
 
     return new Promise((resolve, reject) => {
       writer.on("finish", resolve);
-      writer.on("error", reject);
+      writer.on("error", (err) => {
+        console.error(`Error writing the file: ${err.message}`);
+        reject(err);
+      });
     });
   } catch (error) {
-    console.error(`Error downloading the image: ${error.message}`);
+    if (writer) writer.close();
+
+    if (fs.existsSync(filepath)) {
+      try {
+        fs.unlinkSync(filepath);
+      } catch (unlinkError) {
+        console.error(`Error deleting incomplete file: ${unlinkError.message}`);
+      }
+    }
+
+    throw new Error(`Error downloading the image: ${error.message}`);
   }
 };
 
@@ -59,6 +87,7 @@ export default async function Page() {
   const response = await fetch(articlesURL, {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+      "Cache-Control": "no-store",
     },
   });
 

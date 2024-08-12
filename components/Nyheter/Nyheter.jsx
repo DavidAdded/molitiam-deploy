@@ -43,6 +43,7 @@ const Nyheter = async (props) => {
   const articlesResponse = await fetch(articlesURL, {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+      "Cache-Control": "no-store",
     },
   });
 
