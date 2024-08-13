@@ -2,11 +2,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
 
+@font-face {
+  font-family: 'JosefinaSans';
+  src: 
+    url('/fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
+    /* ,url('/fonts/JosefinSans-Italic-VariableFont_wght.ttf') format('truetype'); */
+  font-weight: 100 900;
+  font-style: normal;
+}
 /* Base styles - applied for all screen sizes */
 
 .navbar {
   background-color: white;
-  font-family: "Inter", sans-serif;
+  font-family: "JosefinaSans", sans-serif;
   position:fixed;
   width:100%;
   z-index:99999999;
@@ -62,7 +70,7 @@
   align-items: center;
   gap: 10px;
   background-color: #8a684a; /* For .navbar-kontakt */
-  font-family: "Space Grotesk";
+  font-family: "JosefinaSans", sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: normal;

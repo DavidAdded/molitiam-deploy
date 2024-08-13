@@ -22,7 +22,7 @@
 
 .jobb-content-wrapper h1 {
   margin: 7.5px 0px;
-  font-family: "Inter";
+  font-family: "JosefinaSans", sans-serif;
   font-size: 35px;
   font-weight: 500;
   line-height: 42px;
@@ -31,7 +31,7 @@
 }
 
 .jobb-content-wrapper p {
-  font-family: "Inter";
+  font-family: "JosefinaSans", sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 27px;
@@ -45,7 +45,7 @@
   background-color: rgba(38, 38, 38, 1);
   border: 0px;
   height: 62px;
-  font-family: "Space Mono";
+  font-family: "JosefinaSans", sans-serif;
   text-transform: uppercase;
   padding: 12px 24px;
   font-size: 18px;

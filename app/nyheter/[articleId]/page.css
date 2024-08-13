@@ -41,7 +41,7 @@
 }
 
 .news-article-section-wrapper h6 {
-  font-family: "Space Mono";
+  font-family: "JosefinaSans", sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 21px;
@@ -61,7 +61,7 @@
 }
 
 .news-article-text-wrapper h3 {
-  font-family: "Space Mono";
+  font-family: "JosefinaSans", sans-serif;
   font-size: 17px;
   font-weight: 400;
   line-height: 20px;
@@ -150,7 +150,7 @@
 }
 
 .nyheter-article-date {
-  font-family: "Space Mono";
+  font-family: "JosefinaSans", sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 21px;
@@ -163,7 +163,7 @@
   align-items: flex-end;
   flex-direction: row;
   justify-content: right;
-  font-family: "Space Mono";
+  font-family: "JosefinaSans", sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 21px;
@@ -176,7 +176,7 @@
 }
 
 .nyheter-las-mer p {
-  font-family: "space mono";
+  font-family: "JosefinaSans", sans-serif;
   font-size: 16px;
 }
 
@@ -200,7 +200,7 @@
   background-color: rgba(90, 63, 39, 1);
   width: 250px;
   height: 60px;
-  font-family: "Space Mono";
+  font-family: "JosefinaSans", sans-serif;
   font-size: 18px;
   font-weight: 700;
   line-height: 22px;

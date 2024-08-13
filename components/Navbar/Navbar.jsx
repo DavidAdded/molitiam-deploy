@@ -81,9 +81,9 @@ const toggleLanguage = () => {
               <div className="navbar-logo">
                 <Link href={baseLink}>
                   <img
-                    src="/logo.svg"
+                    src="/logo.png"
                     alt="Logo"
-                    style={{ cursor: "pointer" }}
+                    style={{ cursor: "pointer", height: "60px" }}
                   />
                 </Link>
               </div>  

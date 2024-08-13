@@ -41,7 +41,7 @@
 .footer-contact-wrapper p,
 .footer-contact-wrapper a {
   color: var(--Grey-1, #f5f5f5);
-  font-family: "Inter";
+  font-family: "JosefinaSans", sans-serif;
   font-size: 13px;
   font-style: normal;
   line-height: 150%;

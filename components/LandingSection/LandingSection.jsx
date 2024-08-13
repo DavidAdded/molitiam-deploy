@@ -83,10 +83,11 @@ const LandingSection = (props) => {
 
               {lang === "sv" ? (
                 <div className="text-wrapper">
-                  <h1 className="animation-header">
-                    CYBERSÄKERHET FÖR SAMHÄLLSVIKTIG VERKSAMHET
-                  </h1>
-                  <p>Försvarsteknologi. Säkert. Enkelt.</p>
+                  <h1 className="animation-header">DIGITAL SUVERÄNITET</h1>
+                  <p>
+                    Vi gör det enkelt att hantera och skydda
+                    säkerhetskvalificerad information
+                  </p>
                 </div>
               ) : (
                 <div className="text-wrapper">
