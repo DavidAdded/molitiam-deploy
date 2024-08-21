@@ -1,11 +1,7 @@
 {
   "outputDirectory": "out",
-  "builds": [
-    {
-      "src": "out/**/*",
-      "use": "@vercel/static"
-    }
-  ],
+  "cleanUrls": true,
+  "trailingSlash": false,
   "routes": [
     {
       "src": "/(.*)",
