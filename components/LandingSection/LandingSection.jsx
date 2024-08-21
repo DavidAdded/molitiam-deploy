@@ -39,7 +39,6 @@ const LandingSection = (props) => {
     });
 
     const image1 = document.querySelector(".picture-wrapper img");
-    const image2 = document.querySelector(".picture-wrapper div");
     const wrapper = document.querySelector(".landing-section-wrapper");
 
     gsap.to([image1], {
@@ -55,18 +54,6 @@ const LandingSection = (props) => {
       ease: "none",
     });
 
-    gsap.to([image2], {
-      scrollTrigger: {
-        trigger: wrapper,
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-      },
-
-      y: 100,
-      duration: 3,
-      ease: "none",
-    });
     runSectionTextAnimation(".text-wrapper p", undefined, 0, 1);
   }, [content]);
 
@@ -76,11 +63,6 @@ const LandingSection = (props) => {
         <div className="container-large">
           <div className="padding-section-small">
             <div ref={sectionRef} className="landing-content-wrapper">
-              <div className="picture-wrapper">
-                <img src="/camoimage.png" alt="Landing picture" />
-                <div className="landing-grey-image"></div>
-              </div>
-
               {lang === "sv" ? (
                 <div className="text-wrapper">
                   <h1 className="animation-header">DIGITAL SUVERÄNITET</h1>
@@ -97,6 +79,9 @@ const LandingSection = (props) => {
                   <p>Defense technology. Security. Simplicity.</p>
                 </div>
               )}
+              <div className="picture-wrapper">
+                <img src="/logo-green.png" alt="Mollitiam logo in green" />
+              </div>
             </div>
           </div>
         </div>

@@ -60,6 +60,10 @@ body {
   gap: 10px;
 }
 
+.sub-header-wrapper > div > img {
+  width: 25px;
+}
+
 h1 {
   font-family: "JosefinaSans", sans-serif;
   font-size: 50px;

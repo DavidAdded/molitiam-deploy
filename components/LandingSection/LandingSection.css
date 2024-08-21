@@ -6,42 +6,32 @@
   justify-content: center;
   overflow: hidden;
   min-height: 400px;
-  padding: 180px 0;
-  background-color: #ffffff;
+  padding: 100px 0;
+  background-color:#0d1b2c;
 }
 
 .picture-wrapper {
-  position: absolute;
+  position: relative;
   display: flex;
   align-items: center;
   height: 100%;
 }
 
 .picture-wrapper img {
-  max-height: 562px;
-  max-width: 562px;
-  height: 50vw;
-  width: 50vw;
+  width:auto;
+  height:auto;
+  aspect-ratio: "1:1";
+  max-width:400px;
   top: auto;
-  margin-right: -125px;
-  margin-top: 125px;
   z-index: 1;
-}
-
-.landing-grey-image {
-  max-width: 562px;
-  max-height: 562px;
-  height: 50vw;
-  width: 50vw;
-  background-color: #262626;
-  margin-bottom: 125px;
 }
 
 .landing-content-wrapper {
   position: relative;
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: center;  
+  flex-direction: column;
   align-items: center;
 }
 

@@ -62,14 +62,13 @@
   margin-right: 0;
 }
 
-.navbar-kontakt,
 .navbar-eng {
   display: flex;
   padding: 8px 16px;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  background-color: #8a684a; /* For .navbar-kontakt */
+  background-color: #0d1b2c; /* For .navbar-kontakt */
   font-family: "JosefinaSans", sans-serif;
   font-size: 16px;
   font-weight: 500;
@@ -79,7 +78,7 @@
 }
 
 .navbar-eng {
-  background-color: #9c8773; /* Specific for .navbar-eng */
+  background-color: #0d1b2c; /* Specific for .navbar-eng */
 }
 
 /* Styles for screens up to 991px wide */

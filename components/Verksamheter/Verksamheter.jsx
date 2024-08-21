@@ -57,25 +57,14 @@ const Verksamheter = async (props) => {
               {lang === "sv" ? (
                 <div className="verksamheter-content-wrapper-top">
                   <div className="sub-header-wrapper">
-                    <img src="/prefix-icon.svg" alt="Left" />
-                    <h6>VERKSAMHETER</h6>
+                    <img src="/logo-white.png" width="25px" alt="Left" />
+                    <h6>CR Group</h6>
                   </div>
-                  <h2>CR Group</h2>
                   <div>
                     <p>
-                      CR Group är ett svenskägt cybersäkerhetsföretag med
-                      inriktning mot Sverige och Europa. Vi erbjuder lösningar
-                      till samhällsviktig verksamhet som är både enkla att
-                      använda och enkla att köpa.
-                    </p>
-                    <p>
-                      Gruppen består av helägda dotterbolag inom utvalda
-                      expertområden med produkter och tjänster för
-                      säkerhetskritisk verksamhet.
-                    </p>
-                    <p>
-                      Vi bygger långsiktiga relationer med både nationer och
-                      organisationer.
+                      Mollitiam är en del av CR Group, som är en totalleverantör
+                      av cybersäkerhet till samhällsviktig verksamhet. Gruppen
+                      består av helägda dotterbolag inom utvalda expertområden.
                     </p>
                   </div>
                 </div>
@@ -120,9 +109,6 @@ const Verksamheter = async (props) => {
                           <img src={`${imagePath}`}></img>
                         </a>
                         <p>{card.attributes.PartnerDescription}</p>
-                        <div className="verksamhet-corner-box-1"></div>
-                        <div className="verksamhet-corner-box-2"></div>
-                        <div className="verksamhet-corner-box-3"></div>
                       </div>
                     );
                   })}
@@ -130,19 +116,10 @@ const Verksamheter = async (props) => {
               ) : (
                 <div className="verksamheter-content-wrapper-bottom">
                   <div className="verksamheter-content-box-1">
-                    <div className="verksamhet-corner-box-1"></div>
-                    <div className="verksamhet-corner-box-2"></div>
-                    <div className="verksamhet-corner-box-3"></div>
                   </div>
                   <div className="verksamheter-content-box-1">
-                    <div className="verksamhet-corner-box-1"></div>
-                    <div className="verksamhet-corner-box-2"></div>
-                    <div className="verksamhet-corner-box-3"></div>
                   </div>
                   <div className="verksamheter-content-box-1">
-                    <div className="verksamhet-corner-box-1"></div>
-                    <div className="verksamhet-corner-box-2"></div>
-                    <div className="verksamhet-corner-box-3"></div>
                   </div>
                 </div>
               )}

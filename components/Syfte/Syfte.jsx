@@ -22,20 +22,29 @@ const Syfte = (props) => {
             {lang === "sv" ? (
               <div className="syfte-content-wrapper">
                 <div className="sub-header-wrapper">
-                  <img src="/prefix-icon.svg" alt="" />
+                  <img src="/logo-white.png" width="25px" alt="mollitiam logo in white" />
                   <h6>SYFTE</h6>
                 </div>
-                <h2>CYBERSÄKERHET - EN FRIHETSFRÅGA </h2>
+
                 <div>
                   <p>
-                    Cyberhotet kostar mer för allt fler, hotar demokratin och
-                    undergräver tilliten i samhället.
+                    Vi på Mollitiam utvecklar godkända privata molnlösningar för
+                    hantering av säkerhetsklassificerad information. På
+                    Mollitiam står vi i frontlinjen för att göra Sverige
+                    säkrare.
                   </p>
                   <p>
-                    Vårt uppdrag är cybersäkerhet för stärkt tillit, främjad
-                    demokrati och god ekonomisk tillväxt. Cybersäkerhet är en
-                    frihetsfråga för oss.
+                    Som landets första heltäckande leverantör av
+                    högsäkerhetslösningar arbetar vi för att skydda den mest
+                    kritiska informationen. Vårt uppdrag är att förenkla det
+                    komplexa och säkerställa att känslig data aldrig hamnar i
+                    orätta händer. Vi ger företag och myndigheter friheten att
+                    fokusera på sina kärnverksamheter medan vi arbetar för att
+                    förebygga IT-attacker eller dataintrång. Detta är inte bara
+                    en teknisk bedrift, utan en central del av civilförsvaret
+                    och Sveriges totalförsvar.
                   </p>
+                  <p>Mollitiam erbjuder rött nät as a service.</p>
                 </div>
               </div>
             ) : (

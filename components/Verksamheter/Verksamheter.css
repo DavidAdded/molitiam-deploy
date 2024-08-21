@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   gap: 50px;
-  background-color: #534a40;
+  background-color: #0d1b2c;
   color: #f5f5f5;
   text-align: center;
 }
@@ -54,7 +54,7 @@
   padding: 40px 40px 60px 40px;
   max-width: 300px;
   min-height: 250px;
-  border: solid 1px #8a684a;
+  border: solid 2px #ffffff;
 }
 
 .verksamheter-content-box-1 img {
@@ -62,39 +62,7 @@
   max-width: 250px;
 }
 
-.verksamhet-corner-box-1 {
-  background-color: #534a40;
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-  box-shadow: 2px 2px #534a40;
-}
 
-.verksamhet-corner-box-2 {
-  border-top: solid 1px #8a684a;
-  border-left: solid 1px #8a684a;
-  background-color: #534a40;
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  bottom: 0;
-  right: 40px;
-  box-shadow: 2px 2px #534a40;
-}
-
-.verksamhet-corner-box-3 {
-  border-top: solid 1px #8a684a;
-  border-left: solid 1px #8a684a;
-  background-color: #534a40;
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  bottom: 40px;
-  right: 0px;
-  box-shadow: 2px 2px #534a40;
-}
 
 @media (max-width: 991px) {
   .verksamheter-content-wrapper-top {

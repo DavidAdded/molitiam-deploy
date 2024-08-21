@@ -1,17 +1,55 @@
-"use client";
 import "./OmOss.css";
-import { useEffect, useState } from "react";
-import runSectionTextAnimation from "@animations/animations";
+import path from "path";
+import fs from "fs";
+import axios from "axios";
 
-const OmOss = (props) => {
+const downloadImage = async (url, filepath) => {
+  // Check if the file already exists
+  if (fs.existsSync(filepath)) {
+    return;
+  }
+
+  // Proceed with download if the file doesn't exist
+  const writer = fs.createWriteStream(filepath);
+
+  try {
+    const response = await axios({
+      url,
+      method: "GET",
+      responseType: "stream",
+    });
+
+    response.data.pipe(writer);
+
+    return new Promise((resolve, reject) => {
+      writer.on("finish", resolve);
+      writer.on("error", reject);
+    });
+  } catch (error) {
+    console.error(`Error downloading the image: ${error.message}`);
+  }
+};
+const OmOss = async (props) => {
   const lang = props.lang;
 
-  useEffect(() => {
-    runSectionTextAnimation(
-      ".omoss-section-column h2",
-      ".omoss-section-column p"
-    );
-  }, []);
+  const URL = `${process.env.NEXT_PUBLIC_API_URL}employees?pagination[limit]=6&populate=*&locale=${lang}`;
+  const response = await fetch(URL, {
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+      "Cache-Control": "no-store",
+    },
+  });
+
+  const contacts = await response.json();
+
+  for (const contact of contacts.data) {
+    const imageURL = contact.attributes.Image.data.attributes.formats.large.url;
+    const imageSource = process.env.NEXT_PUBLIC_API_SLIM + imageURL;
+    const imagePath = path.resolve("./public", path.basename(imageURL));
+    await downloadImage(imageSource, imagePath);
+  }
+
+  if (!contacts.data) return <div></div>;
 
   return (
     <div className="omoss-wrapper">
@@ -22,19 +60,17 @@ const OmOss = (props) => {
               {lang === "sv" ? (
                 <div className="omoss-section-column">
                   <div className="sub-header-wrapper">
-                    <img src="/prefix-icon.svg" alt="" />
+                    <img src="/logo-black.png" width="25px" alt="" />
                     <h6>OM OSS</h6>
                   </div>
-                  <h2>ENKELT ATT ANVÄNDA, ENKELT ATT KÖPA</h2>
                   <div>
-                    <p>Vi är totalleverantör till samhällsviktig verksamhet.</p>
                     <p>
-                      Avancerad försvarsteknologi som skyddar det mest
-                      skyddsvärda för samhällsviktig verksamhet och en helt ny
-                      nivå av användarvänlighet gör våra lösningar enkla att
-                      använda och enkla att köpa.
+                      Mollitiams är en säker leverantör av godkända
+                      systemlösningar för hantering av säkerhetsklassificerad
+                      information och levererar dessa som en tjänst. Företaget
+                      erbjuder lösningar som både är enkla att använda men även
+                      kostnadseffektiva.
                     </p>
-                    <p>Precis som det ska vara.</p>
                   </div>
                 </div>
               ) : (
@@ -59,52 +95,37 @@ const OmOss = (props) => {
                   </div>
                 </div>
               )}
-              <div className="omoss-section-column">
-                {lang === "sv" ? (
-                  <div className="omoss-section-column-content">
-                    <div className="omoss-section-column-content-top">
-                      <img src="/logowhite.svg" alt="Logo" />{" "}
-                    </div>
-                    <div className="omoss-section-column-content-middle">
-                      <div className="vertical-black-line"></div>
-                      <div className="vertical-black-line"></div>
-                    </div>
-                    <div className="omoss-section-column-content-bottom">
-                      <div className="omoss-section-column-content-bottom-left">
-                        <p>
-                          Cybersäkerhets-<br></br>tjänster
-                        </p>
+
+              <div className="om-oss-people-grid-wrapper">
+                {contacts.data.map((contact, index) => {
+                  const contactImage =
+                    contact.attributes.Image.data.attributes.formats.large.url;
+                  const imagePath = `/${path.basename(contactImage)}`;
+
+                  return (
+                    <div key={index} className="om-oss-people-item">
+                      <div className="om-oss-people-item-top">
+                        <img className="om-oss-people-image" src={`${imagePath}`} />
                       </div>
-                      <div className="omoss-section-column-content-bottom-right">
+                      <div className="om-oss-people-item-bottom">
+                        <div>
+                          <h3>{contact.attributes.Name}</h3>
+                          <h4>{contact.attributes.Title}</h4>
+                        </div>
                         <p>
-                          Cybersäkerhets-<br></br>produkter
+                          <a href={`mailto:${contact.attributes.Email}`}>
+                            {contact.attributes.Email}
+                          </a>
                         </p>
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="omoss-section-column-content">
-                    <div className="omoss-section-column-content-top">
-                      <img src="/logowhite.svg" alt="Logo" />{" "}
-                    </div>
-                    <div className="omoss-section-column-content-middle">
-                      <div className="vertical-black-line"></div>
-                      <div className="vertical-black-line"></div>
-                    </div>
-                    <div className="omoss-section-column-content-bottom">
-                      <div className="omoss-section-column-content-bottom-left">
                         <p>
-                          Cybersecurity-<br></br>services
-                        </p>
-                      </div>
-                      <div className="omoss-section-column-content-bottom-right">
-                        <p>
-                          Cybersecurity-<br></br> products
+                          <a href={`tel:${contact.attributes.Phone}`}>
+                            {contact.attributes.Phone}
+                          </a>
                         </p>
                       </div>
                     </div>
-                  </div>
-                )}
+                  );
+                })}
               </div>
             </div>
           </div>

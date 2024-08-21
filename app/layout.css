@@ -10,6 +10,7 @@
 .navbar {
   background-color: white;
   font-family: "JosefinaSans", sans-serif;
+  display:none;
 }
 
 .navbar-wrapper {
@@ -157,7 +158,12 @@ body {
 
 .sub-header-wrapper {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
+}
+.sub-header-wrapper > img {
+  width: 25px;
 }
 
 h1 {

@@ -5,70 +5,61 @@ import { useRouter } from "next/navigation";
 import "./Navbar.css";
 
 const Navbar = (props) => {
- const [langState, setLangState] = useState("sv");
+  const [langState, setLangState] = useState("sv");
   const router = useRouter();
 
   useEffect(() => {
     const lang = window.location.pathname.split("/")[1];
     setLangState(lang === "en" ? "en" : "sv");
-  }, []); 
+  }, []);
 
-const toggleMappings = {
-  "/en/news": "/nyheter",
-  "/nyheter": "/en/news",
-  "/": "/en",
-  "/en": "/"
-};
+  const toggleMappings = {
+    "/en/news": "/nyheter",
+    "/nyheter": "/en/news",
+    "/": "/en",
+    "/en": "/",
+  };
 
-const toggleLanguage = () => {
-  const pathname = window.location.pathname;
+  const toggleLanguage = () => {
+    const pathname = window.location.pathname;
 
-  const newLang = langState === "sv" ? "en" : "sv";
-   setLangState(newLang === "en" ? "en" : "sv");
+    const newLang = langState === "sv" ? "en" : "sv";
+    setLangState(newLang === "en" ? "en" : "sv");
 
-  const englishNewsArticleRegex = /^\/en\/news\/\d+$/;
-  if (englishNewsArticleRegex.test(pathname)) {
-    router.push("/nyheter");
-    return;
-  }
-  const swedishNewsArticleRegex = /^\/nyheter\/\d+$/;
+    const englishNewsArticleRegex = /^\/en\/news\/\d+$/;
+    if (englishNewsArticleRegex.test(pathname)) {
+      router.push("/nyheter");
+      return;
+    }
+    const swedishNewsArticleRegex = /^\/nyheter\/\d+$/;
 
-  if (swedishNewsArticleRegex.test(pathname)) {
+    if (swedishNewsArticleRegex.test(pathname)) {
+      router.push("/en/news");
+      return;
+    }
+    const newPath = toggleMappings[pathname] || pathname;
+    router.push(newPath);
+  };
 
-    router.push("/en/news");
-    return;
-  }
-  const newPath = toggleMappings[pathname] || pathname;
-  router.push(newPath);
-};
-
-   const [linkLabels, setLinkLabels] = useState({});
+  const [linkLabels, setLinkLabels] = useState({});
   const [anchorPoints, setAnchorPoints] = useState({});
 
   useEffect(() => {
-   
     setLinkLabels({
       syfte: langState === "sv" ? "Syfte" : "Purpose",
       omoss: langState === "sv" ? "Om oss" : "About Us",
-      tjanster: langState === "sv" ? "Tjänster" : "Services",
       nyheter: langState === "sv" ? "Nyheter" : "News",
-      verksamheter: langState === "sv" ? "Verksamheter" : "Operations",
-      jobb: langState === "sv" ? "Jobb" : "Jobs",
-      kontakt: langState === "sv" ? "Kontakt" : "Contact",
+      crgroup: langState === "sv" ? "CR Group" : "Operations",
       lang: langState === "sv" ? "Eng" : "Swe",
     });
-    
+
     setAnchorPoints({
       syfte: langState === "sv" ? "syfte" : "purpose",
       omoss: langState === "sv" ? "omoss" : "aboutus",
-      tjanster: langState === "sv" ? "tjanster" : "services",
       nyheter: langState === "sv" ? "nyheter" : "news",
-      verksamheter: langState === "sv" ? "verksamheter" : "operations",
-      jobb: langState === "sv" ? "jobb" : "jobs",
-      kontakt: langState === "sv" ? "kontakt" : "contact",
+      crgroup: langState === "sv" ? "CR Group" : "operations",
     });
   }, [langState]);
-
 
   const baseLink = langState === "sv" ? "/" : "/en";
 
@@ -86,20 +77,23 @@ const toggleLanguage = () => {
                     style={{ cursor: "pointer", height: "60px" }}
                   />
                 </Link>
-              </div>  
+              </div>
               <div className="navbar-links">
                 <div className="hamburger-wrapper">
-                  <Link href={baseLink + "/#" + anchorPoints.syfte}  >{linkLabels.syfte}</Link>
-                  <Link href={baseLink + "/#" + anchorPoints.omoss}   >{linkLabels.omoss}</Link>
-                  <Link href={baseLink + "/#" + anchorPoints.tjanster}   >{linkLabels.tjanster}</Link>
-                  <Link href={baseLink + "/#" + anchorPoints.nyheter}   >{linkLabels.nyheter}</Link>
-                  <Link href={baseLink + "/#" + anchorPoints.verksamheter}   >{linkLabels.verksamheter}</Link>
-                  <Link href={baseLink + "/#" + anchorPoints.jobb}   >{linkLabels.jobb}</Link>
+                  <Link href={baseLink + "/#" + anchorPoints.syfte}>
+                    {linkLabels.syfte}
+                  </Link>
+                  <Link href={baseLink + "/#" + anchorPoints.omoss}>
+                    {linkLabels.omoss}
+                  </Link>
+                  <Link href={baseLink + "/#" + anchorPoints.nyheter}>
+                    {linkLabels.nyheter}
+                  </Link>
+                  <Link href={baseLink + "/#" + anchorPoints.crgroup}>
+                    {linkLabels.crgroup}
+                  </Link>
                 </div>
                 <div className="navbar-buttons">
-                  <Link href={baseLink + "/#" + anchorPoints.kontakt}   >
-                    <div className="navbar-kontakt">{linkLabels.kontakt}</div>
-                  </Link>
                   <div className="navbar-eng" onClick={toggleLanguage}>
                     {linkLabels.lang}
                     <img src="/arrow-down.svg" alt="Language Toggle" />
@@ -113,7 +107,5 @@ const toggleLanguage = () => {
     </nav>
   );
 };
-
-
 
 export default Navbar;

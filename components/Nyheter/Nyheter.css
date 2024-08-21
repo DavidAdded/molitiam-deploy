@@ -1,7 +1,6 @@
 /* Nyheter.css */
 .nyheter-section-wrapper {
-  background-color: #f5f5f5;
-  background-image: url(/nyheter-background.png);
+  background-color: #c2d1a2;
   background-size: contain;
   background-position-x: right;
   background-position-y: bottom;
@@ -96,6 +95,7 @@
 .nyheter-content-card-text-wrapper p {
   display: -webkit-box;
   -webkit-box-orient: vertical;
+  line-clamp: 2;
   -webkit-line-clamp: 2;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -111,6 +111,7 @@
   margin: 3px 0px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
+  line-clamp: 2;
   -webkit-line-clamp: 2;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -193,7 +194,7 @@
 
 .nyheter-content-wrapper button {
   color: white;
-  background-color: rgba(90, 63, 39, 1);
+  background-color: #09341a;
   width: 250px;
   height: 60px;
   font-family: "JosefinaSans", sans-serif;
