@@ -77,8 +77,8 @@ const Nyheter = async (props) => {
           <div className="padding-section-large">
             <div className="nyheter-content-wrapper">
               <div className="nyheter-text-wrapper">
-                <img src="/prefix-icon.svg" alt="Left" />
-                <h6> {nyheterText}</h6>
+                <img src="/logo-black.png" width="25px" alt="Left" />
+                <h6 className="black-text"> {nyheterText}</h6>
               </div>
               <div className="nyheter-content-boxes">
                 {articles.data ? (

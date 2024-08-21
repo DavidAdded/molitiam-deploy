@@ -61,7 +61,7 @@ const OmOss = async (props) => {
                 <div className="omoss-section-column">
                   <div className="sub-header-wrapper">
                     <img src="/logo-black.png" width="25px" alt="" />
-                    <h6>OM OSS</h6>
+                    <h6 className="black-text">OM OSS</h6>
                   </div>
                   <div>
                     <p>

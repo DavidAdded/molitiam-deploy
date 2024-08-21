@@ -47,7 +47,7 @@ const Verksamheter = async (props) => {
     const imagePath = path.resolve("./public", path.basename(imageURL));
     await downloadImage(imageSource, imagePath);
   }
-
+  
   return (
     <div className="verksamheter-section-wrapper">
       <div className="padding-global">
@@ -58,7 +58,7 @@ const Verksamheter = async (props) => {
                 <div className="verksamheter-content-wrapper-top">
                   <div className="sub-header-wrapper">
                     <img src="/logo-white.png" width="25px" alt="Left" />
-                    <h6>CR Group</h6>
+                    <h6 className="white-text">CR Group</h6>
                   </div>
                   <div>
                     <p>
@@ -115,12 +115,9 @@ const Verksamheter = async (props) => {
                 </div>
               ) : (
                 <div className="verksamheter-content-wrapper-bottom">
-                  <div className="verksamheter-content-box-1">
-                  </div>
-                  <div className="verksamheter-content-box-1">
-                  </div>
-                  <div className="verksamheter-content-box-1">
-                  </div>
+                  <div className="verksamheter-content-box-1"></div>
+                  <div className="verksamheter-content-box-1"></div>
+                  <div className="verksamheter-content-box-1"></div>
                 </div>
               )}
             </div>

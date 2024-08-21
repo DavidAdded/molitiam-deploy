@@ -63,7 +63,13 @@ body {
 .sub-header-wrapper > div > img {
   width: 25px;
 }
+.black-text {
+  color: black;
+}
 
+.white-text {
+  color: white;
+}
 h1 {
   font-family: "JosefinaSans", sans-serif;
   font-size: 50px;

@@ -22,8 +22,12 @@ const Syfte = (props) => {
             {lang === "sv" ? (
               <div className="syfte-content-wrapper">
                 <div className="sub-header-wrapper">
-                  <img src="/logo-white.png" width="25px" alt="mollitiam logo in white" />
-                  <h6>SYFTE</h6>
+                  <img
+                    src="/logo-white.png"
+                    width="25px"
+                    alt="mollitiam logo in white"
+                  />
+                  <h6 className="white-text"> SYFTE</h6>
                 </div>
 
                 <div>
