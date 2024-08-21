@@ -19,8 +19,7 @@
 }
 
 .news-article-section-wrapper {
-  background-color: #f5f5f5;
-  background-image: url(/nyheter-background.png);
+  background-color: #e6edef;
   background-size: contain;
   background-position-x: right;
   background-position-y: bottom;
@@ -76,7 +75,7 @@
   justify-content: center;
   gap: 50px;
   padding: 50px 0;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: #c2d1a2;
 }
 
 .more-articles-wrapper {

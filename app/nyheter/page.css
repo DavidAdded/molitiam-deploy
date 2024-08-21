@@ -1,8 +1,7 @@
 /* Base styles - applied for all screen sizes */
 
 .news-page-section-wrapper {
-  background-color: #f5f5f5;
-  background-image: url(/nyheter-background.png);
+  background-color: #c2d1a2;
   background-size: contain;
   background-position-x: right;
   background-position-y: bottom;

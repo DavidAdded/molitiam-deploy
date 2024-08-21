@@ -108,10 +108,17 @@ export default async function Page() {
       imageURL = availableFormats.thumbnail.url;
     }
 
-    const imageSource = process.env.NEXT_PUBLIC_API_SLIM + imageURL;
+    const imageSource = imageURL.startsWith("http")
+      ? imageURL
+      : process.env.NEXT_PUBLIC_API_SLIM + imageURL;
+
     const imagePath = path.resolve("./public", path.basename(imageURL));
-    await downloadImage(imageSource, imagePath);
-    await downloadImage(imageURL, imagePath);
+
+    try {
+      await downloadImage(imageSource, imagePath);
+    } catch (error) {
+      console.error(`Failed to download image from ${imageSource}:`, error);
+    }
   }
 
   const urlBasedOnLang = "/nyheter";

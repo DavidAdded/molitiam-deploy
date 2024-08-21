@@ -107,9 +107,16 @@ export default async function Page() {
     } else if (availableFormats.thumbnail) {
       imageURL = availableFormats.thumbnail.url;
     }
-    console.log(availableFormats);
+    const imageSource = imageURL.startsWith("http")
+      ? imageURL
+      : process.env.NEXT_PUBLIC_API_SLIM + imageURL;
+
     const imagePath = path.resolve("./public", path.basename(imageURL));
-    await downloadImage(imageURL, imagePath);
+    try {
+      await downloadImage(imageSource, imagePath);
+    } catch (error) {
+      console.error(`Failed to download image from ${imageSource}:`, error);
+    }
   }
 
   function convertDateFormat(dateString) {

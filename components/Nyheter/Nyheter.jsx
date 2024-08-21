@@ -59,9 +59,16 @@ const Nyheter = async (props) => {
     } else if (availableFormats.thumbnail) {
       imageURL = availableFormats.thumbnail.url;
     }
-    const imageSource = process.env.NEXT_PUBLIC_API_SLIM + imageURL;
+    const imageSource = imageURL.startsWith("http")
+      ? imageURL
+      : process.env.NEXT_PUBLIC_API_SLIM + imageURL;
+
     const imagePath = path.resolve("./public", path.basename(imageURL));
-    await downloadImage(imageSource, imagePath);
+    try {
+      await downloadImage(imageSource, imagePath);
+    } catch (error) {
+      console.error(`Failed to download image from ${imageSource}:`, error);
+    }
   }
 
   function convertDateFormat(dateString) {
@@ -84,17 +91,17 @@ const Nyheter = async (props) => {
                 {articles.data ? (
                   articles.data.map((article, index) => {
                     const articleDate = article.attributes.Date;
-                    
-                        const availableFormats =
-                          article.attributes.Image.data.attributes.formats;
-                        let articleImage;
-                        if (availableFormats.medium) {
-                          articleImage = availableFormats.medium.url;
-                        } else if (availableFormats.small) {
-                          articleImage = availableFormats.small.url;
-                        } else if (availableFormats.thumbnail) {
-                          articleImage = availableFormats.thumbnail.url;
-                        }
+
+                    const availableFormats =
+                      article.attributes.Image.data.attributes.formats;
+                    let articleImage;
+                    if (availableFormats.medium) {
+                      articleImage = availableFormats.medium.url;
+                    } else if (availableFormats.small) {
+                      articleImage = availableFormats.small.url;
+                    } else if (availableFormats.thumbnail) {
+                      articleImage = availableFormats.thumbnail.url;
+                    }
                     const imagePath = `/${path.basename(articleImage)}`;
 
                     return (
