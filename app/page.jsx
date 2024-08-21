@@ -6,7 +6,7 @@ import Nyheter from "@components/Nyheter/Nyheter";
 import Footer from "@components/Footer/Footer";
 
 export const metadata = {
-  metadataBase: "https://cr.se",
+  metadataBase: "https://mollitiam.se",
   title: "Cybersäkerhet för samhällsviktig verksamhet",
   description:
     "CR Group är cybersäkerhetsföretaget som erbjuder avancerad försvarsteknologi för samhällsviktig verksamhet. Skydda det mest kritiska med användarvänliga och lättillgängliga lösningar",
@@ -16,7 +16,7 @@ export const metadata = {
       "CR Group är cybersäkerhetsföretaget som erbjuder avancerad försvarsteknologi för samhällsviktig verksamhet. Skydda det mest kritiska med användarvänliga och lättillgängliga lösningar",
     images: [
       {
-        url: "https://cr.se/opengraph.png",
+        url: "https://mollitiam.se/opengraph.png",
         width: 1200,
         height: 630,
       },

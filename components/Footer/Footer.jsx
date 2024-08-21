@@ -4,7 +4,7 @@ const Footer = (props) => {
   const lang = props.lang;
 
   const addressText = lang === "sv" ? "Besöksadress" : "Address";
-  const postAddressText = lang === "sv" ? "Postadress" : "Zipcode";
+  const postAddressText = lang === "sv" ? "Postadress" : "Postal Address";
   
   return (
     <div className="footer-section-wrapper">

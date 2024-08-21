@@ -34,12 +34,12 @@ const Nyheter = async (props) => {
   const lang = props.lang;
 
   const nyheterText = lang === "sv" ? "Nyheter" : "News";
-
   const readMoreText = lang === "sv" ? "LÄS MER" : "READ MORE";
   const readAllArticlesText =
     lang === "sv" ? "LÄS ALLA NYHETER" : "READ ALL NEWS";
 
-  const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&pagination[limit]=3&populate=*&locale=${lang}`;
+const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&pagination[limit]=3&locale=${lang}&populate[0]=Image&populate[1]=slug&fields[0]=slug&fields[1]=Titel&fields[2]=Date&fields[3]=ArticleText`;
+
   const articlesResponse = await fetch(articlesURL, {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
@@ -107,7 +107,7 @@ const Nyheter = async (props) => {
                     return (
                       <div key={index} className="nyheter-wrapper">
                         <a
-                          href={`${urlBasedOnLang}/${article.id}`}
+                          href={`${urlBasedOnLang}/${article.attributes.Slug}`}
                           key={article.id}
                         >
                           <div className="nyheter-content-card">

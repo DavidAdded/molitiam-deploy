@@ -60,7 +60,7 @@ const downloadImage = async (url, filepath) => {
 };
 
 export const metadata = {
-  metadataBase: "https://cr.se/news",
+  metadataBase: "https://mollitiam.se/news",
   title: "Cyber security for vital societal functions",
   description:
     "CR Group, a Swedish-owned cyber-security company, offers critical societal functions with advanced defense technology. Elevate security with user-friendly solutions that are easy to buy and easy to use",
@@ -70,7 +70,7 @@ export const metadata = {
       "CR Group, a Swedish-owned cyber-security company, offers critical societal functions with advanced defense technology. Elevate security with user-friendly solutions that are easy to buy and easy to use",
     images: [
       {
-        url: "https://cr.se/opengraph.png",
+        url: "https://mollitiam.se/opengraph.png",
         width: 1200,
         height: 630,
       },
@@ -82,7 +82,7 @@ export default async function Page() {
   const readMoreText = "Read More";
   const arrowIconUrl = "right-arrow.svg";
 
-  const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&pagination[limit]=6&populate=*&locale=en`;
+  const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&pagination[limit]=20&fields[0]=slug&fields[1]=Titel&fields[2]=Date&fields[3]=ArticleText&fields[4]=createdAt&fields[5]=updatedAt&fields[6]=publishedAt&fields[7]=locale&populate=*&locale=en`;
 
   const response = await fetch(articlesURL, {
     headers: {
@@ -96,7 +96,6 @@ export default async function Page() {
   }
 
   const articles = await response.json();
-  console.log(articles);
   for (const article of articles.data) {
     const availableFormats = article.attributes.Image.data.attributes.formats;
     let imageURL;
@@ -152,7 +151,7 @@ export default async function Page() {
                     return (
                       <div key={index} className="nyheter-wrapper">
                         <a
-                          href={`${urlBasedOnLang}/${article.id}`}
+                          href={`${urlBasedOnLang}/${article.attributes.Slug}`}
                           key={article.id}
                         >
                           <div className="nyheter-content-card">

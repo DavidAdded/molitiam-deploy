@@ -1,4 +1,3 @@
-import { resolve } from "styled-jsx/css";
 import "./page.css";
 import path from "path";
 import fs from "fs";
@@ -8,17 +7,14 @@ import Footer from "@components/Footer/Footer";
 const BASE_URL = process.env.NEXT_PUBLIC_API_SLIM;
 
 const downloadImage = async (url, filepath) => {
-  // Check if the file already exists
   if (fs.existsSync(filepath)) {
     return;
   }
-  // Ensure the directory exists
   const dir = path.dirname(filepath);
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }
 
-  let writer;
   try {
     const response = await axios({
       url: `${BASE_URL}${url}`,
@@ -29,13 +25,14 @@ const downloadImage = async (url, filepath) => {
         "Cache-Control": "no-store",
       },
     });
+
     if (response.status !== 200) {
       throw new Error(
         `Failed to download image, status code: ${response.status}`
       );
     }
 
-    writer = fs.createWriteStream(filepath);
+    const writer = fs.createWriteStream(filepath);
     response.data.pipe(writer);
 
     return new Promise((resolve, reject) => {
@@ -46,68 +43,58 @@ const downloadImage = async (url, filepath) => {
       });
     });
   } catch (error) {
-    if (writer) writer.close();
-
     if (fs.existsSync(filepath)) {
-      try {
-        fs.unlinkSync(filepath);
-      } catch (unlinkError) {
-        console.error(`Error deleting incomplete file: ${unlinkError.message}`);
-      }
+      fs.unlinkSync(filepath);
     }
-
     throw new Error(`Error downloading the image: ${error.message}`);
   }
 };
 
 export async function generateMetadata({ params }, parent) {
-  const id = params.id;
-  const URL = `${process.env.NEXT_PUBLIC_API_URL}articles/${params.articleId}?populate=*`;
+  const slug = params.slug;
+  const URL = `${process.env.NEXT_PUBLIC_API_URL}articles?filters[slug][$eq]=${slug}&populate=*&locale=sv`;
+
   const response = await fetch(URL, {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
       "Cache-Control": "no-store",
     },
   });
-  const article = await response.json();
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch article metadata: ${response.statusText}`);
+  }
+
+  const articleData = await response.json();
+  const article = articleData.data[0];
 
   const previousImages = (await parent).openGraph?.images || [];
-  const description =
-    article.data.attributes.ArticleText.replace(/<[^>]*>/g, "").substring(
-      0,
-      150
-    ) + "...";
 
-  const availableFormats =
-    article.data.attributes.Image.data.attributes.formats;
-  let imageURL;
-  if (availableFormats.medium) {
-    imageURL = availableFormats.medium.url;
-  } else if (availableFormats.small) {
-    imageURL = availableFormats.small.url;
-  } else if (availableFormats.thumbnail) {
-    imageURL = availableFormats.thumbnail.url;
-  }
-  const imageSource = imageURL.startsWith("http")
-    ? imageURL
-    : process.env.NEXT_PUBLIC_API_SLIM + imageURL;
+  const description =
+    article.attributes.ArticleText.replace(/<[^>]*>/g, "").substring(0, 150) +
+    "...";
+
+  const availableFormats = article.attributes.Image.data.attributes.formats;
+  const imageURL = availableFormats.medium
+    ? availableFormats.medium.url
+    : availableFormats.small
+    ? availableFormats.small.url
+    : availableFormats.thumbnail
+    ? availableFormats.thumbnail.url
+    : null;
 
   const imagePath = path.resolve("./public", path.basename(imageURL));
-
-  try {
-    await downloadImage(imageSource, imagePath);
-  } catch (error) {
-    console.error(`Failed to download image from ${imageSource}:`, error);
-  }
-  const baseURL = "https://cr.se";
+  const baseURL = "https://mollitiam.se";
   const OGPath = `${baseURL}/${path.basename(imageURL)}`;
 
+  await downloadImage(imageURL, imagePath);
+
   return {
-    metadataBase: `${baseURL}/news/${id}`,
-    title: article.data.attributes.Titel,
-    description: article.data.attributes.ArticleText.split(0, 150)[0] + "...",
+    metadataBase: `${baseURL}/nyheter/${slug}`,
+    title: article.attributes.Titel,
+    description: description,
     openGraph: {
-      title: article.data.attributes.Titel,
+      title: article.attributes.Titel,
       description: description,
       images: [OGPath, ...previousImages],
     },
@@ -115,7 +102,8 @@ export async function generateMetadata({ params }, parent) {
 }
 
 export async function generateStaticParams() {
-  const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&populate=*&locale=sv`;
+  const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&pagination[limit]=-1&fields[0]=slug&locale=sv`;
+
   const response = await fetch(articlesURL, {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
@@ -131,12 +119,14 @@ export async function generateStaticParams() {
   const articles = Array.isArray(articlesData.data) ? articlesData.data : [];
 
   return articles.map((article) => ({
-    articleId: article.id.toString(),
+    slug: article.attributes.Slug,
   }));
 }
 
 export default async function Page({ params }) {
-  const URL = `${process.env.NEXT_PUBLIC_API_URL}articles/${params.articleId}?populate=*`;
+  const slug = params.slug;
+  const URL = `${process.env.NEXT_PUBLIC_API_URL}articles?filters[slug][$eq]=${slug}&populate=*&locale=sv`;
+
   const response = await fetch(URL, {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
@@ -144,9 +134,41 @@ export default async function Page({ params }) {
     },
   });
 
-  const article = await response.json();
+  if (!response.ok) {
+    return <div>Failed to fetch article data</div>;
+  }
 
-  const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?filters[id][$ne]=${params.articleId}&sort=Date:desc&pagination[limit]=3&populate=*&locale=sv`;
+  const articleData = await response.json();
+  const article = articleData.data.find(
+    (item) => item.attributes.Slug === slug
+  );
+
+  if (!article) {
+    return <div>Article not found</div>;
+  }
+
+  function convertDateFormat(dateString) {
+    return dateString.replace(/-/g, "•");
+  }
+
+  const formattedDate = convertDateFormat(article.attributes.Date);
+  const urlBasedOnLang = "/nyheter";
+
+  const availableFormats = article.attributes.Image.data.attributes.formats;
+  const singleImage = availableFormats.medium
+    ? availableFormats.medium.url
+    : availableFormats.small
+    ? availableFormats.small.url
+    : availableFormats.thumbnail
+    ? availableFormats.thumbnail.url
+    : null;
+
+  const pathSingleArticle = singleImage
+    ? `/${path.basename(singleImage)}`
+    : null;
+
+  const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?filters[id][$ne]=${article.id}&sort=Date:desc&pagination[limit]=3&fields[0]=Slug&fields[1]=Titel&fields[2]=Date&populate=Image&locale=sv`;
+
   const articlesResponse = await fetch(articlesURL, {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
@@ -154,33 +176,12 @@ export default async function Page({ params }) {
     },
   });
 
-  if (!response.ok) {
-    throw new Error(`Failed to fetch articles: ${articlesResponse.statusText}`);
+  if (!articlesResponse.ok) {
+    return <div>Failed to fetch related articles</div>;
   }
 
   const articlesData = await articlesResponse.json();
-  const articles = Array.isArray(articlesData.data) ? articlesData.data : [];
-
-  function convertDateFormat(dateString) {
-    return dateString.replace(/-/g, "•");
-  }
-
-  if (!article) return <div></div>;
-
-  const formattedDate = convertDateFormat(article.data.attributes.Date);
-  const urlBasedOnLang = "/nyheter/";
-
-  const availableFormats =
-    article.data.attributes.Image.data.attributes.formats;
-  let singleImage;
-  if (availableFormats.medium) {
-    singleImage = availableFormats.medium.url;
-  } else if (availableFormats.small) {
-    singleImage = availableFormats.small.url;
-  } else if (availableFormats.thumbnail) {
-    singleImage = availableFormats.thumbnail.url;
-  }
-  const pathSingleArticle = `/${path.basename(singleImage)}`;
+  const articles = articlesData.data || [];
 
   return (
     <>
@@ -188,13 +189,19 @@ export default async function Page({ params }) {
         <div className="padding-global">
           <div className="container-large">
             <div className="news-article-content-wrapper">
-              <img className="news-main-image" src={`${pathSingleArticle}`} />
+              {singleImage && (
+                <img
+                  className="news-main-image"
+                  src={pathSingleArticle}
+                  alt={article.attributes.Titel}
+                />
+              )}
               <h6>{formattedDate}</h6>
               <div className="news-article-text-wrapper">
-                <h1>{article.data.attributes.Titel}</h1>
+                <h1>{article.attributes.Titel}</h1>
                 <p
                   dangerouslySetInnerHTML={{
-                    __html: article.data.attributes.ArticleText,
+                    __html: article.attributes.ArticleText,
                   }}
                 ></p>
               </div>
@@ -209,41 +216,45 @@ export default async function Page({ params }) {
               <div className="more-articles-section">
                 <h2>Fler artiklar</h2>
                 <div className="more-articles-wrapper">
-                  {articles.map((article, index) => {
-                    const availableFormats =
-                      article.attributes.Image.data.attributes.formats;
-                    let articleImage;
-                    if (availableFormats.medium) {
-                      articleImage = availableFormats.medium.url;
-                    } else if (availableFormats.small) {
-                      articleImage = availableFormats.small.url;
-                    } else if (availableFormats.thumbnail) {
-                      articleImage = availableFormats.thumbnail.url;
-                    }
-                    const imagePath = `/${path.basename(articleImage)}`;
+                  {articles.map((relatedArticle) => {
+                    const relatedImageFormats =
+                      relatedArticle.attributes.Image.data.attributes.formats;
+                    const relatedArticleImage = relatedImageFormats.medium
+                      ? relatedImageFormats.medium.url
+                      : relatedImageFormats.small
+                      ? relatedImageFormats.small.url
+                      : relatedImageFormats.thumbnail
+                      ? relatedImageFormats.thumbnail.url
+                      : null;
+
+                    const relatedImagePath = relatedArticleImage
+                      ? `/${path.basename(relatedArticleImage)}`
+                      : null;
 
                     return (
-                      <div key={index} className="nyheter-wrapper">
+                      <div key={relatedArticle.id} className="nyheter-wrapper">
                         <a
-                          href={`${urlBasedOnLang}/${article.id}`}
-                          key={article.id}
+                          href={`${urlBasedOnLang}/${relatedArticle.attributes.Slug}`}
                         >
                           <div className="nyheter-content-card">
-                            <div
-                              style={{
-                                backgroundImage: `url(${imagePath})`,
-                              }}
-                              className="nyheter-content-card-top"
-                            ></div>
-
+                            {relatedImagePath && (
+                              <div
+                                style={{
+                                  backgroundImage: `url(${relatedImagePath})`,
+                                }}
+                                className="nyheter-content-card-top"
+                              ></div>
+                            )}
                             <div className="nyheter-content-card-bottom">
                               <div className="nyheter-content-card-text-wrapper">
                                 <div className="nyheter-date">
-                                  {convertDateFormat(article.attributes.Date)}
+                                  {convertDateFormat(
+                                    relatedArticle.attributes.Date
+                                  )}
                                 </div>
-                                <h3>{article.attributes.Titel}</h3>
+                                <h3>{relatedArticle.attributes.Titel}</h3>
                                 <p className="nyheter-paragraph-one">
-                                  {article.attributes.ArticleText}
+                                  {relatedArticle.attributes.ArticleText}
                                 </p>
                               </div>
                             </div>
@@ -251,7 +262,7 @@ export default async function Page({ params }) {
                           <div className="nyheter-las-mer">
                             <div className="nyheter-las-mer-content">
                               <p>LÄS MER</p>
-                              <img src="/right-arrow.svg" alt="Read More" />
+                              <img src="/right-arrow.svg" alt="Läs Mer" />
                             </div>
                           </div>
                         </a>

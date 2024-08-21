@@ -5,7 +5,7 @@ import axios from "axios";
 import Footer from "@components/Footer/Footer";
 
 export const metadata = {
-  metadataBase: "https://cr.se/nyheter",
+  metadataBase: "https://mollitiam.se/nyheter",
   title: "Cybersäkerhet för samhällsviktig verksamhet",
   description:
     "CR Group är cybersäkerhetsföretaget som erbjuder avancerad försvarsteknologi för samhällsviktig verksamhet. Skydda det mest kritiska med användarvänliga och lättillgängliga lösningar",
@@ -15,7 +15,7 @@ export const metadata = {
       "CR Group är cybersäkerhetsföretaget som erbjuder avancerad försvarsteknologi för samhällsviktig verksamhet. Skydda det mest kritiska med användarvänliga och lättillgängliga lösningar",
     images: [
       {
-        url: "https://cr.se/opengraph.png",
+        url: "https://mollitiam.se/opengraph.png",
         width: 1200,
         height: 630,
       },
@@ -26,17 +26,14 @@ export const metadata = {
 const BASE_URL = process.env.NEXT_PUBLIC_API_SLIM;
 
 const downloadImage = async (url, filepath) => {
-  // Check if the file already exists
   if (fs.existsSync(filepath)) {
     return;
   }
-  // Ensure the directory exists
   const dir = path.dirname(filepath);
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }
 
-  let writer;
   try {
     const response = await axios({
       url: `${BASE_URL}${url}`,
@@ -47,13 +44,14 @@ const downloadImage = async (url, filepath) => {
         "Cache-Control": "no-store",
       },
     });
+
     if (response.status !== 200) {
       throw new Error(
         `Failed to download image, status code: ${response.status}`
       );
     }
 
-    writer = fs.createWriteStream(filepath);
+    const writer = fs.createWriteStream(filepath);
     response.data.pipe(writer);
 
     return new Promise((resolve, reject) => {
@@ -64,22 +62,16 @@ const downloadImage = async (url, filepath) => {
       });
     });
   } catch (error) {
-    if (writer) writer.close();
-
     if (fs.existsSync(filepath)) {
-      try {
-        fs.unlinkSync(filepath);
-      } catch (unlinkError) {
-        console.error(`Error deleting incomplete file: ${unlinkError.message}`);
-      }
+      fs.unlinkSync(filepath);
     }
-
     throw new Error(`Error downloading the image: ${error.message}`);
   }
 };
 
 export default async function Page() {
-  const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&pagination[limit]=6&populate=*&locale=sv`;
+  const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&pagination[limit]=20&fields[0]=slug&fields[1]=Titel&fields[2]=Date&fields[3]=ArticleText&fields[4]=createdAt&fields[5]=updatedAt&fields[6]=publishedAt&fields[7]=locale&populate=*&locale=sv`;
+
   const articlesResponse = await fetch(articlesURL, {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
@@ -150,7 +142,7 @@ export default async function Page() {
                     return (
                       <div key={index} className="nyheter-wrapper">
                         <a
-                          href={`${urlBasedOnLang}/${article.id}`}
+                          href={`${urlBasedOnLang}/${article.attributes.Slug}`}
                           key={article.id}
                         >
                           <div className="nyheter-content-card">
@@ -176,7 +168,7 @@ export default async function Page() {
                           <div className="nyheter-las-mer">
                             <div className="nyheter-las-mer-content">
                               <p>LÄS MER</p>
-                              <img src="/right-arrow.svg" alt="Read More" />
+                              <img src="/right-arrow.svg" alt="Läs Mer" />
                             </div>
                           </div>
                         </a>

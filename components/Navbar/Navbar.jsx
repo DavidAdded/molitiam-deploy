@@ -24,19 +24,23 @@ const Navbar = (props) => {
     const pathname = window.location.pathname;
 
     const newLang = langState === "sv" ? "en" : "sv";
-    setLangState(newLang === "en" ? "en" : "sv");
+    setLangState(newLang);
 
-    const englishNewsArticleRegex = /^\/en\/news\/\d+$/;
-    if (englishNewsArticleRegex.test(pathname)) {
-      router.push("/nyheter");
+    // Check if the current path is an article page
+    const englishNewsArticleRegex = /^\/en\/news\/[a-zA-Z0-9-]+$/;
+    const swedishNewsArticleRegex = /^\/nyheter\/[a-zA-Z0-9-]+$/;
+
+    if (
+      englishNewsArticleRegex.test(pathname) ||
+      swedishNewsArticleRegex.test(pathname)
+    ) {
+      // Redirect to the main news page in the other language
+      const redirectPath = newLang === "en" ? "/en/news" : "/nyheter";
+      router.push(redirectPath);
       return;
     }
-    const swedishNewsArticleRegex = /^\/nyheter\/\d+$/;
 
-    if (swedishNewsArticleRegex.test(pathname)) {
-      router.push("/en/news");
-      return;
-    }
+    // Fallback to the existing toggle mappings for non-article pages
     const newPath = toggleMappings[pathname] || pathname;
     router.push(newPath);
   };
