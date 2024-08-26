@@ -13,6 +13,7 @@ body {
 
 .app {
   margin-top: 82px;
+  overflow:hidden;
 }
 .padding-global {
   padding: 0 96px;
