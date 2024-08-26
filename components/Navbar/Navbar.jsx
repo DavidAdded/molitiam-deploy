@@ -61,7 +61,7 @@ const Navbar = (props) => {
       syfte: langState === "sv" ? "syfte" : "purpose",
       omoss: langState === "sv" ? "omoss" : "aboutus",
       nyheter: langState === "sv" ? "nyheter" : "news",
-      crgroup: langState === "sv" ? "CR Group" : "operations",
+      crgroup: langState === "sv" ? "cr-group" : "operations",
     });
   }, [langState]);
 

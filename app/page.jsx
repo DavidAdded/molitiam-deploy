@@ -30,7 +30,7 @@ const Home = () => {
     syfte: lang === "sv" ? "syfte" : "purpose",
     omoss: lang === "sv" ? "omoss" : "aboutus",
     nyheter: lang === "sv" ? "nyheter" : "news",
-    verksamheter: lang === "sv" ? "verksamheter" : "operations",
+    verksamheter: lang === "sv" ? "cr-group" : "operations",
   };
 
   return (

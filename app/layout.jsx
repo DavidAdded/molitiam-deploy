@@ -6,7 +6,8 @@ const RootLayout = ({ children }) => {
   return (
     <html suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/Favicon.png" sizes="any" />
+        <link rel="icon" href="/mollitiam-favicon.png" sizes="any" />
+        <link rel="apple-touch-icon" href="/mollitiam-webclip.png" />
       </head>
       <body suppressHydrationWarning>
         <div className="main">

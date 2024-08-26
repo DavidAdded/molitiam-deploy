@@ -55,6 +55,7 @@
   max-width: 300px;
   min-height: 250px;
   border: solid 2px #ffffff;
+  text-decoration: none;
 }
 
 .verksamheter-content-box-1 img {

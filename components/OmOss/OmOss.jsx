@@ -32,7 +32,7 @@ const downloadImage = async (url, filepath) => {
 const OmOss = async (props) => {
   const lang = props.lang;
 
-  const URL = `${process.env.NEXT_PUBLIC_API_URL}employees?pagination[limit]=6&populate=*&locale=${lang}`;
+  const URL = `${process.env.NEXT_PUBLIC_API_URL}employees?pagination[limit]=6&populate=*&locale=${lang}&fields[0]=Order&fields[1]=Name&fields[2]=Title&fields[3]=Email&fields[4]=Phone&[sort]=Order:asc`;
   const response = await fetch(URL, {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
@@ -43,6 +43,7 @@ const OmOss = async (props) => {
   const contacts = await response.json();
 
   for (const contact of contacts.data) {
+  
     const imageURL = contact.attributes.Image.data.attributes.formats.large.url;
     const imageSource = process.env.NEXT_PUBLIC_API_SLIM + imageURL;
     const imagePath = path.resolve("./public", path.basename(imageURL));

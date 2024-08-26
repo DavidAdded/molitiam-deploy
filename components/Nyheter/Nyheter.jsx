@@ -83,7 +83,7 @@ const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&p
         <div className="container-large">
           <div className="padding-section-large">
             <div className="nyheter-content-wrapper">
-              <div className="nyheter-text-wrapper">
+              <div className="sub-header-wrapper">
                 <img src="/logo-black.png" width="25px" alt="Left" />
                 <h6 className="black-text"> {nyheterText}</h6>
               </div>

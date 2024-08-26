@@ -7,12 +7,7 @@ import runSectionTextAnimation from "@animations/animations";
 
 const Syfte = (props) => {
   const lang = props.lang;
-  useEffect(() => {
-    runSectionTextAnimation(
-      ".syfte-section-wrapper h2",
-      ".syfte-section-wrapper p"
-    );
-  }, []);
+ 
 
   return (
     <div className="syfte-section-wrapper">

@@ -61,21 +61,16 @@
     padding: 140px 0;
   }
 
-  .picture-wrapper img {
-    margin-right: -175px;
-    margin-top: 75px;
-  }
+
   .landing-grey-image {
     margin-bottom: 75px;
   }
+    .text-wrapper {
+      width: 600px;
+    }
 }
 
 @media (max-width: 478px) {
-  .picture-wrapper img,
-  .landing-grey-image {
-    width: 90vw;
-    height: 90vw;
-  }
 
   .text-wrapper {
     width: 400px;

@@ -47,7 +47,7 @@ const Verksamheter = async (props) => {
     const imagePath = path.resolve("./public", path.basename(imageURL));
     await downloadImage(imageSource, imagePath);
   }
-  
+
   return (
     <div className="verksamheter-section-wrapper">
       <div className="padding-global">
@@ -104,12 +104,17 @@ const Verksamheter = async (props) => {
                     const siteUrl = card.attributes.Linkurl;
 
                     return (
-                      <div key={index} className="verksamheter-content-box-1">
-                        <a target="_blank" href={siteUrl}>
+                      <a
+                        target="_blank"
+                        href={siteUrl}
+                        className="verksamheter-content-box-1 white-text"
+                      >
+                        <div key={index}>
                           <img src={`${imagePath}`}></img>
-                        </a>
-                        <p>{card.attributes.PartnerDescription}</p>
-                      </div>
+
+                          <p>{card.attributes.PartnerDescription}</p>
+                        </div>
+                      </a>
                     );
                   })}
                 </div>

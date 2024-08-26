@@ -53,8 +53,19 @@ const LandingSection = (props) => {
       duration: 3,
       ease: "none",
     });
-
+    runSectionTextAnimation(
+      ".syfte-section-wrapper h2",
+      ".syfte-section-wrapper p"
+    );
+    runSectionTextAnimation(
+      ".omoss-section-column h2",
+      ".omoss-section-column p"
+    );
     runSectionTextAnimation(".text-wrapper p", undefined, 0, 1);
+    runSectionTextAnimation(
+      ".verksamheter-content-wrapper-top h2",
+      ".verksamheter-content-wrapper-top p"
+    );
   }, [content]);
 
   return (
