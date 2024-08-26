@@ -30,7 +30,7 @@ const downloadImage = async (url, filepath) => {
 
 const Verksamheter = async (props) => {
   const lang = props.lang;
-  const cardsURL = `${process.env.NEXT_PUBLIC_API_URL}verksamheter-content-cards?locale=${lang}&populate=*`;
+  const cardsURL = `${process.env.NEXT_PUBLIC_API_URL}verksamheter-content-cards?locale=${lang}&populate=*&field[0]=Order&field[1]=PartnerIcon&field[2]=PartnerDescription&field[3]=Linkurl&sort=Order:asc`;
   const cardsResponse = await fetch(cardsURL, {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
@@ -41,6 +41,7 @@ const Verksamheter = async (props) => {
   const contentCards = await cardsResponse.json();
 
   for (const contentCard of contentCards.data) {
+    console.log(contentCard.attributes.PartnerIcon)
     const imageURL = contentCard.attributes.PartnerIcon.data.attributes.url;
 
     const imageSource = process.env.NEXT_PUBLIC_API_SLIM + imageURL;
