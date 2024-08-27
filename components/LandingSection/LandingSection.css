@@ -9,7 +9,9 @@
   padding: 100px 0;
   background-color:#0d1b2c;
 }
-
+.animation-header {
+  margin-bottom: 0px;
+}
 .picture-wrapper {
   position: relative;
   display: flex;
@@ -52,19 +54,14 @@
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
 }
 
 @media (max-width: 991px) {
   .landing-section-wrapper {
     padding: 140px 0;
   }
-  .animation-header {
-    margin-bottom:5px;
-  }
-  .picture-wrapper img {
-    max-width: 100%;
-  }
+
+ 
   .landing-grey-image {
     margin-bottom: 75px;
   }

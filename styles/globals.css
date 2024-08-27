@@ -63,6 +63,8 @@ body {
 
 .sub-header-wrapper > div > img {
   width: 25px;
+  object-fit: contain;
+  margin-top:-1px;
 }
 .black-text {
   color: black;
