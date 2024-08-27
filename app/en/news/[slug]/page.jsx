@@ -225,76 +225,79 @@ export default async function Page({ params }) {
           </div>
         </div>
       </div>
-      <div className="more-articles-content-wrapper">
-        <div className="padding-global">
-          <div className="container-large">
-            <div className="padding-section-large">
-              <div className="more-articles-section">
-                <h2>More articles</h2>
-                <div className="more-articles-wrapper">
-                  {articles.length !== 0 &&
-                    articles.map((relatedArticle) => {
-                      const relatedImageFormats =
-                        relatedArticle.attributes.Image.data.attributes.formats;
-                      const relatedArticleImage = relatedImageFormats.medium
-                        ? relatedImageFormats.medium.url
-                        : relatedImageFormats.small
-                        ? relatedImageFormats.small.url
-                        : relatedImageFormats.thumbnail
-                        ? relatedImageFormats.thumbnail.url
-                        : null;
+      {articles.length > 0 && (
+        <div className="more-articles-content-wrapper">
+          <div className="padding-global">
+            <div className="container-large">
+              <div className="padding-section-large">
+                <div className="more-articles-section">
+                  <h2>More articles</h2>
+                  <div className="more-articles-wrapper">
+                    {articles.length !== 0 &&
+                      articles.map((relatedArticle) => {
+                        const relatedImageFormats =
+                          relatedArticle.attributes.Image.data.attributes
+                            .formats;
+                        const relatedArticleImage = relatedImageFormats.medium
+                          ? relatedImageFormats.medium.url
+                          : relatedImageFormats.small
+                          ? relatedImageFormats.small.url
+                          : relatedImageFormats.thumbnail
+                          ? relatedImageFormats.thumbnail.url
+                          : null;
 
-                      const relatedImagePath = relatedArticleImage
-                        ? `/${path.basename(relatedArticleImage)}`
-                        : null;
+                        const relatedImagePath = relatedArticleImage
+                          ? `/${path.basename(relatedArticleImage)}`
+                          : null;
 
-                      return (
-                        <div
-                          key={relatedArticle.id}
-                          className="nyheter-wrapper"
-                        >
-                          <a
-                            href={`${urlBasedOnLang}/${relatedArticle.attributes.Slug}`}
+                        return (
+                          <div
+                            key={relatedArticle.id}
+                            className="nyheter-wrapper"
                           >
-                            <div className="nyheter-content-card">
-                              {relatedImagePath && (
-                                <div
-                                  style={{
-                                    backgroundImage: `url(${relatedImagePath})`,
-                                  }}
-                                  className="nyheter-content-card-top"
-                                ></div>
-                              )}
-                              <div className="nyheter-content-card-bottom">
-                                <div className="nyheter-content-card-text-wrapper">
-                                  <div className="nyheter-date">
-                                    {convertDateFormat(
-                                      relatedArticle.attributes.Date
-                                    )}
+                            <a
+                              href={`${urlBasedOnLang}/${relatedArticle.attributes.Slug}`}
+                            >
+                              <div className="nyheter-content-card">
+                                {relatedImagePath && (
+                                  <div
+                                    style={{
+                                      backgroundImage: `url(${relatedImagePath})`,
+                                    }}
+                                    className="nyheter-content-card-top"
+                                  ></div>
+                                )}
+                                <div className="nyheter-content-card-bottom">
+                                  <div className="nyheter-content-card-text-wrapper">
+                                    <div className="nyheter-date">
+                                      {convertDateFormat(
+                                        relatedArticle.attributes.Date
+                                      )}
+                                    </div>
+                                    <h3>{relatedArticle.attributes.Titel}</h3>
+                                    <p className="nyheter-paragraph-one">
+                                      {relatedArticle.attributes.ArticleText}
+                                    </p>
                                   </div>
-                                  <h3>{relatedArticle.attributes.Titel}</h3>
-                                  <p className="nyheter-paragraph-one">
-                                    {relatedArticle.attributes.ArticleText}
-                                  </p>
                                 </div>
                               </div>
-                            </div>
-                            <div className="nyheter-las-mer">
-                              <div className="nyheter-las-mer-content">
-                                <p>READ MORE</p>
-                                <img src="/right-arrow.svg" alt="Read More" />
+                              <div className="nyheter-las-mer">
+                                <div className="nyheter-las-mer-content">
+                                  <p>READ MORE</p>
+                                  <img src="/right-arrow.svg" alt="Read More" />
+                                </div>
                               </div>
-                            </div>
-                          </a>
-                        </div>
-                      );
-                    })}
+                            </a>
+                          </div>
+                        );
+                      })}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
       <Footer lang={"en"}></Footer>
     </>
   );

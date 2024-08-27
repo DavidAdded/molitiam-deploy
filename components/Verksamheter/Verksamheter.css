@@ -74,7 +74,11 @@
     height: 100%;
     padding: 50px;
     align-items: start;
+    justify-content: center;
   }
+    .verksamheter-content-box-1 > div > p {
+      margin-bottom:0px;
+    }
 }
 
 @media (max-width: 478px) {

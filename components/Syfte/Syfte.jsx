@@ -49,8 +49,12 @@ const Syfte = (props) => {
             ) : (
               <div className="syfte-content-wrapper">
                 <div className="sub-header-wrapper">
-                  <img src="/prefix-icon.svg" alt="" />
-                  <h6>PURPOSE</h6>
+                  <img
+                    src="/logo-white.png"
+                    width="25px"
+                    alt="mollitiam logo in white"
+                  />
+                  <h6 className="white-text">PURPOSE</h6>
                 </div>
                 <h2>CYBER SECURITY – A QUESTION OF FREEDOM</h2>
                 <div>

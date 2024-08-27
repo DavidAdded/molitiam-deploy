@@ -56,6 +56,7 @@
   width: 100%;
   height: 250px;
   background-size: cover;
+  background-position: center;
 }
 
 .nyheter-content-card-top img {
@@ -169,6 +170,8 @@
 @media (max-width: 991px) {
   .news-grid {
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-auto-rows: auto;
   }
 }
 

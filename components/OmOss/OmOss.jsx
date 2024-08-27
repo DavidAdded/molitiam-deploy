@@ -43,7 +43,6 @@ const OmOss = async (props) => {
   const contacts = await response.json();
 
   for (const contact of contacts.data) {
-  
     const imageURL = contact.attributes.Image.data.attributes.formats.large.url;
     const imageSource = process.env.NEXT_PUBLIC_API_SLIM + imageURL;
     const imagePath = path.resolve("./public", path.basename(imageURL));
@@ -61,7 +60,11 @@ const OmOss = async (props) => {
               {lang === "sv" ? (
                 <div className="omoss-section-column">
                   <div className="sub-header-wrapper">
-                    <img src="/logo-black.png" width="25px" alt="" />
+                    <img
+                      src="/logo-black.png"
+                      width="25px"
+                      alt="mollitiam-logo"
+                    />
                     <h6 className="black-text">OM OSS</h6>
                   </div>
                   <div>
@@ -77,8 +80,12 @@ const OmOss = async (props) => {
               ) : (
                 <div className="omoss-section-column">
                   <div className="sub-header-wrapper">
-                    <img src="/prefix-icon.svg" alt="" />
-                    <h6>ABOUT US</h6>
+                    <img
+                      src="/logo-black.png"
+                      width="25px"
+                      alt="mollitiam-logo"
+                    />
+                    <h6 className="black-text">ABOUT US</h6>
                   </div>
                   <h2>EASY TO BUY. EASY TO USE.</h2>
                   <div>
@@ -106,23 +113,31 @@ const OmOss = async (props) => {
                   return (
                     <div key={index} className="om-oss-people-item">
                       <div className="om-oss-people-item-top">
-                        <img className="om-oss-people-image" src={`${imagePath}`} />
+                        <img
+                          className="om-oss-people-image"
+                          src={`${imagePath}`}
+                        />
                       </div>
                       <div className="om-oss-people-item-bottom">
                         <div>
                           <h3>{contact.attributes.Name}</h3>
                           <h4>{contact.attributes.Title}</h4>
                         </div>
-                        <p>
-                          <a href={`mailto:${contact.attributes.Email}`}>
-                            {contact.attributes.Email}
-                          </a>
-                        </p>
-                        <p>
-                          <a href={`tel:${contact.attributes.Phone}`}>
-                            {contact.attributes.Phone}
-                          </a>
-                        </p>
+
+                        {contact.attributes.Email !== undefined && (
+                          <p>
+                            <a href={`mailto:${contact.attributes.Email}`}>
+                              {contact.attributes.Email}
+                            </a>
+                          </p>
+                        )}
+                        {contact.attributes.Phone !== undefined && (
+                          <p>
+                            <a href={`tel:${contact.attributes.Phone}`}>
+                              {contact.attributes.Phone}
+                            </a>
+                          </p>
+                        )}
                       </div>
                     </div>
                   );

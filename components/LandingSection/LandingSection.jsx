@@ -38,21 +38,6 @@ const LandingSection = (props) => {
       });
     });
 
-    const image1 = document.querySelector(".picture-wrapper img");
-    const wrapper = document.querySelector(".landing-section-wrapper");
-
-    gsap.to([image1], {
-      scrollTrigger: {
-        trigger: wrapper,
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-      },
-
-      y: -100,
-      duration: 3,
-      ease: "none",
-    });
     runSectionTextAnimation(
       ".syfte-section-wrapper h2",
       ".syfte-section-wrapper p"
@@ -85,7 +70,7 @@ const LandingSection = (props) => {
               ) : (
                 <div className="text-wrapper">
                   <h1 className="animation-header">
-                    CYBER SECURITY FOR VITAL SOCIETAL FUNCTIONS{" "}
+                    CYBER SECURITY FOR VITAL SOCIETAL FUNCTIONS
                   </h1>
                   <p>Defense technology. Security. Simplicity.</p>
                 </div>

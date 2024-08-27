@@ -41,12 +41,13 @@ const Home = (props) => {
       <div id={urlPoints.omoss}>
         <OmOss lang={"en"} />
       </div>
-      <div id={urlPoints.verksamheter}>
-        <Verksamheter lang={"en"} />
-      </div>
       <div id={urlPoints.nyheter}>
         <Nyheter lang={"en"} />
       </div>
+      <div id={urlPoints.verksamheter}>
+        <Verksamheter lang={"en"} />
+      </div>
+
       <Footer lang={"en"}></Footer>
     </div>
   );

@@ -41,7 +41,6 @@ const Verksamheter = async (props) => {
   const contentCards = await cardsResponse.json();
 
   for (const contentCard of contentCards.data) {
-    console.log(contentCard.attributes.PartnerIcon)
     const imageURL = contentCard.attributes.PartnerIcon.data.attributes.url;
 
     const imageSource = process.env.NEXT_PUBLIC_API_SLIM + imageURL;
@@ -72,8 +71,8 @@ const Verksamheter = async (props) => {
               ) : (
                 <div className="verksamheter-content-wrapper-top">
                   <div className="sub-header-wrapper">
-                    <img src="/prefix-icon.svg" alt="Left" />
-                    <h6>OPERATIONS</h6>
+                    <img src="/logo-white.png" width="25px" alt="Left" />
+                    <h6 className="white-text">OPERATIONS</h6>
                   </div>
                   <h2>CR Group</h2>
                   <div>

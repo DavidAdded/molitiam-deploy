@@ -59,17 +59,18 @@
   .landing-section-wrapper {
     padding: 140px 0;
   }
-
-
-.picture-wrapper img {
-  max-width: 100%;
-}
+  .animation-header {
+    margin-bottom:5px;
+  }
+  .picture-wrapper img {
+    max-width: 100%;
+  }
   .landing-grey-image {
     margin-bottom: 75px;
   }
-    .text-wrapper {
-      max-width: 600px;
-    }
+  .text-wrapper {
+    max-width: 600px;
+  }
 }
 
 @media (max-width: 478px) {
@@ -80,11 +81,9 @@
 
   .text-wrapper h1 {
     font-size: 32px;
-    /* Smaller font size for better readability */
   }
 
   .text-wrapper p {
     font-size: 16px;
-    /* Smaller font size for better readability */
   }
 }

@@ -42,11 +42,11 @@ const Home = () => {
       <div id={urlPoints.omoss}>
         <OmOss lang={"sv"} />
       </div>
-      <div id={urlPoints.verksamheter}>
-        <Verksamheter lang={"sv"} />
-      </div>
       <div id={urlPoints.nyheter}>
         <Nyheter lang={"sv"} />
+      </div>
+      <div id={urlPoints.verksamheter}>
+        <Verksamheter lang={"sv"} />
       </div>
       <Footer lang={"sv"}></Footer>
     </div>
