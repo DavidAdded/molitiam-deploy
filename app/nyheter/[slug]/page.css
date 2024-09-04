@@ -61,9 +61,17 @@
 
 .news-article-text-wrapper h3 {
   font-family: "JosefinaSans", sans-serif;
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 400;
-  line-height: 20px;
+  line-height: 23px;
+  letter-spacing: 0.05em;
+  text-align: left;
+}
+.news-article-text-wrapper h2 {
+  font-family: "JosefinaSans", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 23px;
   letter-spacing: 0.05em;
   text-align: left;
 }

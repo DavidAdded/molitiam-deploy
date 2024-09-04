@@ -39,7 +39,6 @@ const Verksamheter = async (props) => {
   });
 
   const contentCards = await cardsResponse.json();
-
   for (const contentCard of contentCards.data) {
     const imageURL = contentCard.attributes.PartnerIcon.data.attributes.url;
 
@@ -50,82 +49,80 @@ const Verksamheter = async (props) => {
 
   return (
     <div className="verksamheter-section-wrapper">
-      <div className="padding-global">
-        <div className="container-large">
-          <div className="padding-section-large">
-            <div className="verksamheter-content-wrapper">
-              {lang === "sv" ? (
-                <div className="verksamheter-content-wrapper-top">
-                  <div className="sub-header-wrapper">
-                    <img src="/logo-white.png" width="25px" alt="Left" />
-                    <h6 className="white-text">CR Group</h6>
-                  </div>
-                  <div>
-                    <p>
-                      Mollitiam är en del av CR Group, som är en totalleverantör
-                      av cybersäkerhet till samhällsviktig verksamhet. Gruppen
-                      består av helägda dotterbolag inom utvalda expertområden.
-                    </p>
-                  </div>
+      <div className="container-large">
+        <div className="padding-section-large">
+          <div className="verksamheter-content-wrapper">
+            {lang === "sv" ? (
+              <div className="verksamheter-content-wrapper-top">
+                <div className="sub-header-wrapper">
+                  <img src="/logo-white.png" width="25px" alt="Left" />
+                  <h6 className="white-text">CR Group</h6>
                 </div>
-              ) : (
-                <div className="verksamheter-content-wrapper-top">
-                  <div className="sub-header-wrapper">
-                    <img src="/logo-white.png" width="25px" alt="Left" />
-                    <h6 className="white-text">OPERATIONS</h6>
-                  </div>
-                  <h2>CR Group</h2>
-                  <div>
-                    <p>
-                      CR Group is a Swedish-owned, cyber-security company
-                      oriented towards the European market. We offer solutions
-                      for vital societal functions that are both easy-to-buy and
-                      easy-to-use.
-                    </p>
-                    <p>
-                      The Group consists of wholly owned subsidiaries within
-                      selected areas of expertise, that offer products and
-                      services for security-critical operations.
-                    </p>
-                    <p>
-                      We build long-term relationships with both nations and
-                      organizations.
-                    </p>
-                  </div>
+                <div>
+                  <p>
+                    Mollitiam är en del av CR Group, som är en totalleverantör
+                    av cybersäkerhet till samhällsviktig verksamhet. Gruppen
+                    består av helägda dotterbolag inom utvalda expertområden.
+                  </p>
                 </div>
-              )}
+              </div>
+            ) : (
+              <div className="verksamheter-content-wrapper-top">
+                <div className="sub-header-wrapper">
+                  <img src="/logo-white.png" width="25px" alt="Left" />
+                  <h6 className="white-text">OPERATIONS</h6>
+                </div>
+                <h2>CR Group</h2>
+                <div>
+                  <p>
+                    CR Group is a Swedish-owned, cyber-security company oriented
+                    towards the European market. We offer solutions for vital
+                    societal functions that are both easy-to-buy and
+                    easy-to-use.
+                  </p>
+                  <p>
+                    The Group consists of wholly owned subsidiaries within
+                    selected areas of expertise, that offer products and
+                    services for security-critical operations.
+                  </p>
+                  <p>
+                    We build long-term relationships with both nations and
+                    organizations.
+                  </p>
+                </div>
+              </div>
+            )}
 
-              {contentCards.data ? (
-                <div className="verksamheter-content-wrapper-bottom">
-                  {contentCards.data.map((card, index) => {
-                    const cardImage =
-                      card.attributes.PartnerIcon.data.attributes.url;
-                    const imagePath = `/${path.basename(cardImage)}`;
-                    const siteUrl = card.attributes.Linkurl;
+            {contentCards.data ? (
+              <div className="verksamheter-content-wrapper-bottom">
+                {contentCards.data.map((card, index) => {
+                  const cardImage =
+                    card.attributes.PartnerIcon.data.attributes.url;
+                  const imagePath = `/${path.basename(cardImage)}`;
+                  const siteUrl = card.attributes.Linkurl;
 
-                    return (
-                      <a
-                        target="_blank"
-                        href={siteUrl}
-                        className="verksamheter-content-box-1 white-text"
-                      >
-                        <div key={index}>
-                          <img src={`${imagePath}`}></img>
+                  return (
+                    <a
+                      target="_blank"
+                      href={siteUrl}
+                      className="verksamheter-content-box-1 white-text"
+                    >
+                      <div key={index}>
+                        <img src={`${imagePath}`}></img>
 
-                          <p>{card.attributes.PartnerDescription}</p>
-                        </div>
-                      </a>
-                    );
-                  })}
-                </div>
-              ) : (
-                <div className="verksamheter-content-wrapper-bottom">
-                  <div className="verksamheter-content-box-1"></div>
-                  <div className="verksamheter-content-box-1"></div>
-                  <div className="verksamheter-content-box-1"></div>
-                </div>
-              )}
-            </div>
+                        <p>{card.attributes.PartnerDescription}</p>
+                      </div>
+                    </a>
+                  );
+                })}
+              </div>
+            ) : (
+              <div className="verksamheter-content-wrapper-bottom">
+                <div className="verksamheter-content-box-1"></div>
+                <div className="verksamheter-content-box-1"></div>
+                <div className="verksamheter-content-box-1"></div>
+              </div>
+            )}
           </div>
         </div>
       </div>
