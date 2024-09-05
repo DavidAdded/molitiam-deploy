@@ -79,9 +79,6 @@ export const metadata = {
 };
 
 export default async function Page() {
-  const readMoreText = "Read More";
-  const arrowIconUrl = "right-arrow.svg";
-
   const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&pagination[limit]=20&fields[0]=slug&fields[1]=Titel&fields[2]=Date&fields[3]=ArticleText&fields[4]=createdAt&fields[5]=updatedAt&fields[6]=publishedAt&fields[7]=locale&populate=*&locale=en`;
 
   const response = await fetch(articlesURL, {

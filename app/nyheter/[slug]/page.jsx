@@ -102,7 +102,7 @@ export async function generateMetadata({ params }, parent) {
 }
 
 export async function generateStaticParams() {
-  const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&pagination[limit]=-1&fields[0]=slug&locale=sv`;
+  const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&pagination[limit]=-1&fields[0]=Slug&locale=sv`;
 
   const response = await fetch(articlesURL, {
     headers: {
@@ -199,11 +199,11 @@ export default async function Page({ params }) {
               <h6>{formattedDate}</h6>
               <div className="news-article-text-wrapper">
                 <h1>{article.attributes.Titel}</h1>
-                <p
+                <div
                   dangerouslySetInnerHTML={{
                     __html: article.attributes.ArticleText,
                   }}
-                ></p>
+                ></div>
               </div>
             </div>
           </div>

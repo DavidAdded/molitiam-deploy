@@ -95,17 +95,25 @@ export async function generateMetadata({ params }, parent) {
     imageURL = availableFormats.thumbnail.url;
   }
 
+  const imageSource = imageURL.startsWith("http")
+    ? imageURL
+    : process.env.NEXT_PUBLIC_API_SLIM + imageURL;
+
   const imagePath = path.resolve("./public", path.basename(imageURL));
+
+  try {
+    await downloadImage(imageSource, imagePath);
+  } catch (error) {
+    console.error(`Failed to download image from ${imageSource}:`, error);
+  }
+
   const baseURL = "https://mollitiam.se";
   const OGPath = `${baseURL}/${path.basename(imageURL)}`;
-
-  // Download the image if it doesn't exist
-  await downloadImage(imageURL, imagePath);
 
   return {
     metadataBase: `${baseURL}/news/${slug}`,
     title: article.attributes.Titel,
-    description: description,
+    description: article.attributes.ArticleText.split(0, 150)[0] + "...",
     openGraph: {
       title: article.attributes.Titel,
       description: description,
@@ -115,7 +123,7 @@ export async function generateMetadata({ params }, parent) {
 }
 
 export async function generateStaticParams() {
-  const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&pagination[limit]=-1&fields[0]=slug&locale=en`;
+  const articlesURL = `${process.env.NEXT_PUBLIC_API_URL}articles?sort=Date:desc&pagination[limit]=-1&fields[0]=Slug&locale=en`;
 
   const response = await fetch(articlesURL, {
     headers: {
@@ -152,9 +160,10 @@ export default async function Page({ params }) {
   }
 
   const articleData = await response.json();
+
   const article = articleData.data.find(
     (item) => item.attributes.Slug === slug
-  ); // Assuming the API returns an array
+  );
 
   if (!article) {
     return <div>Article not found</div>;
@@ -215,11 +224,11 @@ export default async function Page({ params }) {
               <h6>{formattedDate}</h6>
               <div className="news-article-text-wrapper">
                 <h1>{article.attributes.Titel}</h1>
-                <p
+                <div
                   dangerouslySetInnerHTML={{
                     __html: article.attributes.ArticleText,
                   }}
-                ></p>
+                ></div>
               </div>
             </div>
           </div>

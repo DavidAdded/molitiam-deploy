@@ -49,7 +49,7 @@
   color: rgba(63, 63, 63, 1);
 }
 
-.news-article-text-wrapper p {
+.news-article-text-wrapper div {
   font-family: "Inter";
   font-size: 18px;
   font-weight: 400;
